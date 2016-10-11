@@ -1,0 +1,21 @@
+<Files *.php> 
+    #deny from all
+</Files>
+<Files "index.php">
+   # Order Allow,Deny
+    #Allow from all
+</Files> 
+<Files "apc.php">
+    Order Allow,Deny
+    Allow from all
+</Files> 
+<Files "apc.conf.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+RewriteEngine on 
+Options +FollowSymlinks 
+RewriteBase /3sproject_v1
+
+#RewriteRule ^(.+)$ index.php [QSA,L]
