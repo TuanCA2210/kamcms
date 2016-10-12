@@ -6,13 +6,18 @@
 						<li>
 							<a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
 						</li>
-						<li class="active"><?php echo $this->data['title'];?></li>
+						<li class="active"><?php //echo $this->data['title'];?></li>
 					</ol>
 					<div class="clearfix"></div>
 					<?php 
-					echo $this->data['content'];
-
-					if($this->data['contact_form']!="") echo $this->data['contact_form'];
+					if (!empty($this->data['data'])) {
+						foreach ($this->data['data'] as $key => $value) {
+							echo "<h2>".$value['title']."</h2><br />";
+						}
+					}
+					if ($this->data['pagination']) {
+                        echo $this->data['pagination'];
+                    }
 					 ?>
 				</section>
 				

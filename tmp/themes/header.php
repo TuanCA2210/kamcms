@@ -8,7 +8,7 @@
 		<div class="top-bar col-xs-12 noPadding">
 			<div class="container">
 				<ul class="text-right">
-					<li><a href="" title="Đăng nhập"><i class="fa fa-sign-in"></i> <?php echo lang('login');?></a> / <a href="" title="Đăng ký"><?php echo lang('regis');?></a></li>
+					<li><a href="" title="<?php echo lang('login');?>"><i class="fa fa-sign-in"></i> <?php echo lang('login');?></a> / <a href="" title="<?php echo lang('regis');?>"><?php echo lang('regis');?></a></li>
 					<li><a href="javascript:void(0)" title="Tiếng Việt" class="lang" data-lang="vi"><img src="<?php echo base_url()."tmp/public/";?>images/vi.png" alt="" class="img-responsive"> </a></li>
 					<li><a href="javascript:void(0)" title="English" class="lang" data-lang="en"><img src="<?php echo base_url()."tmp/public/";?>images/us.png" alt="" class="img-responsive"> </a></li>
 				</ul>

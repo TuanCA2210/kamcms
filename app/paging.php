@@ -46,10 +46,10 @@ public function pagesList($curpage){
 
   // Tạo liên kết tới trang đầu và trang trang trước
   if($curpage!=1){
-   $page_list .= '<li><a href="'.$this->_link.'&page=1&total='.$total.'" title="trang đầu">First </a></li>';
+   $page_list .= '<li><a href="'.$this->_link.'&p1&t'.$total.'" title="trang đầu">First </a></li>';
   }
   if($curpage  > 1){
-   $page_list .= '<li><a href="'.$this->_link .'&page='.($curpage-1).'&total='.$total.'" title="trang trước"><span aria-hidden="true">&laquo;</span> </a></li>';
+   $page_list .= '<li><a href="'.$this->_link .'&p'.($curpage-1).'&t'.$total.'" title="trang trước"><span aria-hidden="true">&laquo;</span> </a></li>';
   }
 
   // Tạo liên kết tới các trang
@@ -58,17 +58,17 @@ public function pagesList($curpage){
     $page_list .= '<li class="active"><a href="#">'.$i.' <span class="sr-only">(current)</span></a></li>';
    }
    else{
-    $page_list .= '<li><a href="'.$this->_link.'&page='.$i.'&total='.$total.'" title="Trang '.$i.'">'.$i.'</a></li>';
+    $page_list .= '<li><a href="'.$this->_link.'&p'.$i.'&t'.$total.'" title="Trang '.$i.'">'.$i.'</a></li>';
    }
    $page_list .= " ";
   }
 
   // Tạo liên kết tới trang sau và trang cuối
   if(($curpage+1)<=$pages){
-   $page_list .= '<li><a href="'.$this->_link.'&page='.($curpage+1).'&total='.$total.'" title="Đến trang sau"> <span aria-hidden="true">&raquo;</span> </a></li>';
+   $page_list .= '<li><a href="'.$this->_link.'&p'.($curpage+1).'&t'.$total.'" title="Đến trang sau"> <span aria-hidden="true">&raquo;</span> </a></li>';
   }
   if(($curpage != $pages) && ($pages != 0)){
-   $page_list .= '<li><a href="'.$this->_link.'&page='.$pages.'&total='.$total.'" title="trang cuối"> Last</a></li>';
+   $page_list .= '<li><a href="'.$this->_link.'&p'.$pages.'&t'.$total.'" title="trang cuối"> Last</a></li>';
   }
 
   $page_list .= '</ul>';

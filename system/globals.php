@@ -1,7 +1,6 @@
 <?php 
 $_web = array();
 $_web['lang'] = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'vi';
-
 require_once "app/config.php";
 require_once "app/database.php";
 require_once "system/mysqliDB.php";
@@ -31,21 +30,11 @@ if (isset($_web['lang'])) {
 	if (file_exists($file_lang)) {
 		include($file_lang);	
 	}
-}else{
-	$file_lang = DIR_APP.'lang/vi/main.php';
-	if (file_exists($file_lang)) {
-		include($file_lang);	
-	}
 }
 
 // goi ngon ngu module
 if (isset($_web['lang'])) {
 	$file_lang_mod = DIR_MODULES.$_web['uri']['mod'].'/lang/'.$_web['lang'].'/main.php';
-	if (file_exists($file_lang_mod)) {
-		include($file_lang_mod);	
-	}
-}else{
-	$file_lang_mod = DIR_MODULES.$_web['uri']['mod'].'/lang/vi/main.php';
 	if (file_exists($file_lang_mod)) {
 		include($file_lang_mod);	
 	}

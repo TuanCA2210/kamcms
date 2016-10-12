@@ -23,4 +23,16 @@ class Posts{
         }
         return $data;
     }
+    public function getposts(){
+    	$this->posts->where('status',1);
+		$result  = $this->posts->num_rows();
+		return $result;
+	}
+    public function getAllPost($start,$limit){
+    	$select = $this->lang."_posts.id,".$this->lang."_posts.title,".$this->lang."_posts.alias,".$this->lang."_posts.thumbnail,".$this->lang."_posts.create_time, user.id as id_user, user.username";
+    	$this->posts->where( $this->lang."_posts.status",1);
+    	$this->posts->join('user', 'user.id = '.$this->lang.'_posts.author_create', 'LEFT');
+    	$result = $this->posts->get(null,array($start,$limit),$select);
+    	return $result;
+    }
 }

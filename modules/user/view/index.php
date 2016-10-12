@@ -21,13 +21,36 @@
 					                <div class="v2-login">
 					                    <form action="" method="POST">
 					                        <h3><?php echo lang('login');?></h3>
-					                        <div class="input-group"><input type="text" class="form-control" id="txtname" name="email" value="" placeholder="Tài khoản của bạn">
+					                        <div class="input-group"><input type="email" class="form-control" id="txtemail" name="txtemail" value="" placeholder="<?php echo lang('email');?>">
 					                        </div><br>
-					                        <div class="input-group"><input type="password" class="form-control" id="txtpassword" name="password" value="" placeholder="Mật khẩu">
+					                        <div class="input-group"><input type="password" class="form-control" id="txtpassword" name="txtpassword" value="" placeholder="<?php echo lang('password')?>">
 					                        </div><br><a class="text-center text-danger" href="<?php echo base_url();?>"><?php echo lang('forgot');?></a><button type="submit" name="login_ok" class="btn btn-primary"><?php echo lang('login');?></button></form>
 					                </div>
 					            </div>
 					            <div class="col-md-6">
+					            	<?php 
+					            	if (!empty($this->error)) {
+					            		echo '<div class="alert alert-danger">
+  												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  												<strong>'.lang('warning').'!</strong>';
+												
+					            		foreach ($this->error as $key => $value) {
+					            			echo "<p>".$value."</p>";
+					            		}
+					            		echo '</div>';
+					            	}
+					            	if (!empty($this->success)) {
+					            		echo '<div class="alert alert-success">
+  												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  												<strong>'.lang('success').'!</strong>';
+												
+					            		foreach ($this->success as $key => $value) {
+					            			echo "<p>".$value."</p>";
+					            		}
+					            		echo '</div>';
+					            	}
+
+					            	?>
 					                <div class="v2-reg">
 					                    <form action="" method="POST">
 					                        <h3><?php echo lang('regis_new');?></h3>

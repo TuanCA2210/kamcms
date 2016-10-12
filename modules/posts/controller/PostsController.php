@@ -1,12 +1,28 @@
 <?php 
 class PostsController extends Controller{
 	public $modelPosts;
-	//public $loadPages;
 	public function __construct(){
 		parent::__construct();
 		$this->modelPosts = $this->loadModel('Posts');
 	}
 	public function index(){
+		$link = base_url().'news.htm';
+		$all_pages = $this->modelPosts->getPosts();
+
+		$paging = new Paging($all_pages,$link);
+		$limit =1;
+		// Tổng số trang
+		$count_page = $paging->findPages($limit);
+		// Bắt đầu từ mẫu tin
+		$start =$paging->rowStart($limit);
+		// Trang hiện tại
+		$curpage = ($start/$limit)+1;
+
+
+		// Xuất dữ liệu với truy vấn
+		$this->view->data['data'] = $this->modelPosts->getAllPost($start,$limit);
+		$this->view->data['pagination'] = $paging->pagesList($curpage); 
+
 
 		$this->view->render('index');
 	}
@@ -20,7 +36,7 @@ class PostsController extends Controller{
 		
 	}
 	public function categories(){
-		$id=16;
+		$id = $_GET['id'];
 		$arr_a = $this->modelPosts->getBreadcrumbsCategory($id);
         $arr_b = array(
                     0 => array(

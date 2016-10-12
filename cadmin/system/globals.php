@@ -3,10 +3,7 @@
 $_web = array();
 $_mod = null;
 $_web['lang'] = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'vi';
-
-$_web['base_url'] = 'http://localhost/fwtome/cadmin/';
-//$_web['url_current']     = 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-
+require_once "app/config.php";
 require_once "app/database.php";
 require_once "system/mysqliDB.php";
 require_once "system/model.php";
@@ -36,21 +33,11 @@ if (isset($_web['lang'])) {
 	if (file_exists($file_lang)) {
 		include($file_lang);	
 	}
-}else{
-	$file_lang = DIR_APP.'lang/vi/main.php';
-	if (file_exists($file_lang)) {
-		include($file_lang);	
-	}
 }
 
 // goi ngon ngu module
 if (isset($_web['lang'])) {
 	$file_lang_mod = DIR_MODULES.$_web['uri']['mod'].'/lang/'.$_web['lang'].'/main.php';
-	if (file_exists($file_lang_mod)) {
-		include($file_lang_mod);	
-	}
-}else{
-	$file_lang_mod = DIR_MODULES.$_web['uri']['mod'].'/lang/vi/main.php';
 	if (file_exists($file_lang_mod)) {
 		include($file_lang_mod);	
 	}
