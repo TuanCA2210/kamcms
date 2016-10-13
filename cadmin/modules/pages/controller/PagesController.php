@@ -21,7 +21,7 @@ class PagesController extends Controller{
 			$this->view->data['count_page'] = 1;
 			$this->view->data['pagination'] ='';
 		}else{
-			$link = base_url().'index.php?mod=pages&controller=pages&action=index';
+			$link = base_url().'pages/pages/index';
 			$all_pages = $this->modelPages->getPages();
 
 			$paging = new Paging(count($all_pages),$link);
@@ -97,9 +97,9 @@ class PagesController extends Controller{
 			
             Session::create($mess);
             if ($_POST['submit']=='save') {
-            	redirect(base_url().'index.php?mod=pages&controller=pages&action=index');
+            	redirect(base_url().'pages/pages/index');
             }else{
-            	redirect(base_url().'index.php?mod=pages&controller=pages&action=add');
+            	redirect(base_url().'pages/pages/add');
             }
             
 		}
@@ -156,7 +156,7 @@ class PagesController extends Controller{
 				'flash_success' => lang('delete_success'),
 			);
 			Session::create($mess);
-			redirect(base_url().'index.php?mod=pages&controller=pages&action=index');
+			redirect(base_url().'pages/pages/index');
 		}
 	}
 
@@ -179,7 +179,7 @@ class PagesController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=pages&controller=pages&action=index'
+					'redirect'		=> base_url().'pages/pages/index'
 				);
 				echo json_encode($data_mess);
             }
@@ -207,7 +207,7 @@ class PagesController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=pages&controller=pages&action=index'
+					'redirect'		=> base_url().'pages/pages/index'
 				);
 				echo json_encode($data_mess);
             }

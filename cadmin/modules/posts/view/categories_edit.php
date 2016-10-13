@@ -22,7 +22,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         	
-        	<form action="<?php echo base_url().'index.php?mod=posts&controller=categories&action=save'?>" method="post">
+        	<form action="<?php echo base_url().'posts/categories/save'?>" method="post">
         	<input type="hidden" name="id_category" value="<?php if(isset($this->data['data']['id'])) echo $this->data['data']['id'];?>">
 			<div class="col-md-9" style="min-height:750px;">
 			    <div class="tabbable-custom ">

@@ -21,7 +21,7 @@ class CategoriesController extends Controller{
 			$this->view->data['count_page'] = 1;
 			$this->view->data['pagination'] ='';
 		}else{
-			$link = base_url().'index.php?mod=posts&controller=categories&action=index';
+			$link = base_url().'posts/categories/index';
 			$all_pages = $this->modelCategories->getCategories();
 
 			$paging = new Paging(count($all_pages),$link);
@@ -94,9 +94,9 @@ class CategoriesController extends Controller{
 			
             Session::create($mess);
             if ($_POST['submit']=='save') {
-            	redirect(base_url().'index.php?mod=posts&controller=categories&action=index');
+            	redirect(base_url().'posts/categories/index');
             }else{
-            	redirect(base_url().'index.php?mod=posts&controller=categories&action=add');
+            	redirect(base_url().'posts/categories/add');
             }
             
 		}
@@ -121,7 +121,7 @@ class CategoriesController extends Controller{
 				'flash_success' => lang('delete_success'),
 			);
 			Session::create($mess);
-			redirect(base_url().'index.php?mod=posts&controller=categories&action=index');
+			redirect(base_url().'posts/categories/index');
 		}
 	}
 
@@ -144,7 +144,7 @@ class CategoriesController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=posts&controller=categories&action=index'
+					'redirect'		=> base_url().'/posts/categories/index'
 				);
 				echo json_encode($data_mess);
             }
@@ -172,7 +172,7 @@ class CategoriesController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=posts&controller=categories&action=index'
+					'redirect'		=> base_url().'posts/categories/index'
 				);
 				echo json_encode($data_mess);
             }

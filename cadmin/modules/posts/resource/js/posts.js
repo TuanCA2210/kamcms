@@ -82,7 +82,7 @@
 		});
 		if (allVals.length >= 1) {
 			$.ajax({
-				url: baseUrl+'index.php?mod=posts&controller=posts&action=dellAll',
+				url: baseUrl+'posts/posts/dellAll',
 				type: 'POST',
 				dataType: 'json',
 				data: {all: allVals},
@@ -117,7 +117,7 @@
 		if (allVals.length >= 1) {
 			var status = 'public';
 			$.ajax({
-				url: baseUrl+'index.php?mod=posts&controller=posts&action=status',
+				url: baseUrl+'posts/posts/status',
 				type: 'POST',
 				dataType: 'json',
 				data: {status: status,all:allVals},
@@ -143,7 +143,7 @@
 		if (allVals.length >= 1) {
 			var status = 'private';
 			$.ajax({
-				url: baseUrl+'index.php?mod=posts&controller=posts&action=status',
+				url: baseUrl+'posts/posts/status',
 				type: 'POST',
 				dataType: 'json',
 				data: {status: status,all:allVals},
@@ -171,7 +171,7 @@
 		if (allVals.length >= 1) {
 			var status = 'public';
 			$.ajax({
-				url: baseUrl+'index.php?mod=posts&controller=categories&action=status',
+				url: baseUrl+'posts/categories/status',
 				type: 'POST',
 				dataType: 'json',
 				data: {status: status,all:allVals},
@@ -197,7 +197,7 @@
 		if (allVals.length >= 1) {
 			var status = 'private';
 			$.ajax({
-				url: baseUrl+'index.php?mod=posts&controller=categories&action=status',
+				url: baseUrl+'posts/categories/status',
 				type: 'POST',
 				dataType: 'json',
 				data: {status: status,all:allVals},
@@ -236,7 +236,7 @@
 		});
 		if (allVals.length >= 1) {
 			$.ajax({
-				url: baseUrl+'index.php?mod=posts&controller=categories&action=dellAll',
+				url: baseUrl+'posts/categories/dellAll',
 				type: 'POST',
 				dataType: 'json',
 				data: {all: allVals},
@@ -260,9 +260,9 @@
 		event.preventDefault();
 		var search = $('.search_categories').val();
 		if (search=="") {
-			window.location.assign(baseUrl+'index.php?mod=posts&controller=categories&action=index');
+			window.location.assign(baseUrl+'posts/categories/index');
 		}else{
-			window.location.assign(baseUrl+'index.php?mod=posts&controller=categories&action=index&s='+search);
+			window.location.assign(baseUrl+'posts/categories/index&s='+search);
 		}
 		
 	});
@@ -273,9 +273,9 @@ $('body').on('click', '.search_button_users', function(event) {
 	event.preventDefault();
 	var search = $('.search_users').val();
 	if (search=="") {
-		window.location.assign(baseUrl+'index.php?mod=posts&controller=posts&action=index');
+		window.location.assign(baseUrl+'posts/posts/index');
 	}else{
-		window.location.assign(baseUrl+'index.php?mod=posts&controller=posts&action=index&s='+search);
+		window.location.assign(baseUrl+'posts/posts/index&s='+search);
 	}
 	
 });

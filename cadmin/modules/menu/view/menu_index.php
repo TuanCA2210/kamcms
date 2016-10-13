@@ -142,7 +142,7 @@
                                                                     if (isset($value['old_url']) && $value['old_url']) {
                                                                        $old_link = replaceAdmin(base_url()).$value['old_url'].'.htm';
                                                                     }else{
-                                                                        $old_link = replaceAdmin(base_url()).'index.php?mod=pages&controller=pages&action=detail&id='.$value['id'];
+                                                                        $old_link = replaceAdmin(base_url()).'pages/pages/detail/'.$value['id'];
                                                                     }
                                                                     echo "<li><a data-title='".$value['title']."' data-id='".$value['id']."' data-link='".$old_link."' href='#'>".$value['title']."</a></li>";
                                                                 }

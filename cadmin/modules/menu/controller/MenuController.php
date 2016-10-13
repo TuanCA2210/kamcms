@@ -147,7 +147,7 @@ class MenuController extends Controller{
 				'flash_success' => lang('delete_success'),
 			);
 			Session::create($mess);
-			redirect(base_url().'index.php?mod=menu&controller=menu&action=index&pos='.$position);
+			redirect(base_url().'menu/menu/index&pos='.$position);
 		}
 	}
 
@@ -166,7 +166,7 @@ class MenuController extends Controller{
 				Session::create($mess);
 				$data_mess = array(
 					'status' => true,
-					'href'	=>  base_url().'index.php?mod=menu&controller=menu&action=index&pos='.$position
+					'href'	=>  base_url().'menu/menu/index&pos='.$position
 				);
 				echo json_encode($data_mess);
 			}

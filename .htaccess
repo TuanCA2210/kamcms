@@ -37,3 +37,5 @@ RewriteRule ^gioi-thieu\.htm$ index.php?mod=pages&controller=pages&action=detail
 RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id=9 [L,QSA]
 
 
+
+RewriteRule ^nam-ha\.htm$ index.php?mod=pages&controller=pages&action=detail&id=10 [L,QSA]

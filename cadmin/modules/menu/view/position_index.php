@@ -52,7 +52,7 @@
                                           </div><!-- /.col-lg-6 -->
                                           <div class="col-lg-4"></div>
                                           <div class="col-lg-4" style="text-align: right;">
-                                            <a class="btn btn-success" href="<?php echo base_url().'index.php?mod=menu&controller=position&action=add';?>"><i class="fa fa-plus-circle"></i> <?php echo lang('add_pages');?></a>
+                                            <a class="btn btn-success" href="<?php echo base_url().'menu/position/add';?>"><i class="fa fa-plus-circle"></i> <?php echo lang('add_pages');?></a>
 
                                             <!-- Single button -->
                                             <div class="btn-group">
@@ -86,7 +86,7 @@
                                                         </span></div>
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" aria-label="ID: orderby asc" style="width: 50px;">
-                                                        <a href="<?php echo base_url().'index.php?mod=menu&controller=position&action=index';?>"><?php echo lang('id');?></a>
+                                                        <a href="<?php echo base_url().'menu/position/index';?>"><?php echo lang('id');?></a>
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" aria-label="
                                                                     Email
@@ -136,7 +136,7 @@
                                                                 ?>
                                                             </td>
                                                             <td><?php echo date('d-m-Y',$value['create_time']);?></td>
-                                                            <td><a href="<?php echo base_url().'index.php?mod=menu&controller=menu&action=index&pos='.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'index.php?mod=menu&controller=position&action=del&id='.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
+                                                            <td><a href="<?php echo base_url().'menu/menu/index&pos='.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'menu/position/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
                                                         </tr>
                                                 <?php 
                                                     }

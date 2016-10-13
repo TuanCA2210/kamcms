@@ -21,7 +21,7 @@ class PostsController extends Controller{
 			$this->view->data['count_page'] = 1;
 			$this->view->data['pagination'] ='';
 		}else{
-			$link = base_url().'index.php?mod=posts&controller=post&action=index';
+			$link = base_url().'posts/post/index';
 			$all_pages = $this->modelPosts->getPosts();
 
 			$paging = new Paging(count($all_pages),$link);
@@ -99,9 +99,9 @@ class PostsController extends Controller{
 			
             Session::create($mess);
             if ($_POST['submit']=='save') {
-            	redirect(base_url().'index.php?mod=posts&controller=posts&action=index');
+            	redirect(base_url().'posts/posts/index');
             }else{
-            	redirect(base_url().'index.php?mod=posts&controller=posts&action=add');
+            	redirect(base_url().'posts/posts/add');
             }
             
 		}
@@ -125,7 +125,7 @@ class PostsController extends Controller{
 				'flash_success' => lang('delete_success'),
 			);
 			Session::create($mess);
-			redirect(base_url().'index.php?mod=posts&controller=posts&action=index');
+			redirect(base_url().'posts/posts/index');
 		}
 	}
 
@@ -148,7 +148,7 @@ class PostsController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=posts&controller=posts&action=index'
+					'redirect'		=> base_url().'/posts/posts/index'
 				);
 				echo json_encode($data_mess);
             }
@@ -176,7 +176,7 @@ class PostsController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=posts&controller=posts&action=index'
+					'redirect'		=> base_url().'posts/posts/index'
 				);
 				echo json_encode($data_mess);
             }

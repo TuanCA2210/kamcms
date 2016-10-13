@@ -14,17 +14,17 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="active treeview">
-          <a href="<?php echo base_url().'index.php?mod=home&controller=home&action=index'; ?>">
+          <a href="<?php echo base_url().'home/home/index'; ?>">
             <i class="fa fa-home" aria-hidden="true"></i> <span><?php echo lang('dashboard'); ?></span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url().'index.php?mod=settings&controller=settings&action=index'; ?>">
+          <a href="<?php echo base_url().'settings/settings/index'; ?>">
             <i class="fa fa-wrench" aria-hidden="true"></i> <span><?php echo lang('settings'); ?></span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url().'index.php?mod=menu&controller=position&action=index';?>">
+          <a href="<?php echo base_url().'menu/position/index';?>">
             <i class="fa fa-bars" aria-hidden="true"></i> <span><?php echo lang('menu'); ?></span>
           </a>
         </li>
@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="<?php echo base_url().'index.php?mod=pages&controller=pages&action=index'; ?>">
+          <a href="<?php echo base_url().'pages/pages/index'; ?>">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             <span><?php echo lang('pages'); ?></span>
           </a>
@@ -45,12 +45,12 @@
             <span><?php echo lang('post'); ?></span>
           </a>
             <ul class="treeview-menu">
-                <li><a href="<?php echo base_url().'index.php?mod=posts&controller=posts&action=index';?>"><?php echo lang('all_posts');?></a></li>
-                <li><a href="<?php echo base_url().'index.php?mod=posts&controller=categories&action=index';?>"><?php echo lang('categories');?></a></li>
+                <li><a href="<?php echo base_url().'posts/posts/index';?>"><?php echo lang('all_posts');?></a></li>
+                <li><a href="<?php echo base_url().'posts/categories/index';?>"><?php echo lang('categories');?></a></li>
               </ul>
         </li>
         <li>
-          <a href="<?php echo base_url().'index.php?mod=media&controller=media&action=index'; ?>">
+          <a href="<?php echo base_url().'media/media/index'; ?>">
             <i class="fa fa-file-image-o" aria-hidden="true"></i> <span><?php echo lang('media'); ?></span>
           </a>
         </li>
@@ -65,7 +65,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url().'index.php?mod=users&controller=users&action=index'; ?>">
+          <a href="<?php echo base_url().'users/users/index'; ?>">
             <i class="fa fa-users" aria-hidden="true"></i> <span><?php echo lang('administrator'); ?></span>
           </a>
         </li>

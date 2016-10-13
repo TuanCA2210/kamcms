@@ -28,7 +28,7 @@ class LoginController extends Controller{
 							'group_id'	=> $user['group_id']
 						);
 						Session::create($data);
-						redirect(base_url()."index.php?mod=home&controller=home&action=index");
+						redirect(base_url()."home/home/index");
 					}else{
 						$this->view->errors[] = "Mật khẩu của bạn không chính xác.";
 					}

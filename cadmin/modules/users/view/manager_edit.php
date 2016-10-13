@@ -109,7 +109,7 @@
 		                    <div class="tab-content">
 		                        <!-- PERSONAL INFO TAB -->
 		                        <div class="tab-pane active" id="tab_1_1">
-		                            <form method="POST" action="<?php echo base_url().'/index.php?mod=users&controller=manager&action=update';?>" accept-charset="UTF-8">
+		                            <form method="POST" action="<?php echo base_url().'users/manager/update';?>" accept-charset="UTF-8">
 		                            	<input name="_token" type="hidden" value="<?php echo base64url_encode(time());?>">
 		                            	<input name="id_user" type="hidden" value="<?php echo $this->data['data_user']['id'];?>">
 		                                <div class="row">
@@ -211,7 +211,7 @@
 		                        <!-- END PERSONAL INFO TAB -->
 		                        <!-- CHANGE PASSWORD TAB -->
 		                        <div class="tab-pane change_pass" id="tab_1_3">
-		                            <form method="POST" action="<?php echo base_url().'/index.php?mod=users&controller=manager&action=updatePassw';?>" accept-charset="UTF-8">
+		                            <form method="POST" action="<?php echo base_url().'users/manager/updatePassw';?>" accept-charset="UTF-8">
 		                            	<input name="_token" type="hidden" value="<?php echo time(); ?>">
 		                            	<input name="id_user" id="id_user_pass" type="hidden" value="<?php echo $this->data['data_user']['id'];?>">
 		                                <div class="row">

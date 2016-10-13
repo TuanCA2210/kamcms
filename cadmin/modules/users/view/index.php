@@ -23,7 +23,7 @@
 
         <div class="col-md-4">
             <div class="list-group config-item">
-                <a href="<?php echo base_url().'index.php?mod=users&controller=manager&action=index';?>" class="list-group-item">
+                <a href="<?php echo base_url().'users/manager/index';?>" class="list-group-item">
                     <i class="fa fa-user-secret" aria-hidden="true" style="font-size: 40px;float: left;margin-right:20px;"></i>
                     <h4 class="list-group-item-heading"><?php echo lang('user_manager');?></h4>
                     <p class="list-group-item-text"><?php echo lang('manage_team_users');?></p>

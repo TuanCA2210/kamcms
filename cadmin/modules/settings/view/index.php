@@ -5,7 +5,7 @@
       <div class="dashboard-breadcrumb">
         <div class="pull-left">
             <ol class="breadcrumb">
-						<li><a href="<?php echo base_url().'index.php?mod=home&controller=home&action=index'; ?>"><i class="fa fa-home" aria-hidden="true"></i> <?php echo lang('dashboard'); ?></a></li>
+						<li><a href="<?php echo base_url().'home/home/index'; ?>"><i class="fa fa-home" aria-hidden="true"></i> <?php echo lang('dashboard'); ?></a></li>
 						<li class="active"><?php echo lang('settings'); ?></li>
 			</ol>
 

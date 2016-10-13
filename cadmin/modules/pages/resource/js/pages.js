@@ -70,7 +70,7 @@ function offLoading(){
 		/* Act on the event */
 		if($(this).is(':checked')){
              $.ajax({
-             	url: baseUrl+'index.php?mod=pages&controller=pages&action=loadMessagerChecked',
+             	url: baseUrl+'pages/pages/loadMessagerChecked',
              	type: 'POST',
              	dataType: 'json',
              })
@@ -115,7 +115,7 @@ function offLoading(){
 		});
 		if (allVals.length >= 1) {
 			$.ajax({
-				url: baseUrl+'index.php?mod=pages&controller=pages&action=dellAll',
+				url: baseUrl+'pages/pages/dellAll',
 				type: 'POST',
 				dataType: 'json',
 				data: {all: allVals},
@@ -150,7 +150,7 @@ function offLoading(){
 	if (allVals.length >= 1) {
 		var status = 'public';
 		$.ajax({
-			url: baseUrl+'index.php?mod=pages&controller=pages&action=status',
+			url: baseUrl+'pages/pages/status',
 			type: 'POST',
 			dataType: 'json',
 			data: {status: status,all:allVals},
@@ -176,7 +176,7 @@ $('body').on('click', '#unlock_user', function(event) {
 	if (allVals.length >= 1) {
 		var status = 'private';
 		$.ajax({
-			url: baseUrl+'index.php?mod=pages&controller=pages&action=status',
+			url: baseUrl+'pages/pages/status',
 			type: 'POST',
 			dataType: 'json',
 			data: {status: status,all:allVals},
@@ -198,9 +198,9 @@ $('body').on('click', '.search_button_users', function(event) {
 	event.preventDefault();
 	var search = $('.search_users').val();
 	if (search=="") {
-		window.location.assign(baseUrl+'index.php?mod=pages&controller=pages&action=index');
+		window.location.assign(baseUrl+'pages/pages/index');
 	}else{
-		window.location.assign(baseUrl+'index.php?mod=pages&controller=pages&action=index&s='+search);
+		window.location.assign(baseUrl+'pages/pages/index&s='+search);
 	}
 	
 });
@@ -217,7 +217,7 @@ $('body').on('click', '#change_slug', function(event) {
 	$('#btn-cancel-slug').css('display', 'block');
 	var id_pages = $('#id_pages').val();
 	$.ajax({
-		url: baseUrl+'index.php?mod=pages&controller=pages&action=getDomChangeUrl',
+		url: baseUrl+'pages/pages/getDomChangeUrl',
 		type: 'POST',
 		dataType: 'html',
 		data: {id: id_pages},
@@ -237,7 +237,7 @@ $('body').on('click', '#btn-ok-slug', function(event) {
 	var old_url = $('#sample-permalink').attr('data-link-old');
 	var new_url = $('#new-post-slug').val();
 	$.ajax({
-		url: baseUrl+'index.php?mod=pages&controller=pages&action=changeHtaccess',
+		url: baseUrl+'pages/pages/changeHtaccess',
 		type: 'POST',
 		dataType: 'json',
 		data: {old_url: old_url,new_url:new_url,id:id_pages},
@@ -266,7 +266,7 @@ $('body').on('click', '#btn-cancel-slug', function(event) {
 	if(link!="") {
 		var base_link = base + link + '.htm';
 	}else{
-		var base_link = base + 'index.php?mod=pages&controller=pages&action=detail&id='+$('#id_pages').val();
+		var base_link = base + 'pages/pages/detail/'+$('#id_pages').val();
 	}
 	var html = '<a class="permalink" href="'+base_link+'">';
 		html += '<span class="default-slug">'+base+'<span id="editable-post-name">'+link+'</span>.htm</span></a>';

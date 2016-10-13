@@ -21,7 +21,7 @@ class ManagerController extends Controller{
 			$this->view->data['count_page'] = 1;
 			$this->view->data['pagination'] ='';
 		}else{
-			$link = base_url().'index.php?mod=users&controller=manager&action=index';
+			$link = base_url().'users/manager/index';
 			$all_users = $this->modelUsers->getUsers();
 			$paging = new Paging(count($all_users),$link);
 			$limit =20;
@@ -189,7 +189,7 @@ class ManagerController extends Controller{
 					'flash_success' => lang('update_success'),
 				);
 				Session::create($mess);
-				redirect(base_url().'index.php?mod=users&controller=manager&action=index');
+				redirect(base_url().'users/manager/index');
 			}
 			
 		}
@@ -209,7 +209,7 @@ class ManagerController extends Controller{
 
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=users&controller=manager&action=index'
+					'redirect'		=> base_url().'users/manager/index'
 				);
 				echo json_encode($data_mess);
 			}
@@ -223,7 +223,7 @@ class ManagerController extends Controller{
 				'flash_success' => lang('delete_success'),
 			);
 			Session::create($mess);
-			redirect(base_url().'index.php?mod=users&controller=manager&action=index');
+			redirect(base_url().'users/manager/index');
 		}
 	}
 	public function dellAll(){
@@ -237,7 +237,7 @@ class ManagerController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=users&controller=manager&action=index'
+					'redirect'		=> base_url().'users/manager/index'
 				);
 				echo json_encode($data_mess);
             }
@@ -265,7 +265,7 @@ class ManagerController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'index.php?mod=users&controller=manager&action=index'
+					'redirect'		=> base_url().'users/manager/index'
 				);
 				echo json_encode($data_mess);
             }

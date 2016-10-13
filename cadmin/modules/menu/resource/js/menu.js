@@ -2,7 +2,7 @@
 function reloadMenuStruct(pos){
 	$("#nestable").empty();
 	$.ajax({
-		url: baseUrl+'index.php?mod=menu&controller=menu&action=loadMenu&pos='+pos,
+		url: baseUrl+'menu/menu/loadMenu&pos='+pos,
 		type: 'GET',
 		dataType: 'html',
 	})
@@ -69,7 +69,7 @@ $('body').on('click', '.btn-add-to-menu', function(event) {
 	});
 	if (i.length>=1) {
 		$.ajax({
-			url: baseUrl+'index.php?mod=menu&controller=menu&action=addPagesToMenu',
+			url: baseUrl+'menu/menu/addPagesToMenu',
 			type: 'POST',
 			dataType: 'json',
 			data: {link: i,type: type,position:position},
@@ -107,7 +107,7 @@ $('body').on('click', '.btn-add-to-menu-cate', function(event) {
 	});
 	if (i.length>=1) {
 		$.ajax({
-			url: baseUrl+'index.php?mod=menu&controller=menu&action=addCategoriesToMenu',
+			url: baseUrl+'menu/menu/addCategoriesToMenu',
 			type: 'POST',
 			dataType: 'json',
 			data: {link: i,type: type,position:position},
@@ -139,7 +139,7 @@ $('body').on('click', '.btn-add-to-menu-custom-link', function(event) {
 	var link = $(this).parents('.box-links-for-menu').find('#node-url').val();
 	var css_class = $(this).parents('.box-links-for-menu').find('#node-css').val();
 	$.ajax({
-			url: baseUrl+'index.php?mod=menu&controller=menu&action=addCustomToMenu',
+			url: baseUrl+'menu/menu/addCustomToMenu',
 			type: 'POST',
 			dataType: 'json',
 			data: {title:title,link: link,type: type,css_class:css_class,position:position},
@@ -163,7 +163,7 @@ $('body').on('click', '.nestable-menu ol.dd-list li a.show-item-details', functi
 	var li_item = $(this).parents('li');
 	var li_parent_id = $(this).parents('li').attr('data-parent');
 	$.ajax({
-		url: baseUrl+'index.php?mod=menu&controller=menu&action=callMenuSelecBox&pos='+position,
+		url: baseUrl+'menu/menu/callMenuSelecBox&pos='+position,
 		type: 'GET',
 		dataType: 'html',
 	})
@@ -214,7 +214,7 @@ $('body').on('click', '.update_menu', function(event) {
 	var css_class = li_item.find('.item-details #css_class').val();
 	var parent_menu = li_item.find('.item-details #parent_menu').val();
 	$.ajax({
-		url: baseUrl+'index.php?mod=menu&controller=menu&action=updateMenu',
+		url: baseUrl+'menu/menu/updateMenu',
 		type: 'POST',
 		dataType: 'json',
 		data: { id: id,title:title,link:link,sort:sort,css_class:css_class,parent_menu:parent_menu,position:position},
@@ -243,7 +243,7 @@ $('body').on('click', '.remove_menu', function(event) {
 	var position = $('#position').val();
 	var li_item = $(this).parents('li.dd-item');
 	var id = li_item.attr('data-id');
-	$('#myModalConfirmMenu .accept_del_menu').attr('href', baseUrl+'index.php?mod=menu&controller=menu&action=deleteMenu&id='+id+'&pos='+position);
+	$('#myModalConfirmMenu .accept_del_menu').attr('href', baseUrl+'menu/menu/deleteMenu/'+id+'&pos='+position);
 	$('#myModalConfirmMenu').modal('show');
 	/*$.ajax({
 		url: baseUrl+'index.php?mod=menu&controller=menu&action=deleteMenu',
@@ -281,7 +281,7 @@ $('body').on('click', '#submit_update_name', function(event) {
 	var position = $('#position').val();
 	if (title_menu!="") {
            $.ajax({
-           	url: baseUrl+'index.php?mod=menu&controller=menu&action=updateTitleMenu',
+           	url: baseUrl+'menu/menu/updateTitleMenu',
            	type: 'POST',
            	dataType: 'json',
            	data: {title_menu: title_menu,position:position},

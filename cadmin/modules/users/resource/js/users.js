@@ -14,7 +14,7 @@ $('body').on('click', '.choose_avatar', function(event) {
 		var src = list[0];
 		var id = body_img.attr('data-id');
 		$.ajax({
-			url: baseUrl+'index.php?mod=users&controller=manager&action=updateAvatar',
+			url: baseUrl+'users/manager/updateAvatar',
 			type: 'POST',
 			dataType: 'json',
 			data: {src: src,id:id},
@@ -50,7 +50,7 @@ $('body').on('click', '#submit_pass', function(event) {
 				if (pass==re_pass) {
 		       		var id = $('.change_pass #id_user_pass').val();
 		       		$.ajax({
-		       			url: baseUrl+'index.php?mod=users&controller=manager&action=updatePassw',
+		       			url: baseUrl+'users/manager/updatePassw',
 		       			type: 'POST',
 		       			dataType: 'json',
 		       			data: {id: id,password:pass},
@@ -85,9 +85,9 @@ $('body').on('click', '.search_button_users', function(event) {
 	event.preventDefault();
 	var search = $('.search_users').val();
 	if (search=="") {
-		window.location.assign(baseUrl+'index.php?mod=users&controller=manager&action=index');
+		window.location.assign(baseUrl+'users/manager/index');
 	}else{
-		window.location.assign(baseUrl+'index.php?mod=users&controller=manager&action=index&s='+search);
+		window.location.assign(baseUrl+'users/manager/index&s='+search);
 	}
 });
 
@@ -113,7 +113,7 @@ $('body').on('click', '#modelDeleteAll #agree_del_all', function(event) {
 	});
 	if (allVals.length >= 1) {
 		$.ajax({
-			url: baseUrl+'index.php?mod=users&controller=manager&action=dellAll',
+			url: baseUrl+'users/manager/dellAll',
 			type: 'POST',
 			dataType: 'json',
 			data: {all: allVals},
@@ -145,7 +145,7 @@ $('body').on('click', '#lock_user', function(event) {
 	if (allVals.length >= 1) {
 		var status = 'public';
 		$.ajax({
-			url: baseUrl+'index.php?mod=users&controller=manager&action=status',
+			url: baseUrl+'users/manager/status',
 			type: 'POST',
 			dataType: 'json',
 			data: {status: status,all:allVals},
@@ -172,7 +172,7 @@ $('body').on('click', '#unlock_user', function(event) {
 	if (allVals.length >= 1) {
 		var status = 'private';
 		$.ajax({
-			url: baseUrl+'index.php?mod=users&controller=manager&action=status',
+			url: baseUrl+'users/manager/status',
 			type: 'POST',
 			dataType: 'json',
 			data: {status: status,all:allVals},

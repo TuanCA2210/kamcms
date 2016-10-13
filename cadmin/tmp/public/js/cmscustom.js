@@ -2,7 +2,7 @@ $( document ).ready(function() {
 	$('body').on('click','.lang_hd',function(){
 		var lang = $(this).attr('data-lang'); 
 		$.ajax({
-			url: baseUrl + 'index.php?mod=home&controller=home&action=setLang',
+			url: baseUrl + 'home/home/setLang',
 			type: 'POST',
 			dataType: 'json',
 			data: {lang: lang},
@@ -46,7 +46,7 @@ $( document ).ready(function() {
 		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
 		var data = new FormData($("#form-uploads-ajax")[0]);
 		$.ajax({
-			url: baseUrl+'index.php?mod=media&controller=media&action=uploadImages',
+			url: baseUrl+'media/media/uploadImages',
 			type: 'POST',  
 			data: data,
 	        cache: false,
@@ -81,7 +81,7 @@ $( document ).ready(function() {
 		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
 		var data = 1;
 		$.ajax({
-			url: baseUrl+'index.php?mod=media&controller=media&action=refesh',
+			url: baseUrl+'media/media/refesh',
 			type: 'POST',  
 			data: data,
 	        dataType:'json',
@@ -111,7 +111,7 @@ $( document ).ready(function() {
 		$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> Đang tải dữ liệu...</div>');
 		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
 		$.ajax({
-			url: baseUrl+'index.php?mod=media&controller=media&action=deleteImage',
+			url: baseUrl+'media/media/deleteImage',
 			type: 'POST',
 			dataType: 'json',
 			data: {title: title},
@@ -136,7 +136,7 @@ $( document ).ready(function() {
 		event.preventDefault();
 		var status = 1;
 		$.ajax({
-			url: baseUrl+'index.php?mod=settings&controller=settings&action=loadImageDefault',
+			url: baseUrl+'settings/settings/loadImageDefault',
 			type: 'POST',
 			dataType: 'json',
 			data: {status: status},
@@ -152,7 +152,7 @@ $( document ).ready(function() {
 		event.preventDefault();
 		var status = 0;
 		$.ajax({
-			url: baseUrl+'index.php?mod=settings&controller=settings&action=loadImageDefault',
+			url: baseUrl+'settings/settings/loadImageDefault',
 			type: 'POST',
 			dataType: 'json',
 			data: {status: status},
@@ -194,7 +194,7 @@ $( document ).ready(function() {
     $('body').on('change', '#form_add_user .username', function(event) {
     	var username = $(this).val();
 	  	$.ajax({
-    		url: baseUrl+'index.php?mod=users&controller=manager&action=checkUsername',
+    		url: baseUrl+'users/manager/checkUsername',
     		type: 'POST',
     		dataType: 'json',
     		data: {username: username},
@@ -212,7 +212,7 @@ $( document ).ready(function() {
     $('body').on('change', '#form_add_user .email', function(event) {
     	var email = $(this).val();
 	  	$.ajax({
-    		url: baseUrl+'index.php?mod=users&controller=manager&action=checkEmail',
+    		url: baseUrl+'users/manager/checkEmail',
     		type: 'POST',
     		dataType: 'json',
     		data: {email: email},
@@ -230,7 +230,7 @@ $( document ).ready(function() {
     $('body').on('click', '#user_add', function(event) {
     	event.preventDefault();
     	var status=true;
-    	var url = baseUrl+'index.php?mod=users&controller=manager&action=ajaxAdd';
+    	var url = baseUrl+'users/manager/ajaxAdd';
     	var username = $('#form_add_user .username').val();
     	var role = $('#form_add_user .roles-list').val();
     	var first_name = $('#form_add_user .first_name').val();
@@ -304,7 +304,7 @@ $( document ).ready(function() {
 			    	$('#user_add').prop('disabled', false);
 	    			toastr["success"](data.mess);
 	    			$('#invite_modal').modal('hide');
-	    			setTimeout(function(){ window.location.assign(baseUrl+'index.php?mod=users&controller=manager&action=index'); }, 800);
+	    			setTimeout(function(){ window.location.assign(baseUrl+'users/manager/index'); }, 800);
 	    			
 	    		}else{
 	    			$('#user_add').prop('disabled', false);

@@ -34,7 +34,7 @@
                                                 </h4>
                                             </div>
                                             <div class="widget-body">
-                                                <form method="post" action="<?php echo base_url().'index.php?mod=menu&controller=position&action=save';?>">
+                                                <form method="post" action="<?php echo base_url().'menu/position/save';?>">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><?php echo lang('name_menu')?></label>

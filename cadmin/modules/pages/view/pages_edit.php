@@ -22,7 +22,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         	
-        	<form action="<?php echo base_url().'index.php?mod=pages&controller=pages&action=save'?>" method="post">
+        	<form action="<?php echo base_url().'pages/pages/save'?>" method="post">
         	<input type="hidden" name="id_pages" id="id_pages" value="<?php if(isset($this->data['data']['id'])) echo $this->data['data']['id'];?>">
 			<div class="col-md-9" style="min-height:750px;">
 			    <div class="tabbable-custom ">
@@ -59,7 +59,7 @@
 								        	if(isset($this->data['data']['old_url']) && $this->data['data']['old_url']!=""){
 								        		echo replaceAdmin(base_url()).$this->data['data']['old_url'].'.htm';
 								        	}else{
-								        		echo replaceAdmin(base_url()).'index.php?mod=pages&controller=pages&action=detail&id='.$this->data['data']['id'];
+								        		echo replaceAdmin(base_url()).'pages/pages/detail/'.$this->data['data']['id'];
 								        	}
 								        	?>">
 												<span class="default-slug"><?php echo replaceAdmin(base_url());?><span id="editable-post-name"><?php 
