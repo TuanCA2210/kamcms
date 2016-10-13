@@ -89,7 +89,7 @@ class MediaController extends Controller{
 	                      $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
 	                      $html .= "<div class='text-center'>".$value."</div>";
 	                      $html .= "<div class='text-center overcontrol'>
-	                      <a href=''><i class='fa fa-font' aria-hidden='true'></i></a>
+	                      <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
 	                      <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
 	                      </div>";
 	                      $html .= "</div>";
@@ -131,7 +131,7 @@ class MediaController extends Controller{
               $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
               $html .= "<div class='text-center'>".$value."</div>";
               $html .= "<div class='text-center overcontrol'>
-              <a href=''><i class='fa fa-font' aria-hidden='true'></i></a>
+              <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
               <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
               </div>";
               $html .= "</div>";
@@ -161,7 +161,7 @@ class MediaController extends Controller{
 	              $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
 	              $html .= "<div class='text-center'>".$value."</div>";
 	              $html .= "<div class='text-center overcontrol'>
-	              <a href=''><i class='fa fa-font' aria-hidden='true'></i></a>
+	              <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
 	              <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
 	              </div>";
 	              $html .= "</div>";
@@ -172,7 +172,29 @@ class MediaController extends Controller{
 					    	'html'		=> $html,
 					    	'mess'		=> lang('notification').lang('uploaded_message')
 					    );
-			sleep(2);
+			sleep(1);
+			echo json_encode($data);
+		}
+	}
+	public function renameImage(){
+		$dir          = DIR_TMP.'cdn/';
+		if (isset($_POST['new_name']) && isset($_POST['old_name'])) {
+			$tmp_name = explode(".",$_POST['old_name']);
+			if (count($tmp_name)==2) {
+				$ext = $tmp_name[1];
+				$old_name = $_POST['old_name'];
+				$new_name = $_POST['new_name'];
+				rename($dir.$old_name,$dir.$new_name.".".$ext);
+				$data = array(
+					'status'	=> true,
+					'mess'		=> "Đổi tên thành công."
+				);
+			}else{
+				$data = array(
+					'status'	=> false,
+					'mess'		=> "Đổi tên thất bại."
+				);
+			}
 			echo json_encode($data);
 		}
 	}

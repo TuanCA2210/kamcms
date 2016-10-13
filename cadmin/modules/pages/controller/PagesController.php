@@ -151,7 +151,35 @@ class PagesController extends Controller{
 	public function del(){
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			$id = $_GET['id'];
+
+			// delete record in htaccess
+			$data = $this->modelPages->getUserById($id);
+			if (isset($data['old_url']) && $data['old_url']!="") {
+				$old_link = $data['old_url'];
+				$new_root = str_replace("\cadmin\\", "\\", DIR_ROOT);
+				$htaccess = file($new_root.".htaccess");
+				$savestring ="";
+				foreach ($htaccess as $key => $value) {
+					if (preg_match("/".$old_link."/",$value , $matches)){  // Tìm kiếm đường link cũ đã lưu trong CSDL có trùng với dòng trong file .htaccess ko? nếu mà có trùng thì xóa dòng đó
+	    				$value = str_replace("RewriteRule ^".$old_link."\.htm$ index.php?mod=pages&controller=pages&action=detail&id=".$id." [L,QSA]","",$value);
+	    			}
+
+	    			$savestring .= $value;
+					
+				}
+				$savestring = $savestring;
+				file_put_contents($new_root.".htaccess", $savestring);
+			}
+			
+			// end htaccess
+
+
+
+
+			
 			$this->modelPages->delete($id);
+
+
 			$mess = array(
 				'flash_success' => lang('delete_success'),
 			);
@@ -172,6 +200,31 @@ class PagesController extends Controller{
 		if (isset($_POST['all'])) {
 			if (!empty($_POST['all']) &&  is_array($_POST['all'])) {
                 $names_id = $_POST['all'];
+
+                if (!empty($names_id)) {
+                	foreach ($names_id as $k => $v) {
+                		$data = $this->modelPages->getUserById($v);
+                		if (isset($data['old_url']) && $data['old_url']!="") {
+							$old_link = $data['old_url'];
+							$new_root = str_replace("\cadmin\\", "\\", DIR_ROOT);
+							$htaccess = file($new_root.".htaccess");
+							$savestring ="";
+							foreach ($htaccess as $key => $value) {
+								if (preg_match("/".$old_link."/",$value , $matches)){  // Tìm kiếm đường link cũ đã lưu trong CSDL có trùng với dòng trong file .htaccess ko? nếu mà có trùng thì xóa dòng đó
+				    				$value = str_replace("RewriteRule ^".$old_link."\.htm$ index.php?mod=pages&controller=pages&action=detail&id=".$v." [L,QSA]","",$value);
+				    			}
+
+				    			$savestring .= $value;
+								
+							}
+							$savestring = $savestring;
+							file_put_contents($new_root.".htaccess", $savestring);
+						}
+                	}
+                }
+
+
+
                 $this->modelPages->dellWhereInArray($names_id);
                 $mess = array(
 					'flash_success' => lang('delete_all_success'),

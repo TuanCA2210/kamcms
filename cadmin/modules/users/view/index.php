@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="list-group config-item">
                 <a href="" class="list-group-item">
                     <i class="fa fa-flag-o" aria-hidden="true" style="font-size: 40px;float: left;margin-right:20px;"></i>
@@ -39,7 +39,7 @@
                     <p class="list-group-item-text"><?php echo lang('manage_roles');?></p>
                 </a>
             </div>
-        </div>
+        </div> -->
 
     </div>
       <!-- /.row -->

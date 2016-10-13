@@ -61,7 +61,7 @@
                                           echo "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
                                           echo "<div class='text-center'>".$value."</div>";
                                           echo "<div class='text-center overcontrol'>
-                                          <a href=''><i class='fa fa-font' aria-hidden='true'></i></a>
+                                          <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
                                           <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
                                           </div>";
                                           echo "</div>";
@@ -82,6 +82,33 @@
           </div>
         </div>
 
+        <!-- Modal Rename -->
+          <div id="myModalRename" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Đổi tên file</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="">Tên mới:</label>
+                    <input type="text" placeholder="Nhập vào tên mới..." class="form-control" id="new_name"/>
+                    <input type="hidden" id="old_name" value="" />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" id="rename">Rename</button>
+                  <button type="button" class="btn btn-success" id="copy_rename">Copy & Rename</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         
 
 
@@ -94,6 +121,7 @@
     </section>
     <!-- /.content -->
   </div>
+
 
   <div class="loading"></div>
   <div class="fade_loading"></div>
