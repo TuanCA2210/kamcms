@@ -90,19 +90,19 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Đổi tên file</h4>
+                  <h4 class="modal-title"><?php echo lang('rename_file');?></h4>
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
-                    <label for="">Tên mới:</label>
-                    <input type="text" placeholder="Nhập vào tên mới..." class="form-control" id="new_name"/>
+                    <label for=""><?php echo lang('label_newname');?>:</label>
+                    <input type="text" placeholder="<?php echo lang('typing_new_name');?>" class="form-control" id="new_name"/>
                     <input type="hidden" id="old_name" value="" />
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-info" id="rename">Rename</button>
-                  <button type="button" class="btn btn-success" id="copy_rename">Copy & Rename</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-info" id="rename"><i class="fa fa-font" aria-hidden="true"></i> <?php echo lang('rename');?></button>
+                  <button type="button" class="btn btn-success" id="copy_rename"><i class="fa fa-files-o" aria-hidden="true"></i> <?php echo lang('copyandrename');?></button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close');?></button>
                 </div>
               </div>
 

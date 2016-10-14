@@ -183,16 +183,39 @@ class MediaController extends Controller{
 			if (count($tmp_name)==2) {
 				$ext = $tmp_name[1];
 				$old_name = $_POST['old_name'];
-				$new_name = $_POST['new_name'];
+				$new_name = alias(trim($_POST['new_name']));
 				rename($dir.$old_name,$dir.$new_name.".".$ext);
 				$data = array(
 					'status'	=> true,
-					'mess'		=> "Đổi tên thành công."
+					'mess'		=> lang('mess_copy')
 				);
 			}else{
 				$data = array(
 					'status'	=> false,
-					'mess'		=> "Đổi tên thất bại."
+					'mess'		=> lang('mess_copy_false')
+				);
+			}
+			echo json_encode($data);
+		}
+	}
+	public function renameCopyImage(){
+		$dir          = DIR_TMP.'cdn/';
+		if (isset($_POST['new_name']) && isset($_POST['old_name'])) {
+			$tmp_name = explode(".",$_POST['old_name']);
+			if (count($tmp_name)==2) {
+				$ext = $tmp_name[1];
+				$old_name = $_POST['old_name'];
+				$new_name = alias(trim($_POST['new_name']));
+				
+				copy($dir.$old_name,$dir.$new_name.".".$ext);
+				$data = array(
+					'status'	=> true,
+					'mess'		=> lang('mess_copy_rename')
+				);
+			}else{
+				$data = array(
+					'status'	=> false,
+					'mess'		=> lang('mess_copy_rename_false')
 				);
 			}
 			echo json_encode($data);

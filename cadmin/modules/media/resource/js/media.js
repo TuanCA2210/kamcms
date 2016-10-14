@@ -25,7 +25,7 @@ $('body').on('click', '.rename', function(event) {
 
 $('body').on('click', '#rename', function(event) {
 	event.preventDefault();
-	var new_name = $('#new_name').val();
+	var new_name = $('#new_name').val().trim();
 	var old_name = $('#old_name').val();
 	if (new_name=="") {
 		$('#new_name').focus();
@@ -69,4 +69,51 @@ $('body').on('click', '#rename', function(event) {
 	}
 	
 	
+});
+
+
+$('body').on('click', '#copy_rename', function(event) {
+	event.preventDefault();
+	var new_name = $('#new_name').val().trim();
+	var old_name = $('#old_name').val();
+	if (new_name=="") {
+		$('#new_name').focus();
+		toastr["error"]("Bạn cần nhập tên mới cho tệp tin!");
+	}else{
+		onLoading();
+		$.ajax({
+			url: baseUrl+'media/media/renameCopyImage',
+			type: 'POST',
+			dataType: 'json',
+			data: {new_name: new_name,old_name:old_name},
+		})
+		.done(function(data) {
+			
+			if (data.status==true) {
+				var messager = data.mess;
+				$.ajax({
+					url: baseUrl+'media/media/refesh',
+					type: 'POST',  
+			        dataType:'json',
+				})
+				.done(function(data) {
+					toastr["success"](messager);
+					if (data.status==true) {
+						$('#loadMedia').fadeOut(600, function(){
+		                    $('#loadMedia').html(data.html).fadeIn().delay(200);
+		                });
+					}
+					$('#new_name').val('');
+					$('#old_name').val('');
+					$('#myModalRename').modal("hide");
+					offLoading();
+				});
+
+				
+			}else{
+				offLoading();
+				toastr["error"](data.mess);
+			}
+		});
+	}
 });

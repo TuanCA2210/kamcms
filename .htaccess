@@ -38,3 +38,5 @@ RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id
 
 
 
+RewriteRule ^nam-moi\.htm$ index.php?mod=pages&controller=pages&action=detail&id=10 [L,QSA]
+RewriteRule ^tieng-anh\.htm$ index.php?mod=pages&controller=pages&action=detail&id=10 [L,QSA]

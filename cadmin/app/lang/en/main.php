@@ -2,6 +2,7 @@
 $_L                             =  array();
 $_L['dashboard']                =  'Dashboard';
 $_L['settings']                 =  'Settings';
+$_L['options']                 	=  'Options';
 $_L['menu']                 	=  'Menu';
 $_L['widgets']                 	=  'Widgets';
 $_L['pages']                 	=  'Pages';
@@ -203,6 +204,19 @@ $_L['logo_update_errors']   	=  'Warning! An error occurred. Please reload the p
 $_L['insert_page_success']   	=  'Notification! You add data successfully.';
 $_L['update_page_success']   	=  'Notification! You update data successfully.';
 $_L['update_link_success']   	=  'Notification! You just changed the link success.';
+
+
+$_L['mess_copy_rename']   		=  'Notification! Copy and Rename success.';
+$_L['mess_copy_rename_false']   =  'Notification! Copy and Rename failure.';
+$_L['mess_copy']   				=  'Notification! Rename success.';
+$_L['mess_copy_false']   		=  'Notification! Rename failure.';
+
+
+$_L['rename']   				=  'Rename';
+$_L['copyandrename']   			=  'Copy and Rename';
+$_L['label_newname']   			=  'New Name (Note unnamed strange marks and characters)';
+$_L['rename_file']   			=  'Rename File';
+$_L['typing_new_name']   		=  'Typing new name...';
 
 
 

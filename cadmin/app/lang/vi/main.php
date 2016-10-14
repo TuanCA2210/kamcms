@@ -2,6 +2,7 @@
 $_L                             =  array();
 $_L['dashboard']                = 'Bảng điều khiển';
 $_L['settings']                 =  'Cài đặt';
+$_L['options']                 	=  'Tùy chỉnh';
 $_L['menu']                 	=  'Điều hướng';
 $_L['widgets']                 	=  'Danh mục tùy chọn';
 $_L['pages']                 	=  'Trang';
@@ -193,6 +194,19 @@ $_L['update_page_success']   	=  'Thông báo! Bạn vừa cập nhật dữ li�
 $_L['update_link_success']   	=  'Thông báo! Bạn vừa thay đổi đường link thành công.';
 
 
+$_L['mess_copy_rename']   		=  'Thông báo! Sao lưu và Đổi tên thành công.';
+$_L['mess_copy_rename_false']   =  'Thông báo! Sao lưu và Đổi tên thất bại.';
+$_L['mess_copy']   				=  'Thông báo! Đổi tên thành công.';
+$_L['mess_copy_false']   		=  'Thông báo! Đổi tên thất bại.';
+
+
+
+
+$_L['rename']   				=  'Đổi tên';
+$_L['copyandrename']   			=  'Nhân bản và Đổi tên';
+$_L['label_newname']   			=  'Tên mới(Lưu ý không đặt tên có dấu và ký tự lạ)';
+$_L['rename_file']   			=  'Đổi tên tệp tin';
+$_L['typing_new_name']   			=  'Nhập vào tên mới...';
 
 
 

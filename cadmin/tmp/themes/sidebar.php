@@ -24,15 +24,20 @@
           </a>
         </li>
         <li>
+          <a href="<?php echo base_url().'options/options/index'; ?>">
+            <i class="fa fa-cogs" aria-hidden="true"></i> <span><?php echo lang('options'); ?></span>
+          </a>
+        </li>
+        <li>
           <a href="<?php echo base_url().'menu/position/index';?>">
             <i class="fa fa-bars" aria-hidden="true"></i> <span><?php echo lang('menu'); ?></span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="#">
             <i class="fa fa-th"></i> <span><?php echo lang('widgets'); ?></span>
           </a>
-        </li>
+        </li> -->
         <li class="treeview">
           <a href="<?php echo base_url().'pages/pages/index'; ?>">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -59,11 +64,11 @@
             <i class="fa fa-envelope"></i> <span><?php echo lang('contact'); ?></span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="#">
             <i class="fa fa-comments-o" aria-hidden="true"></i> <span><?php echo lang('comments'); ?></span>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="<?php echo base_url().'users/users/index'; ?>">
             <i class="fa fa-users" aria-hidden="true"></i> <span><?php echo lang('administrator'); ?></span>
