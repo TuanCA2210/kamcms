@@ -5,6 +5,7 @@ require_once "app/config.php";
 require_once "app/database.php";
 require_once "system/mysqliDB.php";
 require_once "system/model.php";
+require_once "system/functions_core.php";
 require_once "view.php";
 require_once "input.php";
 //require_once "system/template.php";

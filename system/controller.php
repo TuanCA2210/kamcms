@@ -67,6 +67,21 @@ class Controller{
 		$data = $this->modelGlobals->getOptions();
 		return $data;
 	}
+
+	// set Messager flash
+	public function flashMessager($key='flash_success',$mess='Messager Demo Success.'){
+		$mess = array(
+			$key => $mess
+			//'flash_success' => lang('update_page_success'),
+		);
+		Session::create($mess);
+	}
+	public function getFlashMessager($key='flash_success'){
+		if (isset($_SESSION[$key])) {
+			$this->view->flash[$key] = $_SESSION[$key];
+			unset($_SESSION[$key]);
+		}
+	}
 	
 
 	

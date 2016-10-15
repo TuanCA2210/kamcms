@@ -10,6 +10,14 @@
 					</ol>
 					<div class="clearfix"></div>
 					<?php 
+                    if (isset($this->flash['flash_success'])) {
+                        echo '<div class="alert alert-success">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>'.lang('success').'</strong> '.$this->flash['flash_success'].'
+                                </div>';
+                    }
+                    ?>
+					<?php 
 					echo $this->data['content'];
 
 					if($this->data['contact_form']!="") echo $this->data['contact_form'];

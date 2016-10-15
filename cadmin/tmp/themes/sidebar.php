@@ -47,7 +47,7 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-file-text" aria-hidden="true"></i>
-            <span><?php echo lang('post'); ?></span>
+            <span><?php echo lang('post'); ?> &nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></span>
           </a>
             <ul class="treeview-menu">
                 <li><a href="<?php echo base_url().'posts/posts/index';?>"><?php echo lang('all_posts');?></a></li>
@@ -60,7 +60,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo base_url().'contact/contact/index'; ?>">
             <i class="fa fa-envelope"></i> <span><?php echo lang('contact'); ?></span>
           </a>
         </li>

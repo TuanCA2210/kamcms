@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2016 at 10:41 AM
+-- Generation Time: Oct 15, 2016 at 11:43 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -112,7 +112,8 @@ CREATE TABLE `en_pages` (
 
 INSERT INTO `en_pages` (`id`, `title`, `alias`, `description`, `content`, `note`, `contact_form`, `old_url`, `thumbnail`, `author_create`, `author_update`, `status`, `create_time`, `update_time`) VALUES
 (1, 'Love Alone', 'love-alone', 'Love Alone', '<p>Love Alone</p>', '', '', NULL, 'dt3.png', 23, NULL, NULL, NULL, NULL),
-(2, 'ttttttttttttt', NULL, NULL, '<p>hhhhhhhhhhhhhh</p>', '', '<form action="http://localhost/fwtome/cadmin//lien-he" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', NULL, 'logo-bottom.png', NULL, NULL, NULL, NULL, NULL);
+(2, 'ttttttttttttt', NULL, NULL, '<p>hhhhhhhhhhhhhh</p>', '', '<form action="http://localhost/fwtome/cadmin//lien-he" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', NULL, 'logo-bottom.png', NULL, NULL, NULL, NULL, NULL),
+(10, 'nam moi', 'nam-moi', NULL, '<p>Hello</p>\r\n', '', '', 'tieng-anh', '', 23, 23, 1, '1476418051', '1476418743');
 
 -- --------------------------------------------------------
 
@@ -282,11 +283,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `avatar`, `firstname`, `lastname`, `username`, `email`, `password`, `address`, `birthday`, `phone`, `gender`, `about`, `job`, `skype`, `facebook`, `twitter`, `github`, `website`, `status`, `ordering`, `group_id`, `create_time`, `update_time`, `author`) VALUES
-(23, 'thumb.png', 'Cường', 'Lê', 'cuongle', 'cuongle.dev@gmail.com', '314567463f70c39ce083523b8530db8f', 'Thanh hóa', '1647450000', '0987535656', 0, '', '', '', '', '', '', '', 1, NULL, 1, '1474624112', '1474624312', 1),
+(23, 'thumb.png', 'Cường', 'Lê Ngọc', 'cuongle', 'cuongle.dev@gmail.com', '314567463f70c39ce083523b8530db8f', 'Thanh hóa', '1620061200', '0987535656', 0, '', '', '', '', '', '', '', 1, NULL, 1, '1474624112', '1476334080', 23),
 (24, 'thumb.png', 'Hòa', 'Lê', 'botble', 'hoale@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', '862765200', '', 0, '', '', '', '', '', '', '', 1, NULL, 2, '1474624270', '1474624684', 1),
 (32, 'thumb.png', 'ggg', 'hhhh', 'bolexx', 'fsdfsdf@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 1, NULL, 1, '1474871739', '', 0),
 (33, 'thumb.png', 'cuong', 'le', 'cuongttt@gmail', 'cuosdfev@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 1, NULL, 1, '1474871768', '', 0),
-(34, 'thumb.png', 'bam', 'bo', 'bamboo', 'bamboo@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 0, NULL, 1, '1474871804', '', 0),
 (35, 'thumb.png', 'Boott', 'le', 'botttt', 'fddd@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 0, NULL, 1, '1474871861', '', 0);
 
 -- --------------------------------------------------------
@@ -394,7 +394,8 @@ INSERT INTO `vi_pages` (`id`, `title`, `alias`, `description`, `content`, `note`
 (1, 'bai vet 1', 'bai-vet-1', 'Tình đơn côi', '<p>dfgdgdffg</p>', 'dgfdgffdgdfg', '', 'dai-tieu', '', 23, 23, 1, NULL, '1475143054'),
 (6, 'Giới thiệu', 'gioi-thieu', NULL, '<h1>Giới thiệu chung về 4G</h1>\r\n\r\n<p><strong>MobiFone thử nghiệm th&agrave;nh c&ocirc;ng c&ocirc;ng nghệ 4G</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Từ th&aacute;ng 12/2015 tới nay, MobiFone đ&atilde; thử nghiệm th&agrave;nh c&ocirc;ng c&ocirc;ng nghệ 4G/LTE-A về kỹ thuật nội bộ với 200 thu&ecirc; bao nội bộ. Mạng 4G của MobiFone đạt tốc độ dowload/upload tối đa 225Mbps/75Mbps.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Trong qu&aacute; tr&igrave;nh thử nghiệm nội bộ, MobiFone đ&atilde; n&acirc;ng cấp hệ thống cơ sở vật chất, mạng lưới tạo nền m&oacute;ng vững chắc để đưa c&ocirc;ng nghệ mới đến với kh&aacute;ch h&agrave;ng. B&ecirc;n cạnh đ&oacute;, MobiFone cũng ho&agrave;n th&agrave;nh việc đ&aacute;nh gi&aacute; trải nghiệm c&aacute;c dịch vụ mới của 4G/LTE-A với kết quả khả quan.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>C&ocirc;ng nghệ 4G/LTE-A cung cấp băng th&ocirc;ng rộng hơn, truyền tải dữ liệu nhanh hơn, dung lượng lớn hơn, được đ&aacute;nh gi&aacute; l&agrave; điều kiện l&yacute; tưởng để triển khai c&aacute;c dịch vụ gi&aacute; trị gia tăng hấp dẫn. Ch&iacute;nh v&igrave; vậy, khi triển khai cung cấp c&ocirc;ng nghệ 4G, kh&aacute;c với c&aacute;c nh&agrave; mạng đối thủ, MobiFone sẽ đem lại c&aacute;c dịch vụ nội dung hấp dẫn tr&ecirc;n nền c&ocirc;ng nghệ 4G cho kh&aacute;ch h&agrave;ng như: Trải nghiệm xem c&aacute;c k&ecirc;nh truyền h&igrave;nh AVG, dịch vụ data, SMS, dịch vụ truyền h&igrave;nh Broadcast tr&ecirc;n nền tảng eMBMS, dịch vụ truyền h&igrave;nh Unicast, dịch vụ Video 4K...</p>\r\n\r\n<p>&quot;Cuộc đua&quot; 4G hiện đang bước v&agrave;o giai đoạn nước r&uacute;t, đ&ograve;i hỏi c&aacute;c nh&agrave; mạng khẩn trương ho&agrave;n tất thử nghiệm nhằm r&uacute;t ngắn khoảng c&aacute;ch giữa thực tế v&agrave; l&yacute; thuyết. Kết quả thử nghiệm của MobiFone đ&atilde; vượt qua cột mốc tốc độ đề ra (200Mbps) cho giai đoạn ban đầu chứng tỏ Tổng c&ocirc;ng ty đ&atilde; c&oacute; những bước tiến vững chắc về chất lượng v&agrave; nội dung sản phẩm, dịch vụ tr&ecirc;n nền c&ocirc;ng nghệ mới.</p>\r\n\r\n<p>Thời gian tới, để sớm mang c&ocirc;ng nghệ mới ra thị trường, MobiFone đ&atilde; ho&agrave;n th&agrave;nh c&aacute;c kịch bản kinh doanh với nhiều chương tr&igrave;nh hấp dẫn d&agrave;nh cho kh&aacute;ch h&agrave;ng. Sau khi tối ưu ho&aacute; chất lượng mạng lưới để đảm bảo trải nghiệm người d&ugrave;ng, Tổng c&ocirc;ng ty Viễn th&ocirc;ng MobiFone sẽ đưa dịch vụ 4G/LTE-A cung cấp thử nghiệm trong th&aacute;ng 6 năm 2016 tại H&agrave; Nội, Đ&agrave; Nẵng v&agrave; Tp. Hồ Ch&iacute; Minh.</p>\r\n', 'dfdfd', '', 'gioi-thieu', '', 23, 23, 1, '1475033598', '1476090901'),
 (8, 'Bài ca dao', 'bai-ca-dao', NULL, '<p>sdfsdf</p>', '', '', NULL, '', 23, NULL, 0, '1476082133', NULL),
-(9, 'Liên hệ', 'lien-he', NULL, '<p><iframe frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7969415409234!2d105.79845781536055!3d20.960668186035303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad215b3d1e2d%3A0xbd6f8ae8d8605262!2zQ1Q2QSBYYSBMYSwgQ-G6p3UgQsawxqF1LCBLaeG6v24gSMawbmcsIFRoYW5oIFRyw6wsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1476087173806" style="border:0" width="100%"></iframe></p>\r\n', '', '<form action="" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', 'lien-he', '', 23, 23, 1, '1476087226', '1476088814');
+(9, 'Liên hệ', 'lien-he', NULL, '<p><iframe frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7969415409234!2d105.79845781536055!3d20.960668186035303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad215b3d1e2d%3A0xbd6f8ae8d8605262!2zQ1Q2QSBYYSBMYSwgQ-G6p3UgQsawxqF1LCBLaeG6v24gSMawbmcsIFRoYW5oIFRyw6wsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1476087173806" style="border:0" width="100%"></iframe></p>\r\n', '', '<form action="" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', 'lien-he', '', 23, 23, 1, '1476087226', '1476088814'),
+(10, 'nam moi', 'nam-moi', NULL, '<p>Xin ch&agrave;o</p>\r\n', '', '', 'chuyen-nho', '', 23, 23, 1, '1476418001', '1476418753');
 
 -- --------------------------------------------------------
 
@@ -456,6 +457,56 @@ INSERT INTO `vi_posts` (`id`, `title`, `alias`, `description`, `content`, `cate_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `web_contacts`
+--
+
+CREATE TABLE `web_contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `content` text CHARACTER SET utf8,
+  `create_time` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `web_contacts`
+--
+
+INSERT INTO `web_contacts` (`id`, `name`, `phone`, `email`, `content`, `create_time`) VALUES
+(1, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'dsđssddsdsds', '1476508309'),
+(2, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev2@gmail.com', 'dđ', '1476512130'),
+(3, 'Lê Ngọc Cường', '0981700268', 'cuongleon630@gmail.com', 'dddddddd', '1476512190'),
+(4, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'ádasd', '1476512523'),
+(5, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'dsadasd', '1476512710'),
+(6, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'ewrerwerwerw', '1476512761'),
+(7, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'ưer', '1476512798'),
+(8, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'hghjh', '1476512947'),
+(9, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'iooo', '1476513054'),
+(10, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'hhg', '1476513130'),
+(11, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'eee', '1476522688');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_options`
+--
+
+CREATE TABLE `web_options` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `pagination_number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `web_options`
+--
+
+INSERT INTO `web_options` (`id`, `pagination_number`) VALUES
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `web_settings`
 --
 
@@ -497,7 +548,7 @@ CREATE TABLE `web_settings` (
 --
 
 INSERT INTO `web_settings` (`id`, `name`, `logo`, `slogan`, `icon`, `phone`, `hotline`, `email`, `email_support`, `address`, `districtid`, `provinceid`, `link_facebook`, `link_google`, `link_youtube`, `link_tt`, `seo_title`, `seo_description`, `seo_keywords`, `google_analytics`, `google_site_verification`, `bank_user`, `bank_code`, `bank_name`, `bank_chinhanh`, `bank_tp`, `link_google_map`, `title_sidebar`, `content_sidebar`, `contact_thumbnail`) VALUES
-(2, 'Cuongle', 'logo-bottom.png', 'dfgd', '', '+84 941 068 949', '+84 941 068 949', 'cuongle.dev@gmail.com', 'cuongle.dev@gmail.com', 'CT6A Xa La, Kiến Hưng, Hanoi, Vietnam', '', '', 'https://fb.com', 'https://google.com.vn', 'https://youtube.com', 'https://twitter.com', 'PHP platform base on Cuongle Framework', 'Cuongle Platform - PHP platform base on Cuongle Framework', 'Cuongle, Cuongle team, Cuongle platform, php platform, php framework, web development', 'UA-42586526-15', 'hs2Js3WGGpf1pzyhUNehvVDSIrmO3XZpm7PggNZECxE', NULL, NULL, NULL, NULL, NULL, 'https://maps.google.com', NULL, NULL, NULL);
+(2, 'Cuongle', 'logo.png', 'dfgd', '114x114.png', '+84 941 068 949', '+84 941 068 949', 'cuongle.dev@gmail.com', 'cuongle.dev@gmail.com', 'CT6A Xa La, Kiến Hưng, Hanoi, Vietnam', '', '', 'https://fb.com.vn', 'https://google.com.vn', 'https://youtube.com', 'https://twitter.com', 'PHP platform base on Cuongle Framework', 'Cuongle Platform - PHP platform base on Cuongle Framework', 'Cuongle, Cuongle team, Cuongle platform, php platform, php framework, web development', 'UA-42586526-15', 'hs2Js3WGGpf1pzyhUNehvVDSIrmO3XZpm7PggNZECxE', NULL, NULL, NULL, NULL, NULL, 'https://maps.google.com', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -588,6 +639,18 @@ ALTER TABLE `vi_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `web_contacts`
+--
+ALTER TABLE `web_contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_options`
+--
+ALTER TABLE `web_options`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_settings`
 --
 ALTER TABLE `web_settings`
@@ -611,7 +674,7 @@ ALTER TABLE `en_menu`
 -- AUTO_INCREMENT for table `en_pages`
 --
 ALTER TABLE `en_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `en_position_menu`
 --
@@ -651,12 +714,12 @@ ALTER TABLE `vi_categories_posts`
 -- AUTO_INCREMENT for table `vi_menu`
 --
 ALTER TABLE `vi_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=354;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=356;
 --
 -- AUTO_INCREMENT for table `vi_pages`
 --
 ALTER TABLE `vi_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `vi_position_menu`
 --
@@ -666,6 +729,16 @@ ALTER TABLE `vi_position_menu`
 -- AUTO_INCREMENT for table `vi_posts`
 --
 ALTER TABLE `vi_posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_contacts`
+--
+ALTER TABLE `web_contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `web_options`
+--
+ALTER TABLE `web_options`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `web_settings`
