@@ -27,7 +27,7 @@
 	                          	<span class="icon-bar"></span>
 	                        </span>
 						</button>
-						<a class="navbar-brand" href="#" title="4G Mobifone"><img src="<?php echo base_url()."tmp/public/";?>images/logo.png" alt="" class="img-responsive"></a>
+						<a class="navbar-brand" href="#" title="4G Mobifone"><img src="<?php echo $_web['base_url_cdn'].$_web['settings']['logo'];?>" alt="" class="img-responsive"></a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="navbar-offcanvas navbar-offcanvas-touch responsive-navbar">

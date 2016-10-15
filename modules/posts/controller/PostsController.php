@@ -6,11 +6,12 @@ class PostsController extends Controller{
 		$this->modelPosts = $this->loadModel('Posts');
 	}
 	public function index(){
+		global $_web;
 		$link = base_url().'news.htm';
 		$all_pages = $this->modelPosts->getPosts();
 
 		$paging = new Paging($all_pages,$link);
-		$limit =1;
+		$limit = $_web['options']['pagination_number'];
 		// Tổng số trang
 		$count_page = $paging->findPages($limit);
 		// Bắt đầu từ mẫu tin

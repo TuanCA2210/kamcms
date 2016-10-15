@@ -1,18 +1,18 @@
 <?php 
 class Options{
-	private $images;
+	private $options;
 	public function __construct(){
 		global $_web;
 		$this->lang        = $_web['lang'];
-		$this->settings     = new system\Model('web_settings');
+		$this->options     = new system\Model('web_options');
 	}
 	public function getInfo(){
-		$this->settings->where('id',2);
-		$result  = $this->settings->getOne();
+		$this->options->where('id',1);
+		$result  = $this->options->getOne();
 		return $result;
 	}
 	public function update($data){
-		$this->settings->where('id',2);
-		$this->settings->update($data);
+		$this->options->where('id',1);
+		$this->options->update($data);
 	}
 }

@@ -249,8 +249,8 @@ $('body').on('click', '#btn-ok-slug', function(event) {
 		$('#btn-cancel-slug').css('display', 'none');
 		if (data.status==true) {
 			$('#sample-permalink').attr('data-link-old',new_url);
-			var html = '<a class="permalink" href="'+data.base+new_url+'.htm">';
-    			html += '<span class="default-slug">'+data.base+'<span id="editable-post-name">'+new_url+'</span>.htm</span>';
+			var html = '<a class="permalink" href="'+data.base+data.new_url+'.htm">';
+    			html += '<span class="default-slug">'+data.base+'<span id="editable-post-name">'+data.new_url+'</span>.htm</span>';
 				html += '</a>';
 			$('#sample-permalink').empty().html(html);
 			toastr["success"](data.mess);

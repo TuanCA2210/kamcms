@@ -36,6 +36,13 @@ $_L['edit_menu_link']         	=  'Chỉnh sửa một kết cấu liên kết';
 
 
 
+
+$_L['options_frontend']   		=  'Tùy chọn Frontend';
+$_L['options_pagi_post']   		=  'Số bài viết trên một trang';
+
+
+
+
 $_L['id']           			=  'Mã số';
 $_L['close']           			=  'Đóng';
 $_L['save']           			=  'Lưu thay đổi';

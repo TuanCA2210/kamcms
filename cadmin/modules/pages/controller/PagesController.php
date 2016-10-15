@@ -282,8 +282,8 @@ class PagesController extends Controller{
 	}
 	public function changeHtaccess(){
 		if (isset($_POST['old_url']) && isset($_POST['new_url']) && is_numeric($_POST['id'])) {
-			$old_url = $_POST['old_url'];
-			$new_url = $_POST['new_url'];
+			$old_url = alias($_POST['old_url']);
+			$new_url = alias($_POST['new_url']);
 			$id = $_POST['id'];
 
 
@@ -309,6 +309,7 @@ class PagesController extends Controller{
 			$data_mess = array(
 				'status'	=> true,
 				'mess'		=> lang('update_link_success'),
+				'new_url'	=> $new_url,
 				'base'		=> replaceAdmin(base_url())
 			);
 			echo json_encode($data_mess);

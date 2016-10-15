@@ -36,6 +36,12 @@ $_L['edit_menu_link']         	=  'Edit a menu structure link';
 
 
 
+
+$_L['options_frontend']   		=  'Options Frontend';
+$_L['options_pagi_post']   		=  'Number of posts on a page';
+
+
+
 $_L['id']           			=  'Id';
 $_L['close']           			=  'Close';
 $_L['save']           			=  'Save changes';

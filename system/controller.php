@@ -13,6 +13,8 @@ class Controller{
 		$this->view = new View(); 
 		$this->modelGlobals = $this->loadModelGlobals('GlobalsModel');
 		$_web['menu'] = $this->getMenuGlobals();
+		$_web['settings'] = $this->getSettingsGlobals();
+		$_web['options'] = $this->getOptionsGlobals();
 		
 	}
 	public function loadModel($file, $mod = null) {
@@ -54,7 +56,15 @@ class Controller{
 		}
 	}
 	public function getMenuGlobals(){
-		$data = $this->modelGlobals->getAll(1);
+		$data = $this->modelGlobals->getMenu(1);
+		return $data;
+	}
+	public function getSettingsGlobals(){
+		$data = $this->modelGlobals->getSettings();
+		return $data;
+	}
+	public function getOptionsGlobals(){
+		$data = $this->modelGlobals->getOptions();
 		return $data;
 	}
 	
