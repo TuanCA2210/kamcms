@@ -33,12 +33,14 @@ $_L['name_menu']           		=  'Tên mục liên kết';
 $_L['basic_infomation']         =  'Thông tin cơ bản';
 $_L['create_menu_link']         =  'Tạo mới một kết cấu liên kết';
 $_L['edit_menu_link']         	=  'Chỉnh sửa một kết cấu liên kết';
+$_L['time_send']         		=  'Thời gian gửi';
 
 
 
 
 $_L['options_frontend']   		=  'Tùy chọn Frontend';
 $_L['options_pagi_post']   		=  'Số bài viết trên một trang';
+$_L['debug']   					=  'Báo lỗi';
 
 
 
@@ -92,6 +94,7 @@ $_L['page']       				=  'Trang';
 $_L['in_total']       			=  'trong tổng số';
 
 
+$_L['fullname']					= 'Họ Tên';
 $_L['username']					= 'Tên tài khoản';
 $_L['email']					= 'Thư';
 $_L['first_name']				= 'Tên';

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2016 at 11:43 AM
+-- Generation Time: Oct 17, 2016 at 10:11 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -466,25 +466,20 @@ CREATE TABLE `web_contacts` (
   `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `content` text CHARACTER SET utf8,
-  `create_time` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `create_time` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `web_contacts`
 --
 
-INSERT INTO `web_contacts` (`id`, `name`, `phone`, `email`, `content`, `create_time`) VALUES
-(1, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'dsđssddsdsds', '1476508309'),
-(2, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev2@gmail.com', 'dđ', '1476512130'),
-(3, 'Lê Ngọc Cường', '0981700268', 'cuongleon630@gmail.com', 'dddddddd', '1476512190'),
-(4, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'ádasd', '1476512523'),
-(5, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'dsadasd', '1476512710'),
-(6, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'ewrerwerwerw', '1476512761'),
-(7, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'ưer', '1476512798'),
-(8, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'hghjh', '1476512947'),
-(9, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'iooo', '1476513054'),
-(10, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'hhg', '1476513130'),
-(11, 'Lê Ngọc Cường', '0981700268', 'cuongle.dev@gmail.com', 'eee', '1476522688');
+INSERT INTO `web_contacts` (`id`, `name`, `phone`, `email`, `content`, `create_time`, `status`) VALUES
+(1, 'Lê Ngọc Cường1', '0981700268', 'cuongle.dev1@gmail.com', 'dsđssddsdsds', '1476508309', 1),
+(2, 'Lê Ngọc Cường2', '0981700268', 'cuongle.dev2@gmail.com', 'dđ', '1476512130', 1),
+(3, 'Lê Ngọc Cường3', '0981700268', 'cuongleon630@gmail.com', 'dddddddd', '1476512190', 1),
+(8, 'Lê Ngọc Cường8', '0981700268', 'cuongle.dev8@gmail.com', 'hghjh', '1476512947', 0),
+(12, 'Cường', '0987654321', 'cuosdfev@gmail.com', 'Hey!\r\nXin chào bạn.\r\nTôi muốn hỏi bạn 1 số câu.', '1476679659', 1);
 
 -- --------------------------------------------------------
 
@@ -494,15 +489,16 @@ INSERT INTO `web_contacts` (`id`, `name`, `phone`, `email`, `content`, `create_t
 
 CREATE TABLE `web_options` (
   `id` int(10) UNSIGNED NOT NULL,
-  `pagination_number` int(11) NOT NULL
+  `pagination_number` int(11) NOT NULL,
+  `debug` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `web_options`
 --
 
-INSERT INTO `web_options` (`id`, `pagination_number`) VALUES
-(1, 2);
+INSERT INTO `web_options` (`id`, `pagination_number`, `debug`) VALUES
+(1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -734,12 +730,12 @@ ALTER TABLE `vi_posts`
 -- AUTO_INCREMENT for table `web_contacts`
 --
 ALTER TABLE `web_contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `web_options`
 --
 ALTER TABLE `web_options`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `web_settings`
 --

@@ -72,6 +72,10 @@
                                       <label for="seo_title" class="control-label"><?php echo lang('options_pagi_post');?></label>
                                       <input class="form-control" id="pagination_number" placeholder="" name="pagination_number" type="number" value="<?php echo (isset($this->data['options']['pagination_number'])) ? $this->data['options']['pagination_number'] : '';?>">
                                   </div>
+                                <div class="form-group">
+                                <label for=""><?php echo lang('debug');?></label><br />
+                                  <input id="switch-size" type="checkbox" checked data-size="mini" />
+                                </div>
 
                             </div>
                             <!-- /.box-body -->

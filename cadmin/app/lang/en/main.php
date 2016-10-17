@@ -33,12 +33,14 @@ $_L['name_menu']           		=  'Menu name';
 $_L['basic_infomation']         =  'Basic Infomation';
 $_L['create_menu_link']         =  'Create a menu structure link';
 $_L['edit_menu_link']         	=  'Edit a menu structure link';
+$_L['time_send']         		=  'Time post';
 
 
 
 
 $_L['options_frontend']   		=  'Options Frontend';
 $_L['options_pagi_post']   		=  'Number of posts on a page';
+$_L['debug']   					=  'Debug';
 
 
 
@@ -91,6 +93,7 @@ $_L['page']       				=  'Page';
 $_L['in_total']       			=  'in total';
 
 
+$_L['fullname']					= 'Full Name';
 $_L['username']					= 'Username';
 $_L['email']					= 'Email';
 $_L['first_name']				= 'First name';

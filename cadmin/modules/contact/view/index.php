@@ -44,7 +44,7 @@
                                         <div class="row">
                                           <div class="col-lg-4">
                                             <div class="input-group">
-                                              <input type="text" class="form-control search_users" placeholder="Search for..." value="<?php if(isset($this->data['s'])) echo $this->data['s'];?>">
+                                              <input type="text" class="form-control search" placeholder="Search for..." value="<?php if(isset($this->data['s'])) echo $this->data['s'];?>">
                                               <span class="input-group-btn">
                                                 <button class="btn btn-primary search_button_users" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                                               </span>
@@ -86,7 +86,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" aria-label="ID: orderby asc" style="width: 50px;">
                                                         <a href="#"><?php echo lang('id');?></a>
                                                     </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" aria-label="Role: orderby asc" style="width: 188px;"><?php echo lang('author');?></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" aria-label="Role: orderby asc" style="width: 188px;"><?php echo lang('fullname');?></th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" aria-label="
                                                                      Status
                                                                 : orderby asc" style="width: 52px;">
@@ -109,6 +109,32 @@
                                                 <?php 
                                                 if (!empty($this->data['data'])) {
                                                     foreach ($this->data['data'] as $key => $value) { ?>
+                                                              <!-- Modal VIEW -->
+                                                              <div id="modelView<?php echo $value['id']; ?>" class="modal fade" role="dialog">
+                                                                <div class="modal-dialog">
+
+                                                                  <!-- Modal content-->
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                      <h4 class="modal-title"><?php echo lang('detail'); ?></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                      <p> <label><?php echo lang('fullname');?>   : </label> <?php echo $value['name']; ?></p>
+                                                                      <p> <label><?php echo lang('time');?>    : </label> <?php echo date('H:i:s d/m/Y',$value['create_time']); ?></p>
+                                                                      <p> <label><?php echo lang('phone');?>      : </label> <?php echo $value['phone']; ?></p>
+                                                                      <p> <label><?php echo lang('email');?>      : </label> <?php echo $value['email']; ?></p>
+                                                                      <p> <label><?php echo lang('content');?>    : </label> <?php echo $value['content']; ?></p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                      <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo lang('cancel');?></button>
+                                                                    </div>
+                                                                  </div>
+
+                                                                </div>
+                                                              </div>
+                                                              <!--END Modal VIEW -->
+
                                                         <tr role="row" class="odd">
                                                             <td>
                                                                 <div class="checker"><span>
@@ -116,7 +142,7 @@
                                                                 </span></div>
                                                             </td>
                                                             <td><?php echo $value['id'];?></td>
-                                                            <td><?php echo $value['username']; ?></td>
+                                                            <td><?php echo $value['name']; ?></td>
                                                             <td>
 
                                                                 <?php 
@@ -128,7 +154,7 @@
                                                                 ?>
                                                             </td>
                                                             <td><?php echo date('d-m-Y',$value['create_time']);?></td>
-                                                            <td><a href="<?php echo base_url().'pages/pages/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'pages/pages/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
+                                                            <td><a data-toggle="modal" data-target="#modelView<?php echo $value['id']; ?>" class="btn btn-icon btn-primary tip"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'contact/contact/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
                                                         </tr>
                                                 <?php 
                                                     }
@@ -197,7 +223,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo lang('cancel');?></button>
-                                    <a href="" id="agree_del_all" class="btn btn-success"><?php echo lang('agree');?></a>
+                                    <a href="javascript:void(0)" id="agree_del_all" class="btn btn-success"><?php echo lang('agree');?></a>
                                   </div>
                                 </div>
 

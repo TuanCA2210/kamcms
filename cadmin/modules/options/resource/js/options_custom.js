@@ -1,0 +1,1 @@
+$("#switch-size").bootstrapSwitch();

@@ -1,14 +1,56 @@
 <?php 
 class Contact{
-	private $user;
+	private $contact;
 	public function __construct(){
 		global $_web;
 		$this->lang        = $_web['lang'];
-		$this->user     = new system\Model('web_contacts');
+		$this->contact     = new system\Model('web_contacts');
 	}
-	/*public function getUserById($id){
-		$this->user->where('group_id',$id);
-		$result  = $this->user->getOne();
+	public function getContact(){
+		$result  = $this->contact->get();
 		return $result;
-	}*/
+	}
+	public function getPagiContact($start,$limit){
+		$result  = $this->contact->get(null, array($start,$limit),$select);
+		return $result;
+	}
+	public function update($data,$id){
+		$this->contact->where('id',$id);
+		$this->contact->update($data);
+	}
+	public function delete($id){
+		$this->contact->where('id',$id);
+		$this->contact->delete();
+	}
+	public function insertData($data_insert){
+		$this->contact->insert($data_insert);
+	}
+
+
+
+	public function checkId($id){
+		$this->contact->where('id',$id);
+		$result  = $this->contact->num_rows();
+		if ($result>0) {
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	
+	public function getContactById($id){
+		$this->contact->where('id',$id);
+		$result  = $this->contact->getOne();
+		return $result;
+	}
+	public function findSearch($search){
+		$this->contact->where('name', '%'.$search.'%', 'like');
+		$result  = $this->contact->get();
+		return $result;
+	}
+	public function dellWhereInArray($name_id){
+		$name = implode(",",$name_id);
+		$sql = "DELETE FROM web_contacts WHERE id IN (".$name.")";
+		$this->contact->rawQuery($sql);
+	}
 }

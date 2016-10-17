@@ -23,7 +23,6 @@
 					if($this->data['contact_form']!="") echo $this->data['contact_form'];
 					 ?>
 				</section>
-				
 			</div>
 		</div>
 </main>

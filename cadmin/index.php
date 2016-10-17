@@ -1,12 +1,7 @@
 <?php 
 session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');	
-/*error_reporting(1);
-error_reporting(E_ALL); 
-error_reporting(E_ALL & ~E_NOTICE);
-ini_set('display_errors',1);  
-ini_set('display_startup_errors',1); */
-
+require_once "system/debug.php";
 define('DIR_ROOT',dirname(__FILE__).DIRECTORY_SEPARATOR);
 //define('DIR_CONFIG',DIR_ROOT.'config/');
 define('DIR_TMP',DIR_ROOT.'tmp/');
