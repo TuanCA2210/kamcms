@@ -32,13 +32,12 @@ RewriteRule ^news\.htm$ index.php?mod=posts&controller=posts&action=index [L,QSA
 RewriteRule ^news.htm&p([0-9]+)$ index.php?mod=posts&controller=posts&action=index&page=$1 [L,QSA]
 RewriteRule ^news.htm&p([0-9]+)&t([0-9]+)$ index.php?mod=posts&controller=posts&action=index&page=$1&total=$2 [L,QSA]
 
+# Custom pages 
 
-RewriteRule ^dai-tieu\.htm$ index.php?mod=pages&controller=pages&action=detail&id=1 [L,QSA]
-RewriteRule ^dep-sss\.htm$ index.php?mod=pages&controller=pages&action=detail&id=6 [L,QSA]
-RewriteRule ^gioi-thieu\.htm$ index.php?mod=pages&controller=pages&action=detail&id=6 [L,QSA]
 RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id=9 [L,QSA]
 
 
 
-RewriteRule ^chuyen-nho\.htm$ index.php?mod=pages&controller=pages&action=detail&id=10 [L,QSA]
+
 RewriteRule ^tieng-anh\.htm$ index.php?mod=pages&controller=pages&action=detail&id=10 [L,QSA]
+RewriteRule ^gioi-thieu\.htm$ index.php?mod=pages&controller=pages&action=detail&id=11 [L,QSA]
