@@ -35,4 +35,12 @@ class Posts{
     	$result = $this->posts->get(null,array($start,$limit),$select);
     	return $result;
     }
+    public function getDetail($id){
+        $select = $this->lang."_posts.*, user.id as id_user, user.username";
+        $this->posts->where( $this->lang."_posts.status",1);
+        $this->posts->where( $this->lang."_posts.id",$id);
+        $this->posts->join('user', 'user.id = '.$this->lang.'_posts.author_create', 'LEFT');
+        $result = $this->posts->getOne(null,null,$select);
+        return $result;
+    }
 }

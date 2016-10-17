@@ -31,9 +31,9 @@ class PostsController extends Controller{
 		global $_L;
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			$id = $_GET['id'];
-			$this->view->data  = $this->modelPosts->getDetail($id);
+			$this->view->data['data_posts']  = $this->modelPosts->getDetail($id);
 		}
-		$this->view->render('index');
+		$this->view->render('detail_view');
 		
 	}
 	public function categories(){
