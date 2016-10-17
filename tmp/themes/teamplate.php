@@ -41,21 +41,14 @@
 
 	<?php require_once "header.php"; ?>
 
-	<section class="main-slider col-xs-12 noPadding">
-		<div class="breadcrums col-xs-12 noPadding">
-			<div class="breadcrums-wrapper col-xs-12 noPadding">
-				<div class="container">
-				</div>
-			</div>
-		</div><!-- /.breadcrums -->
-		<div class="col-xs-12 no-Padding line-bar"></div>
-	</section>
+    <!-- Page Content -->
+    <div class="container">
 
-	<?php
-	require_once DIR_MODULES . $_web['uri']['mod'] . "/view/" . $this->_fileView . ".php";
-	 ?>
+			<?php require_once DIR_MODULES . $_web['uri']['mod'] . "/view/" . $this->_fileView . ".php";?>
+			<?php require_once "footer.php"; ?>
 
-	<?php require_once "footer.php"; ?>
+	</div>
+    <!-- /.container -->
 	<script type="text/javascript" src="<?php echo base_url()."tmp/public/root/";?>js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url()."tmp/public/root/";?>js/bootstrap.min.js"></script>
 	<?php echo ($this->_appendPluginsModJs!='') ? $this->_appendPluginsModJs : '';?>

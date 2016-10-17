@@ -26,6 +26,8 @@ ErrorDocument 500 /404.htm
 
 RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)$ index.php?mod=$1&controller=$2&action=$3 [L,QSA]
 RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)\.htm$ index.php?mod=$1&controller=$2&action=$3 [L,QSA]
+RewriteRule ^dang-nhap\.htm$ index.php?mod=user&controller=user&action=index [L,QSA]
+
 RewriteRule ^news\.htm$ index.php?mod=posts&controller=posts&action=index [L,QSA]
 RewriteRule ^news.htm&p([0-9]+)$ index.php?mod=posts&controller=posts&action=index&page=$1 [L,QSA]
 RewriteRule ^news.htm&p([0-9]+)&t([0-9]+)$ index.php?mod=posts&controller=posts&action=index&page=$1&total=$2 [L,QSA]

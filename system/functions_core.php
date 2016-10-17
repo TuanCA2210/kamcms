@@ -145,7 +145,7 @@ function alias($str){
 function recursiveMenu($data,$parent=0){
     if (isset($data[$parent])) {
         if ($parent==0) {
-            echo "<ul class='nav navbar-nav navbar-right'>";
+            echo "<ul class='nav navbar-nav'>";
         }else{
             echo "<ul class='dropdown-menu'>";
         }

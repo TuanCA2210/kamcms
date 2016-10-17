@@ -1,13 +1,8 @@
-
-
-
-	<main id="main" class="col-xs-12 noPadding main">
-		<div class="container">
-			<div class="row">
-				<article class="right-content single-content col-xs-12 col-md-8">
+<div class="row">
+				<article class="right-content single-content col-xs-12 col-md-12">
 					<ol class="breadcrumb">
 						<li>
-							<a href="#"><i class="fa fa-home"></i></a>
+							<a href="<?php echo base_url();?>">Home</a>
 						</li>
 						<li class="active"><?php echo lang('login');?> - <?php echo lang('regis');?></li>
 					</ol>
@@ -77,35 +72,4 @@
 					    </div>
 					</div>
 				</article>
-
-				<section class="left-sidebar col-xs-12 col-md-4">
-
-					<div class="left-sidebar-item social-block col-xs-12 noPadding">
-						<div id="fb-root"></div>
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=927362164006956";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-						<div class="fb-page" data-href="https://www.facebook.com/mobifone/" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true" data-width="500"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/mobifone/"><a href="https://www.facebook.com/mobifone/">MobiFone</a></blockquote></div></div>
-					</div><!-- /.social-block -->
-
-					<div class="left-sidebar-item register-button col-xs-12 noPadding text-center">
-						<a href="">Đăng ký 4G</a>
-					</div>
-					
-					<div class="left-sidebar-item promo-product col-xs-12 noPadding">
-						<a href=""><img src="" alt="" class="img-responsive"></a>
-						<a href="" class="promo-product-intro col-xs-12 noPadding">
-							<h3 class="promo-product-title">Dịch vụ 4G</h3>
-							<span>Tìm hiểu thông tin và đăng ký gói Data</span>
-						</a>
-					</div>
-
-
-				</section>
-			</div>
-		</div>
-	</main>
+</div>
