@@ -2,6 +2,7 @@
 <!-- Blog Post Content Column -->
     <div class="col-lg-8">
 
+
         <!-- Blog Post -->
 
         <!-- Title -->
@@ -9,13 +10,13 @@
 
         <!-- Author -->
         <p class="lead">
-            by <a href="#">Start Bootstrap</a>
+            by <a href="#"><?php echo $this->data['data_posts']['username'];?></a>
         </p>
 
         <hr>
 
         <!-- Date/Time -->
-        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo date('H:i:s d-m-Y',$this->data['data_posts']['create_time']);?></p>
 
         <hr>
 
@@ -25,14 +26,8 @@
         <hr>
 
         <!-- Post Content -->
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-       <?php 
+        <p class="lead"><?php echo $this->data['data_posts']['content']?></p>
 
-       /*echo "<pre>";
-       print_r($this->data);
-       echo "</pre>";*/
-
-        ?>
 
         <hr>
 

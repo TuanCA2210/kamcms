@@ -7,14 +7,29 @@ class HomeController extends Controller{
 		$this->modelNews = $this->loadModel('Home');
 	}
 	public function index(){
-		$this->view->title = "Thiết kê website";
+		/*$this->view->title = "Thiết kê website";
 		$this->view->description = "Bài học này sẽ giúp các bạn biết cách sử dụng thẻ meta Description sao cho hiệu quả và đúng quy tắc của Google.";
 		$this->view->keywords = "PHP, Laravel, ZendFramework, Phalcon";
-		$this->view->author = "Lê Ngọc Cường";
+		$this->view->author = "Lê Ngọc Cường";*/
 
-		$this->view->data  = $this->modelNews->getAll(1);
-		//$this->loadPages = 'index';
-		//$this->view('index',$data);
+
+		$link = base_url().'home.htm';
+		$all_pages = $this->modelNews->getAllNews();
+
+		$paging = new Paging(count($all_pages),$link);
+		$limit = 2;
+		// Tổng số trang
+		$count_page = $paging->findPages($limit);
+		// Bắt đầu từ mẫu tin
+		$start =$paging->rowStart($limit);
+		// Trang hiện tại
+		$curpage = ($start/$limit)+1;
+
+		$this->view->data['list']  = $this->modelNews->getAllNews($start,$limit);
+
+		$this->view->data['pagination'] = $paging->pagesList($curpage); 
+
+
 		$this->view->render('index');
 	}
 	public function setLang(){
