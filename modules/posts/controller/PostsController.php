@@ -31,7 +31,27 @@ class PostsController extends Controller{
 		global $_L;
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			$id = $_GET['id'];
+			if (isset($_POST['submit']) && $_SESSION['_token']==$_POST['_token']) {
+				if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false){
+					$data_comment = array(
+						'username'	=> trim(addslashes($_POST['username'])),
+						'email'	=> trim($_POST['email']),
+						'content'	=> trim(addslashes($_POST['comment'])),
+						'post_id'  => $id,
+						'create_time' => time(),
+						'status'	=> 0
+					);
+
+					$this->modelPosts->insert_comt($data_comment);
+				}
+			}
+
+			$token =  rand(0,1000000000);
+			$this->view->data['_token'] =$token;
+			$_SESSION['_token'] = $token;
 			$this->view->data['data_posts']  = $this->modelPosts->getDetail($id);
+
+			
 		}
 		$this->view->render('detail_view');
 		

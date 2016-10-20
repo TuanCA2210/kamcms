@@ -34,6 +34,7 @@ $_L['basic_infomation']         =  'Thông tin cơ bản';
 $_L['create_menu_link']         =  'Tạo mới một kết cấu liên kết';
 $_L['edit_menu_link']         	=  'Chỉnh sửa một kết cấu liên kết';
 $_L['time_send']         		=  'Thời gian gửi';
+$_L['time']         			=  'Thời gian';
 
 
 

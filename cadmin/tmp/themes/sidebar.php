@@ -52,6 +52,7 @@
             <ul class="treeview-menu">
                 <li><a href="<?php echo base_url().'posts/posts/index';?>"><?php echo lang('all_posts');?></a></li>
                 <li><a href="<?php echo base_url().'posts/categories/index';?>"><?php echo lang('categories');?></a></li>
+                <li><a href="<?php echo base_url().'posts/comments_posts/index';?>"><?php echo lang('comments');?></a></li>
               </ul>
         </li>
         <li>

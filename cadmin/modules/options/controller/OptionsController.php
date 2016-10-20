@@ -17,7 +17,8 @@ class OptionsController extends Controller{
 			$pagination_number = (is_numeric($this->input->post('pagination_number'))) ? $this->input->post('pagination_number') : 10;
 			
 			$data_insert = array(
-				'pagination_number'	=> $pagination_number
+				'pagination_number'	=> $pagination_number,
+				'comment'	=> ($_POST['comment']=='on') ? 1 : 0,
 			);
 			$this->options->update($data_insert);
 

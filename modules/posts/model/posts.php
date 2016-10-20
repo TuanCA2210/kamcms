@@ -1,12 +1,14 @@
 <?php 
 class Posts{
 	private $cate;
-	private $posts;
+    private $posts;
+	private $comments;
 	public function __construct(){
 		global $_web;
 		$this->lang        = $_web['lang'];
 		$this->posts     = new system\Model($this->lang.'_posts');
-		$this->cate     = new system\Model($this->lang.'_categories_posts');
+        $this->cate     = new system\Model($this->lang.'_categories_posts');
+		$this->comments     = new system\Model($this->lang.'_comments_posts');
 	}
 	public function getBreadcrumbsCategory($idCate, $data = array()) {
         $this->cate->where("id",$idCate);
@@ -42,5 +44,8 @@ class Posts{
         $this->posts->join('user', 'user.id = '.$this->lang.'_posts.author_create', 'LEFT');
         $result = $this->posts->getOne(null,null,$select);
         return $result;
+    }
+    public function insert_comt($data){
+        $this->comments->insert($data);
     }
 }

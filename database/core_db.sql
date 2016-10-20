@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2016 at 10:11 AM
+-- Generation Time: Oct 20, 2016 at 12:01 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -50,6 +50,22 @@ INSERT INTO `en_categories_posts` (`id`, `title`, `alias`, `description`, `note`
 (1, 'Uncategorized', 'uncategorized', NULL, NULL, NULL, 0, 0, 23, NULL, 1, NULL, NULL),
 (2, 'Sports', 'sports', NULL, NULL, NULL, 0, 0, 23, NULL, 1, NULL, NULL),
 (3, 'Showbiz', 'showbiz', NULL, NULL, NULL, 0, 0, 23, NULL, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_comments_posts`
+--
+
+CREATE TABLE `en_comments_posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `content` text CHARACTER SET utf8,
+  `post_id` int(11) DEFAULT NULL,
+  `create_time` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -333,6 +349,29 @@ INSERT INTO `vi_categories_posts` (`id`, `title`, `alias`, `description`, `note`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vi_comments_posts`
+--
+
+CREATE TABLE `vi_comments_posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `content` text CHARACTER SET utf8,
+  `post_id` int(11) DEFAULT NULL,
+  `create_time` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `vi_comments_posts`
+--
+
+INSERT INTO `vi_comments_posts` (`id`, `username`, `email`, `content`, `post_id`, `create_time`, `status`) VALUES
+(6, 'botble', 'cuongle.dev@gmail.com', '', 1, '1476946434', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vi_menu`
 --
 
@@ -391,11 +430,8 @@ CREATE TABLE `vi_pages` (
 --
 
 INSERT INTO `vi_pages` (`id`, `title`, `alias`, `description`, `content`, `note`, `contact_form`, `old_url`, `thumbnail`, `author_create`, `author_update`, `status`, `create_time`, `update_time`) VALUES
-(1, 'bai vet 1', 'bai-vet-1', 'Tình đơn côi', '<p>dfgdgdffg</p>', 'dgfdgffdgdfg', '', 'dai-tieu', '', 23, 23, 1, NULL, '1475143054'),
-(6, 'Giới thiệu', 'gioi-thieu', NULL, '<h1>Giới thiệu chung về 4G</h1>\r\n\r\n<p><strong>MobiFone thử nghiệm th&agrave;nh c&ocirc;ng c&ocirc;ng nghệ 4G</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Từ th&aacute;ng 12/2015 tới nay, MobiFone đ&atilde; thử nghiệm th&agrave;nh c&ocirc;ng c&ocirc;ng nghệ 4G/LTE-A về kỹ thuật nội bộ với 200 thu&ecirc; bao nội bộ. Mạng 4G của MobiFone đạt tốc độ dowload/upload tối đa 225Mbps/75Mbps.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Trong qu&aacute; tr&igrave;nh thử nghiệm nội bộ, MobiFone đ&atilde; n&acirc;ng cấp hệ thống cơ sở vật chất, mạng lưới tạo nền m&oacute;ng vững chắc để đưa c&ocirc;ng nghệ mới đến với kh&aacute;ch h&agrave;ng. B&ecirc;n cạnh đ&oacute;, MobiFone cũng ho&agrave;n th&agrave;nh việc đ&aacute;nh gi&aacute; trải nghiệm c&aacute;c dịch vụ mới của 4G/LTE-A với kết quả khả quan.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>C&ocirc;ng nghệ 4G/LTE-A cung cấp băng th&ocirc;ng rộng hơn, truyền tải dữ liệu nhanh hơn, dung lượng lớn hơn, được đ&aacute;nh gi&aacute; l&agrave; điều kiện l&yacute; tưởng để triển khai c&aacute;c dịch vụ gi&aacute; trị gia tăng hấp dẫn. Ch&iacute;nh v&igrave; vậy, khi triển khai cung cấp c&ocirc;ng nghệ 4G, kh&aacute;c với c&aacute;c nh&agrave; mạng đối thủ, MobiFone sẽ đem lại c&aacute;c dịch vụ nội dung hấp dẫn tr&ecirc;n nền c&ocirc;ng nghệ 4G cho kh&aacute;ch h&agrave;ng như: Trải nghiệm xem c&aacute;c k&ecirc;nh truyền h&igrave;nh AVG, dịch vụ data, SMS, dịch vụ truyền h&igrave;nh Broadcast tr&ecirc;n nền tảng eMBMS, dịch vụ truyền h&igrave;nh Unicast, dịch vụ Video 4K...</p>\r\n\r\n<p>&quot;Cuộc đua&quot; 4G hiện đang bước v&agrave;o giai đoạn nước r&uacute;t, đ&ograve;i hỏi c&aacute;c nh&agrave; mạng khẩn trương ho&agrave;n tất thử nghiệm nhằm r&uacute;t ngắn khoảng c&aacute;ch giữa thực tế v&agrave; l&yacute; thuyết. Kết quả thử nghiệm của MobiFone đ&atilde; vượt qua cột mốc tốc độ đề ra (200Mbps) cho giai đoạn ban đầu chứng tỏ Tổng c&ocirc;ng ty đ&atilde; c&oacute; những bước tiến vững chắc về chất lượng v&agrave; nội dung sản phẩm, dịch vụ tr&ecirc;n nền c&ocirc;ng nghệ mới.</p>\r\n\r\n<p>Thời gian tới, để sớm mang c&ocirc;ng nghệ mới ra thị trường, MobiFone đ&atilde; ho&agrave;n th&agrave;nh c&aacute;c kịch bản kinh doanh với nhiều chương tr&igrave;nh hấp dẫn d&agrave;nh cho kh&aacute;ch h&agrave;ng. Sau khi tối ưu ho&aacute; chất lượng mạng lưới để đảm bảo trải nghiệm người d&ugrave;ng, Tổng c&ocirc;ng ty Viễn th&ocirc;ng MobiFone sẽ đưa dịch vụ 4G/LTE-A cung cấp thử nghiệm trong th&aacute;ng 6 năm 2016 tại H&agrave; Nội, Đ&agrave; Nẵng v&agrave; Tp. Hồ Ch&iacute; Minh.</p>\r\n', 'dfdfd', '', 'gioi-thieu', '', 23, 23, 1, '1475033598', '1476090901'),
-(8, 'Bài ca dao', 'bai-ca-dao', NULL, '<p>sdfsdf</p>', '', '', NULL, '', 23, NULL, 0, '1476082133', NULL),
-(9, 'Liên hệ', 'lien-he', NULL, '<p><iframe frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7969415409234!2d105.79845781536055!3d20.960668186035303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad215b3d1e2d%3A0xbd6f8ae8d8605262!2zQ1Q2QSBYYSBMYSwgQ-G6p3UgQsawxqF1LCBLaeG6v24gSMawbmcsIFRoYW5oIFRyw6wsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1476087173806" style="border:0" width="100%"></iframe></p>\r\n', '', '<form action="" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', 'lien-he', '', 23, 23, 1, '1476087226', '1476088814'),
-(10, 'nam moi', 'nam-moi', NULL, '<p>Xin ch&agrave;o</p>\r\n', '', '', 'chuyen-nho', '', 23, 23, 1, '1476418001', '1476418753');
+(9, 'Liên hệ', 'lien-he', NULL, '<p><iframe frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7969415409234!2d105.79845781536055!3d20.960668186035303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad215b3d1e2d%3A0xbd6f8ae8d8605262!2zQ1Q2QSBYYSBMYSwgQ-G6p3UgQsawxqF1LCBLaeG6v24gSMawbmcsIFRoYW5oIFRyw6wsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1476087173806" style="border:0" width="100%"></iframe></p>\r\n', '', '<form action="" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', 'lien-he', '', 23, 23, 1, '1476087226', '1476696871'),
+(11, 'Giới thiệu', 'gioi-thieu', NULL, '<h1>Giới thiệu chung về 4G</h1>\r\n\r\n<p><strong>MobiFone thử nghiệm th&agrave;nh c&ocirc;ng c&ocirc;ng nghệ 4G</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Từ th&aacute;ng 12/2015 tới nay, MobiFone đ&atilde; thử nghiệm th&agrave;nh c&ocirc;ng c&ocirc;ng nghệ 4G/LTE-A về kỹ thuật nội bộ với 200 thu&ecirc; bao nội bộ. Mạng 4G của MobiFone đạt tốc độ dowload/upload tối đa 225Mbps/75Mbps.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Trong qu&aacute; tr&igrave;nh thử nghiệm nội bộ, MobiFone đ&atilde; n&acirc;ng cấp hệ thống cơ sở vật chất, mạng lưới tạo nền m&oacute;ng vững chắc để đưa c&ocirc;ng nghệ mới đến với kh&aacute;ch h&agrave;ng. B&ecirc;n cạnh đ&oacute;, MobiFone cũng ho&agrave;n th&agrave;nh việc đ&aacute;nh gi&aacute; trải nghiệm c&aacute;c dịch vụ mới của 4G/LTE-A với kết quả khả quan.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>C&ocirc;ng nghệ 4G/LTE-A cung cấp băng th&ocirc;ng rộng hơn, truyền tải dữ liệu nhanh hơn, dung lượng lớn hơn, được đ&aacute;nh gi&aacute; l&agrave; điều kiện l&yacute; tưởng để triển khai c&aacute;c dịch vụ gi&aacute; trị gia tăng hấp dẫn. Ch&iacute;nh v&igrave; vậy, khi triển khai cung cấp c&ocirc;ng nghệ 4G, kh&aacute;c với c&aacute;c nh&agrave; mạng đối thủ, MobiFone sẽ đem lại c&aacute;c dịch vụ nội dung hấp dẫn tr&ecirc;n nền c&ocirc;ng nghệ 4G cho kh&aacute;ch h&agrave;ng như: Trải nghiệm xem c&aacute;c k&ecirc;nh truyền h&igrave;nh AVG, dịch vụ data, SMS, dịch vụ truyền h&igrave;nh Broadcast tr&ecirc;n nền tảng eMBMS, dịch vụ truyền h&igrave;nh Unicast, dịch vụ Video 4K...</p>\r\n\r\n<p>&quot;Cuộc đua&quot; 4G hiện đang bước v&agrave;o giai đoạn nước r&uacute;t, đ&ograve;i hỏi c&aacute;c nh&agrave; mạng khẩn trương ho&agrave;n tất thử nghiệm nhằm r&uacute;t ngắn khoảng c&aacute;ch giữa thực tế v&agrave; l&yacute; thuyết. Kết quả thử nghiệm của MobiFone đ&atilde; vượt qua cột mốc tốc độ đề ra (200Mbps) cho giai đoạn ban đầu chứng tỏ Tổng c&ocirc;ng ty đ&atilde; c&oacute; những bước tiến vững chắc về chất lượng v&agrave; nội dung sản phẩm, dịch vụ tr&ecirc;n nền c&ocirc;ng nghệ mới.</p>\r\n\r\n<p>Thời gian tới, để sớm mang c&ocirc;ng nghệ mới ra thị trường, MobiFone đ&atilde; ho&agrave;n th&agrave;nh c&aacute;c kịch bản kinh doanh với nhiều chương tr&igrave;nh hấp dẫn d&agrave;nh cho kh&aacute;ch h&agrave;ng. Sau khi tối ưu ho&aacute; chất lượng mạng lưới để đảm bảo trải nghiệm người d&ugrave;ng, Tổng c&ocirc;ng ty Viễn th&ocirc;ng MobiFone sẽ đưa dịch vụ 4G/LTE-A cung cấp thử nghiệm trong th&aacute;ng 6 năm 2016 tại H&agrave; Nội, Đ&agrave; Nẵng v&agrave; Tp. Hồ Ch&iacute; Minh.</p>\r\n', '', '', 'gioi-thieu', '', 23, 23, 1, '1476697000', '1476697021');
 
 -- --------------------------------------------------------
 
@@ -490,15 +526,15 @@ INSERT INTO `web_contacts` (`id`, `name`, `phone`, `email`, `content`, `create_t
 CREATE TABLE `web_options` (
   `id` int(10) UNSIGNED NOT NULL,
   `pagination_number` int(11) NOT NULL,
-  `debug` tinyint(4) DEFAULT NULL
+  `comment` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `web_options`
 --
 
-INSERT INTO `web_options` (`id`, `pagination_number`, `debug`) VALUES
-(1, 2, NULL);
+INSERT INTO `web_options` (`id`, `pagination_number`, `comment`) VALUES
+(1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -557,6 +593,12 @@ ALTER TABLE `en_categories_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `en_comments_posts`
+--
+ALTER TABLE `en_comments_posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `en_menu`
 --
 ALTER TABLE `en_menu`
@@ -611,6 +653,12 @@ ALTER TABLE `vi_categories_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vi_comments_posts`
+--
+ALTER TABLE `vi_comments_posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vi_menu`
 --
 ALTER TABLE `vi_menu`
@@ -662,6 +710,11 @@ ALTER TABLE `web_settings`
 ALTER TABLE `en_categories_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `en_comments_posts`
+--
+ALTER TABLE `en_comments_posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `en_menu`
 --
 ALTER TABLE `en_menu`
@@ -707,6 +760,11 @@ ALTER TABLE `user`
 ALTER TABLE `vi_categories_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
+-- AUTO_INCREMENT for table `vi_comments_posts`
+--
+ALTER TABLE `vi_comments_posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `vi_menu`
 --
 ALTER TABLE `vi_menu`
@@ -715,7 +773,7 @@ ALTER TABLE `vi_menu`
 -- AUTO_INCREMENT for table `vi_pages`
 --
 ALTER TABLE `vi_pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `vi_position_menu`
 --

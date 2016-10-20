@@ -34,6 +34,7 @@ $_L['basic_infomation']         =  'Basic Infomation';
 $_L['create_menu_link']         =  'Create a menu structure link';
 $_L['edit_menu_link']         	=  'Edit a menu structure link';
 $_L['time_send']         		=  'Time post';
+$_L['time']         			=  'Time';
 
 
 
