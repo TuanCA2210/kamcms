@@ -40,7 +40,7 @@ class Controller{
 		}
 	}
 	public function loadLibrary($file) {
-			$path = DIR_APP . 'library/' . $file . '.php';
+			$path = DIR_APP . 'libraries/' . $file . '.php';
 			if (file_exists($path)) {
 				include_once $path;
 				$obj = new $file();
