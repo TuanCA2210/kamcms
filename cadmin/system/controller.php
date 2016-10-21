@@ -11,20 +11,8 @@ class Controller{
 
 		$this->input = new Input();
 		$this->view = new View(); 
+		$this->loadLibrary('paging');
 	}
-	/*public function view($file=null,$data=null){
-		if (isset($file)) {
-			$path = DIR_MODULES . $this->mod . '/view/' . $file . '.php';
-			include_once $path;
-		}
-	}
-	public function loadView($teamplate='themes/teamplate'){
-		if (isset($teamplate)) {
-			$this->loadPages = $this->view();
-			$path = DIR_TMP . $teamplate.'.php';
-			include_once $path;
-		}
-	}*/
 	public function loadModel($file, $mod = null) {
 		if ($mod === null) {
 			$path = DIR_MODULES . $this->mod . '/model/' . $file . '.php';
@@ -45,6 +33,15 @@ class Controller{
 				die('Không tồn tại file này' . $path);
 			}
 		}
+	}
+	public function loadLibrary($file) {
+			$path = DIR_APP . 'library/' . $file . '.php';
+			if (file_exists($path)) {
+				require_once $path;
+			} else {
+				die('Không tồn tại file này' . $path);
+			}
+		
 	}
 	public function isPost($key){
 		if (isset($_POST[$key])) {

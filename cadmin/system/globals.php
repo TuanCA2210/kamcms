@@ -17,7 +17,6 @@ require_once "app/bootstraps.php";
 require_once "app/functions.php";
 require_once "app/session.php";
 require_once "app/class.upload.php";
-require_once "app/paging.php";
 db_connect(); 
 $App = new App();
 $_web['modules'] = $App->get_modules();

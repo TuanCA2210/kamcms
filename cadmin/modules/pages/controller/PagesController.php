@@ -21,6 +21,7 @@ class PagesController extends Controller{
 			$this->view->data['count_page'] = 1;
 			$this->view->data['pagination'] ='';
 		}else{
+			
 			$link = base_url().'pages/pages/index';
 			$all_pages = $this->modelPages->getPages();
 

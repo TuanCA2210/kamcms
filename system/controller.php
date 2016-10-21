@@ -11,6 +11,7 @@ class Controller{
 
 		$this->input = new Input();
 		$this->view = new View(); 
+		$this->loadLibrary('paging');
 		$this->modelGlobals = $this->loadModelGlobals('GlobalsModel');
 		$_web['menu'] = $this->getMenuGlobals();
 		$_web['settings'] = $this->getSettingsGlobals();
@@ -37,6 +38,17 @@ class Controller{
 				die('Không tồn tại file này' . $path);
 			}
 		}
+	}
+	public function loadLibrary($file) {
+			$path = DIR_APP . 'library/' . $file . '.php';
+			if (file_exists($path)) {
+				include_once $path;
+				$obj = new $file();
+				return $obj;
+			} else {
+				die('Không tồn tại file này' . $path);
+			}
+		
 	}
 	public function isPost($key){
 		if (isset($_POST[$key])) {
