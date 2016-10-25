@@ -1,12 +1,19 @@
 {
-	"description": "The Kamcms framework by cuongle.dev@gmail.com",
+	"description": "The Kamcms framework",
 	"name": "Kamcms/framework",
 	"type": "project",
+	"authors": [
+        {
+            "name": "Le Ngoc Cuong",
+            "email": "cuongle.dev@gmail.com"
+        }
+    ],
 	"support": {
 		"wiki": "https://github.com/cuongledev/kamcms",
 		"source": "https://github.com/cuongledev/kamcms"
 	},
 	"require-dev": {
+		
 	},
 	"require": {
 		"php": ">=5.6"
