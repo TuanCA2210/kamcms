@@ -46,7 +46,7 @@ class Comments_posts{
 		return $result;
 	}
 	public function findSearch($search){
-		$this->comments->where('name', '%'.$search.'%', 'like');
+		$this->comments->where('username', '%'.$search.'%', 'like');
 		$result  = $this->comments->get();
 		return $result;
 	}

@@ -50,7 +50,7 @@ class Comments_postsController extends Controller{
 				'flash_success' => lang('delete_success'),
 			);
 			Session::create($mess);
-			redirect(base_url().'contact/contact/index');
+			redirect(base_url().'posts/comments_posts/index');
 		}
 	}
 	public function dellAll(){

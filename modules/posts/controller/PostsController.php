@@ -31,6 +31,8 @@ class PostsController extends Controller{
 		global $_L;
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			$id = $_GET['id'];
+
+			$this->view->data['data_comment'] = $this->modelPosts->getCommentsByPostId($id);
 			if (isset($_POST['submit']) && $_SESSION['_token']==$_POST['_token']) {
 				if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false){
 					$data_comment = array(

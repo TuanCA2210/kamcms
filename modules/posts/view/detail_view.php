@@ -27,7 +27,7 @@
 
         <!-- Post Content -->
         <p class="lead"><?php echo $this->data['data_posts']['content']?></p>
-
+        
 
         <hr>
 
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <label>Bình luận:</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" name="comment" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </form>
@@ -59,6 +59,28 @@
             <hr>
 
             <!-- Posted Comments -->
+            <!-- Comment -->
+            <?php 
+            if (!empty($this->data['data_comment'])) { 
+                foreach ($this->data['data_comment'] as $key => $value) { ?>
+                    <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><?php echo $value['username'];?>
+                            <small><?php echo date('H:i:s d/m/Y',$value['create_time']);?></small>
+                        </h4>
+                        <?php echo $value['content'];?>
+                    </div>
+                </div>
+            <?php 
+                }
+            }
+
+            ?>
+            <!-- Comment -->
+
         <?php 
         }
          ?>

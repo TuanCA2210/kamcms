@@ -48,4 +48,11 @@ class Posts{
     public function insert_comt($data){
         $this->comments->insert($data);
     }
+    public function getCommentsByPostId($id){
+        $this->comments->where("status",1);
+        $this->comments->where("post_id",$id);
+        $this->comments->orderBy("id","ASC");
+        $result = $this->comments->get();
+        return $result;
+    }
 }
