@@ -1,0 +1,15 @@
+{
+	"description": "The Kamcms framework by cuongle.dev@gmail.com",
+	"name": "Kamcms/framework",
+	"type": "project",
+	"support": {
+		"wiki": "https://github.com/cuongledev/kamcms",
+		"source": "https://github.com/cuongledev/kamcms"
+	},
+	"require-dev": {
+	},
+	"require": {
+		"php": ">=5.6"
+	}
+	
+}

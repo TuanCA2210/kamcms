@@ -45,6 +45,7 @@
     <div class="container">
 
 			<?php require_once DIR_MODULES . $_web['uri']['mod'] . "/view/" . $this->_fileView . ".php";?>
+			
 			<?php require_once "footer.php"; ?>
 
 	</div>

@@ -43,8 +43,6 @@ class Controller{
 			$path = DIR_APP . 'libraries/' . $file . '.php';
 			if (file_exists($path)) {
 				include_once $path;
-				$obj = new $file();
-				return $obj;
 			} else {
 				die('Không tồn tại file này' . $path);
 			}

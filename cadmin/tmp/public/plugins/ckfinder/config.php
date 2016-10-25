@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['CKFinder_UserRole'] = 'cuongle';
 /*
  * ### CKFinder : Configuration File - Basic Instructions
  *
@@ -60,7 +62,8 @@ Examples:
 
 ATTENTION: The trailing slash is required.
 */
-$baseUrl = "http://localhost/fwtome/cadmin/tmp/cdn/";
+$baseUrl = $_SESSION['base_url_cdn'];//"http://localhost/fwtome/cadmin/tmp/cdn/";
+
 
 /*
 $baseDir : the path to the local directory (in the server) which points to the
@@ -117,8 +120,7 @@ To be able to use this feature, you must initialize the session data by
 uncommenting the following "session_start()" call.
 */
 $config['RoleSessionVar'] = 'CKFinder_UserRole';
-session_start();
-$_SESSION['CKFinder_UserRole'] = 'quandv';
+
 
 /*
 AccessControl : used to restrict access or features to specific folders.

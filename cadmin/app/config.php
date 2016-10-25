@@ -4,4 +4,6 @@
 * mail: cuongle.dev@gmail.com
 * 2016
 */
-$_web['base_url'] = 'http://localhost/fwtome/cadmin/';
+$_web['base_url'] 			= 'http://localhost/fwtome/cadmin/';
+$_SESSION['base_url_admin'] = $_web['base_url'];
+$_SESSION['base_url_cdn'] 	= $_web['base_url'].'tmp/cdn/';

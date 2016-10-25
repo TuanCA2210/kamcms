@@ -13,9 +13,10 @@ class HomeController extends Controller{
 		$this->view->author = "Lê Ngọc Cường";*/
 
 
+
 		$link = base_url().'home.htm';
 		$all_pages = $this->modelNews->getAllNews();
-
+		
 		$paging = new Paging(count($all_pages),$link);
 		$limit = 2;
 		// Tổng số trang

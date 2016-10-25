@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once "system/debug.php";
+require_once __DIR__ . '/vendor/autoload.php';
 define('DIR_ROOT',dirname(__FILE__).DIRECTORY_SEPARATOR);
 //define('DIR_CONFIG',DIR_ROOT.'config/');
 define('DIR_TMP',DIR_ROOT.'tmp/');
