@@ -16,11 +16,10 @@ class HomeController extends Controller{
 	}
 	public function userOnline(){
 		//$my_ip = getHostByName(php_uname('n'));
-		$my_ip = getIP();
-		echo $my_ip;die;
-		/*$my_url = $_SERVER['PHP_SELF'];
+		$my_ip = getIp();
+		$my_url = $_SERVER['PHP_SELF'];
 
-		$sql = "SELECT * FROM online WHERE ip = '".$my_ip."'";
+		/*$sql = "SELECT * FROM online WHERE ip = '".$my_ip."'";
 		$count = $database->count_query($sql);
 		$data = array(
 		  'ip'  => $my_ip,
@@ -67,6 +66,9 @@ class HomeController extends Controller{
 		);
 		
 		echo json_encode($data);
+	}
+	public function notfound(){
+		$this->view->render('404',false);
 	}
 
 	/*public function __destruct(){

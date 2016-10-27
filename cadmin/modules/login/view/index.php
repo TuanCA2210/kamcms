@@ -25,7 +25,12 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<?php 
+
+$rand = rand(1, 5);
+ ?>
+<body class="hold-transition login-page" style="background-image: url(<?php echo base_url();?>tmp/public/images/breadcrumb_bg<?php echo $rand;?>.jpg);
+  background-size: cover;">
 <div class="login-box">
   <div class="login-logo">
     <a href=""><b>Admin</b>PANEL</a>

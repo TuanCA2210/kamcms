@@ -12,6 +12,9 @@ class Controller{
 		$this->input = new Input();
 		$this->view = new View(); 
 		$this->loadLibrary('paging');
+		if (!isset($_SESSION['id']) && !isset($_SESSION['group_id']) && $_web['uri']['mod'] != 'login' ) {
+			redirect(base_url().'login');
+		}
 	}
 	public function loadModel($file, $mod = null) {
 		if ($mod === null) {

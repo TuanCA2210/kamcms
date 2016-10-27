@@ -48,6 +48,7 @@ class LoginController extends Controller{
 		Session::destroy($data);
 		redirect(base_url());
 	}
+	
 
 	/*public function __destruct(){
 		$this->loadView();

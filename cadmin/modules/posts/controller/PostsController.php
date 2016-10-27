@@ -21,7 +21,7 @@ class PostsController extends Controller{
 			$this->view->data['count_page'] = 1;
 			$this->view->data['pagination'] ='';
 		}else{
-			$link = base_url().'posts/post/index';
+			$link = base_url().'posts/posts/index';
 			$all_pages = $this->modelPosts->getPosts();
 
 			$paging = new Paging(count($all_pages),$link);
@@ -58,11 +58,11 @@ class PostsController extends Controller{
 	public function save(){
 		if (isset($_POST['submit'])) {
 			
-			$title = trim(addslashes($this->input->post('title')));
-			$description = trim(addslashes($this->input->post('description')));
-			$content = trim(addslashes($this->input->post('content')));
-			$note = trim(addslashes($this->input->post('note')));
-			$tags = trim(addslashes($this->input->post('tags')));
+			$title = htmlentities($this->input->post('title'),ENT_QUOTES);
+			$description = htmlentities($this->input->post('description'),ENT_QUOTES);
+			$content = htmlentities($this->input->post('content'),ENT_QUOTES);
+			$note = htmlentities($this->input->post('note'),ENT_QUOTES);
+			$tags = htmlentities($this->input->post('tags'),ENT_QUOTES);
 			$thumbnail = trim(addslashes($this->input->post('hidden_thumb_pages')));
 			$categories = $this->input->post('categories');
 			if (is_array($categories)) {

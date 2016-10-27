@@ -18,10 +18,10 @@ RewriteEngine on
 Options +FollowSymlinks 
 RewriteBase /fwtome
 
-ErrorDocument 404 /404.htm
-ErrorDocument 401 /404.htm
-ErrorDocument 403 /404.htm
-ErrorDocument 500 /404.htm
+#ErrorDocument 404 /404.htm
+#ErrorDocument 401 /404.htm
+#ErrorDocument 403 /404.htm
+#ErrorDocument 500 /404.htm
 
 
 RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)$ index.php?mod=$1&controller=$2&action=$3 [L,QSA]

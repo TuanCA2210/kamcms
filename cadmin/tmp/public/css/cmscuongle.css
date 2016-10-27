@@ -3399,7 +3399,6 @@ table > thead > tr > th:hover{
 .register-logo a {
   color: #fff;
 }
-.login-page,
 .register-page {
   background-image: url(../images/breadcrumb_bg3.jpg);
   background-size: cover;

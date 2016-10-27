@@ -6,7 +6,7 @@ define('DIR_ROOT',dirname(__FILE__).DIRECTORY_SEPARATOR);
 //define('DIR_CONFIG',DIR_ROOT.'config/');
 define('DIR_TMP',DIR_ROOT.'tmp/');
 define('DIR_LOG',DIR_ROOT.'logs/');
-define('DIR_THEME',DIR_ROOT.'themes/');
+define('DIR_THEME',DIR_TMP.'themes/');
 define('DIR_MODULES',DIR_ROOT.'modules/');
 define('DIR_APP',DIR_ROOT.'app/');
 define('DIR_PUBLIC',DIR_ROOT.'tmp/public/');

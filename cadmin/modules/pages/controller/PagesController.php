@@ -56,9 +56,9 @@ class PagesController extends Controller{
 	}
 	public function save(){
 		if (isset($_POST['submit'])) {
-			$title = trim(addslashes($this->input->post('title')));
-			$content = $this->input->post('content');
-			$note = trim(addslashes($this->input->post('note')));
+			$title = htmlentities($this->input->post('title'),ENT_QUOTES);
+			$content = htmlentities($this->input->post('content'),ENT_QUOTES);
+			$note = htmlentities($this->input->post('note'),ENT_QUOTES);
 			$thumbnail = trim(addslashes($this->input->post('hidden_thumb_pages')));
 			if (isset($_POST['show_contact_form'])) {
 				$show_contact_form = trim(addslashes($this->input->post('show_contact_form')));

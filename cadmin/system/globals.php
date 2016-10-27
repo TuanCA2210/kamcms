@@ -21,8 +21,9 @@ db_connect();
 $App = new App();
 $_web['modules'] = $App->get_modules();
 
-
-
+if (!in_array($_web['uri']['mod'], $_web['modules']) && !isset($_web['uri']['mod'])) {
+	$_web['uri']['mod'] = "home";
+}
 
 
 
@@ -45,21 +46,4 @@ if (isset($_web['lang'])) {
 $controller = new controller();
 $bootstraps = new bootstraps();
 
-
-
-/*echo "<pre>";
-print_r($controller);*/
-
-
-
-// kiểm tra url có tên module ko, nếu chưa có trong phần khai báo module thì đặt mặc định nó là home và truyền vào biến Global
-/*if(!in_array($_web['temp'], $_web['modules'])){
-	$_web['temp'] = $_web['mod'] = 'home';
-}*/
-
-
-
-// đưa teamplate vào biến global $_WEB
-//$_web['template'] = new system\Template();
-//$_web['template']->load();
 

@@ -34,6 +34,14 @@ RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9]+)$ index.
 RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)&s=([0-9a-zA-Z\_]+)$ index.php?mod=$1&controller=$2&action=$3&s=$4 [L,QSA]
 
 
+#mod / login / login / index
+RewriteRule ^login$ login/login/index [L,QSA]
+
+
+#ERROR 404
+RewriteRule ^404.htm$ home/home/notfound [L,QSA]
+
+
 #mod / controller / action / id / pagination
 RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)&page=([0-9]+)&total=([0-9]+)$ index.php?mod=$1&controller=$2&action=$3&page=$4&total=$5 [L,QSA]
 

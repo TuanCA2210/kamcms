@@ -33,6 +33,11 @@
             <i class="fa fa-bars" aria-hidden="true"></i> <span><?php echo lang('menu'); ?></span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo base_url().'banners/banners/index';?>">
+            <i class="fa fa-picture-o" aria-hidden="true"></i> <span><?php echo lang('banners'); ?></span>
+          </a>
+        </li>
         <!-- <li>
           <a href="#">
             <i class="fa fa-th"></i> <span><?php echo lang('widgets'); ?></span>
