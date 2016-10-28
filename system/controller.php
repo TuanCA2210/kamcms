@@ -20,31 +20,31 @@ class Controller{
 	}
 	public function loadModel($file, $mod = null) {
 		if ($mod === null) {
-			$path = DIR_MODULES . $this->mod . '/model/' . $file . '.php';
+			$path = DIR_MODULES . $this->mod . '/model/' . lcfirst($file) . '.php';
 			if (file_exists($path)) {
 				include_once $path;
 				$obj = new $file();
 				return $obj;
 			} else {
-				die('Không tồn tại file này' . $path);
+				die('Không tồn tại file này' . lcfirst($path));
 			}
 		} else {
-			$path = DIR_MODULES . $mod . '/model/' . $file . '.php';
+			$path = DIR_MODULES . $mod . '/model/' . lcfirst($file) . '.php';
 			if (file_exists($path)) {
 				include_once $path;
 				$obj = new $file();
 				return $obj;
 			} else {
-				die('Không tồn tại file này' . $path);
+				die('Không tồn tại file này' . lcfirst($path));
 			}
 		}
 	}
 	public function loadLibrary($file) {
-			$path = DIR_APP . 'libraries/' . $file . '.php';
+			$path = DIR_APP . 'libraries/' . lcfirst($file) . '.php';
 			if (file_exists($path)) {
 				include_once $path;
 			} else {
-				die('Không tồn tại file này' . $path);
+				die('Không tồn tại file này' . lcfirst($path));
 			}
 		
 	}
@@ -56,13 +56,13 @@ class Controller{
 		}
 	}
 	public function loadModelGlobals($file){
-		$path = DIR_MODULES . $file . '.php';
+		$path = DIR_MODULES . lcfirst($file) . '.php';
 		if (file_exists($path)) {
 			include_once $path;
 			$obj = new $file();
 			return $obj;
 		} else {
-			die('Không tồn tại file này' . $path);
+			die('Không tồn tại file này' . lcfirst($path));
 		}
 	}
 	public function getMenuGlobals(){
