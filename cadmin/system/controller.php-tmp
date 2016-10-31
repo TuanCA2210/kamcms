@@ -46,6 +46,15 @@ class Controller {
 		}
 
 	}
+	public function returnFiles($file) {
+		$path = DIR_APP.'google/'.lcfirst($file);
+		if (file_exists($path)) {
+			return $path;
+		} else {
+			die('Không tồn tại file này'.lcfirst($path));
+		}
+
+	}
 	public function isPost($key) {
 		if (isset($_POST[$key])) {
 			return true;

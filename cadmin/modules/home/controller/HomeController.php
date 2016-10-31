@@ -1,4 +1,11 @@
 <?php 
+use Widop\GoogleAnalytics\Query;
+use Widop\GoogleAnalytics\Client;
+use Widop\HttpAdapter\CurlHttpAdapter;
+use Widop\GoogleAnalytics\Service;
+
+
+
 class HomeController extends Controller{
 	public $modelNews;
 	//public $loadPages;
@@ -9,6 +16,89 @@ class HomeController extends Controller{
 	public function index(){
 		global $_web;
 		$this->view->data  = $this->modelNews->getUserById(1);
+
+
+		$profileId = 'ga:asiatoday';
+		$query = new Query($profileId);
+
+		$query->setStartDate(new \DateTime('-2months'));
+		$query->setEndDate(new \DateTime());
+
+		// See https://developers.google.com/analytics/devguides/reporting/core/dimsmets
+		$query->setMetrics(array('ga:visits' ,'ga:bounces'));
+		$query->setDimensions(array('ga:browser', 'ga:city'));
+
+		// See https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort
+		$query->setSorts(array('ga:country', 'ga:browser'));
+
+		// See https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters
+		$query->setFilters(array('ga:browser=~^Firefox'));
+
+		// See https://developers.google.com/analytics/devguides/reporting/core/v3/reference#segment
+		$query->setSegment('gaid::10');
+
+		// Default values :)
+		$query->setStartIndex(1);
+		$query->setMaxResults(10000);
+		$query->setPrettyPrint(false);
+		$query->setCallback(null);
+
+
+
+
+		$clientId = '601812918181-2e5ab94vq34t5v41a6f8bakv31a7gv01.apps.googleusercontent.com';
+		$privateKeyFile = $this->returnFiles("kamcms-aceea14bc8f4.p12");
+		$httpAdapter = new CurlHttpAdapter();
+
+		$client = new Client($clientId, $privateKeyFile, $httpAdapter);
+		$token = $client->getAccessToken();
+
+
+
+
+		$service = new Service($client);
+		$response = $service->query($query);
+
+
+
+		$profileInfo = $response->getProfileInfo();
+		$kind = $response->getKind();
+		$id = $response->getId();
+		$query = $response->getQuery();
+		$selfLink = $response->getSelfLink();
+		$previousLink = $response->getPreviousLink();
+		$nextLink = $response->getNextLink();
+		$startIndex = $response->getStartIndex();
+		$itemsPerPage = $response->getItemsPerPage();
+		$totalResults = $response->getTotalResults();
+		$containsSampledData = $response->containsSampledData();
+		$columnHeaders = $response->getColumnHeaders();
+		$totalForAllResults = $response->getTotalsForAllResults();
+		$hasRows = $response->hasRows();
+		$rows = $response->getRows();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		
 
