@@ -226,6 +226,20 @@ $_L['typing_new_name']   			=  'Nhập vào tên mới...';
 $_L['title_notfound']           = 'Trang không tồn tại';
 $_L['description_notfound']     = 'Rất tiếc ! Trang bạn tìm kiếm không tồn tại trên hệ thống.';
 //thanh vien
-$_L['login']             = 'Đăng nhập';
-$_L['regis']             = 'Đăng ký';
-$_L['logout']            = 'Thoát';
+$_L['login']             		= 'Đăng nhập';
+$_L['regis']             		= 'Đăng ký';
+$_L['logout']            		= 'Thoát';
+
+
+
+
+
+
+
+
+// chart 
+$_L['statistics_month']            = 'Thống kê truy cập trong tháng';
+$_L['time']            			   = 'Thời gian';
+$_L['guest']            		   = 'Khách';
+$_L['pageview']            		   = 'Lượt xem trang';
+$_L['inmonth']            		   = '(30 ngày trước)';

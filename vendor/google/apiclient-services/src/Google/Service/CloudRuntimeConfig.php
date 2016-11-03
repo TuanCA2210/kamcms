@@ -71,10 +71,6 @@ class Google_Service_CloudRuntimeConfig extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'requestId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
               ),
             ),'delete' => array(
               'path' => 'v1beta1/{+name}',
@@ -163,10 +159,6 @@ class Google_Service_CloudRuntimeConfig extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'requestId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
               ),
             ),'delete' => array(
               'path' => 'v1beta1/{+name}',
@@ -252,10 +244,6 @@ class Google_Service_CloudRuntimeConfig extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'requestId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),'delete' => array(

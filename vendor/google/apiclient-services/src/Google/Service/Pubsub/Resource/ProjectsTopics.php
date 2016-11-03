@@ -75,12 +75,14 @@ class Google_Service_Pubsub_Resource_ProjectsTopics extends Google_Service_Resou
     return $this->call('get', array($params), "Google_Service_Pubsub_Topic");
   }
   /**
-   * Gets the access control policy for a resource. Returns an empty policy if the
-   * resource exists and does not have a policy set. (topics.getIamPolicy)
+   * Gets the access control policy for a `resource`. Returns an empty policy if
+   * the resource exists and does not have a policy set. (topics.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * requested. `resource` is usually specified as a path, such as
+   * `projectsprojectzoneszonedisksdisk*`. The format for the path specified in
+   * this value is resource specific and is specified in the `getIamPolicy`
+   * documentation.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Pubsub_Policy
    */
@@ -130,8 +132,10 @@ class Google_Service_Pubsub_Resource_ProjectsTopics extends Google_Service_Resou
    * existing policy. (topics.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * specified. `resource` is usually specified as a path, such as
+   * `projectsprojectzoneszonedisksdisk*`. The format for the path specified in
+   * this value is resource specific and is specified in the `setIamPolicy`
+   * documentation.
    * @param Google_Service_Pubsub_SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Pubsub_Policy
@@ -147,8 +151,10 @@ class Google_Service_Pubsub_Resource_ProjectsTopics extends Google_Service_Resou
    * (topics.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. `resource` is usually specified as a path. For example, a
-   * Project resource is specified as `projects/{project}`.
+   * being requested. `resource` is usually specified as a path, such as
+   * `projectsprojectzoneszonedisksdisk*`. The format for the path specified in
+   * this value is resource specific and is specified in the `testIamPermissions`
+   * documentation.
    * @param Google_Service_Pubsub_TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Pubsub_TestIamPermissionsResponse

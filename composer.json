@@ -17,7 +17,7 @@
 	},
 	"require": {
 		"php": ">=5.6",
-		"widop/google-analytics": "*"
+		"google/apiclient":"^2.0"
 	}
 	
 }

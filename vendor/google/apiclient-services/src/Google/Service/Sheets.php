@@ -157,16 +157,6 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                 ),
               ),
-            ),'batchClear' => array(
-              'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchClear',
-              'httpMethod' => 'POST',
-              'parameters' => array(
-                'spreadsheetId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'batchGet' => array(
               'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchGet',
               'httpMethod' => 'GET',
@@ -199,21 +189,6 @@ class Google_Service_Sheets extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(
                 'spreadsheetId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'clear' => array(
-              'path' => 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear',
-              'httpMethod' => 'POST',
-              'parameters' => array(
-                'spreadsheetId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'range' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

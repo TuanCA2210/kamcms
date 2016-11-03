@@ -25,7 +25,6 @@ class Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyUploadAccountReq
   public $saltSeparator;
   public $sanityCheck;
   public $signerKey;
-  public $targetProjectId;
   protected $usersType = 'Google_Service_IdentityToolkit_UserInfo';
   protected $usersDataType = 'array';
 
@@ -84,14 +83,6 @@ class Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyUploadAccountReq
   public function getSignerKey()
   {
     return $this->signerKey;
-  }
-  public function setTargetProjectId($targetProjectId)
-  {
-    $this->targetProjectId = $targetProjectId;
-  }
-  public function getTargetProjectId()
-  {
-    return $this->targetProjectId;
   }
   public function setUsers($users)
   {

@@ -46,6 +46,7 @@ class LoginController extends Controller{
 	public function logout(){
 		$data = array('id','email','username','group_id');
 		Session::destroy($data);
+		session_unset();
 		redirect(base_url());
 	}
 	

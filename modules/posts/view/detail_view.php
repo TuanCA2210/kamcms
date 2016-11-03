@@ -26,7 +26,7 @@
         <hr>
 
         <!-- Post Content -->
-        <p class="lead"><?php echo $this->data['data_posts']['content']?></p>
+        <p class="lead"><?php echo html_entity_decode($this->data['data_posts']['content']);?></p>
         
 
         <hr>

@@ -174,3 +174,10 @@ $_L['description_notfound'] = 'Sorry ! The page you are looking for does not exi
 $_L['login']  = 'Login';
 $_L['regis']  = 'Register';
 $_L['logout'] = 'Logout';
+
+// chart
+$_L['statistics_month'] = 'Access statistics for the month';
+$_L['time']             = 'Time';
+$_L['guest']            = 'Guest';
+$_L['pageview']         = 'Pageview';
+$_L['inmonth']          = '(30 days ago)';

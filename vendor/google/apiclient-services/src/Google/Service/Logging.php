@@ -19,7 +19,7 @@
  * Service definition for Logging (v2beta1).
  *
  * <p>
- * Writes log entries and manages your Stackdriver Logging configuration.</p>
+ * Writes log entries and manages your logs, log sinks, and logs-based metrics.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -46,10 +46,8 @@ class Google_Service_Logging extends Google_Service
   const LOGGING_WRITE =
       "https://www.googleapis.com/auth/logging.write";
 
-  public $billingAccounts_logs;
   public $entries;
   public $monitoredResourceDescriptors;
-  public $organizations_logs;
   public $projects_logs;
   public $projects_metrics;
   public $projects_sinks;
@@ -67,26 +65,6 @@ class Google_Service_Logging extends Google_Service
     $this->version = 'v2beta1';
     $this->serviceName = 'logging';
 
-    $this->billingAccounts_logs = new Google_Service_Logging_Resource_BillingAccountsLogs(
-        $this,
-        $this->serviceName,
-        'logs',
-        array(
-          'methods' => array(
-            'delete' => array(
-              'path' => 'v2beta1/{+logName}',
-              'httpMethod' => 'DELETE',
-              'parameters' => array(
-                'logName' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),
-          )
-        )
-    );
     $this->entries = new Google_Service_Logging_Resource_Entries(
         $this,
         $this->serviceName,
@@ -128,26 +106,6 @@ class Google_Service_Logging extends Google_Service
           )
         )
     );
-    $this->organizations_logs = new Google_Service_Logging_Resource_OrganizationsLogs(
-        $this,
-        $this->serviceName,
-        'logs',
-        array(
-          'methods' => array(
-            'delete' => array(
-              'path' => 'v2beta1/{+logName}',
-              'httpMethod' => 'DELETE',
-              'parameters' => array(
-                'logName' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),
-          )
-        )
-    );
     $this->projects_logs = new Google_Service_Logging_Resource_ProjectsLogs(
         $this,
         $this->serviceName,
@@ -175,10 +133,10 @@ class Google_Service_Logging extends Google_Service
         array(
           'methods' => array(
             'create' => array(
-              'path' => 'v2beta1/{+parent}/metrics',
+              'path' => 'v2beta1/{+projectName}/metrics',
               'httpMethod' => 'POST',
               'parameters' => array(
-                'parent' => array(
+                'projectName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -205,21 +163,21 @@ class Google_Service_Logging extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v2beta1/{+parent}/metrics',
+              'path' => 'v2beta1/{+projectName}/metrics',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'parent' => array(
+                'projectName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'update' => array(
@@ -243,10 +201,10 @@ class Google_Service_Logging extends Google_Service
         array(
           'methods' => array(
             'create' => array(
-              'path' => 'v2beta1/{+parent}/sinks',
+              'path' => 'v2beta1/{+projectName}/sinks',
               'httpMethod' => 'POST',
               'parameters' => array(
-                'parent' => array(
+                'projectName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -273,21 +231,21 @@ class Google_Service_Logging extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v2beta1/{+parent}/sinks',
+              'path' => 'v2beta1/{+projectName}/sinks',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'parent' => array(
+                'projectName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'update' => array(

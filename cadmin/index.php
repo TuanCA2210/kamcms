@@ -1,6 +1,6 @@
 <?php 
 session_start();
-date_default_timezone_set('Asia/Ho_Chi_Minh');	
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 require_once "system/debug.php";
 require_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."vendor/autoload.php";
 define('DIR_ROOT',dirname(__FILE__).DIRECTORY_SEPARATOR);

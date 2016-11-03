@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Widop\\HttpAdapter' => array($vendorDir . '/widop/http-adapter/src'),
-    'Widop\\GoogleAnalytics' => array($vendorDir . '/widop/google-analytics/src'),
+    'Google_Service_' => array($vendorDir . '/google/apiclient-services/src'),
+    'Google_' => array($vendorDir . '/google/apiclient/src'),
 );

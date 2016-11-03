@@ -235,6 +235,16 @@ $_L['typing_new_name']   		=  'Typing new name...';
 $_L['title_notfound']           = 'Page does not exist';
 $_L['description_notfound']     = 'Sorry ! The page you are looking for does not exist on the system.';
 //thanh vien
-$_L['login']             = 'Login';
-$_L['regis']             = 'Register';
-$_L['logout']            = 'Logout';
+$_L['login']             		= 'Login';
+$_L['regis']            		= 'Register';
+$_L['logout']            		= 'Logout';
+
+
+
+
+// chart 
+$_L['statistics_month']         = 'Access statistics for the month';
+$_L['time']            			= 'Time';
+$_L['guest']            		= 'Guest';
+$_L['pageview']            		= 'Pageview';
+$_L['inmonth']            		= '(30 days ago)';

@@ -173,6 +173,40 @@ function dequy($data,$parent=0,$text=0,$cate=array()){
 }
 
 
+function slowerDateAnalytics($str){
+    $strlen = strlen(trim($str));
+    for( $i = 0; $i <= $strlen; $i++ ) {
+        $array[] = substr($str,$i,1);
+        // $char contains the current character, so do your processing here
+    }
+    $formatDay ="";
+    $formatHour="";
+    foreach ($array as $key => $value) {
+        switch ($key) {
+            case 3:
+                $formatDay .= $value."-";
+                break;
+            case 5:
+                $formatDay .= $value."-";
+                break;
+            case 8:
+                $formatHour .= $value;
+                break;
+            case 9:
+                $formatHour .= $value;
+                break;
+            case 10:
+                $formatHour .= $value;
+                break;
+            default:
+                $formatDay .= $value;
+                break;
+        }
+    }
+    return $formatHour. "h - " . date("d/m/Y", strtotime($formatDay));
+} 
+
+
 
 /*function __autoload($class){
 		$paths = explode(PATH_SEPARATOR, get_include_path());

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2016 at 12:01 PM
+-- Generation Time: Nov 03, 2016 at 11:04 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -19,6 +19,39 @@ SET time_zone = "+00:00";
 --
 -- Database: `core_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_banner_images`
+--
+
+CREATE TABLE `en_banner_images` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(255) DEFAULT '',
+  `images` varchar(255) DEFAULT NULL,
+  `note` text,
+  `create_time` varchar(255) DEFAULT NULL,
+  `update_time` varchar(255) DEFAULT NULL,
+  `author_create` int(10) DEFAULT NULL,
+  `author_update` int(10) DEFAULT NULL,
+  `sort` tinyint(4) UNSIGNED DEFAULT '0',
+  `status` tinyint(4) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `en_banner_images`
+--
+
+INSERT INTO `en_banner_images` (`id`, `title`, `alias`, `description`, `link`, `images`, `note`, `create_time`, `update_time`, `author_create`, `author_update`, `sort`, `status`) VALUES
+(18, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																												 Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																																					', '#', '', NULL, '1463451184', NULL, 23, NULL, 3, 1),
+(27, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																												Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																																									', '#', '', NULL, '1463641029', NULL, 23, NULL, 6, 1),
+(28, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																												Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																																					', '#', '', NULL, '1463641185', NULL, 23, NULL, 7, 1),
+(29, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																	Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																										', '#', '', NULL, '1463642269', NULL, 23, NULL, 0, 1),
+(30, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																	Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																										', '#', '', NULL, '1465958007', NULL, 23, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -254,13 +287,6 @@ CREATE TABLE `online` (
   `time` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `online`
---
-
-INSERT INTO `online` (`id`, `ip`, `url`, `time`) VALUES
-(2, '192.168.226.2', '/php_lab2/useronline.php', 1470848496);
-
 -- --------------------------------------------------------
 
 --
@@ -304,6 +330,38 @@ INSERT INTO `user` (`id`, `avatar`, `firstname`, `lastname`, `username`, `email`
 (32, 'thumb.png', 'ggg', 'hhhh', 'bolexx', 'fsdfsdf@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 1, NULL, 1, '1474871739', '', 0),
 (33, 'thumb.png', 'cuong', 'le', 'cuongttt@gmail', 'cuosdfev@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 1, NULL, 1, '1474871768', '', 0),
 (35, 'thumb.png', 'Boott', 'le', 'botttt', 'fddd@gmail.com', '314567463f70c39ce083523b8530db8f', '701 CT1 Skylight 125D Minh Khai', NULL, '', 0, '', '', '', '', '', '', '', 0, NULL, 1, '1474871861', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vi_banner_images`
+--
+
+CREATE TABLE `vi_banner_images` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(255) DEFAULT '',
+  `images` varchar(255) DEFAULT NULL,
+  `note` text,
+  `create_time` varchar(255) DEFAULT NULL,
+  `update_time` varchar(255) DEFAULT NULL,
+  `author_create` int(10) DEFAULT NULL,
+  `author_update` int(10) DEFAULT NULL,
+  `sort` tinyint(4) UNSIGNED DEFAULT '0',
+  `status` tinyint(4) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vi_banner_images`
+--
+
+INSERT INTO `vi_banner_images` (`id`, `title`, `alias`, `description`, `link`, `images`, `note`, `create_time`, `update_time`, `author_create`, `author_update`, `sort`, `status`) VALUES
+(18, 'Mua b&igrave;nh n&oacute;ng lạnh', 'mua-b-igrave-nh-n-oacute-ng-lanh', '			                        				                        				                        				                        																																									Offline SEO 2016: Lột trần vũ kh&iacute; b&iacute; mật SEO 2016 																																																								                        			                        			                        			                        ', '#', 'chovui.png', '			                        				                        	OK                      				                        				                        			                        			                        			                        ', '1463451184', '1477543745', 23, 23, 3, 1),
+(27, 'Khuyến m&atilde;i', 'khuyen-m-atilde-i', '			                        				                        				                        				                        				                        																																									Offline SEO 2016: Lột trần vũ kh&iacute; b&iacute; mật SEO 2016 																																																								                        			                        			                        			                        			                        ', '#', 'huhu.jpg', '			                        				                        				                        	OK                      				                        				                        			                        			                        			                        			                        ', '1463641029', '1477543775', 23, 23, 6, 1),
+(28, 'Bộ d&acirc;y c&aacute;p nước', 'bo-d-acirc-y-c-aacute-p-nuoc', '			                        				                        				                        				                        																																									Offline SEO 2016: Lột trần vũ kh&iacute; b&iacute; mật SEO 2016 																																																								                        			                        			                        			                        ', '#', 'huhu.jpg', '			                        				                        	OK                      				                        				                        			                        			                        			                        ', '1463641185', '1477543835', 23, 23, 7, 1),
+(29, 'Mua b&igrave;nh n&oacute;ng lạnh', 'mua-b-igrave-nh-n-oacute-ng-lanh', '			                        				                        				                        																																									Offline SEO 2016: Lột trần vũ kh&iacute; b&iacute; mật SEO 2016 																																																								                        			                        			                        ', '#', 'chovui.png', '			                        	OK                      				                        				                        			                        			                        ', '1463642269', '1477543586', 23, 23, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -367,7 +425,8 @@ CREATE TABLE `vi_comments_posts` (
 --
 
 INSERT INTO `vi_comments_posts` (`id`, `username`, `email`, `content`, `post_id`, `create_time`, `status`) VALUES
-(6, 'botble', 'cuongle.dev@gmail.com', '', 1, '1476946434', 0);
+(15, 'cuongle.dev', 'cuongle.dev@gmail.com', 'Hay lắm.', 1, '1477389955', 1),
+(16, 'Lê Ngọc Cường', 'cuongleon630@gmail.com', 'Bài viết hay không chê vào đâu được.', 1, '1477390076', 1);
 
 -- --------------------------------------------------------
 
@@ -485,7 +544,7 @@ CREATE TABLE `vi_posts` (
 --
 
 INSERT INTO `vi_posts` (`id`, `title`, `alias`, `description`, `content`, `cate_id`, `thumbnail`, `tags`, `note`, `author_create`, `author_update`, `status`, `create_time`, `update_time`) VALUES
-(1, 'bai vet 1', 'bai-viet-1', 'sdfsdf', 'dfgdgdffg', '1', NULL, NULL, NULL, 23, NULL, 1, NULL, NULL),
+(1, 'Vụ thu tiền hỗ trợ lũ lụt: Trưởng th&ocirc;n &quot;buồn, mất ngủ cả đ&ecirc;m&quot; &lt;script&gt;alert(234)&lt;/script&gt;', 'vu-thu-tien-ho-tro-lu-lut-truong-th-ocirc-n-quot-buon-mat-ngu-ca-d-ecirc-m-quot-lt-script-gt-alert-234-lt-script-gt', 'Trưởng thôn Trung Thôn, nơi xảy ra việc thu tiền hỗ trợ lũ lụt của người dân, khẳng định việc làm đó không vì mục đích tư lợi và cảm thấy buồn, mất ngủ cả đêm.', '&lt;h2&gt;Trưởng th&amp;ocirc;n Trung Th&amp;ocirc;n, nơi xảy ra việc thu tiền hỗ trợ lũ lụt của người d&amp;acirc;n, khẳng định việc l&amp;agrave;m đ&amp;oacute; kh&amp;ocirc;ng v&amp;igrave; mục đ&amp;iacute;ch tư lợi v&amp;agrave; cảm thấy buồn, mất ngủ cả đ&amp;ecirc;m.&lt;/h2&gt;\r\n\r\n&lt;p&gt;&lt;a href=&quot;http://kenh14cdn.com/2016/photo-1-1477470149753.jpg&quot; rel=&quot;img-lightbox&quot; target=&quot;_blank&quot; title=&quot;C&aacute;c c&aacute;n bộ th&ocirc;n l&agrave; người rất vất vả để gi&uacute;p c&aacute;c đo&agrave;n cứu trợ về với b&agrave; con&quot;&gt;&lt;img alt=&quot;Vụ thu tiền hỗ trợ lũ lụt: Trưởng th&ocirc;n buồn, mất ngủ cả đ&ecirc;m - Ảnh 1.&quot; id=&quot;img_5be4b720-9b55-11e6-b939-01b8b69b7923&quot; src=&quot;http://kenh14cdn.com/thumb_w/650/2016/photo-1-1477470149753.jpg&quot; title=&quot;Vụ thu tiền hỗ trợ lũ lụt: Trưởng th&ocirc;n buồn, mất ngủ cả đ&ecirc;m - Ảnh 1.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;C&amp;aacute;c c&amp;aacute;n bộ th&amp;ocirc;n l&amp;agrave; người rất vất vả để gi&amp;uacute;p c&amp;aacute;c đo&amp;agrave;n cứu trợ về với b&amp;agrave; con&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;&amp;quot;T&amp;ocirc;i đ&amp;atilde; đi xin lỗi b&amp;agrave; con nhưng vẫn rất buồn&amp;quot;&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Ng&amp;agrave;y 26/10, một ng&amp;agrave;y sau sự việc th&amp;ocirc;n Trung Th&amp;ocirc;n (x&amp;atilde; Quảng Trung, Thị x&amp;atilde; Ba Đồn, tỉnh Quảng B&amp;igrave;nh) bị phản &amp;aacute;nh thu tiền hỗ trợ lũ lụt g&amp;acirc;y x&amp;ocirc;n xao dư luận th&amp;igrave; c&amp;aacute;c c&amp;aacute;n bộ ở đ&amp;acirc;y vẫn đang tiếp tục tiếp nhận v&amp;agrave; ph&amp;acirc;n phối h&amp;agrave;ng cứu trợ đến người d&amp;acirc;n.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;Ocirc;ng L&amp;ecirc; Hồng Qu&amp;acirc;n, Trưởng th&amp;ocirc;n Trung Th&amp;ocirc;n, cho hay trong buổi s&amp;aacute;ng c&amp;ugrave;ng ng&amp;agrave;y đ&amp;atilde; tổ chức họp người d&amp;acirc;n trong th&amp;ocirc;n để xin &amp;yacute; kiến về việc ph&amp;acirc;n phối h&amp;agrave;ng cứu trợ cho những đợt tới.&lt;/p&gt;\r\n\r\n&lt;p&gt;Tất cả b&amp;agrave; con đều th&amp;ocirc;ng cảm cho việc l&amp;agrave;m của th&amp;ocirc;n. Người d&amp;acirc;n cũng nhất tr&amp;iacute; c&amp;aacute;c đợt h&amp;agrave;ng tới sẽ ph&amp;acirc;n chia đều, v&amp;igrave; ai cũng bị thiệt hại.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;&lt;em&gt;N&amp;oacute;i thật l&amp;agrave; c&amp;aacute;c đo&amp;agrave;n cứu trợ về anh em c&amp;aacute;n bộ th&amp;ocirc;n ch&amp;uacute;ng t&amp;ocirc;i cũng rất vất vả, chạy li&amp;ecirc;n tục để lo cho b&amp;agrave; con&lt;/em&gt;&amp;quot;, &amp;ocirc;ng Qu&amp;acirc;n chia sẻ.&lt;/p&gt;\r\n\r\n&lt;p&gt;N&amp;oacute;i về sự việc g&amp;acirc;y phẫn nộ dư luận vừa qua, &amp;ocirc;ng Qu&amp;acirc;n khẳng định rằng, việc c&amp;aacute;n bộ th&amp;ocirc;n đi thu lại tiền của c&amp;aacute;c hộ d&amp;acirc;n được 1 đo&amp;agrave;n từ thiện trao tặng l&amp;agrave; để đảm bảo c&amp;ocirc;ng bằng cho c&amp;aacute;c hộ d&amp;acirc;n c&amp;oacute; phần qu&amp;agrave; &amp;iacute;t hơn.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;&lt;em&gt;Ch&amp;uacute;ng t&amp;ocirc;i chỉ muốn điều tiết lại cho c&amp;ocirc;ng bằng. Ch&amp;uacute;ng t&amp;ocirc;i kh&amp;ocirc;ng c&amp;oacute; 1 ch&amp;uacute;t vụ lợi n&amp;agrave;o trong đ&amp;oacute;.&amp;nbsp;Ch&amp;uacute;ng t&amp;ocirc;i th&amp;ocirc;ng qua c&amp;aacute;c ban, mặt trận th&amp;ocirc;n, qua tập thể chứ kh&amp;ocirc;ng phải do 1 c&amp;aacute; nh&amp;acirc;n n&amp;agrave;o quyết định cả.&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;C&amp;aacute;i sai của ch&amp;uacute;ng t&amp;ocirc;i l&amp;agrave; chưa th&amp;ocirc;ng qua b&amp;agrave; con m&amp;agrave; chỉ mới th&amp;ocirc;ng qua ban c&amp;ocirc;ng t&amp;aacute;c mặt trận.&amp;nbsp;Một phần l&amp;yacute; do l&amp;agrave; h&amp;agrave;ng cứu trợ về gấp qu&amp;aacute; n&amp;ecirc;n kh&amp;ocirc;ng c&amp;oacute; thời gian rảnh để b&amp;agrave;n với b&amp;agrave; con.&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;T&amp;ocirc;i khẳng định lần nữa l&amp;agrave; kh&amp;ocirc;ng c&amp;oacute; tư lợi g&amp;igrave; cả m&amp;agrave; chỉ muốn điều tiết c&amp;aacute;c phần qu&amp;agrave; cho c&amp;ocirc;ng bằng.&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;C&amp;aacute;c hộ d&amp;acirc;n n&amp;agrave;y cũng đ&amp;atilde; được ưu ti&amp;ecirc;n nhận hỗ trợ từ c&amp;aacute;c đo&amp;agrave;n trước rồi&lt;/em&gt;&amp;quot;, &amp;ocirc;ng Qu&amp;acirc;n chia sẻ.&lt;/p&gt;\r\n\r\n&lt;p&gt;Theo &amp;ocirc;ng Qu&amp;acirc;n, ngay khi dư luận phản ứng th&amp;igrave; c&amp;aacute;c c&amp;aacute;n bộ đ&amp;atilde; đ&amp;iacute;ch th&amp;acirc;n tới nh&amp;agrave; trả lại số tiền đ&amp;atilde; thu v&amp;agrave; xin lỗi người d&amp;acirc;n. Tuy nhi&amp;ecirc;n, &amp;ocirc;ng Qu&amp;acirc;n v&amp;agrave; c&amp;aacute;c c&amp;aacute;n bộ kh&amp;aacute;c đều cảm thấy buồn.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;&lt;em&gt;Từ h&amp;ocirc;m qua đến giờ, t&amp;ocirc;i cảm thấy buồn, buồn rất nhiều, mất ngủ cả đ&amp;ecirc;m. T&amp;ocirc;i đ&amp;atilde; đi xin lỗi b&amp;agrave; con nhưng vẫn rất buồn v&amp;igrave; b&amp;agrave; con kh&amp;ocirc;ng hiểu cho việc l&amp;agrave;m của ch&amp;uacute;ng t&amp;ocirc;i.&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;Người d&amp;acirc;n phản ứng như vậy khiến b&amp;acirc;y giờ anh em ch&amp;uacute;ng t&amp;ocirc;i l&amp;agrave;m việc cũng kh&amp;ocirc;ng được thoải m&amp;aacute;i. Một số c&amp;aacute;n bộ th&amp;ocirc;n sau sự việc về ốm lu&amp;ocirc;n&lt;/em&gt;&amp;quot;, &amp;ocirc;ng Qu&amp;acirc;n t&amp;acirc;m sự.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Chưa vội xử l&amp;yacute; vụ việc&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;Ocirc;ng Phạm Nguy&amp;ecirc;n Tố, B&amp;iacute; thư x&amp;atilde; Quảng Trung (thị x&amp;atilde; Ba Đồn, tỉnh Quảng B&amp;igrave;nh), cho biết th&amp;ocirc;n Trung Th&amp;ocirc;n đ&amp;atilde; trả lại to&amp;agrave;n bộ số tiền cho người d&amp;acirc;n. C&amp;aacute;n bộ th&amp;ocirc;n cũng đ&amp;atilde; xin lỗi b&amp;agrave; con.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;&lt;em&gt;C&amp;aacute;n bộ th&amp;ocirc;n thu lại tiền l&amp;agrave; sai. Tuy nhi&amp;ecirc;n, c&amp;aacute;c c&amp;aacute;n bộ n&amp;agrave;y thu tiền lại để san sẻ cho c&amp;aacute;c hộ d&amp;acirc;n kh&amp;aacute;c trong th&amp;ocirc;n chưa c&amp;oacute;. Việc l&amp;agrave;m n&amp;agrave;y l&amp;agrave; sai khi chưa được người d&amp;acirc;n th&amp;ocirc;ng qua.&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;em&gt;L&amp;yacute; do người d&amp;acirc;n phản ứng l&amp;agrave; c&amp;aacute;n bộ th&amp;ocirc;n cũng chưa họp d&amp;acirc;n để b&amp;agrave;n bạc xem c&amp;oacute; thống nhất với phương &amp;aacute;n n&amp;agrave;y hay kh&amp;ocirc;ng m&amp;agrave; đ&amp;atilde; tự &amp;yacute; thực hiện&lt;/em&gt;&amp;quot;, &amp;ocirc;ng Tố nhận định.&lt;/p&gt;\r\n\r\n&lt;p&gt;Theo &amp;ocirc;ng Tố, người d&amp;acirc;n hiểu lầm rằng c&amp;aacute;n bộ th&amp;ocirc;n thu lại tiền để bỏ t&amp;uacute;i cho c&amp;aacute; nh&amp;acirc;n c&amp;aacute;n bộ n&amp;ecirc;n phản ứng v&amp;agrave; bức x&amp;uacute;c.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;&lt;em&gt;Nếu giả sử th&amp;ocirc;n đ&amp;atilde; tổ chức họp d&amp;acirc;n trước để b&amp;agrave;n bạc thực hiện việc n&amp;agrave;y, lấy &amp;yacute; kiến người d&amp;acirc;n trước th&amp;igrave; b&amp;agrave; con sẽ kh&amp;ocirc;ng phản ứng.&amp;nbsp;&lt;/em&gt;&lt;em&gt;Vấn đề quan trọng nhất đ&amp;atilde; khắc phục. X&amp;atilde; cũng đ&amp;atilde; tổ chức họp v&amp;agrave; kiểm điểm c&amp;aacute;n bộ th&amp;ocirc;n Trung&lt;/em&gt;&amp;nbsp;&lt;em&gt;Th&amp;ocirc;n&lt;/em&gt;&amp;quot;, &amp;ocirc;ng Tố cho hay.&lt;/p&gt;\r\n\r\n&lt;p&gt;B&amp;iacute; thư x&amp;atilde; Quảng Trung cũng cho biết đ&amp;atilde; tổ chức họp với c&amp;aacute;n bộ c&amp;aacute;c th&amp;ocirc;n để r&amp;uacute;t kinh nghiệm việc tiếp nhận cứu trợ, ph&amp;acirc;n phối h&amp;agrave;ng của c&amp;aacute;c đo&amp;agrave;n từ thiện cho thật chu đ&amp;aacute;o, c&amp;ocirc;ng bằng với tất cả người d&amp;acirc;n.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;Ocirc;ng Tố cho biết, trước mắt chỉ kiểm điểm c&amp;aacute;n bộ th&amp;ocirc;n Trung Th&amp;ocirc;n. Sau n&amp;agrave;y x&amp;atilde; sẽ r&amp;agrave; so&amp;aacute;t lại để n&amp;oacute;i r&amp;otilde; với d&amp;acirc;n. B&amp;acirc;y giờ, x&amp;atilde; đang tập trung tiếp nhận v&amp;agrave; ph&amp;acirc;n phối h&amp;agrave;ng cứu trợ để hỗ trợ cho b&amp;agrave; con.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;&lt;em&gt;C&amp;aacute;n bộ ở th&amp;ocirc;n, ở cơ sở rất kh&amp;oacute; khăn. Việc bầu trưởng th&amp;ocirc;n cũng kh&amp;oacute;, rất &amp;iacute;t người muốn l&amp;agrave;m hay tham gia c&amp;aacute;n bộ th&amp;ocirc;n. Họ l&amp;agrave;m v&amp;igrave; nhiệt t&amp;igrave;nh, gi&amp;uacute;p đỡ b&amp;agrave; con chứ tiền lương cũng chỉ vừa đủ tiền xăng xe&lt;/em&gt;&amp;quot;, &amp;ocirc;ng Tố chia sẻ.&lt;/p&gt;\r\n', ',3,', '', '', '', 23, 23, 1, NULL, '1477472589'),
 (2, 'Bài viết số 2', 'bai-viet-so-2', 'hay lắm', '<p><strong>Note:</strong>&nbsp;The implode() function accept its parameters in either order. However, for consistency with&nbsp;<a href=\\"http://www.w3schools.com/php/func_string_explode.asp\\">explode()</a>, you should use the documented order of arguments.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;The separator parameter of implode() is optional. However, it is recommended to always use two parameters for backwards compatibility.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;This function is binary-safe.</p>', ',3,', 'dt2_1.png', 'note,hay,tu,te', '', 23, NULL, 1, '1475204145', NULL),
 (3, 'Bài viết số 345', 'bai-viet-so-345', 'hay hay', '<p><strong>Note:</strong>&nbsp;The implode() function accept its parameters in either order. However, for consistency with&nbsp;<a href=\\"\\\\\\">explode()</a>, you should use the documented order of arguments.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;The separator parameter of implode() is optional. However, it is recommended to always use two parameters for backwards compatibility.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;This function is binary-safe.</p>', ',2,3,4,', 'dt3.png', 'hay,tuyệt', '', 23, 23, 1, '1475204188', '1475207689'),
 (4, 'dfgdfg', 'dfgdfg', 'dfgdfg', '', ',1,', '', '', '', 23, NULL, 1, '1476248427', NULL);
@@ -514,8 +573,7 @@ INSERT INTO `web_contacts` (`id`, `name`, `phone`, `email`, `content`, `create_t
 (1, 'Lê Ngọc Cường1', '0981700268', 'cuongle.dev1@gmail.com', 'dsđssddsdsds', '1476508309', 1),
 (2, 'Lê Ngọc Cường2', '0981700268', 'cuongle.dev2@gmail.com', 'dđ', '1476512130', 1),
 (3, 'Lê Ngọc Cường3', '0981700268', 'cuongleon630@gmail.com', 'dddddddd', '1476512190', 1),
-(8, 'Lê Ngọc Cường8', '0981700268', 'cuongle.dev8@gmail.com', 'hghjh', '1476512947', 0),
-(12, 'Cường', '0987654321', 'cuosdfev@gmail.com', 'Hey!\r\nXin chào bạn.\r\nTôi muốn hỏi bạn 1 số câu.', '1476679659', 1);
+(8, 'Lê Ngọc Cường8', '0981700268', 'cuongle.dev8@gmail.com', 'hghjh', '1476512947', 0);
 
 -- --------------------------------------------------------
 
@@ -587,6 +645,12 @@ INSERT INTO `web_settings` (`id`, `name`, `logo`, `slogan`, `icon`, `phone`, `ho
 --
 
 --
+-- Indexes for table `en_banner_images`
+--
+ALTER TABLE `en_banner_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `en_categories_posts`
 --
 ALTER TABLE `en_categories_posts`
@@ -644,6 +708,12 @@ ALTER TABLE `online`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vi_banner_images`
+--
+ALTER TABLE `vi_banner_images`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -705,6 +775,11 @@ ALTER TABLE `web_settings`
 --
 
 --
+-- AUTO_INCREMENT for table `en_banner_images`
+--
+ALTER TABLE `en_banner_images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
 -- AUTO_INCREMENT for table `en_categories_posts`
 --
 ALTER TABLE `en_categories_posts`
@@ -748,12 +823,17 @@ ALTER TABLE `group`
 -- AUTO_INCREMENT for table `online`
 --
 ALTER TABLE `online`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `vi_banner_images`
+--
+ALTER TABLE `vi_banner_images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `vi_categories_posts`
 --
@@ -763,7 +843,7 @@ ALTER TABLE `vi_categories_posts`
 -- AUTO_INCREMENT for table `vi_comments_posts`
 --
 ALTER TABLE `vi_comments_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `vi_menu`
 --
@@ -788,7 +868,7 @@ ALTER TABLE `vi_posts`
 -- AUTO_INCREMENT for table `web_contacts`
 --
 ALTER TABLE `web_contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `web_options`
 --
