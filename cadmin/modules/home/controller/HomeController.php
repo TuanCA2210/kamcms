@@ -58,7 +58,7 @@ class HomeController extends Controller{
 
 			// dữ liệu truy cập pages
 			$metrics_pages = "ga:sessions,ga:pageviews,ga:avgTimeOnPage";
-		 	$optParams_pages = array("dimensions" => "ga:fullReferrer,ga:pagePath,ga:country,ga:dateHour"); // view pages
+		 	$optParams_pages = array("dimensions" => "ga:fullReferrer,ga:pagePath,ga:country,ga:dateHour","sort"=>"-ga:dateHour"); // view pages and sort
 			try {
 			  	$results_pages = $this->getResults($analytics, $profile,$metrics_pages,$optParams_pages);
 			  	
@@ -157,13 +157,14 @@ class HomeController extends Controller{
 			}else{
 				// Calls the Core Reporting API and queries for the number of sessions
 		  		// for the last seven days.
-				   return $service->data_ga->get(
-				       'ga:' . $profileId,
-				       $startDate,
-				       'today',
-				       $metrics,
-				       $optParams
-				      );
+		  				return $service->data_ga->get(
+					       'ga:' . $profileId,
+					       $startDate,
+					       'today',
+					       $metrics,
+					       $optParams
+					     );
+				   
 			}
 		
 	}

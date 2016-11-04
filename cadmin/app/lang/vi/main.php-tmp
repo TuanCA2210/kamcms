@@ -9,6 +9,8 @@ $_L['menu']               = 'Điều hướng';
 $_L['widgets']            = 'Danh mục tùy chọn';
 $_L['pages']              = 'Trang';
 $_L['post']               = 'Bài viết';
+$_L['product']            = 'Sản phẩm';
+$_L['category']           = 'Danh mục sản phẩm';
 $_L['media']              = 'Thư viện số';
 $_L['contact']            = 'Liên hệ';
 $_L['comments']           = 'Bình luận';
@@ -181,3 +183,9 @@ $_L['time']             = 'Thời gian';
 $_L['guest']            = 'Khách';
 $_L['pageview']         = 'Lượt xem trang';
 $_L['inmonth']          = '(30 ngày trước)';
+
+// Product
+$_L['product_manager']  = 'Quản lý sản phẩm';
+$_L['category_manager'] = 'Quản lý danh mục sản phẩm';
+$_L['add_product']      = 'Thêm sản phẩm mới';
+$_L['add_category']     = 'Thêm danh mục mới';

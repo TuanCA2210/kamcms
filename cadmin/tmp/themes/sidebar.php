@@ -60,6 +60,16 @@
                 <li><a href="<?php echo base_url().'posts/comments_posts/index';?>"><?php echo lang('comments');?></a></li>
               </ul>
         </li>
+        <li class="treeview <?php if($_web['uri']['mod']=='product') echo 'active';?>">
+          <a href="#">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <span><?php echo lang('product'); ?> &nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+          </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo base_url().'product/product/index';?>"><?php echo lang('product');?></a></li>
+                <li><a href="<?php echo base_url().'product/category/index';?>"><?php echo lang('category');?></a></li>
+              </ul>
+        </li>
         <li class="treeview <?php if($_web['uri']['mod']=='media') echo 'active';?>">
           <a href="<?php echo base_url().'media/media/index'; ?>">
             <i class="fa fa-file-image-o" aria-hidden="true"></i> <span><?php echo lang('media'); ?></span>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2016 at 11:04 AM
+-- Generation Time: Nov 04, 2016 at 08:54 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -83,6 +83,35 @@ INSERT INTO `en_categories_posts` (`id`, `title`, `alias`, `description`, `note`
 (1, 'Uncategorized', 'uncategorized', NULL, NULL, NULL, 0, 0, 23, NULL, 1, NULL, NULL),
 (2, 'Sports', 'sports', NULL, NULL, NULL, 0, 0, 23, NULL, 1, NULL, NULL),
 (3, 'Showbiz', 'showbiz', NULL, NULL, NULL, 0, 0, 23, NULL, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_category`
+--
+
+CREATE TABLE `en_category` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `parent` int(11) UNSIGNED DEFAULT '0',
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `background` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `show_home` tinyint(1) UNSIGNED DEFAULT '0',
+  `info` text,
+  `number_home` tinyint(5) UNSIGNED DEFAULT '0' COMMENT 'số lượng sản phẩm hiển thị ở trang chủ',
+  `sort` smallint(5) UNSIGNED DEFAULT NULL,
+  `status` tinyint(1) UNSIGNED DEFAULT '1',
+  `number_product` smallint(5) UNSIGNED DEFAULT '0' COMMENT 'số lượng sản phẩm thuộc danh mục',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `create_time` int(11) UNSIGNED DEFAULT NULL,
+  `create_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `update_time` int(11) UNSIGNED DEFAULT NULL,
+  `update_author` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -209,6 +238,109 @@ CREATE TABLE `en_posts` (
   `create_time` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `update_time` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_product_basic`
+--
+
+CREATE TABLE `en_product_basic` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `category` char(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `code` char(20) DEFAULT NULL COMMENT 'mã sản phẩm',
+  `unit` char(20) DEFAULT NULL COMMENT 'đơn vị tính',
+  `price` varchar(255) NOT NULL DEFAULT '0',
+  `price_market` varchar(255) NOT NULL DEFAULT '0' COMMENT 'giá thị trường',
+  `saleoff` int(11) DEFAULT NULL,
+  `time_start` int(11) UNSIGNED DEFAULT NULL COMMENT 'thời gian bắt đầu khuyến mãi',
+  `time_end` int(11) UNSIGNED DEFAULT NULL COMMENT 'thời gian kết thúc khuyến mãi',
+  `number_repeat` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'số lần lặp lại khuyến mãi',
+  `status_size` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'tình trạng size, nếu có thì join sang bảng size',
+  `status_vat` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '0: không hiển thị tình trạng, 1: có VAT, 2: chưa có VAT',
+  `status` tinyint(1) UNSIGNED DEFAULT '1',
+  `state` char(50) DEFAULT '' COMMENT '1: nổi bật, 2: sắp về, 3: đặt hàng, 4: cũ, 5: hết hàng',
+  `quantity` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `quantity_shop` text COMMENT 'số lượng theo từng shop',
+  `other_info` text,
+  `short_info` text NOT NULL COMMENT 'đặc tính sản phẩm',
+  `number_payment` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'lượt mua',
+  `view` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'lượt xem',
+  `type` char(50) DEFAULT '' COMMENT 'loại sản phẩm',
+  `sort` smallint(5) UNSIGNED DEFAULT NULL,
+  `create_time` int(11) UNSIGNED DEFAULT NULL,
+  `create_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `update_time` int(11) UNSIGNED DEFAULT NULL,
+  `update_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `color` text COMMENT 'lưu dưới dạng json',
+  `id_group_color` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `properties` varchar(255) DEFAULT NULL,
+  `brand` varchar(255) DEFAULT NULL,
+  `supplier` varchar(255) DEFAULT NULL COMMENT 'Nhà cung cấp',
+  `time_post` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'hẹn giờ đăng',
+  `number_refresh` int(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'số lần làm mới',
+  `file_download` text,
+  `time_interval_refesh` int(5) UNSIGNED DEFAULT '0' COMMENT 'khoảng thời gian làm mới',
+  `time_refresh` time DEFAULT NULL COMMENT 'thời gian làm mới',
+  `length_class` varchar(256) DEFAULT NULL,
+  `weigh_class` varchar(256) DEFAULT NULL,
+  `link_` varchar(255) DEFAULT NULL,
+  `sale_time_start` int(10) DEFAULT NULL,
+  `sale_time_end` int(10) DEFAULT NULL,
+  `youtube_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_product_description`
+--
+
+CREATE TABLE `en_product_description` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_product` int(11) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT '',
+  `content` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_product_detail`
+--
+
+CREATE TABLE `en_product_detail` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_product` int(11) UNSIGNED NOT NULL,
+  `full_info` text,
+  `tags` varchar(255) DEFAULT NULL,
+  `id_field` int(11) UNSIGNED DEFAULT '0',
+  `form_field` text,
+  `form_default` tinyint(1) UNSIGNED DEFAULT '1' COMMENT '1: form default, 0: form custom',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `related_product` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_product_image`
+--
+
+CREATE TABLE `en_product_image` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_product` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `avatar` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `image` varchar(255) DEFAULT NULL,
+  `att_title` varchar(255) DEFAULT NULL,
+  `att_alt` varchar(255) DEFAULT NULL,
+  `sort` int(5) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -407,6 +539,52 @@ INSERT INTO `vi_categories_posts` (`id`, `title`, `alias`, `description`, `note`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vi_category`
+--
+
+CREATE TABLE `vi_category` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `parent` int(11) UNSIGNED DEFAULT '0',
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `background` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `show_home` tinyint(1) UNSIGNED DEFAULT '0',
+  `info` text,
+  `number_home` tinyint(5) UNSIGNED DEFAULT '0' COMMENT 'số lượng sản phẩm hiển thị ở trang chủ',
+  `sort` smallint(5) UNSIGNED DEFAULT NULL,
+  `status` tinyint(1) UNSIGNED DEFAULT '1',
+  `number_product` smallint(5) UNSIGNED DEFAULT '0' COMMENT 'số lượng sản phẩm thuộc danh mục',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `create_time` int(11) UNSIGNED DEFAULT NULL,
+  `create_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `update_time` int(11) UNSIGNED DEFAULT NULL,
+  `update_author` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vi_category`
+--
+
+INSERT INTO `vi_category` (`id`, `parent`, `name`, `alias`, `background`, `icon`, `avatar`, `show_home`, `info`, `number_home`, `sort`, `status`, `number_product`, `meta_title`, `meta_keyword`, `meta_description`, `create_time`, `create_author`, `update_time`, `update_author`) VALUES
+(81, 0, 'THỜI TRANG NỮ', 'thoi-trang-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610576_images-1.jpg', 1, '', 0, 1, 1, 0, '', '', '', 1425610576, 23, NULL, NULL),
+(82, 0, 'THỜI TRANG CHO PHÁI MẠNH', 'thoi-trang-cho-phai-manh', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610618_tai-xuong-20.jpg', 1, '', 0, 2, 1, 0, '', '', '', 1425610619, 23, NULL, NULL),
+(83, 0, 'GIÀY DÉP', 'giay-dep', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/58/1425610727_tai-xuong-21.jpg', 1, '', 0, 3, 1, 0, '', '', '', 1425610727, 23, NULL, NULL),
+(94, 81, 'ÁO NỮ', 'ao-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/51/1426135878_ao-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135878, 23, 1426150994, 23),
+(95, 81, 'ĐẦM, VÁY', 'dam-vay', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426135982_dam.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135982, 23, 1426150994, 23),
+(96, 81, 'CHÂN VÁY', 'chan-vay', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426136035_vay.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136035, 23, 1426150995, 23),
+(97, 81, 'QUẦN NỮ', 'quan-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136057_quan-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136057, 23, 1426150995, 23),
+(98, 81, 'GIÀY, DÉP NỮ', 'giay-dep-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136080_giay-dep-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136080, 23, 1426150999, 23),
+(99, 0, 'PHỤ KIỆN', 'phu-kien', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136100_phu-kien.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136100, 23, 1426150999, 23),
+(100, 81, 'TRANG SỨC', 'trang-suc', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136140_trang-suc.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136140, 23, 1426151000, 23),
+(101, 81, 'TRANG PHỤC CƯỚI', 'trang-phuc-cuoi', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136158_trang-phuc-cuoi.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136159, 23, 1426151000, 23);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vi_comments_posts`
 --
 
@@ -552,6 +730,109 @@ INSERT INTO `vi_posts` (`id`, `title`, `alias`, `description`, `content`, `cate_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vi_product_basic`
+--
+
+CREATE TABLE `vi_product_basic` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `category` char(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `code` char(20) DEFAULT NULL COMMENT 'mã sản phẩm',
+  `unit` char(20) DEFAULT NULL COMMENT 'đơn vị tính',
+  `price` varchar(255) NOT NULL DEFAULT '0',
+  `price_market` varchar(255) NOT NULL DEFAULT '0' COMMENT 'giá thị trường',
+  `saleoff` int(11) DEFAULT NULL,
+  `time_start` int(11) UNSIGNED DEFAULT NULL COMMENT 'thời gian bắt đầu khuyến mãi',
+  `time_end` int(11) UNSIGNED DEFAULT NULL COMMENT 'thời gian kết thúc khuyến mãi',
+  `number_repeat` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'số lần lặp lại khuyến mãi',
+  `status_size` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'tình trạng size, nếu có thì join sang bảng size',
+  `status_vat` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '0: không hiển thị tình trạng, 1: có VAT, 2: chưa có VAT',
+  `status` tinyint(1) UNSIGNED DEFAULT '1',
+  `state` char(50) DEFAULT '' COMMENT '1: nổi bật, 2: sắp về, 3: đặt hàng, 4: cũ, 5: hết hàng',
+  `quantity` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `quantity_shop` text COMMENT 'số lượng theo từng shop',
+  `other_info` text,
+  `short_info` text NOT NULL COMMENT 'đặc tính sản phẩm',
+  `number_payment` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'lượt mua',
+  `view` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'lượt xem',
+  `type` char(50) DEFAULT '' COMMENT 'loại sản phẩm',
+  `sort` smallint(5) UNSIGNED DEFAULT NULL,
+  `create_time` int(11) UNSIGNED DEFAULT NULL,
+  `create_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `update_time` int(11) UNSIGNED DEFAULT NULL,
+  `update_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `color` text COMMENT 'lưu dưới dạng json',
+  `id_group_color` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `properties` varchar(255) DEFAULT NULL,
+  `brand` varchar(255) DEFAULT NULL,
+  `supplier` varchar(255) DEFAULT NULL COMMENT 'Nhà cung cấp',
+  `time_post` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'hẹn giờ đăng',
+  `number_refresh` int(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'số lần làm mới',
+  `file_download` text,
+  `time_interval_refesh` int(5) UNSIGNED DEFAULT '0' COMMENT 'khoảng thời gian làm mới',
+  `time_refresh` time DEFAULT NULL COMMENT 'thời gian làm mới',
+  `length_class` varchar(256) DEFAULT NULL,
+  `weigh_class` varchar(256) DEFAULT NULL,
+  `link_` varchar(255) DEFAULT NULL,
+  `sale_time_start` int(10) DEFAULT NULL,
+  `sale_time_end` int(10) DEFAULT NULL,
+  `youtube_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vi_product_description`
+--
+
+CREATE TABLE `vi_product_description` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_product` int(11) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT '',
+  `content` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vi_product_detail`
+--
+
+CREATE TABLE `vi_product_detail` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_product` int(11) UNSIGNED NOT NULL,
+  `full_info` text,
+  `tags` varchar(255) DEFAULT NULL,
+  `id_field` int(11) UNSIGNED DEFAULT '0',
+  `form_field` text,
+  `form_default` tinyint(1) UNSIGNED DEFAULT '1' COMMENT '1: form default, 0: form custom',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `related_product` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vi_product_image`
+--
+
+CREATE TABLE `vi_product_image` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_product` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `avatar` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `image` varchar(255) DEFAULT NULL,
+  `att_title` varchar(255) DEFAULT NULL,
+  `att_alt` varchar(255) DEFAULT NULL,
+  `sort` int(5) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `web_contacts`
 --
 
@@ -657,6 +938,12 @@ ALTER TABLE `en_categories_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `en_category`
+--
+ALTER TABLE `en_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `en_comments_posts`
 --
 ALTER TABLE `en_comments_posts`
@@ -685,6 +972,33 @@ ALTER TABLE `en_position_menu`
 --
 ALTER TABLE `en_posts`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `en_product_basic`
+--
+ALTER TABLE `en_product_basic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `en_product_description`
+--
+ALTER TABLE `en_product_description`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`id_product`);
+
+--
+-- Indexes for table `en_product_detail`
+--
+ALTER TABLE `en_product_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`id_product`);
+
+--
+-- Indexes for table `en_product_image`
+--
+ALTER TABLE `en_product_image`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`id_product`);
 
 --
 -- Indexes for table `frontend_user`
@@ -723,6 +1037,12 @@ ALTER TABLE `vi_categories_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vi_category`
+--
+ALTER TABLE `vi_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vi_comments_posts`
 --
 ALTER TABLE `vi_comments_posts`
@@ -751,6 +1071,33 @@ ALTER TABLE `vi_position_menu`
 --
 ALTER TABLE `vi_posts`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vi_product_basic`
+--
+ALTER TABLE `vi_product_basic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vi_product_description`
+--
+ALTER TABLE `vi_product_description`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`id_product`);
+
+--
+-- Indexes for table `vi_product_detail`
+--
+ALTER TABLE `vi_product_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`id_product`);
+
+--
+-- Indexes for table `vi_product_image`
+--
+ALTER TABLE `vi_product_image`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`id_product`);
 
 --
 -- Indexes for table `web_contacts`
@@ -785,6 +1132,11 @@ ALTER TABLE `en_banner_images`
 ALTER TABLE `en_categories_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `en_category`
+--
+ALTER TABLE `en_category`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+--
 -- AUTO_INCREMENT for table `en_comments_posts`
 --
 ALTER TABLE `en_comments_posts`
@@ -809,6 +1161,26 @@ ALTER TABLE `en_position_menu`
 --
 ALTER TABLE `en_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `en_product_basic`
+--
+ALTER TABLE `en_product_basic`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+--
+-- AUTO_INCREMENT for table `en_product_description`
+--
+ALTER TABLE `en_product_description`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+--
+-- AUTO_INCREMENT for table `en_product_detail`
+--
+ALTER TABLE `en_product_detail`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1170756;
+--
+-- AUTO_INCREMENT for table `en_product_image`
+--
+ALTER TABLE `en_product_image`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1221;
 --
 -- AUTO_INCREMENT for table `frontend_user`
 --
@@ -840,6 +1212,11 @@ ALTER TABLE `vi_banner_images`
 ALTER TABLE `vi_categories_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
+-- AUTO_INCREMENT for table `vi_category`
+--
+ALTER TABLE `vi_category`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+--
 -- AUTO_INCREMENT for table `vi_comments_posts`
 --
 ALTER TABLE `vi_comments_posts`
@@ -864,6 +1241,26 @@ ALTER TABLE `vi_position_menu`
 --
 ALTER TABLE `vi_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `vi_product_basic`
+--
+ALTER TABLE `vi_product_basic`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+--
+-- AUTO_INCREMENT for table `vi_product_description`
+--
+ALTER TABLE `vi_product_description`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+--
+-- AUTO_INCREMENT for table `vi_product_detail`
+--
+ALTER TABLE `vi_product_detail`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1170756;
+--
+-- AUTO_INCREMENT for table `vi_product_image`
+--
+ALTER TABLE `vi_product_image`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1221;
 --
 -- AUTO_INCREMENT for table `web_contacts`
 --
