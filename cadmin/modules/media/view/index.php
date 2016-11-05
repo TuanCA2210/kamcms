@@ -47,6 +47,12 @@
                                 <i class="fa fa-refresh" aria-hidden="true"></i>
                                 <?php echo lang('reload');?>
                               </button> 
+                              <button class="btn btn-success create_folder" type="button">
+                                <i class="fa fa-folder-o" aria-hidden="true"></i>
+                                <?php echo lang('create_folder');?>
+                              </button> 
+
+                              
                               
                             </form>
                         </div>
@@ -102,6 +108,32 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" id="rename"><i class="fa fa-font" aria-hidden="true"></i> <?php echo lang('rename');?></button>
                   <button type="button" class="btn btn-success" id="copy_rename"><i class="fa fa-files-o" aria-hidden="true"></i> <?php echo lang('copyandrename');?></button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close');?></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- Modal Rename -->
+          <div id="myModalCreateFolder" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"><?php echo lang('create_folder');?></h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for=""><?php echo lang('name_folder_required');?></label>
+                    <input type="text" placeholder="<?php echo lang('typing_name_folder');?>" class="form-control" id="new_name_folder"/>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" id="create_acept"><i class="fa fa-check" aria-hidden="true"></i> <?php echo lang('create_acept');?></button>
                   <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close');?></button>
                 </div>
               </div>

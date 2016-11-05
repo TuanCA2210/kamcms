@@ -23,6 +23,14 @@ $('body').on('click', '.rename', function(event) {
 	$('#myModalRename').modal("show");
 });
 
+
+// create folder
+$('body').on('click', '.create_folder', function(event) {
+	event.preventDefault();
+	$('#myModalCreateFolder').modal("show");
+});
+
+
 $('body').on('click', '#rename', function(event) {
 	event.preventDefault();
 	var new_name = $('#new_name').val().trim();

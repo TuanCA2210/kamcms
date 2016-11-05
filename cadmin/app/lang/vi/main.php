@@ -217,6 +217,10 @@ $_L['mess_copy_false']   		=  'Thông báo! Đổi tên thất bại.';
 
 
 
+$_L['create_folder']   			=  'Tạo mới thư mục';
+$_L['name_folder_required']   	=  'Tên thư mục (Lưu ý: không đặt tên có dấu, viết liền và không chứa ký tự lạ) : ';
+$_L['typing_name_folder']   	=  'Nhập vào tên thư mục...';
+$_L['create_acept']   			=  'Tạo thư mục';
 $_L['rename']   				=  'Đổi tên';
 $_L['copyandrename']   			=  'Nhân bản và Đổi tên';
 $_L['label_newname']   			=  'Tên mới(Lưu ý không đặt tên có dấu và ký tự lạ)';
@@ -257,3 +261,7 @@ $_L['product_manager']			= 'Quản lý sản phẩm';
 $_L['category_manager']			= 'Quản lý danh mục sản phẩm';
 $_L['add_product']				= 'Thêm sản phẩm mới';
 $_L['add_category']				= 'Thêm danh mục mới';
+$_L['meta_keyword']				= 'Meta từ khóa';
+$_L['meta_description']			= 'Meta mô tả';
+$_L['meta_keyword_required']	= 'Từ khóa (Các từ cách nhau bởi dấu | )';
+$_L['meta_description_required']= 'Meta mô tả (Tối đa 400 ký tự)';

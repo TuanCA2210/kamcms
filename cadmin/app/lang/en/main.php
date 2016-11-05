@@ -226,6 +226,10 @@ $_L['mess_copy']   				=  'Notification! Rename success.';
 $_L['mess_copy_false']   		=  'Notification! Rename failure.';
 
 
+$_L['create_folder']   			=  'Create a new folder';
+$_L['name_folder_required']   	=  'Name folder (Note: do not name the mark, write immediately and do not contain strange characters):';
+$_L['typing_name_folder']   	=  'Typing the name of the folder...';
+$_L['create_acept']   			=  'Create folder';
 $_L['rename']   				=  'Rename';
 $_L['copyandrename']   			=  'Copy and Rename';
 $_L['label_newname']   			=  'New Name (Note unnamed strange marks and characters)';
@@ -258,3 +262,7 @@ $_L['product_manager']			= 'Products Manager';
 $_L['category_manager']			= 'Category products Manager';
 $_L['add_product']				= 'Add product';
 $_L['add_category']				= 'Add new category';
+$_L['meta_keyword']				= 'Meta keyword';
+$_L['meta_description']			= 'Meta description';
+$_L['meta_keyword_required']	= 'Keywords (Words separated by |)';
+$_L['meta_description_required']= 'Meta description (Maximum 400 characters)';

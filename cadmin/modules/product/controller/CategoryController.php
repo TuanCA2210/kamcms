@@ -7,7 +7,7 @@ class CategoryController extends Controller{
 	}
 	public function index(){
 		global $_web;
-		$this->view->data  = $this->modelNews->getUserById(1);
+		$this->view->data  = $this->modelCategory->getCategories();
 		
 
 		$this->view->render('index_category');
@@ -17,7 +17,7 @@ class CategoryController extends Controller{
 		$this->view->data['images'] = getImagesToFolder($dir);
 
 		$this->view->data['menu']   = $this->modelCategory->getCategories();
-		dd($this->view->data['menu']);
+		//dd($this->view->data['menu']);
 		$this->view->render('add_category');
 	}
 	

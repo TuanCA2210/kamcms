@@ -68,11 +68,14 @@
 								    <label for="description" class="control-label required"><?php echo lang('description');?></label>
 								    <textarea class="form-control" rows="4" id="description" placeholder="<?php echo lang('description_required');?>" data-counter="300" name="description" cols="50"><?php if(isset($this->data['data']['description'])) echo $this->data['data']['description']; ?></textarea>
 								</div>
-			                    
-			                    <div class="form-group ">
-			                        <label for="name" class="control-label required"><?php echo lang('order_by');?></label>
-			                        <input class="form-control" id="order_by" placeholder="<?php echo lang('typing_number'); ?>" value="<?php if(isset($this->data['data']['sort'])) echo $this->data['data']['sort']; ?>" name="order_by" type="number" min="0"/>
-			                    </div>
+								<div class="form-group ">
+								    <label for="description" class="control-label required"><?php echo lang('meta_keyword');?></label>
+								    <textarea class="form-control" rows="4" id="meta_keyword" placeholder="<?php echo lang('meta_keyword_required');?>" data-counter="300" name="meta_keyword" cols="50"><?php if(isset($this->data['data']['meta_keyword'])) echo $this->data['data']['meta_keyword']; ?></textarea>
+								</div>
+								<div class="form-group ">
+								    <label for="description" class="control-label required"><?php echo lang('meta_description');?></label>
+								    <textarea class="form-control" rows="4" id="meta_description" placeholder="<?php echo lang('meta_description_required');?>" data-counter="300" name="meta_description" cols="50"><?php if(isset($this->data['data']['meta_description'])) echo $this->data['data']['meta_description']; ?></textarea>
+								</div>
 
 
 			                </div>

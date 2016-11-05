@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2016 at 08:54 AM
+-- Generation Time: Nov 05, 2016 at 10:47 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -92,9 +92,10 @@ INSERT INTO `en_categories_posts` (`id`, `title`, `alias`, `description`, `note`
 
 CREATE TABLE `en_category` (
   `id` int(11) UNSIGNED NOT NULL,
-  `parent` int(11) UNSIGNED DEFAULT '0',
-  `name` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) UNSIGNED DEFAULT '0',
+  `title` varchar(255) DEFAULT NULL,
   `alias` varchar(255) DEFAULT NULL,
+  `description` text,
   `background` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
@@ -544,9 +545,10 @@ INSERT INTO `vi_categories_posts` (`id`, `title`, `alias`, `description`, `note`
 
 CREATE TABLE `vi_category` (
   `id` int(11) UNSIGNED NOT NULL,
-  `parent` int(11) UNSIGNED DEFAULT '0',
-  `name` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) UNSIGNED DEFAULT '0',
+  `title` varchar(255) DEFAULT NULL,
   `alias` varchar(255) DEFAULT NULL,
+  `description` text,
   `background` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
@@ -569,18 +571,18 @@ CREATE TABLE `vi_category` (
 -- Dumping data for table `vi_category`
 --
 
-INSERT INTO `vi_category` (`id`, `parent`, `name`, `alias`, `background`, `icon`, `avatar`, `show_home`, `info`, `number_home`, `sort`, `status`, `number_product`, `meta_title`, `meta_keyword`, `meta_description`, `create_time`, `create_author`, `update_time`, `update_author`) VALUES
-(81, 0, 'THỜI TRANG NỮ', 'thoi-trang-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610576_images-1.jpg', 1, '', 0, 1, 1, 0, '', '', '', 1425610576, 23, NULL, NULL),
-(82, 0, 'THỜI TRANG CHO PHÁI MẠNH', 'thoi-trang-cho-phai-manh', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610618_tai-xuong-20.jpg', 1, '', 0, 2, 1, 0, '', '', '', 1425610619, 23, NULL, NULL),
-(83, 0, 'GIÀY DÉP', 'giay-dep', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/58/1425610727_tai-xuong-21.jpg', 1, '', 0, 3, 1, 0, '', '', '', 1425610727, 23, NULL, NULL),
-(94, 81, 'ÁO NỮ', 'ao-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/51/1426135878_ao-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135878, 23, 1426150994, 23),
-(95, 81, 'ĐẦM, VÁY', 'dam-vay', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426135982_dam.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135982, 23, 1426150994, 23),
-(96, 81, 'CHÂN VÁY', 'chan-vay', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426136035_vay.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136035, 23, 1426150995, 23),
-(97, 81, 'QUẦN NỮ', 'quan-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136057_quan-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136057, 23, 1426150995, 23),
-(98, 81, 'GIÀY, DÉP NỮ', 'giay-dep-nu', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136080_giay-dep-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136080, 23, 1426150999, 23),
-(99, 0, 'PHỤ KIỆN', 'phu-kien', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136100_phu-kien.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136100, 23, 1426150999, 23),
-(100, 81, 'TRANG SỨC', 'trang-suc', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136140_trang-suc.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136140, 23, 1426151000, 23),
-(101, 81, 'TRANG PHỤC CƯỚI', 'trang-phuc-cuoi', NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136158_trang-phuc-cuoi.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136159, 23, 1426151000, 23);
+INSERT INTO `vi_category` (`id`, `parent_id`, `title`, `alias`, `description`, `background`, `icon`, `avatar`, `show_home`, `info`, `number_home`, `sort`, `status`, `number_product`, `meta_title`, `meta_keyword`, `meta_description`, `create_time`, `create_author`, `update_time`, `update_author`) VALUES
+(81, 0, 'THỜI TRANG NỮ', 'thoi-trang-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610576_images-1.jpg', 1, '', 0, 1, 1, 0, '', '', '', 1425610576, 23, NULL, NULL),
+(82, 0, 'THỜI TRANG CHO PHÁI MẠNH', 'thoi-trang-cho-phai-manh', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610618_tai-xuong-20.jpg', 1, '', 0, 2, 1, 0, '', '', '', 1425610619, 23, NULL, NULL),
+(83, 0, 'GIÀY DÉP', 'giay-dep', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/58/1425610727_tai-xuong-21.jpg', 1, '', 0, 3, 1, 0, '', '', '', 1425610727, 23, NULL, NULL),
+(94, 81, 'ÁO NỮ', 'ao-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/51/1426135878_ao-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135878, 23, 1426150994, 23),
+(95, 81, 'ĐẦM, VÁY', 'dam-vay', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426135982_dam.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135982, 23, 1426150994, 23),
+(96, 81, 'CHÂN VÁY', 'chan-vay', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426136035_vay.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136035, 23, 1426150995, 23),
+(97, 81, 'QUẦN NỮ', 'quan-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136057_quan-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136057, 23, 1426150995, 23),
+(98, 81, 'GIÀY, DÉP NỮ', 'giay-dep-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136080_giay-dep-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136080, 23, 1426150999, 23),
+(99, 0, 'PHỤ KIỆN', 'phu-kien', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136100_phu-kien.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136100, 23, 1426150999, 23),
+(100, 81, 'TRANG SỨC', 'trang-suc', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136140_trang-suc.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136140, 23, 1426151000, 23),
+(101, 81, 'TRANG PHỤC CƯỚI', 'trang-phuc-cuoi', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136158_trang-phuc-cuoi.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136159, 23, 1426151000, 23);
 
 -- --------------------------------------------------------
 
@@ -1135,7 +1137,7 @@ ALTER TABLE `en_categories_posts`
 -- AUTO_INCREMENT for table `en_category`
 --
 ALTER TABLE `en_category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `en_comments_posts`
 --
@@ -1165,22 +1167,22 @@ ALTER TABLE `en_posts`
 -- AUTO_INCREMENT for table `en_product_basic`
 --
 ALTER TABLE `en_product_basic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `en_product_description`
 --
 ALTER TABLE `en_product_description`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `en_product_detail`
 --
 ALTER TABLE `en_product_detail`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1170756;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `en_product_image`
 --
 ALTER TABLE `en_product_image`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1221;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `frontend_user`
 --
@@ -1215,7 +1217,7 @@ ALTER TABLE `vi_categories_posts`
 -- AUTO_INCREMENT for table `vi_category`
 --
 ALTER TABLE `vi_category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 --
 -- AUTO_INCREMENT for table `vi_comments_posts`
 --
@@ -1245,22 +1247,22 @@ ALTER TABLE `vi_posts`
 -- AUTO_INCREMENT for table `vi_product_basic`
 --
 ALTER TABLE `vi_product_basic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `vi_product_description`
 --
 ALTER TABLE `vi_product_description`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `vi_product_detail`
 --
 ALTER TABLE `vi_product_detail`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1170756;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `vi_product_image`
 --
 ALTER TABLE `vi_product_image`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1221;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `web_contacts`
 --
