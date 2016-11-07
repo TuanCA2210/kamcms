@@ -141,6 +141,10 @@ $_L['status_pages_success']		= 'Bạn vừa thay đổi trạng thái thành cô
 
 
 
+$_L['create_folder_success']	= 'Tạo thành công thư mục.';
+$_L['create_folder_error']		= 'Tạo thư mục thất bại.Hãy kiểm tra lại.';
+
+
 
 
 

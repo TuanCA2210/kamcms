@@ -58,20 +58,9 @@
                         </div>
                         <div class="col-md-12" id="loadMedia">
                                       <?php
-                                         $dir          = DIR_TMP.'cdn/';
-                                         
-                                        $ImagesA = getImagesToFolder($dir);
-                                         foreach ($ImagesA as $key => $value) {
-                                          echo "<div class='media-col'>";
-                                          echo "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
-                                          echo "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
-                                          echo "<div class='text-center'>".$value."</div>";
-                                          echo "<div class='text-center overcontrol'>
-                                          <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
-                                          <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
-                                          </div>";
-                                          echo "</div>";
-                                         }
+                                          $dir          = DIR_TMP.'cdn/';
+                                          $html = listAllFolder($dir);
+                                          echo $html;
 
                                       ?>
                         </div>

@@ -216,3 +216,45 @@ function checkCaptcha($cap){
     }
 
 }
+function listAllFolder($dir){
+    $html='';
+    $results_folder = scandir($dir);
+    $arrDir = array();
+    foreach ($results_folder as $value) {
+        if($value=='.' || $value=='..' ){
+            //
+        }else{
+            if (is_dir($dir.$value)) {
+                $arrDir[] = $value;
+            }
+        }
+    }
+    $ImagesA = getImagesToFolder($dir);
+    $folder_recursive = array_merge_recursive($arrDir,$ImagesA);
+    
+    if (!empty($folder_recursive)) {
+        foreach ($folder_recursive as $key => $value) {
+              if (is_dir($dir.$value)) {
+                    $html .= "<div class='media-col' data-folder='".$value."'>";
+                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/folder2.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                    $html .= "<div class='text-center'>".$value."</div>";
+                    $html .= "<div class='text-center overcontrol'>
+                            <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
+                            <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
+                            </div>";
+                    $html .= "</div>";
+                }else{
+                    $html .= "<div class='media-col' data-folder='false'>";
+                    $html .= "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
+                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
+                    $html .= "<div class='text-center'>".$value."</div>";
+                    $html .= "<div class='text-center overcontrol'>
+                            <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
+                            <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
+                            </div>";
+                    $html .= "</div>";
+                }
+         }
+    }
+    return $html;
+}

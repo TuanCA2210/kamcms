@@ -123,6 +123,9 @@ $_L['delete_all_success']        = 'Bạn vừa xóa nhiều dữ liệu thành 
 $_L['update_status_all_success'] = 'Bạn vừa thay đổi trạng thái tài khoản thành công.';
 $_L['status_pages_success']      = 'Bạn vừa thay đổi trạng thái thành công.';
 
+$_L['create_folder_success'] = 'Tạo thành công thư mục.';
+$_L['create_folder_error']   = 'Tạo thư mục thất bại.Hãy kiểm tra lại.';
+
 $_L['detail']              = 'Chi tiết';
 $_L['record_note']         = 'Ghi chú';
 $_L['maximum_pages']       = 'Tiêu đề của trang (Tối đa 120 ký tự)';

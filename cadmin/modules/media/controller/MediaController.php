@@ -80,21 +80,7 @@ class MediaController extends Controller{
 				  $dir          = DIR_TMP.'cdn/';
 				  $handle->process($dir);
 				  if ($handle->processed) {
-                    $ImagesA = getImagesToFolder($dir);
-                    
-                    if (!empty($ImagesA)) {
-                    	foreach ($ImagesA as $key => $value) {
-	                      $html .= "<div class='media-col'>";
-	                      $html .= "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
-	                      $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
-	                      $html .= "<div class='text-center'>".$value."</div>";
-	                      $html .= "<div class='text-center overcontrol'>
-	                      <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
-	                      <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
-	                      </div>";
-	                      $html .= "</div>";
-	                     }
-                    }
+                    $html = listAllFolder($dir);
 				    $data = array(
 				    	'status'	=> true,
 				    	'html'		=> $html,
@@ -121,22 +107,8 @@ class MediaController extends Controller{
 		}
 	}
 	public function refesh(){
-		$html ='';
 		$dir          = DIR_TMP.'cdn/';
-        $ImagesA = getImagesToFolder($dir);
-        if (!empty($ImagesA)) {
-        	foreach ($ImagesA as $key => $value) {
-              $html .= "<div class='media-col'>";
-              $html .= "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
-              $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
-              $html .= "<div class='text-center'>".$value."</div>";
-              $html .= "<div class='text-center overcontrol'>
-              <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
-              <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
-              </div>";
-              $html .= "</div>";
-             }
-        }
+		$html = listAllFolder($dir);
         $data = array(
 				    	'status'	=> true,
 				    	'html'		=> $html,
@@ -146,27 +118,18 @@ class MediaController extends Controller{
 		echo json_encode($data);
 	}
 	public function deleteImage(){
-		$html ='';
 		$dir          = DIR_TMP.'cdn/';
 		if (isset($_POST['title'])) {
 			$title = trim(addslashes($_POST['title']));
 			if (file_exists($dir.$title)) {
-    			unlink($dir.$title);
+				if (is_dir($dir.$title)) {
+					$this->delete_dir($dir.$title);
+				}else{
+					unlink($dir.$title);
+				}
+    			
     		}
-    		$ImagesA = getImagesToFolder($dir);
-	        if (!empty($ImagesA)) {
-	        	foreach ($ImagesA as $key => $value) {
-	              $html .= "<div class='media-col'>";
-	              $html .= "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
-	              $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
-	              $html .= "<div class='text-center'>".$value."</div>";
-	              $html .= "<div class='text-center overcontrol'>
-	              <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
-	              <a href='javascript:void(0)' class='delete' data-title='".$value."'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
-	              </div>";
-	              $html .= "</div>";
-	             }
-	        }
+    		$html = listAllFolder($dir);
 	        $data = array(
 					    	'status'	=> true,
 					    	'html'		=> $html,
@@ -176,24 +139,78 @@ class MediaController extends Controller{
 			echo json_encode($data);
 		}
 	}
+	public function delete_dir($src) { 
+	    $dir = opendir($src);
+	    while(false !== ( $file = readdir($dir)) ) { 
+	        if (( $file != '.' ) && ( $file != '..' )) { 
+	            if ( is_dir($src . '/' . $file) ) { 
+	                delete_dir($src . '/' . $file); 
+	            } 
+	            else { 
+	                unlink($src . '/' . $file); 
+	            } 
+	        } 
+	    } 
+	    closedir($dir); 
+	    rmdir($src);
+	}
+	public function copy_directory($src,$dst) {
+	    $dir = opendir($src);
+	    @mkdir($dst);
+	    while(false !== ( $file = readdir($dir)) ) {
+	        if (( $file != '.' ) && ( $file != '..' )) {
+	            if ( is_dir($src . '/' . $file) ) {
+	                recurse_copy($src . '/' . $file,$dst . '/' . $file);
+	            }
+	            else {
+	                copy($src . '/' . $file,$dst . '/' . $file);
+	            }
+	        }
+	    }
+	    closedir($dir);
+	}
+	public function createNameFolder(){
+		$dir          = DIR_TMP.'cdn/';
+		if (isset($_POST['new_name'])) {
+			$new_name = alias(trim($_POST['new_name']));
+			if (!is_dir($dir.$new_name)) {
+			    mkdir($dir.$new_name,0777, true);
+			    $status = true;
+			    $mess 	= lang("create_folder_success");
+			    $arr = array(
+			    	'status'  	=>	$status,
+			    	'mess'		=> $mess
+			    );
+			    echo json_encode($arr);
+			}
+		}
+	}
 	public function renameImage(){
 		$dir          = DIR_TMP.'cdn/';
 		if (isset($_POST['new_name']) && isset($_POST['old_name'])) {
-			$tmp_name = explode(".",$_POST['old_name']);
-			if (count($tmp_name)==2) {
-				$ext = $tmp_name[1];
-				$old_name = $_POST['old_name'];
-				$new_name = alias(trim($_POST['new_name']));
-				rename($dir.$old_name,$dir.$new_name.".".$ext);
+			$old_name = $_POST['old_name'];
+			$new_name = alias(trim($_POST['new_name']));
+			if (is_dir($dir.$old_name)) {
+				rename($dir.$old_name,$dir.$new_name);
 				$data = array(
 					'status'	=> true,
 					'mess'		=> lang('mess_copy')
 				);
 			}else{
-				$data = array(
-					'status'	=> false,
-					'mess'		=> lang('mess_copy_false')
-				);
+				$tmp_name = explode(".",$old_name);
+				if (count($tmp_name)==2) {
+					$ext = $tmp_name[1];
+					rename($dir.$old_name,$dir.$new_name.".".$ext);
+					$data = array(
+						'status'	=> true,
+						'mess'		=> lang('mess_copy')
+					);
+				}else{
+					$data = array(
+						'status'	=> false,
+						'mess'		=> lang('mess_copy_false')
+					);
+				}
 			}
 			echo json_encode($data);
 		}
@@ -201,25 +218,46 @@ class MediaController extends Controller{
 	public function renameCopyImage(){
 		$dir          = DIR_TMP.'cdn/';
 		if (isset($_POST['new_name']) && isset($_POST['old_name'])) {
-			$tmp_name = explode(".",$_POST['old_name']);
-			if (count($tmp_name)==2) {
-				$ext = $tmp_name[1];
-				$old_name = $_POST['old_name'];
-				$new_name = alias(trim($_POST['new_name']));
-				
-				copy($dir.$old_name,$dir.$new_name.".".$ext);
+			$old_name = $_POST['old_name'];
+			$new_name = alias(trim($_POST['new_name']));
+			if (is_dir($dir.$old_name)) {
+				$this->copy_directory($dir.$old_name,$dir.$new_name);
 				$data = array(
 					'status'	=> true,
 					'mess'		=> lang('mess_copy_rename')
 				);
 			}else{
-				$data = array(
-					'status'	=> false,
-					'mess'		=> lang('mess_copy_rename_false')
-				);
+				$tmp_name = explode(".",$old_name);
+				if (count($tmp_name)==2) {
+					$ext = $tmp_name[1];					
+					copy($dir.$old_name,$dir.$new_name.".".$ext);
+					$data = array(
+						'status'	=> true,
+						'mess'		=> lang('mess_copy_rename')
+					);
+				}else{
+					$data = array(
+						'status'	=> false,
+						'mess'		=> lang('mess_copy_rename_false')
+					);
+				}
 			}
 			echo json_encode($data);
 		}
+	}
+	public function openDirectory(){
+		if (isset($_POST['check_folder']) && $_POST['check_folder']!=false) {
+			$direct = trim(addslashes($_POST['check_folder']));
+			$dir          = DIR_TMP.'cdn/'.$direct;
+			$html = listAllFolder($dir);
+	        $data = array(
+					    	'status'	=> true,
+					    	'html'		=> $html,
+					    	'mess'		=> lang('notification').lang('uploaded_message')
+					    );
+			echo json_encode($data);
+		}
+		
 	}
 	
 }

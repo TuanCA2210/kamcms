@@ -141,6 +141,14 @@ $_L['status_pages_success']		= 'You just change status successful.';
 
 
 
+$_L['create_folder_success']	= 'Successfully created directory.';
+$_L['create_folder_error']		= 'Create folders check failed. Please try again.';
+
+
+
+
+
+
 
 
 

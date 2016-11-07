@@ -123,6 +123,9 @@ $_L['delete_all_success']        = 'You\'ve successfully deleted data.';
 $_L['update_status_all_success'] = 'You just change the account status successful.';
 $_L['status_pages_success']      = 'You just change status successful.';
 
+$_L['create_folder_success'] = 'Successfully created directory.';
+$_L['create_folder_error']   = 'Create folders check failed. Please try again.';
+
 $_L['detail']              = 'Detail';
 $_L['record_note']         = 'Record note';
 $_L['maximum_pages']       = 'Page\'s name (Maximum 120 characters)';

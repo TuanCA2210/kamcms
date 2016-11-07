@@ -73,62 +73,7 @@ $( document ).ready(function() {
 	});
 
 
-	$('body').on('click', '.refesh', function(event) {
-		event.preventDefault();
-		$('.icon-loading').addClass('display-none');	
-		$('.loading').addClass('animate-loading-center');
-		$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> Đang tải dữ liệu...</div>');
-		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
-		var data = 1;
-		$.ajax({
-			url: baseUrl+'media/media/refesh',
-			type: 'POST',  
-			data: data,
-	        dataType:'json',
-		})
-		.done(function(data) {
-			$('.icon-loading').removeClass('display-none');	
-			$('.loading').removeClass('animate-loading-center');
-			$('.loading').empty();
-			$('.fade_loading').empty();
-			if (data.status==true) {
-				$('#loadMedia').fadeOut(600, function(){
-                    $('#loadMedia').html(data.html).fadeIn().delay(600);
-                });
-			}
-		});
 	
-		/* Act on the event */
-	});
-
-	
-
-	$('body').on('click', '.delete', function(event) {
-		event.preventDefault();
-		var title = $(this).attr('data-title');
-		$('.icon-loading').addClass('display-none');	
-		$('.loading').addClass('animate-loading-center');
-		$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> Đang tải dữ liệu...</div>');
-		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
-		$.ajax({
-			url: baseUrl+'media/media/deleteImage',
-			type: 'POST',
-			dataType: 'json',
-			data: {title: title},
-		})
-		.done(function(data) {
-			$('.icon-loading').removeClass('display-none');	
-			$('.loading').removeClass('animate-loading-center');
-			$('.loading').empty();
-			$('.fade_loading').empty();
-			if (data.status==true) {
-				$('#loadMedia').fadeOut(600, function(){
-                    $('#loadMedia').html(data.html).fadeIn().delay(600);
-                });
-			}
-		});
-		
-	});
 
 
 
