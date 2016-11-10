@@ -217,6 +217,7 @@ function checkCaptcha($cap){
 
 }
 function listAllFolder($dir){
+    $root          = DIR_TMP.'cdn/';
     $html='';
     $results_folder = scandir($dir);
     $arrDir = array();
@@ -229,11 +230,19 @@ function listAllFolder($dir){
             }
         }
     }
+    //dd($dir);
     $ImagesA = getImagesToFolder($dir);
     $folder_recursive = array_merge_recursive($arrDir,$ImagesA);
-    
+                $html .= "<input type='hidden' id='directory' name='directory' value='".$dir."' />";
+                if ($dir!=$root) {
+                    $html .= "<div class='media-back' id='back_folder' data-folder='false'>";
+                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/backfolder.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                    $html .= "</div>";
+                }
     if (!empty($folder_recursive)) {
+                
         foreach ($folder_recursive as $key => $value) {
+                
               if (is_dir($dir.$value)) {
                     $html .= "<div class='media-col' data-folder='".$value."'>";
                     $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/folder2.png&h=100&w=150&zc=2' width='150' height='100'/>";
@@ -255,6 +264,8 @@ function listAllFolder($dir){
                     $html .= "</div>";
                 }
          }
+    }else{
+        $html .= '<br/><br/><p class="text-center">Empty Folder</p>';
     }
     return $html;
 }

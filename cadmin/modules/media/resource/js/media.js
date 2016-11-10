@@ -32,6 +32,7 @@ $('body').on('click', '.create_folder', function(event) {
 $('body').on('click', '#create_acept', function(event) {
 	event.preventDefault();
 	var new_name_folder = $('#new_name_folder').val().trim();
+	var directory = $('#directory').val();
 	if (new_name_folder=="") {
 		$('#new_name_folder').focus();
 		toastr["error"]("Bạn cần nhập tên mới cho thư mục!");
@@ -41,22 +42,25 @@ $('body').on('click', '#create_acept', function(event) {
 			url: baseUrl+'media/media/createNameFolder',
 			type: 'POST',
 			dataType: 'json',
-			data: {new_name: new_name_folder},
+			data: {new_name: new_name_folder,directory:directory},
 		})
 		.done(function(data) {
 			
 			if (data.status==true) {
+				$('#new_name_folder').val("");
+				$('#myModalCreateFolder').modal("hide");
 				var messager = data.mess;
 				$.ajax({
 					url: baseUrl+'media/media/refesh',
 					type: 'POST',  
 			        dataType:'json',
+			        data: {directory:directory},
 				})
 				.done(function(data) {
 					toastr["success"](messager);
 					if (data.status==true) {
-						$('#loadMedia').fadeOut(600, function(){
-		                    $('#loadMedia').html(data.html).fadeIn().delay(200);
+						$('#loadMedia').fadeOut(100, function(){
+		                    $('#loadMedia').html(data.html).fadeIn();
 		                });
 					}
 					$('#new_name').val('');
@@ -99,16 +103,18 @@ $('body').on('click', '#rename', function(event) {
 			
 			if (data.status==true) {
 				var messager = data.mess;
+				var directory = $('#directory').val();
 				$.ajax({
 					url: baseUrl+'media/media/refesh',
 					type: 'POST',  
 			        dataType:'json',
+			        data:{directory:directory}
 				})
 				.done(function(data) {
 					toastr["success"](messager);
 					if (data.status==true) {
-						$('#loadMedia').fadeOut(600, function(){
-		                    $('#loadMedia').html(data.html).fadeIn().delay(200);
+						$('#loadMedia').fadeOut(100, function(){
+		                    $('#loadMedia').html(data.html).fadeIn();
 		                });
 					}
 					$('#new_name').val('');
@@ -148,16 +154,18 @@ $('body').on('click', '#copy_rename', function(event) {
 			
 			if (data.status==true) {
 				var messager = data.mess;
+				var directory = $('#directory').val();
 				$.ajax({
 					url: baseUrl+'media/media/refesh',
 					type: 'POST',  
 			        dataType:'json',
+			        data:{directory:directory}
 				})
 				.done(function(data) {
 					toastr["success"](messager);
 					if (data.status==true) {
-						$('#loadMedia').fadeOut(600, function(){
-		                    $('#loadMedia').html(data.html).fadeIn().delay(200);
+						$('#loadMedia').fadeOut(100, function(){
+		                    $('#loadMedia').html(data.html).fadeIn();
 		                });
 					}
 					$('#new_name').val('');
@@ -184,11 +192,13 @@ $('body').on('click', '.refesh', function(event) {
 	$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> Đang tải dữ liệu...</div>');
 	$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
 	var data = 1;
+	var directory = $('#directory').val();
 	$.ajax({
 		url: baseUrl+'media/media/refesh',
 		type: 'POST',  
 		data: data,
         dataType:'json',
+        data: {directory:directory},
 	})
 	.done(function(data) {
 		$('.icon-loading').removeClass('display-none');	
@@ -196,8 +206,8 @@ $('body').on('click', '.refesh', function(event) {
 		$('.loading').empty();
 		$('.fade_loading').empty();
 		if (data.status==true) {
-			$('#loadMedia').fadeOut(600, function(){
-                $('#loadMedia').html(data.html).fadeIn().delay(600);
+			$('#loadMedia').fadeOut(100, function(){
+                $('#loadMedia').html(data.html).fadeIn();
             });
 		}
 	});
@@ -209,6 +219,7 @@ $('body').on('click', '.refesh', function(event) {
 
 $('body').on('click', '.delete', function(event) {
 	event.preventDefault();
+	var directory = $('#directory').val();
 	var title = $(this).attr('data-title');
 	$('.icon-loading').addClass('display-none');	
 	$('.loading').addClass('animate-loading-center');
@@ -218,7 +229,7 @@ $('body').on('click', '.delete', function(event) {
 		url: baseUrl+'media/media/deleteImage',
 		type: 'POST',
 		dataType: 'json',
-		data: {title: title},
+		data: {title: title,directory:directory},
 	})
 	.done(function(data) {
 		$('.icon-loading').removeClass('display-none');	
@@ -226,8 +237,8 @@ $('body').on('click', '.delete', function(event) {
 		$('.loading').empty();
 		$('.fade_loading').empty();
 		if (data.status==true) {
-			$('#loadMedia').fadeOut(600, function(){
-                $('#loadMedia').html(data.html).fadeIn().delay(600);
+			$('#loadMedia').fadeOut(100, function(){
+                $('#loadMedia').html(data.html).fadeIn();
             });
 		}
 	});
@@ -238,19 +249,81 @@ $('body').on('click', '.delete', function(event) {
 $('body').on('dblclick', '.media-col img.img-folder-media', function(event) {
 	event.preventDefault();
 	var check_folder = $(this).parent('.media-col').attr('data-folder');
+	var directory = $('#directory').val();
 	$.ajax({
 		url: baseUrl+'media/media/openDirectory',
 		type: 'POST',
 		dataType: 'json',
-		data: {check_folder: check_folder},
+		data: {check_folder: check_folder,directory:directory},
 	})
 	.done(function(data) {
 		if (data.status==true) {
-			$('#loadMedia').fadeOut(600, function(){
-                $('#loadMedia').html(data.html).fadeIn().delay(600);
+			$('#loadMedia').fadeOut(100, function(){
+                $('#loadMedia').html(data.html).fadeIn();
             });
 		}
 	});
 	
 	
 });
+
+$('body').on('dblclick', '#back_folder', function(event) {
+	event.preventDefault();
+	var directory = $('#directory').val();
+	$.ajax({
+		url: baseUrl+'media/media/backDirectory',
+		type: 'POST',
+		dataType: 'json',
+		data: {back: 'true',directory:directory},
+	})
+	.done(function(data) {
+		if (data.status==true) {
+			$('#loadMedia').fadeOut(100, function(){
+                $('#loadMedia').html(data.html).fadeIn();
+                //$('#loadMedia').html(data.html).fadeIn().delay(600);
+            });
+		}
+
+	});
+	
+});
+
+
+
+
+
+
+	$('body').on('change', '.fileUpload', function(event) {
+		event.preventDefault();
+		var directory = $('#directory').val();
+		$('.icon-loading').addClass('display-none');	
+		$('.loading').addClass('animate-loading-center');
+		$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> Đang tải dữ liệu...</div>');
+		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
+		var data = new FormData($("#form-uploads-ajax")[0]);
+		$.ajax({
+			url: baseUrl+'media/media/uploadImages',
+			type: 'POST',  
+			data: data,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        dataType:'json',
+		})
+		.done(function(data) {
+			$('.icon-loading').removeClass('display-none');	
+			$('.loading').removeClass('animate-loading-center');
+			$('.loading').empty();
+			$('.fade_loading').empty();
+			if (data.status==true) {
+				$('#loadMedia').fadeOut(100, function(){
+                    $('#loadMedia').html(data.html).fadeIn();
+                });
+				toastr["success"](data.mess);
+			}else{
+				toastr["warning"](data.mess);
+			}
+		});
+	
+		/* Act on the event */
+	});

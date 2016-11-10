@@ -77,7 +77,8 @@ class MediaController extends Controller{
 				  //$handle->image_resize         = true;
 				  //$handle->image_x              = 100;
 				  //$handle->image_ratio_y        = true;
-				  $dir          = DIR_TMP.'cdn/';
+				  $dir = trim($_POST['directory']);
+				  //$dir          = DIR_TMP.'cdn/';
 				  $handle->process($dir);
 				  if ($handle->processed) {
                     $html = listAllFolder($dir);
@@ -107,20 +108,25 @@ class MediaController extends Controller{
 		}
 	}
 	public function refesh(){
-		$dir          = DIR_TMP.'cdn/';
-		$html = listAllFolder($dir);
-        $data = array(
-				    	'status'	=> true,
-				    	'html'		=> $html,
-				    	'mess'		=> lang('notification').lang('uploaded_message')
-				    );
-		sleep(2);
-		echo json_encode($data);
+		//$dir          = DIR_TMP.'cdn/';
+		if (isset($_POST['directory'])) {
+			$dir = trim($_POST['directory']);
+			$html = listAllFolder($dir);
+	        $data = array(
+					    	'status'	=> true,
+					    	'html'		=> $html,
+					    	'mess'		=> lang('notification').lang('uploaded_message')
+					    );
+			sleep(2);
+			echo json_encode($data);
+		}
+		
 	}
 	public function deleteImage(){
-		$dir          = DIR_TMP.'cdn/';
-		if (isset($_POST['title'])) {
+		//$dir          = DIR_TMP.'cdn/';
+		if (isset($_POST['title']) && isset($_POST['directory'])) {
 			$title = trim(addslashes($_POST['title']));
+			$dir = trim($_POST['directory']);
 			if (file_exists($dir.$title)) {
 				if (is_dir($dir.$title)) {
 					$this->delete_dir($dir.$title);
@@ -144,7 +150,7 @@ class MediaController extends Controller{
 	    while(false !== ( $file = readdir($dir)) ) { 
 	        if (( $file != '.' ) && ( $file != '..' )) { 
 	            if ( is_dir($src . '/' . $file) ) { 
-	                delete_dir($src . '/' . $file); 
+	                $this->delete_dir($src . '/' . $file); 
 	            } 
 	            else { 
 	                unlink($src . '/' . $file); 
@@ -170,8 +176,9 @@ class MediaController extends Controller{
 	    closedir($dir);
 	}
 	public function createNameFolder(){
-		$dir          = DIR_TMP.'cdn/';
-		if (isset($_POST['new_name'])) {
+		//$dir          = DIR_TMP.'cdn/';
+		if (isset($_POST['new_name']) && isset($_POST['directory'])) {
+			$dir = trim($_POST['directory']);
 			$new_name = alias(trim($_POST['new_name']));
 			if (!is_dir($dir.$new_name)) {
 			    mkdir($dir.$new_name,0777, true);
@@ -246,10 +253,24 @@ class MediaController extends Controller{
 		}
 	}
 	public function openDirectory(){
-		if (isset($_POST['check_folder']) && $_POST['check_folder']!=false) {
+		if (isset($_POST['check_folder']) && $_POST['check_folder']!=false && isset($_POST['directory'])) {
 			$direct = trim(addslashes($_POST['check_folder']));
-			$dir          = DIR_TMP.'cdn/'.$direct;
+			$dir = trim($_POST['directory']).$direct."/";
+			//$dir          = DIR_TMP.'cdn/'.$direct."/";
 			$html = listAllFolder($dir);
+	        $data = array(
+					    	'status'	=> true,
+					    	'html'		=> $html,
+					    	'mess'		=> lang('notification').lang('uploaded_message')
+					    );
+			echo json_encode($data);
+		}
+		
+	}
+	public function backDirectory(){
+		if (isset($_POST['back']) && isset($_POST['directory'])) {
+			$directory = dirname($_POST['directory'])."/";
+			$html = listAllFolder($directory);
 	        $data = array(
 					    	'status'	=> true,
 					    	'html'		=> $html,

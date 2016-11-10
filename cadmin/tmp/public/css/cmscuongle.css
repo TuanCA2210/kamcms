@@ -5436,3 +5436,11 @@ ul{
     height: 200px;
     overflow-y: scroll;
 }
+
+.media-back{
+    width: 150px;
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    position: relative;
+}

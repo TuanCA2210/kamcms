@@ -33,11 +33,12 @@
               <!-- Morris chart - Sales -->
               <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
                   
+                  <form id="form-uploads-ajax" enctype="multipart/form-data" method="post">
                   <div class="container">
                       <div class="row">
                         </br>
+                        
                         <div class="col-md-12">
-                            <form id="form-uploads-ajax" enctype="multipart/form-data" method="post">
                               <div class="fileUpload btn btn-primary">
                                   <span><i class="fa fa-cloud-upload" aria-hidden="true"></i> <?php echo lang('uploadmedia');?></span>
                                   <input type="file" id="media" class="media upload" name="media"/>
@@ -54,7 +55,7 @@
 
                               
                               
-                            </form>
+                            
                         </div>
                         <div class="col-md-12" id="loadMedia">
                                       <?php
@@ -64,9 +65,12 @@
 
                                       ?>
                         </div>
+                        
                     </div>
                   </div>
                    
+
+                  </form>
 
 
               </div>

@@ -38,39 +38,7 @@ $( document ).ready(function() {
 
 
 
-	$('body').on('change', '.fileUpload', function(event) {
-		event.preventDefault();
-		$('.icon-loading').addClass('display-none');	
-		$('.loading').addClass('animate-loading-center');
-		$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> Đang tải dữ liệu...</div>');
-		$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
-		var data = new FormData($("#form-uploads-ajax")[0]);
-		$.ajax({
-			url: baseUrl+'media/media/uploadImages',
-			type: 'POST',  
-			data: data,
-	        cache: false,
-	        contentType: false,
-	        processData: false,
-	        dataType:'json',
-		})
-		.done(function(data) {
-			$('.icon-loading').removeClass('display-none');	
-			$('.loading').removeClass('animate-loading-center');
-			$('.loading').empty();
-			$('.fade_loading').empty();
-			if (data.status==true) {
-				$('#loadMedia').fadeOut(600, function(){
-                    $('#loadMedia').html(data.html).fadeIn().delay(600);
-                });
-				toastr["success"](data.mess);
-			}else{
-				toastr["warning"](data.mess);
-			}
-		});
-	
-		/* Act on the event */
-	});
+
 
 
 	
