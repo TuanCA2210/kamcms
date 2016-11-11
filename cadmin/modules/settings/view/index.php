@@ -254,11 +254,15 @@
                                   </div>
                                   <div class="modal-body" data-mess-one="<?php echo lang('warning_choose_img');?>" data-mess-two="<?php echo lang('warning_choose_img_one');?>" data-title="logo">
                                    <?php
-                                    if (!empty($this->data['images'])) {
+                                    /*if (!empty($this->data['images'])) {
                                       foreach ($this->data['images'] as $key => $value) {
                                         echo "<img class='img-load-folder' data-src='".$value."' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value."&h=100&w=150&zc=2' width='150' height='100'/>";
                                        }
-                                    }
+                                    }*/
+
+                                    $dir          = DIR_TMP.'cdn/';
+                                      $html = listAllFolderChooseImage($dir);
+                                      echo $html;
 
                                     ?>
                                   </div>
@@ -273,7 +277,7 @@
                         <div class="modal-image-choose">
                             <div class="text-center">
                                   <a class="text-center" data-toggle="modal" data-target="#myModalFavicon">
-                                  <img src="<?php echo (isset($this->data['info']['icon']) && $this->data['info']['icon']!='') ? base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$this->data['info']['icon'].'&h=150&w=210&zc=2' : base_url().'tmp/public/images/img.png';?>" class="logo-favicon load-img" alt="">
+                                  <img src="<?php echo (isset($this->data['info']['icon']) && $this->data['info']['icon']!='') ? base_url().'tmp/cdn/'.$this->data['info']['icon'] : base_url().'tmp/public/images/img.png';?>" class="logo-favicon load-img" alt="">
                                   </a>
                                   <h5 class="text-center"><a href="" class="del-image-choose-favicon" style="color: #FF5722;font-weight:bold;"><i class="fa fa-trash-o" aria-hidden="true"></i> <?php echo lang('delete'); ?> </a></h5>
                             </div>
@@ -289,11 +293,15 @@
                                     </div>
                                     <div class="modal-body" data-mess-one="<?php echo lang('warning_choose_img');?>" data-mess-two="<?php echo lang('warning_choose_img_one');?>" data-title="favicon">
                                      <?php
-                                      if (!empty($this->data['images'])) {
+                                      /*if (!empty($this->data['images'])) {
                                         foreach ($this->data['images'] as $key => $value) {
                                           echo "<img class='img-load-folder' data-src='".$value."' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value."&h=100&w=150&zc=2' width='150' height='100'/>";
                                          }
                                       }
+*/
+                                      $dir          = DIR_TMP.'cdn/';
+                                      $html = listAllFolderChooseImage($dir);
+                                      echo $html;
 
                                       ?>
                                     </div>

@@ -88,6 +88,7 @@ $('body').on('click', '#rename', function(event) {
 	event.preventDefault();
 	var new_name = $('#new_name').val().trim();
 	var old_name = $('#old_name').val();
+	var directory = $('#directory').val();
 	if (new_name=="") {
 		$('#new_name').focus();
 		toastr["error"]("Bạn cần nhập tên mới cho tệp tin!");
@@ -97,7 +98,7 @@ $('body').on('click', '#rename', function(event) {
 			url: baseUrl+'media/media/renameImage',
 			type: 'POST',
 			dataType: 'json',
-			data: {new_name: new_name,old_name:old_name},
+			data: {new_name: new_name,old_name:old_name,directory:directory},
 		})
 		.done(function(data) {
 			
@@ -139,6 +140,7 @@ $('body').on('click', '#copy_rename', function(event) {
 	event.preventDefault();
 	var new_name = $('#new_name').val().trim();
 	var old_name = $('#old_name').val();
+	var directory = $('#directory').val();
 	if (new_name=="") {
 		$('#new_name').focus();
 		toastr["error"]("Bạn cần nhập tên mới cho tệp tin!");
@@ -148,7 +150,7 @@ $('body').on('click', '#copy_rename', function(event) {
 			url: baseUrl+'media/media/renameCopyImage',
 			type: 'POST',
 			dataType: 'json',
-			data: {new_name: new_name,old_name:old_name},
+			data: {new_name: new_name,old_name:old_name,directory:directory},
 		})
 		.done(function(data) {
 			

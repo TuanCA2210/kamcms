@@ -131,7 +131,7 @@ class MediaController extends Controller {
 			$dir   = trim($_POST['directory']);
 			if (file_exists($dir.$title)) {
 				if (is_dir($dir.$title)) {
-					$this->delete_dir($dir.$title);
+					delete_dir($dir.$title);
 				} else {
 					unlink($dir.$title);
 				}
@@ -147,34 +147,7 @@ class MediaController extends Controller {
 			echo json_encode($data);
 		}
 	}
-	public function delete_dir($src) {
-		$dir = opendir($src);
-		while (false !== ($file = readdir($dir))) {
-			if (($file != '.') && ($file != '..')) {
-				if (is_dir($src.'/'.$file)) {
-					$this->delete_dir($src.'/'.$file);
-				} else {
-					unlink($src.'/'.$file);
-				}
-			}
-		}
-		closedir($dir);
-		rmdir($src);
-	}
-	public function copy_directory($src, $dst) {
-		$dir = opendir($src);
-		@mkdir($dst);
-		while (false !== ($file = readdir($dir))) {
-			if (($file != '.') && ($file != '..')) {
-				if (is_dir($src.'/'.$file)) {
-					recurse_copy($src.'/'.$file, $dst.'/'.$file);
-				} else {
-					copy($src.'/'.$file, $dst.'/'.$file);
-				}
-			}
-		}
-		closedir($dir);
-	}
+
 	public function createNameFolder() {
 		//$dir          = DIR_TMP.'cdn/';
 		if (isset($_POST['new_name']) && isset($_POST['directory'])) {
@@ -193,9 +166,10 @@ class MediaController extends Controller {
 		}
 	}
 	public function renameImage() {
-		$dir = DIR_TMP.'cdn/';
+		//$dir          = DIR_TMP.'cdn/';
 		if (isset($_POST['new_name']) && isset($_POST['old_name'])) {
 			$old_name = $_POST['old_name'];
+			$dir      = trim($_POST['directory']);
 			$new_name = alias(trim($_POST['new_name']));
 			if (is_dir($dir.$old_name)) {
 				rename($dir.$old_name, $dir.$new_name);
@@ -223,12 +197,13 @@ class MediaController extends Controller {
 		}
 	}
 	public function renameCopyImage() {
-		$dir = DIR_TMP.'cdn/';
+		//$dir          = DIR_TMP.'cdn/';
 		if (isset($_POST['new_name']) && isset($_POST['old_name'])) {
+			$dir      = trim($_POST['directory']);
 			$old_name = $_POST['old_name'];
 			$new_name = alias(trim($_POST['new_name']));
 			if (is_dir($dir.$old_name)) {
-				$this->copy_directory($dir.$old_name, $dir.$new_name);
+				copy_directory($dir.$old_name, $dir.$new_name);
 				$data = array(
 					'status' => true,
 					'mess'   => lang('mess_copy_rename')

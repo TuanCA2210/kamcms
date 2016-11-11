@@ -48,7 +48,7 @@ class SettingsController extends Controller{
 		}
 
 
-		$this->view->data['images'] = getImagesToFolder($dir);
+		//$this->view->data['images'] = getImagesToFolder($dir);
 		$this->view->data['info']  = $this->info->getInfo();
 
 		$this->view->render('index');
@@ -147,6 +147,34 @@ class SettingsController extends Controller{
 		    );
 		    echo json_encode($data);
 		}
+	}
+	public function openDirectory(){
+		if (isset($_POST['check_folder']) && $_POST['check_folder']!=false && isset($_POST['directory'])) {
+			$direct = trim(addslashes($_POST['check_folder']));
+			$dir = trim($_POST['directory']).$direct."/";
+			//$dir          = DIR_TMP.'cdn/'.$direct."/";
+			$html = listAllFolderChooseImage($dir);
+	        $data = array(
+					    	'status'	=> true,
+					    	'html'		=> $html,
+					    	'mess'		=> lang('notification').lang('uploaded_message')
+					    );
+			echo json_encode($data);
+		}
+		
+	}
+	public function backDirectory(){
+		if (isset($_POST['back']) && isset($_POST['directory'])) {
+			$directory = dirname($_POST['directory'])."/";
+			$html = listAllFolderChooseImage($directory);
+	        $data = array(
+					    	'status'	=> true,
+					    	'html'		=> $html,
+					    	'mess'		=> lang('notification').lang('uploaded_message')
+					    );
+			echo json_encode($data);
+		}
+		
 	}
 	
 }

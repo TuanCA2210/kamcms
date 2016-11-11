@@ -71,7 +71,7 @@ function validateIp($ip){
 }
 function getImagesToFolder($dir){
     $ImagesArray = [];
-    $file_display = [ 'jpg', 'jpeg', 'png', 'gif' ];
+    $file_display = [ 'jpg', 'jpeg', 'png', 'gif','ico'];
 
     if (file_exists($dir) == false) {
         return ["Directory \'', $dir, '\' not found!"];
@@ -242,7 +242,11 @@ function listAllFolder($dir){
     if (!empty($folder_recursive)) {
                 
         foreach ($folder_recursive as $key => $value) {
+            $current = "";
+            if ($dir!=$root) {
+                $current = str_replace($root,"",$dir);
                 
+            }
               if (is_dir($dir.$value)) {
                     $html .= "<div class='media-col' data-folder='".$value."'>";
                     $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/folder2.png&h=100&w=150&zc=2' width='150' height='100'/>";
@@ -254,8 +258,21 @@ function listAllFolder($dir){
                     $html .= "</div>";
                 }else{
                     $html .= "<div class='media-col' data-folder='false'>";
-                    $html .= "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
-                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$value."&h=100&w=150&zc=2' width='150' height='100'/>";
+                    $html .= "<div class='overflow'><a class='fancybox' href='".base_url()."tmp/cdn/".$current.$value."'><i class='demo-icon icon-eye'>&#xe801;</i></a></div>";
+                    
+
+                    $tmp = explode('.', $value);
+                    $ext = end($tmp);
+                    if ($ext=='ico') {
+                        $html .= "<img class='img-folder-media' src='".base_url()."tmp/cdn/".$current.$value."' width='150' height='100'/>";
+                    }else{
+                        $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$current.$value."&h=100&w=150&zc=2' width='150' height='100'/>";
+                    }
+
+
+
+
+                    
                     $html .= "<div class='text-center'>".$value."</div>";
                     $html .= "<div class='text-center overcontrol'>
                             <a href='javascript:void(0)' class='rename' data-title='".$value."'><i class='fa fa-font' aria-hidden='true'></i></a>
@@ -268,4 +285,100 @@ function listAllFolder($dir){
         $html .= '<br/><br/><p class="text-center">Empty Folder</p>';
     }
     return $html;
+}
+
+//
+function listAllFolderChooseImage($dir){
+    $root          = DIR_TMP.'cdn/';
+    $html='';
+    $results_folder = scandir($dir);
+    $arrDir = array();
+    foreach ($results_folder as $value) {
+        if($value=='.' || $value=='..' ){
+            //
+        }else{
+            if (is_dir($dir.$value)) {
+                $arrDir[] = $value;
+            }
+        }
+    }
+    //dd($dir);
+    $ImagesA = getImagesToFolder($dir);
+    $folder_recursive = array_merge_recursive($arrDir,$ImagesA);
+                $html .= "<input type='hidden' id='directory' name='directory' value='".$dir."' />";
+                if ($dir!=$root) {
+                    $html .= "<div class='media-back' id='back_folder' data-folder='false'>";
+                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/backfolder.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                    $html .= "</div>";
+                }
+    if (!empty($folder_recursive)) {
+                
+        foreach ($folder_recursive as $key => $value) {
+                $current = "";
+                if ($dir!=$root) {
+                    $current = str_replace($root,"",$dir);
+                
+                }
+              if (is_dir($dir.$value)) {
+                    $html .= "<div class='media-col' data-folder='".$value."'>";
+                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/folder2.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                    $html .= "<div class='text-center'>".$value."</div>";
+                    $html .= "<div class='text-center overcontrol'>
+                            </div>";
+                    $html .= "</div>";
+                }else{
+                    
+
+                    $html .= "<div class='media-col' data-folder='false'>";
+
+                    $tmp = explode('.', $value);
+                    $ext = end($tmp);
+                    if ($ext=='ico') {
+                        $html .="<img class='img-load-folder' data-src='".$current.$value."' src='".base_url().'tmp/cdn/'.$current.$value."' width='150' height='100' data-folder='false'/>";
+                    }else{
+                        $html .="<img class='img-load-folder' data-src='".$current.$value."' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$current.$value."&h=100&w=150&zc=2' width='150' height='100' data-folder='false'/>";
+                    }
+
+
+                    
+                    $html .= "<div class='text-center'>".$value."</div>";
+                    $html .= "</div>";
+                }
+         }
+    }else{
+        $html .= '<br/><br/><p class="text-center">Empty Folder</p>';
+    }
+    return $html;
+}
+
+
+function copy_directory($src,$dst) {
+        $dir = opendir($src);
+        @mkdir($dst);
+        while(false !== ( $file = readdir($dir)) ) {
+            if (( $file != '.' ) && ( $file != '..' )) {
+                if ( is_dir($src . '/' . $file) ) {
+                    copy_directory($src . '/' . $file,$dst . '/' . $file);
+                }
+                else {
+                    copy($src . '/' . $file,$dst . '/' . $file);
+                }
+            }
+        }
+        closedir($dir);
+}
+function delete_dir($src) { 
+        $dir = opendir($src);
+        while(false !== ( $file = readdir($dir)) ) { 
+            if (( $file != '.' ) && ( $file != '..' )) { 
+                if ( is_dir($src . '/' . $file) ) { 
+                    delete_dir($src . '/' . $file); 
+                } 
+                else { 
+                    unlink($src . '/' . $file); 
+                } 
+            } 
+        } 
+        closedir($dir); 
+        rmdir($src);
 }
