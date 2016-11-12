@@ -174,11 +174,9 @@
 			                                  </div>
 			                                  <div class="modal-body" data-mess-one="<?php echo lang('warning_choose_img');?>" data-mess-two="<?php echo lang('warning_choose_img_one');?>" data-title="thumbnail_pages">
 			                                   <?php
-			                                    if (!empty($this->data['images'])) {
-			                                      foreach ($this->data['images'] as $key => $value) {
-			                                        echo "<img class='img-load-folder' data-src='".$value."' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value."&h=100&w=150&zc=2' width='150' height='100'/>";
-			                                       }
-			                                    }
+			                                    $dir          = DIR_TMP.'cdn/';
+			                                      $html = listAllFolderChooseImage($dir);
+			                                      echo $html;
 
 			                                    ?>
 			                                  </div>

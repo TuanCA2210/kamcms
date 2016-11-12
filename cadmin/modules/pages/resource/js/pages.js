@@ -14,6 +14,51 @@ function offLoading(){
 	$('.fade_loading').empty();
 }
 
+$('body').on('dblclick', '#myModalPages .media-col img.img-folder-media', function(event) {
+	event.preventDefault();
+	var check_folder = $(this).parent('.media-col').attr('data-folder');
+	var directory = $('#directory').val();
+	$.ajax({
+		url: baseUrl+'settings/settings/openDirectory',
+		type: 'POST',
+		dataType: 'json',
+		data: {check_folder: check_folder,directory:directory},
+	})
+	.done(function(data) {
+		//console.log(current_folder);
+		if (data.status==true) {
+			$('#myModalPages').find('.modal-body').fadeOut(100, function(){
+                $('#myModalPages').find('.modal-body').html(data.html).fadeIn();
+            });
+		}
+	});
+	
+	
+});
+
+
+
+$('body').on('dblclick', '#back_folder', function(event) {
+	event.preventDefault();
+	var current_folder = $(this).parent('.modal-body');
+	var directory = $('#directory').val();
+	$.ajax({
+		url: baseUrl+'settings/settings/backDirectory',
+		type: 'POST',
+		dataType: 'json',
+		data: {back: 'true',directory:directory},
+	})
+	.done(function(data) {
+		if (data.status==true) {
+			current_folder.fadeOut(100, function(){
+                current_folder.html(data.html).fadeIn();
+                //$('#loadMedia').html(data.html).fadeIn().delay(600);
+            });
+		}
+
+	});
+	
+});
 
 	$('body').on('click', '.choose_img', function(event) {
 		event.preventDefault();

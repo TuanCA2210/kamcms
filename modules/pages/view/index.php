@@ -16,7 +16,7 @@
         }
         ?>
 		<?php 
-		echo $this->data['content'];
+		echo html_entity_decode($this->data['content']);
 
 		if($this->data['contact_form']!="") echo $this->data['contact_form'];
 		 ?>

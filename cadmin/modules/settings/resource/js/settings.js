@@ -82,7 +82,7 @@ $('body').on('dblclick', '#myModalLogo .media-col img.img-folder-media', functio
 	
 });
 
-myModalLogo
+
 
 $('body').on('dblclick', '#back_folder', function(event) {
 	event.preventDefault();
