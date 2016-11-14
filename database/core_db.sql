@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2016 at 10:47 AM
+-- Generation Time: Nov 14, 2016 at 10:52 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -905,6 +905,7 @@ CREATE TABLE `web_settings` (
   `seo_keywords` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `google_analytics` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `google_site_verification` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `google_file_json` varchar(255) DEFAULT NULL,
   `bank_user` varchar(255) DEFAULT NULL,
   `bank_code` varchar(100) DEFAULT NULL,
   `bank_name` varchar(255) DEFAULT NULL,
@@ -920,8 +921,8 @@ CREATE TABLE `web_settings` (
 -- Dumping data for table `web_settings`
 --
 
-INSERT INTO `web_settings` (`id`, `name`, `logo`, `slogan`, `icon`, `phone`, `hotline`, `email`, `email_support`, `address`, `districtid`, `provinceid`, `link_facebook`, `link_google`, `link_youtube`, `link_tt`, `seo_title`, `seo_description`, `seo_keywords`, `google_analytics`, `google_site_verification`, `bank_user`, `bank_code`, `bank_name`, `bank_chinhanh`, `bank_tp`, `link_google_map`, `title_sidebar`, `content_sidebar`, `contact_thumbnail`) VALUES
-(2, 'Cuongle', 'logo.png', 'dfgd', '114x114.png', '+84 941 068 949', '+84 941 068 949', 'cuongle.dev@gmail.com', 'cuongle.dev@gmail.com', 'CT6A Xa La, Kiến Hưng, Hanoi, Vietnam', '', '', 'https://fb.com.vn', 'https://google.com.vn', 'https://youtube.com', 'https://twitter.com', 'PHP platform base on Cuongle Framework', 'Cuongle Platform - PHP platform base on Cuongle Framework', 'Cuongle, Cuongle team, Cuongle platform, php platform, php framework, web development', 'UA-42586526-15', 'hs2Js3WGGpf1pzyhUNehvVDSIrmO3XZpm7PggNZECxE', NULL, NULL, NULL, NULL, NULL, 'https://maps.google.com', NULL, NULL, NULL);
+INSERT INTO `web_settings` (`id`, `name`, `logo`, `slogan`, `icon`, `phone`, `hotline`, `email`, `email_support`, `address`, `districtid`, `provinceid`, `link_facebook`, `link_google`, `link_youtube`, `link_tt`, `seo_title`, `seo_description`, `seo_keywords`, `google_analytics`, `google_site_verification`, `google_file_json`, `bank_user`, `bank_code`, `bank_name`, `bank_chinhanh`, `bank_tp`, `link_google_map`, `title_sidebar`, `content_sidebar`, `contact_thumbnail`) VALUES
+(2, 'Cuongle', 'logo.png', 'dfgd', '114x114.png', '+84 941 068 949', '+84 941 068 949', 'cuongle.dev@gmail.com', 'cuongle.dev@gmail.com', 'CT6A Xa La, Kiến Hưng, Hanoi, Vietnam', '', '', 'https://fb.com.vn', 'https://google.com.vn', 'https://youtube.com', 'https://twitter.com', 'PHP platform base on Cuongle Framework', 'Cuongle Platform - PHP platform base on Cuongle Framework', 'Cuongle, Cuongle team, Cuongle platform, php platform, php framework, web development', 'UA-42586526-15', 'hs2Js3WGGpf1pzyhUNehvVDSIrmO3XZpm7PggNZECxE', 'client_secret_916949212857-l1racku3pi9585qptafu9b03vv0feman.apps.googleusercontent.com.json', NULL, NULL, NULL, NULL, NULL, 'https://maps.google.com', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables

@@ -253,6 +253,7 @@ $_L['time']            			   = 'Thời gian';
 $_L['guest']            		   = 'Khách';
 $_L['pageview']            		   = 'Lượt xem trang';
 $_L['inmonth']            		   = '(30 ngày trước)';
+$_L['access_analytics']            = 'Bạn chưa được quyền truy cập vào Analytics.';
 
 
 

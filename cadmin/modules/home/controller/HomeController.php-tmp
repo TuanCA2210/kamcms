@@ -1,87 +1,105 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
+ in Unknown on line 0
 <?php
 session_start();
 class HomeController extends Controller {
 	public $modelNews;
 	public $fileJson;
 	public $callback;
+	public $data_settings;
 	//public $loadPages;
 	public function __construct() {
 		parent::__construct();
-		$this->modelNews = $this->loadModel('Home');
-		$this->fileJson  = $this->returnFiles('client_secret_916949212857-l1racku3pi9585qptafu9b03vv0feman.apps.googleusercontent.com.json');
-		$this->callback  = 'http://'.$_SERVER['HTTP_HOST'].'/cadmin/home/home/oauth2callback';
+		$this->modelNews     = $this->loadModel('Home');
+		$this->data_settings = $this->modelNews->getSettingsOne();
+		$this->fileJson      = $this->returnFiles($this->data_settings['google_file_json']);
+		$this->callback      = base_url().'home/home/oauth2callback';
+		//'http://' . $_SERVER['HTTP_HOST'] . '/cadmin/home/home/oauth2callback';
+
 	}
 	public function index() {
 		global $_web;
 		$this->view->data = $this->modelNews->getUserById(1);
 
-		// Create the client object and set the authorization configuration
-		// from the client_secretes.json you downloaded from the developer console.
-		$client = new Google_Client();
-		$client->setAuthConfig($this->fileJson);
-		$client->addScope(Google_Service_Analytics::ANALYTICS_READONLY);
+		try {
+			// Create the client object and set the authorization configuration
+			// from the client_secretes.json you downloaded from the developer console.
+			$client = new Google_Client();
+			$client->setAuthConfig($this->fileJson);
+			$client->addScope(Google_Service_Analytics::ANALYTICS_READONLY);
+
+		} catch (Exception $e) {
+			redirect(base_url().'settings/settings/index');
+		}
 
 		// If the user has already authorized this app then get an access token
 		// else redirect to ask the user to authorize access to Google Analytics.
 
 		if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-
-			// Set the access token on the client.
-			$client->setAccessToken($_SESSION['access_token']);
-
-			// Create an authorized analytics service object.
-			$analytics = new Google_Service_Analytics($client);
-
-			// Get the first view (profile) id for the authorized user.
-			$profile = $this->getFirstProfileId($analytics);
-
-			// Get the results from the Core Reporting API and print the results.
-
-			// lấy dữ liệu tạo biểu đồ
-			// Lấy các trường dữ liệu: tổng lượt truy cập, lượt truy cập , trang
-			$metrics = 'ga:visits,ga:pageviews';//ga:sessions,
-			// link xem https://ga-dev-tools.appspot.com/query-explorer/?csw=1#report-end
-			//Lấy giá trị theo giờ , theo vị trí, theo , link web, title
-			$optParams = array("dimensions" => "ga:day");
-
+			// xử lý ngoại lệ khi google analytic chưa cấp quyền
 			try {
-				$results = $this->getResults($analytics, $profile, $metrics, $optParams);
+				// Set the access token on the client.
+				$client->setAccessToken($_SESSION['access_token']);
+				// Create an authorized analytics service object.
+				$analytics = new Google_Service_Analytics($client);
 
-			} catch (Exception $exc) {
-				$results = $this->getResults($analytics, $profile, $metrics, $optParams);
+				// Get the first view (profile) id for the authorized user.
+				$profile = $this->getFirstProfileId($analytics);
+
+				// Get the results from the Core Reporting API and print the results.
+
+				// lấy dữ liệu tạo biểu đồ
+				// Lấy các trường dữ liệu: tổng lượt truy cập, lượt truy cập , trang
+				$metrics = 'ga:visits,ga:pageviews';//ga:sessions,
+				// link xem https://ga-dev-tools.appspot.com/query-explorer/?csw=1#report-end
+				//Lấy giá trị theo giờ , theo vị trí, theo , link web, title
+				$optParams = array("dimensions" => "ga:day");
+
+				try {
+					$results = $this->getResults($analytics, $profile, $metrics, $optParams);
+
+				} catch (Exception $exc) {
+					$results = $this->getResults($analytics, $profile, $metrics, $optParams);
+				}
+				//$this->view->data['stats'] = $this->printResults($results);
+				//dữ liệu tạo biểu đồ
+				$this->view->data['stats'] = $results['rows'];
+
+				// dữ liệu truy cập pages
+				$metrics_pages   = "ga:sessions,ga:pageviews,ga:avgTimeOnPage";
+				$optParams_pages = array("dimensions" => "ga:fullReferrer,ga:pagePath,ga:country,ga:dateHour", "sort" => "-ga:dateHour");// view pages and sort
+				try {
+					$results_pages = $this->getResults($analytics, $profile, $metrics_pages, $optParams_pages);
+
+				} catch (Exception $exc) {
+					$results_pages = $this->getResults($analytics, $profile, $metrics_pages, $optParams_pages);
+				}
+				$this->view->data['stats_pages'] = $this->printResults($results_pages);
+
+				// tong lươt truy cap trong thang
+				$metrics_count_month   = "ga:sessions";
+				$optParams_count_month = array("dimensions" => "");// view pages
+				try {
+					$results_pages = $this->getResults($analytics, $profile, $metrics_count_month, $optParams_count_month);
+
+				} catch (Exception $exc) {
+					$results_pages = $this->getResults($analytics, $profile, $metrics_count_month, $optParams_count_month);
+				}
+
+				$this->view->data['session_month'] = $this->printResults($results_pages);
+				$this->view->render('index');
+
+				// xử lý ngoại lệ khi google analytic chưa cấp quyền
+			} catch (Exception $e) {
+				$this->view->render('error_analytics');
+				//redirect(base_url().'settings/settings/index');
 			}
-			//$this->view->data['stats'] = $this->printResults($results);
-			//dữ liệu tạo biểu đồ
-			$this->view->data['stats'] = $results['rows'];
-
-			// dữ liệu truy cập pages
-			$metrics_pages   = "ga:sessions,ga:pageviews,ga:avgTimeOnPage";
-			$optParams_pages = array("dimensions" => "ga:fullReferrer,ga:pagePath,ga:country,ga:dateHour", "sort" => "-ga:dateHour");// view pages and sort
-			try {
-				$results_pages = $this->getResults($analytics, $profile, $metrics_pages, $optParams_pages);
-
-			} catch (Exception $exc) {
-				$results_pages = $this->getResults($analytics, $profile, $metrics_pages, $optParams_pages);
-			}
-			$this->view->data['stats_pages'] = $this->printResults($results_pages);
-
-			// tong lươt truy cap trong thang
-			$metrics_count_month   = "ga:sessions";
-			$optParams_count_month = array("dimensions" => "");// view pages
-			try {
-				$results_pages = $this->getResults($analytics, $profile, $metrics_count_month, $optParams_count_month);
-
-			} catch (Exception $exc) {
-				$results_pages = $this->getResults($analytics, $profile, $metrics_count_month, $optParams_count_month);
-			}
-			$this->view->data['session_month'] = $this->printResults($results_pages);
 
 		} else {
 			$redirect_uri = $this->callback;
 			header('Location: '.filter_var($redirect_uri, FILTER_SANITIZE_URL));
 		}
-
-		$this->view->render('index');
 	}
 	public function oauth2callback() {
 		// Create the client object and set the authorization configuration
@@ -98,7 +116,9 @@ class HomeController extends Controller {
 		} else {
 			$client->authenticate($_GET['code']);
 			$_SESSION['access_token'] = $client->getAccessToken();
-			$redirect_uri             = 'http://'.$_SERVER['HTTP_HOST'].'/cadmin/home/home/index';
+			$redirect_uri             = base_url().'home/home/index';
+			//'http://' . $_SERVER['HTTP_HOST'] . '/cadmin/home/home/index';
+
 			header('Location: '.filter_var($redirect_uri, FILTER_SANITIZE_URL));
 		}
 
@@ -153,7 +173,7 @@ class HomeController extends Controller {
 			// Calls the Core Reporting API and queries for the number of sessions
 			// for the last seven days.
 			return $service->data_ga->get(
-				'ga:'.$profileId,
+				'ga:'.$this->data_settings['google_site_verification'], // . $profileId,
 				$startDate,
 				'today',
 				$metrics,
@@ -180,7 +200,7 @@ class HomeController extends Controller {
 		print "<p>First view (profile) found: $profileName</p>";
 		print "<p>Total sessions: $sessions</p>";*/
 		} else {
-			print"<p>No results found.</p>";
+			print_r("<p>No results found.</p>");
 		}
 	}
 	public function userOnline() {

@@ -101,11 +101,25 @@
                               <div class="form-group ">
                                   <label for="google_analytics" class="control-label">Google Analytics</label>
                                   <input class="form-control" id="google_analytics" placeholder="Google Analytics" name="google_analytics" type="text" value="<?php echo (isset($this->data['info']['google_analytics'])) ? $this->data['info']['google_analytics'] : '';?>">
+                                  <p><a href="https://analytics.google.com" target="_blank">Đường dẫn</a> vào Google Analytics</p>
                               </div>
 
                               <div class="form-group ">
                                   <label for="google_site_verification" class="control-label"><?php echo lang('google_verify');?></label>
                                   <input class="form-control" id="google_site_verification" placeholder="Google Site Verification" name="google_site_verification" type="text" value="<?php echo (isset($this->data['info']['google_site_verification'])) ? $this->data['info']['google_site_verification'] : '';?>">
+                                  <p><a target="_blank" href="https://ga-dev-tools.appspot.com/account-explorer/">Đường dẫn</a> lấy View ID Analytics </p>
+                              </div>
+                              <div class="form-group ">
+                                  <label for="file_google" class="control-label"><?php echo lang('google_verify');?></label> <br>
+                                    <div style="position:relative;">
+                                      <a class='btn btn-default' href='javascript:;'>
+                                        Choose File...
+                                        <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                      </a>
+                                      &nbsp;
+                                      <span class='label label-info' id="upload-file-info"><?php echo (isset($this->data['info']['google_file_json'])) ? $this->data['info']['google_file_json'] : '';?></span>
+                                    </div>
+                                  <input class="form-control" id="google_file_json" name="google_file_json" type="hidden" value="<?php echo (isset($this->data['info']['google_file_json'])) ? $this->data['info']['google_file_json'] : '';?>">
                               </div>
 
                           </div>

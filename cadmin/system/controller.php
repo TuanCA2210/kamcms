@@ -47,7 +47,7 @@ class Controller{
 		
 	}
 	public function returnFiles($file) {
-			$path = DIR_APP . 'google/' . lcfirst($file);
+			$path = DIR_TMP . 'files/' . lcfirst($file);
 			if (file_exists($path)) {
 				return $path;
 			} else {

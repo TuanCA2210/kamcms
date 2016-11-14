@@ -262,6 +262,7 @@ $_L['time']            			= 'Time';
 $_L['guest']            		= 'Guest';
 $_L['pageview']            		= 'Pageview';
 $_L['inmonth']            		= '(30 days ago)';
+$_L['access_analytics']         = 'You do not get access to Analytics.';
 
 
 
@@ -274,3 +275,5 @@ $_L['meta_keyword']				= 'Meta keyword';
 $_L['meta_description']			= 'Meta description';
 $_L['meta_keyword_required']	= 'Keywords (Words separated by |)';
 $_L['meta_description_required']= 'Meta description (Maximum 400 characters)';
+
+

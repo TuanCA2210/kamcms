@@ -1,3 +1,6 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
+ in Unknown on line 0
 <?php
 class Controller {
 	public $view, $input, $mod, $controller, $action, $id, $loadPages;
@@ -47,7 +50,7 @@ class Controller {
 
 	}
 	public function returnFiles($file) {
-		$path = DIR_APP.'google/'.lcfirst($file);
+		$path = DIR_TMP.'files/'.lcfirst($file);
 		if (file_exists($path)) {
 			return $path;
 		} else {
