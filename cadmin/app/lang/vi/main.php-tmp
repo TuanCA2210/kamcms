@@ -188,12 +188,15 @@ $_L['regis']  = 'Đăng ký';
 $_L['logout'] = 'Thoát';
 
 // chart
-$_L['statistics_month'] = 'Thống kê truy cập trong tháng';
-$_L['time']             = 'Thời gian';
-$_L['guest']            = 'Khách';
-$_L['pageview']         = 'Lượt xem trang';
-$_L['inmonth']          = '(30 ngày trước)';
-$_L['access_analytics'] = 'Bạn chưa được quyền truy cập vào Analytics.';
+$_L['statistics_month']  = 'Thống kê truy cập trong tháng';
+$_L['time']              = 'Thời gian';
+$_L['guest']             = 'Khách';
+$_L['pageview']          = 'Lượt xem trang';
+$_L['inmonth']           = '(30 ngày trước)';
+$_L['access_analytics']  = 'Bạn chưa được quyền truy cập vào Analytics.';
+$_L['path_analytics']    = 'Đường dẫn vào Google Analytics.';
+$_L['view_id_analytics'] = 'Đường dẫn lấy View ID Analytics.';
+$_L['json_analytics']    = 'Tệp tin json xác minh Google Api.';
 
 // Product
 $_L['product_manager']           = 'Quản lý sản phẩm';

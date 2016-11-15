@@ -10,3 +10,4 @@ $('body').on('click', '.view_chart_table', function(event) {
 	}
 	
 });
+

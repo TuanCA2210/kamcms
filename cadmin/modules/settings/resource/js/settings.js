@@ -107,3 +107,27 @@ $('body').on('dblclick', '#back_folder', function(event) {
 });
 
 
+$('body').on('change', '#file_source', function(event) {
+	event.preventDefault();
+	var file_data = $(this).prop("files")[0];   
+    var form_data = new FormData();                  
+    form_data.append("file", file_data);
+    //console.log(form_data);
+
+	$.ajax({
+		url: baseUrl+'settings/settings/sendFiles',
+		type: 'POST',
+		dataType: 'json',
+		data: form_data,
+		contentType: false,
+		cache: false,
+		processData:false, 
+	})
+	.done(function(data) {
+		if (data.status==true) {
+			toastr["success"](data.mess);
+		}else{
+			toastr["warning"](data.mess);
+		}
+	});
+});

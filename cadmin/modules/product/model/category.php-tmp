@@ -1,3 +1,6 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
+ in Unknown on line 0
 <?php
 class Category {
 	private $category;
@@ -9,5 +12,16 @@ class Category {
 	public function getCategories() {
 		$result = $this->category->get();
 		return $result;
+	}
+	public function update($data, $id) {
+		$this->category->where('id', $id);
+		$this->category->update($data);
+	}
+	public function delete($id) {
+		$this->category->where('id', $id);
+		$this->category->delete();
+	}
+	public function insertData($data_insert) {
+		$this->category->insert($data_insert);
 	}
 }

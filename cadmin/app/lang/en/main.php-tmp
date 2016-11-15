@@ -188,12 +188,15 @@ $_L['regis']  = 'Register';
 $_L['logout'] = 'Logout';
 
 // chart
-$_L['statistics_month'] = 'Access statistics for the month';
-$_L['time']             = 'Time';
-$_L['guest']            = 'Guest';
-$_L['pageview']         = 'Pageview';
-$_L['inmonth']          = '(30 days ago)';
-$_L['access_analytics'] = 'You do not get access to Analytics.';
+$_L['statistics_month']  = 'Access statistics for the month';
+$_L['time']              = 'Time';
+$_L['guest']             = 'Guest';
+$_L['pageview']          = 'Pageview';
+$_L['inmonth']           = '(30 days ago)';
+$_L['access_analytics']  = 'You do not get access to Analytics.';
+$_L['path_analytics']    = 'Link to Google Analytics.';
+$_L['view_id_analytics'] = 'Get link View ID Analytics.';
+$_L['json_analytics']    = 'Json file verification Google Api.';
 
 // Product
 $_L['product_manager']           = 'Products Manager';

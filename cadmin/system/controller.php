@@ -51,7 +51,8 @@ class Controller{
 			if (file_exists($path)) {
 				return $path;
 			} else {
-				die('Không tồn tại file này' . lcfirst($path));
+				return false;
+				//die('Không tồn tại file này' . lcfirst($path));
 			}
 		
 	}

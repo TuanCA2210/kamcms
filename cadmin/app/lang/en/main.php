@@ -263,6 +263,9 @@ $_L['guest']            		= 'Guest';
 $_L['pageview']            		= 'Pageview';
 $_L['inmonth']            		= '(30 days ago)';
 $_L['access_analytics']         = 'You do not get access to Analytics.';
+$_L['path_analytics']           = 'Link to Google Analytics.';
+$_L['view_id_analytics']        = 'Get link View ID Analytics.';
+$_L['json_analytics']           = 'Json file verification Google Api.';
 
 
 

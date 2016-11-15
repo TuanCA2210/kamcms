@@ -176,5 +176,34 @@ class SettingsController extends Controller{
 		}
 		
 	}
+	public function sendFiles(){
+		if (isset($_FILES['file']['name'])) {
+			$file_name = $_FILES['file']['name'];
+			$tmp_name = explode('.',$_FILES['file']['name']);
+			$ext = end($tmp_name);
+			if ($ext=='json') {
+				if (move_uploaded_file($_FILES['file']['tmp_name'], DIR_TMP . 'files/' . $file_name)) {
+					$data_insert = array(
+							'google_file_json'	=> $file_name
+						);
+				  $this->info->update($data_insert);
+			      $status = true;
+			      $mess = lang('success').lang('uploaded_message');
+			    } else {
+			      $status = false;
+			      $mess = lang('warning').lang('not_uploaded_message');
+			    }
+			}else{
+				$status = false;
+			    $mess = lang('warning').lang('not_uploaded_message');
+			}
+			$data = array(
+				'status' => $status,
+				'mess'	 => $mess
+			);
+			echo json_encode($data);
+
+		}
+	}
 	
 }
