@@ -44,9 +44,9 @@
                                         <div class="row">
                                           <div class="col-lg-4">
                                             <div class="input-group">
-                                              <input type="text" class="form-control search_users" placeholder="Search for..." value="<?php if(isset($this->data['s'])) echo $this->data['s'];?>">
+                                              <input type="text" class="form-control search_category" placeholder="Search for..." value="<?php if(isset($this->data['s'])) echo $this->data['s'];?>">
                                               <span class="input-group-btn">
-                                                <button class="btn btn-primary search_button_users" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                <button class="btn btn-primary search_button_category" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                                               </span>
                                             </div><!-- /input-group -->
                                           </div><!-- /.col-lg-6 -->
@@ -129,7 +129,7 @@
                                                             </td>
                                                             <td><?php echo $value['id'];?></td>
                                                             <td>
-                                                                <img src="<?php echo (isset($value['thumbnail']) && $value['thumbnail']!='') ? base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['thumbnail'].'&h=100&w=150&zc=2' : base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/public/images/img.png&h=100&w=150&zc=2'; ?>" width="150" height="100" class="img-thumbnail"/>
+                                                                <img src="<?php echo (isset($value['avatar']) && $value['avatar']!='') ? base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['avatar'].'&h=100&w=150&zc=2' : base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/public/images/img.png&h=100&w=150&zc=2'; ?>" width="150" height="100" class="img-thumbnail"/>
                                                             </td>
                                                             <td class="sorting_1"><?php echo $value['title'];?></td>
                                                             <td><?php echo $value['username']; ?></td>
@@ -144,7 +144,7 @@
                                                                 ?>
                                                             </td>
                                                             <td><?php echo date('d-m-Y',$value['create_time']);?></td>
-                                                            <td><a href="<?php echo base_url().'posts/posts/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'posts/posts/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
+                                                            <td><a href="<?php echo base_url().'product/category/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'posts/posts/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
                                                         </tr>
                                                 <?php 
                                                     }

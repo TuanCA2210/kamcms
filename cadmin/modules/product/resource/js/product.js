@@ -91,3 +91,15 @@ $('body').on('click', '.choose_img', function(event) {
 		$(this).parents('.modal-image-choose').find('.hidden_thumb_pages').val('');
 		$(this).parents('.modal-image-choose').find('.pages-website').attr('src',baseUrl+'tmp/public/images/img.png');
 	});
+
+
+	$('body').on('click', '.search_button_category', function(event) {
+		event.preventDefault();
+		var search = $('.search_category').val();
+		if (search=="") {
+			window.location.assign(baseUrl+'product/category/index');
+		}else{
+			window.location.assign(baseUrl+'product/category/index&s='+search);
+		}
+		
+	});

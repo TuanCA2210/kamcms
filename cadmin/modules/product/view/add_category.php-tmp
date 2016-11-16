@@ -1,6 +1,9 @@
 
 Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
  in Unknown on line 0
+<?php
+dd($this->data['data']);
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
