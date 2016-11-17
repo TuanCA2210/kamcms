@@ -141,6 +141,9 @@ $_L['yes']                 = 'Có';
 $_L['note_content']        = 'Nội dung ghi chú';
 $_L['choose_form_contact'] = 'Thông báo! Bạn đang lựa chọn để thêm hình thức liên lạc trên trang.';
 
+$_L['avatar']               = 'Ảnh đại diện';
+$_L['cover_image']          = 'Ảnh bìa';
+$_L['choose_background']    = 'Chọn ảnh bìa';
 $_L['thumbnail']            = 'Hình ảnh';
 $_L['title']                = 'Tiêu đề';
 $_L['author']               = 'Tác giả';

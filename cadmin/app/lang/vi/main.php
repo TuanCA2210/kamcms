@@ -177,6 +177,9 @@ $_L['choose_form_contact']		= 'Thông báo! Bạn đang lựa chọn để thêm
 
 
 
+$_L['avatar']					= 'Ảnh đại diện';
+$_L['cover_image']				= 'Ảnh bìa';
+$_L['choose_background']		= 'Chọn ảnh bìa';
 $_L['thumbnail']				= 'Hình ảnh';
 $_L['title']					= 'Tiêu đề';
 $_L['author']					= 'Tác giả';

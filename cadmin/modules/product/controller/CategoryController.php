@@ -57,6 +57,7 @@ class CategoryController extends Controller{
 			$note = trim(addslashes($this->input->post('note')));
 			$parent_id = trim(addslashes($this->input->post('parent_id')));
 			$thumbnail = trim(addslashes($this->input->post('hidden_thumb_pages')));
+			$background = trim(addslashes($this->input->post('background')));
 			$meta_keyword = trim(addslashes($this->input->post('meta_keyword')));
 			$meta_description = trim(addslashes($this->input->post('meta_description')));
 
@@ -67,6 +68,7 @@ class CategoryController extends Controller{
 				'alias'			=> alias($title),
 				'description'	=> $description,
 				'avatar'		=> $thumbnail,
+				'background'		=> $background,
 				'note'			=> $note,
 				'parent_id'			=> $parent_id,
 				'meta_title'	=> $title,
@@ -105,6 +107,19 @@ class CategoryController extends Controller{
 				$this->view->data['data']=$this->modelCategory->getDataById($_GET['id']);
 				$this->view->data['menu']   = $this->modelCategory->getCategories();
 				$this->view->render('add_category');
+			}
+		}
+	}
+	public function del(){
+		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+			if ($this->modelCategory->checkId($_GET['id']) == FALSE) {
+				$id = $_GET['id'];
+				$this->modelCategory->delete($id);
+				$mess = array(
+					'flash_success' => lang('delete_success'),
+				);
+				Session::create($mess);
+				redirect(base_url().'product/category/index');
 			}
 		}
 	}

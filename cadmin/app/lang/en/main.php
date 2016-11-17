@@ -182,6 +182,9 @@ $_L['choose_form_contact']		= 'Notification! You are choosing to add contact for
 
 
 
+$_L['avatar']					= 'Avatar';
+$_L['cover_image']				= 'Cover image';
+$_L['choose_background']		= 'Choose cover image';
 $_L['thumbnail']				= 'Thumbnail';
 $_L['title']					= 'Title';
 $_L['author']					= 'Author';
