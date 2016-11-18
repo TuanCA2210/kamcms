@@ -51,4 +51,9 @@ class Category{
 		$result  = $this->category->get(null,null,$select);
 		return $result;
 	}
+	public function dellWhereInArray($name_id){
+		$name = implode(",",$name_id);
+		$sql = "DELETE FROM ".$this->lang."_category WHERE id IN (".$name.")";
+		$this->category->rawQuery($sql);
+	}
 }

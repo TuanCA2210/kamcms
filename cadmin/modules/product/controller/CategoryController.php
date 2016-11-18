@@ -123,4 +123,49 @@ class CategoryController extends Controller{
 			}
 		}
 	}
+	public function dellAll(){
+		if (isset($_POST['all'])) {
+			if (!empty($_POST['all']) &&  is_array($_POST['all'])) {
+                $names_id = $_POST['all'];
+                $this->modelCategory->dellWhereInArray($names_id);
+                $mess = array(
+					'flash_success' => lang('delete_all_success'),
+				);
+                Session::create($mess);
+				$data_mess = array(
+					'status'	=> true,
+					'redirect'		=> base_url().'product/category/index'
+				);
+				echo json_encode($data_mess);
+            }
+		}
+	}
+	public function status(){
+		if (isset($_POST['status'])) {
+			if (!empty($_POST['all']) &&  is_array($_POST['all'])) {
+                $names_id = $_POST['all'];
+                if ($_POST['status']=='public') {
+                	$data = array(
+                		'status' => 1
+                	);
+                }else{
+                	$data = array(
+                		'status' => 0
+                	);
+                }
+                foreach ($names_id as $value) {
+                	$this->modelCategory->update($data,$value);
+                }
+                $mess = array(
+					'flash_success' => lang('status_pages_success'),
+				);
+                Session::create($mess);
+				$data_mess = array(
+					'status'	=> true,
+					'redirect'		=> base_url().'product/category/index'
+				);
+				echo json_encode($data_mess);
+            }
+		}
+	}
 }

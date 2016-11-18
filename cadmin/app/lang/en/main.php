@@ -283,3 +283,9 @@ $_L['meta_keyword_required']	= 'Keywords (Words separated by |)';
 $_L['meta_description_required']= 'Meta description (Maximum 400 characters)';
 
 
+
+
+$_L['product_code']				= 'Code';
+$_L['product_price']			= 'Price';
+$_L['product_placeholder']		= 'The default is ‘Contact’';
+$_L['product_unit']				= 'Unit';
