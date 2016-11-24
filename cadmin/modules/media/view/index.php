@@ -41,8 +41,8 @@
                         <div class="col-md-12">
                               <div class="fileUpload btn btn-primary">
                                   <span><i class="fa fa-cloud-upload" aria-hidden="true"></i> <?php echo lang('uploadmedia');?></span>
-                                  <input type="file" id="media" class="media upload" name="media"/>
-                                  <input type="hidden" value="<?php echo time(); ?>" class="" name="media" />
+                                  <input type="file" id="media" class="media upload" name="media" />
+                                  <input type="hidden" value="<?php echo time(); ?>" class="" name="media"/>
                               </div>
                               <button class="btn btn-info refesh" type="button">
                                 <i class="fa fa-refresh" aria-hidden="true"></i>

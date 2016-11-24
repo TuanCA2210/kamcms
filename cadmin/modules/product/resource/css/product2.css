@@ -1,0 +1,112 @@
+ul.ui-sortable li{
+	cursor: move;
+}
+ul.list-image {
+	width: 100%;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+ul.list-image li {
+	display: block;
+	float: left;
+	margin-right: 9px;
+	margin-top: 10px;
+	width: 180px;
+	padding: 2px;
+	border: 1px solid #eee;
+	position: relative;
+}
+ul.list-image li div.imgs {
+	display: block;
+	width: 174px;
+	height: 174px;
+	position: relative;
+	border: 1px solid #eee;
+	cursor: move;
+	background: #FFF;
+}
+ul.list-image li div.imgs img {
+	max-height: 172px;
+	max-width: 172px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	border: none;
+	margin: auto;
+}
+ul.list-image li div.imgs .delete_image,
+ul.list-image li div.imgs .copy_link,
+ul.list-image li div.imgs .checked_avatar,
+ul.list-image li div.imgs .select_avatar {
+	position: absolute;
+	width: 110px;
+	height: 21px;
+	left: 50%;
+	margin-left: -55px;
+	font-size: 11px;
+	display: none;
+}
+ul.list-image li div.imgs .checked_avatar,
+ul.list-image li div.imgs .select_avatar {
+	top: 51px;
+}
+ul.list-image li div.imgs .delete_image {
+	top: 81px;
+}
+ul.list-image li div.imgs:hover .delete_image,
+ul.list-image li div.imgs:hover .checked_avatar,
+ul.list-image li div.imgs:hover .select_avatar {
+	display: block;
+}
+ul.list-image li input[type="text"] {
+	margin-top: 2px;
+	height: 30px;
+	padding: 6px;
+	font-size: 12px;
+	border: none;
+	border-bottom: 1px dotted #eee;
+}
+ul.list-image li textarea {
+	margin-top: 2px;
+	height: 50px;
+	padding: 6px;
+	font-size: 12px;
+	border: none;
+	border-bottom: 1px dotted #eee !important;
+	resize: none;
+}
+ul.list-image li .radio-inline {
+	font-size: 12px;
+}
+
+
+
+.green.btn {
+    color: white;
+    background-color: #35aa47;
+    border-color: "";
+}
+.btn-xs {
+    padding: 1px 5px;
+}
+.red.btn {
+    color: white;
+    background-color: #d84a38;
+    border-color: "";
+}
+
+
+.product-list-category{
+	border: 1px solid #ccc;
+    padding-left: 10px;
+    padding-top: 8px;
+    height: 225px;
+    overflow-y: scroll;
+}
+.product-list-category li label{
+	font-size: 13px;
+    color: #555;
+}

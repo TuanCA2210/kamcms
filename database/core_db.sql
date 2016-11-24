@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2016 at 10:52 AM
+-- Generation Time: Nov 24, 2016 at 11:13 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -108,6 +108,7 @@ CREATE TABLE `en_category` (
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keyword` varchar(255) DEFAULT NULL,
   `meta_description` text,
+  `note` text,
   `create_time` int(11) UNSIGNED DEFAULT NULL,
   `create_author` bigint(20) UNSIGNED DEFAULT NULL,
   `update_time` int(11) UNSIGNED DEFAULT NULL,
@@ -297,19 +298,6 @@ CREATE TABLE `en_product_basic` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `en_product_description`
---
-
-CREATE TABLE `en_product_description` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `id_product` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) DEFAULT '',
-  `content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `en_product_detail`
 --
 
@@ -336,11 +324,8 @@ CREATE TABLE `en_product_detail` (
 CREATE TABLE `en_product_image` (
   `id` int(11) UNSIGNED NOT NULL,
   `id_product` int(11) UNSIGNED NOT NULL DEFAULT '0',
-  `avatar` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `image` varchar(255) DEFAULT NULL,
-  `att_title` varchar(255) DEFAULT NULL,
-  `att_alt` varchar(255) DEFAULT NULL,
-  `sort` int(5) UNSIGNED NOT NULL DEFAULT '0'
+  `avatar` varchar(255) NOT NULL DEFAULT '0',
+  `image` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -561,6 +546,7 @@ CREATE TABLE `vi_category` (
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keyword` varchar(255) DEFAULT NULL,
   `meta_description` text,
+  `note` text,
   `create_time` int(11) UNSIGNED DEFAULT NULL,
   `create_author` bigint(20) UNSIGNED DEFAULT NULL,
   `update_time` int(11) UNSIGNED DEFAULT NULL,
@@ -571,18 +557,18 @@ CREATE TABLE `vi_category` (
 -- Dumping data for table `vi_category`
 --
 
-INSERT INTO `vi_category` (`id`, `parent_id`, `title`, `alias`, `description`, `background`, `icon`, `avatar`, `show_home`, `info`, `number_home`, `sort`, `status`, `number_product`, `meta_title`, `meta_keyword`, `meta_description`, `create_time`, `create_author`, `update_time`, `update_author`) VALUES
-(81, 0, 'THỜI TRANG NỮ', 'thoi-trang-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610576_images-1.jpg', 1, '', 0, 1, 1, 0, '', '', '', 1425610576, 23, NULL, NULL),
-(82, 0, 'THỜI TRANG CHO PHÁI MẠNH', 'thoi-trang-cho-phai-manh', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610618_tai-xuong-20.jpg', 1, '', 0, 2, 1, 0, '', '', '', 1425610619, 23, NULL, NULL),
-(83, 0, 'GIÀY DÉP', 'giay-dep', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/58/1425610727_tai-xuong-21.jpg', 1, '', 0, 3, 1, 0, '', '', '', 1425610727, 23, NULL, NULL),
-(94, 81, 'ÁO NỮ', 'ao-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/51/1426135878_ao-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135878, 23, 1426150994, 23),
-(95, 81, 'ĐẦM, VÁY', 'dam-vay', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426135982_dam.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426135982, 23, 1426150994, 23),
-(96, 81, 'CHÂN VÁY', 'chan-vay', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426136035_vay.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136035, 23, 1426150995, 23),
-(97, 81, 'QUẦN NỮ', 'quan-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136057_quan-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136057, 23, 1426150995, 23),
-(98, 81, 'GIÀY, DÉP NỮ', 'giay-dep-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136080_giay-dep-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136080, 23, 1426150999, 23),
-(99, 0, 'PHỤ KIỆN', 'phu-kien', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136100_phu-kien.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136100, 23, 1426150999, 23),
-(100, 81, 'TRANG SỨC', 'trang-suc', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136140_trang-suc.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136140, 23, 1426151000, 23),
-(101, 81, 'TRANG PHỤC CƯỚI', 'trang-phuc-cuoi', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136158_trang-phuc-cuoi.jpg', 1, '', 0, 0, 1, 0, '', '', '', 1426136159, 23, 1426151000, 23);
+INSERT INTO `vi_category` (`id`, `parent_id`, `title`, `alias`, `description`, `background`, `icon`, `avatar`, `show_home`, `info`, `number_home`, `sort`, `status`, `number_product`, `meta_title`, `meta_keyword`, `meta_description`, `note`, `create_time`, `create_author`, `update_time`, `update_author`) VALUES
+(81, 0, 'THỜI TRANG NỮ', 'thoi-trang-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610576_images-1.jpg', 1, '', 0, 1, 1, 0, '', '', '', NULL, 1425610576, 23, NULL, NULL),
+(82, 0, 'THỜI TRANG CHO PHÁI MẠNH', 'thoi-trang-cho-phai-manh', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/56/1425610618_tai-xuong-20.jpg', 1, '', 0, 2, 1, 0, '', '', '', NULL, 1425610619, 23, NULL, NULL),
+(83, 0, 'GIÀY DÉP', 'giay-dep', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/06/09/58/1425610727_tai-xuong-21.jpg', 1, '', 0, 3, 1, 0, '', '', '', NULL, 1425610727, 23, NULL, NULL),
+(94, 81, 'ÁO NỮ', 'ao-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/51/1426135878_ao-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426135878, 23, 1426150994, 23),
+(95, 81, 'ĐẦM, VÁY', 'dam-vay', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426135982_dam.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426135982, 23, 1426150994, 23),
+(96, 81, 'CHÂN VÁY', 'chan-vay', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/53/1426136035_vay.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426136035, 23, 1426150995, 23),
+(97, 81, 'QUẦN NỮ', 'quan-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136057_quan-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426136057, 23, 1426150995, 23),
+(98, 81, 'GIÀY, DÉP NỮ', 'giay-dep-nu', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/54/1426136080_giay-dep-nu.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426136080, 23, 1426150999, 23),
+(99, 0, 'PHỤ KIỆN', 'phu-kien', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136100_phu-kien.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426136100, 23, 1426150999, 23),
+(100, 81, 'TRANG SỨC', 'trang-suc', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136140_trang-suc.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426136140, 23, 1426151000, 23),
+(101, 81, 'TRANG PHỤC CƯỚI', 'trang-phuc-cuoi', NULL, NULL, NULL, 'uploadv2/web/1/1/product/2015/03/12/11/55/1426136158_trang-phuc-cuoi.jpg', 1, '', 0, 0, 1, 0, '', '', '', NULL, 1426136159, 23, 1426151000, 23);
 
 -- --------------------------------------------------------
 
@@ -786,19 +772,6 @@ CREATE TABLE `vi_product_basic` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vi_product_description`
---
-
-CREATE TABLE `vi_product_description` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `id_product` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) DEFAULT '',
-  `content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `vi_product_detail`
 --
 
@@ -825,11 +798,8 @@ CREATE TABLE `vi_product_detail` (
 CREATE TABLE `vi_product_image` (
   `id` int(11) UNSIGNED NOT NULL,
   `id_product` int(11) UNSIGNED NOT NULL DEFAULT '0',
-  `avatar` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `image` varchar(255) DEFAULT NULL,
-  `att_title` varchar(255) DEFAULT NULL,
-  `att_alt` varchar(255) DEFAULT NULL,
-  `sort` int(5) UNSIGNED NOT NULL DEFAULT '0'
+  `avatar` varchar(255) NOT NULL DEFAULT '0',
+  `image` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -983,13 +953,6 @@ ALTER TABLE `en_product_basic`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `en_product_description`
---
-ALTER TABLE `en_product_description`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`id_product`);
-
---
 -- Indexes for table `en_product_detail`
 --
 ALTER TABLE `en_product_detail`
@@ -1082,13 +1045,6 @@ ALTER TABLE `vi_product_basic`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `vi_product_description`
---
-ALTER TABLE `vi_product_description`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`id_product`);
-
---
 -- Indexes for table `vi_product_detail`
 --
 ALTER TABLE `vi_product_detail`
@@ -1170,11 +1126,6 @@ ALTER TABLE `en_posts`
 ALTER TABLE `en_product_basic`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `en_product_description`
---
-ALTER TABLE `en_product_description`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `en_product_detail`
 --
 ALTER TABLE `en_product_detail`
@@ -1248,11 +1199,6 @@ ALTER TABLE `vi_posts`
 -- AUTO_INCREMENT for table `vi_product_basic`
 --
 ALTER TABLE `vi_product_basic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `vi_product_description`
---
-ALTER TABLE `vi_product_description`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `vi_product_detail`

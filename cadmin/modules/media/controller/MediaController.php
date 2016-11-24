@@ -70,6 +70,7 @@ class MediaController extends Controller{
 	public function uploadImages(){
 		$html = '';
 		if (isset($_POST)) {
+			$dir = trim($_POST['directory']);
 			if (isset($_FILES['media'])) {
 				$handle = new upload($_FILES['media']);
 				if ($handle->uploaded) {
@@ -77,7 +78,6 @@ class MediaController extends Controller{
 				  //$handle->image_resize         = true;
 				  //$handle->image_x              = 100;
 				  //$handle->image_ratio_y        = true;
-				  $dir = trim($_POST['directory']);
 				  //$dir          = DIR_TMP.'cdn/';
 				  $handle->process($dir);
 				  if ($handle->processed) {

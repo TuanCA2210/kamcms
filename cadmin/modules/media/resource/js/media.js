@@ -1,18 +1,3 @@
-function onLoading(load=null){
-	if (load==null) {
-		load = 'Đang xử lý...';
-	}
-	$('.icon-loading').addClass('display-none');	
-	$('.loading').addClass('animate-loading-center');
-	$('.loading').html('<div class="icon-loading"><i class="demo-icon icon-spin4 animate-spin">&#xe834;</i> '+ load + '</div>');
-	$('.fade_loading').html('<div class="modal-backdrop fade in"></div>');
-}
-function offLoading(){
-	$('.icon-loading').removeClass('display-none');	
-	$('.loading').removeClass('animate-loading-center');
-	$('.loading').empty();
-	$('.fade_loading').empty();
-}
 
 $('.fancybox').fancybox();
 

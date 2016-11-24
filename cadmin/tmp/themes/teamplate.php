@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>/css/cmscuongle.css">
   
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/timepicker/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/tagsinput/jquery.tagsinput.css">
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/toastr/toastr.min.css">
 
   <?php echo ($this->_appendCss!='') ? $this->_appendCss : '';?>
@@ -62,6 +63,8 @@
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/jQueryUI/jquery-ui.min.js"></script>
+<!--jQuery TAGS INPUT-->
+<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/tagsinput/jquery.tagsinput.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/cmscustom.js"></script>

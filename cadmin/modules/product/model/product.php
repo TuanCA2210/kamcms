@@ -10,7 +10,6 @@ class Product{
 		$this->lang        				= $_web['lang'];
 		$this->category     			= new system\Model($this->lang.'_category');
 		$this->product     				= new system\Model($this->lang.'_product_basic');
-		$this->productDescription     	= new system\Model($this->lang.'_product_description');
 		$this->productDetail     		= new system\Model($this->lang.'_product_detail');
 		$this->productImage     		= new system\Model($this->lang.'_product_image');
 	}
@@ -34,7 +33,13 @@ class Product{
 		$this->product->delete();
 	}
 	public function insertData($data_insert){
-		$this->product->insert($data_insert);
+		return $this->product->insert($data_insert);
+	}
+	public function insertDataImage($data_insert){
+		$this->productImage->insert($data_insert);
+	}
+	public function insertDataDetail($data_insert){
+		$this->productDetail->insert($data_insert);
 	}
 	public function getDataById($id){
 		$this->product->where('id',$id);

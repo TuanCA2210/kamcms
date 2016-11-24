@@ -274,7 +274,7 @@ $_L['add_product']				= 'Thêm sản phẩm mới';
 $_L['add_category']				= 'Thêm danh mục mới';
 $_L['meta_keyword']				= 'Meta từ khóa';
 $_L['meta_description']			= 'Meta mô tả';
-$_L['meta_keyword_required']	= 'Từ khóa (Các từ cách nhau bởi dấu | )';
+$_L['meta_keyword_required']	= 'Các từ khóa cách nhau bằng phím Tab';
 $_L['meta_description_required']= 'Meta mô tả (Tối đa 400 ký tự)';
 
 
@@ -284,3 +284,10 @@ $_L['product_code']				= 'Mã sản phẩm';
 $_L['product_price']			= 'Giá bán sản phẩm';
 $_L['product_placeholder']		= 'Mặc định là ‘Liên hệ’';
 $_L['product_unit']				= 'Đơn vị tính';
+$_L['price']					= 'Giá';
+$_L['selected']					= 'Đã chọn';
+$_L['choose_avatar']			= 'Chọn ảnh đại diện';
+$_L['title_image']				= 'Tiêu đề ảnh...';
+$_L['descript_image']			= 'Mô tả ảnh...';
+$_L['mess_remove_image']		= 'Bạn muốn xoá hình ảnh sản phẩm này?';
+$_L['delete_image']				= 'Xoá ảnh này';

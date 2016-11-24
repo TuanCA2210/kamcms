@@ -5270,8 +5270,10 @@ table > thead > tr > th:hover{
 
 
 .animate-loading-center{
-  position: relative;
-  top: -620px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #fff;
   z-index: 999999;
   font-size: 16px;
@@ -5444,4 +5446,168 @@ ul{
     margin-bottom: 5px;
     margin-right: 5px;
     position: relative;
+}
+.form-control.height-auto {
+    height: auto;
+}
+.form-control.height-auto label{
+  width: 100%;
+}
+
+.portlet{
+  margin-bottom: 15px;
+}
+.portlet.light {
+    padding: 12px 20px 15px 20px;
+    background-color: #fff;
+} 
+.portlet.light.bordered {
+    border: 1px solid #e1e1e1 !important;
+}
+.portlet.light.bordered > .portlet-title {
+    border-bottom: 1px solid #eee;
+}
+.portlet.light > .portlet-title {
+    padding: 0;
+    min-height: 48px;
+}
+.portlet.light > .portlet-title > .caption {
+    color: #666;
+    padding: 10px 0;
+}
+
+.portlet > .portlet-title > .caption {
+    white-space: nowrap;
+    font-size: 13px !important;
+    line-height: 20px !important;
+}
+.portlet > .portlet-title > .caption {
+    float: left;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    padding: 10px 0;
+}
+
+
+.caption > .caption-subject {
+    font-size: 16px;
+}
+.caption i,
+.font-red-sunglo {
+    color: #e26a6a !important;
+}
+.uppercase {
+    text-transform: uppercase !important;
+}
+.bold {
+    font-weight: 700 !important;
+}
+.portlet > .portlet-title > .tools > a {
+    display: inline-block;
+    height: 16px;
+    margin-left: 5px;
+}
+.portlet.light > .portlet-title > .tools {
+    padding: 10px 0 13px 0;
+    margin-top: 2px;
+}
+.portlet > .portlet-title > .tools {
+    float: right;
+    display: inline-block;
+}
+.portlet > .portlet-title > .tools > a.collapse {
+    background-image: url(../images/portlet-collapse-icon.png);
+    width: 14px;
+}
+
+.portlet > .portlet-title > .tools > a.remove {
+    background-image: url(../images/portlet-remove-icon.png);
+    background-repeat: no-repeat;
+    width: 11px;
+}
+.portlet > .portlet-title > .tools > a:hover {
+    text-decoration: none;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    opacity: .6;
+    filter: 'alpha(opacity=60)';
+}
+
+
+.portlet > .portlet-body {
+    clear: both;
+}
+.note.note-info {
+    background-color: #eef7fb;
+    border-color: #91d9e8;
+}
+.note {
+    margin: 0 0 20px 0;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #eee;
+}
+.green.btn {
+    color: white;
+    background-color: #35aa47;
+}
+
+.scrollbar {
+    overflow-y: auto;
+    height: 250px;
+    margin: 10px 0px;
+}
+label {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+
+.form .form-section {
+    margin: 30px 0px 25px 0px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+.row-related {
+    margin: auto 0px !important;
+}
+.col-left, .col-right {
+    padding: 5px;
+    border: 1px solid #E5E5E5;
+    width: 48%;
+    height: 368px;
+    float: left;
+}
+.col-center {
+    float: left;
+    width: 4%;
+    height: 368px;
+    background: url(../images/switch.png) no-repeat center center;
+}
+.col-title {
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #E5E5E5;
+}
+.col-title input[type='text'] {
+    width: 289px;
+    float: left;
+    margin-right: 5px;
+    height: 30px;
+}
+.col-title .btn {
+    padding: 5px 14px;
+}
+.col-title span {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 600;
+    text-indent: 10px;
+    font-size: 14px;
+    color: #555;
 }

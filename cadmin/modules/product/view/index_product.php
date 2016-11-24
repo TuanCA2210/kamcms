@@ -144,7 +144,7 @@
                                                                 ?>
                                                             </td>
                                                             <td><?php echo date('d-m-Y',$value['create_time']);?></td>
-                                                            <td><a href="<?php echo base_url().'posts/posts/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'posts/posts/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
+                                                            <td><a href="<?php echo base_url().'product/product/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i><!--<i class="fa fa-eye"></i>--></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'product/product/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
                                                         </tr>
                                                 <?php 
                                                     }
