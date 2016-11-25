@@ -50,6 +50,7 @@ class ProductController extends Controller{
 			$meta_keyword = htmlentities($this->input->post('meta_keyword'),ENT_QUOTES);
 			$meta_description = htmlentities($this->input->post('meta_description'),ENT_QUOTES);
 			$state = htmlentities($this->input->post('state'),ENT_QUOTES);
+			$brand = htmlentities($this->input->post('brand'),ENT_QUOTES);
 			$avatar = trim(addslashes($this->input->post('avatar')));
 			$categories = $this->input->post('categories');
 			if (is_array($categories)) {
@@ -85,9 +86,11 @@ class ProductController extends Controller{
 				'code'	=> $code,
 				'price'	=> $price,
 				'status_vat'	=> $vat,
+				'state'			=> $state,
 				'other_info'	=> $other_info,
 				'short_info'	=> $description,
 				'status'		=> 1,
+				'brand'		=> $brand,
 			);
 			if (isset($_POST['id_product']) && is_numeric($_POST['id_product'])) { // như thế này là đang update
 				$data_basic['update_author'] 	= Session::get('id');
@@ -135,6 +138,23 @@ class ProductController extends Controller{
 
 
 
+	}
+	public function edit(){
+		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+			if ($this->modelProduct->checkId($_GET['id']) == FALSE) {
+				$this->view->data['data']=$this->modelProduct->getDataById($_GET['id']);
+				$this->view->data['data_detail']=$this->modelProduct->getDataDetailById($_GET['id']);
+				$this->view->data['data_images']=$this->modelProduct->getDataImageById($_GET['id']);
+				$this->view->data['data_category']   = $this->modelCategory->getCategories();
+				if (isset($this->view->data['data']['other_info'])) {
+					$this->view->data['data_other_info'] = json_decode($this->view->data['data']['other_info']);
+				}
+				if (!empty($this->view->data['data_images'])) {
+					$this->view->data['data_images']['image'] = json_decode($this->view->data['data_images']['image']);
+				}
+				$this->view->render('add_product');
+			}
+		}
 	}
 
 

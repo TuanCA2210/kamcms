@@ -52,7 +52,7 @@ if (isset($this->data['flash_success'])) {
 			                <div class="form-body">
 			                    <div class="form-group ">
 			                        <label for="name" class="control-label required"><?php echo lang('title');?></label>
-			                        <input class="form-control" id="title" placeholder="<?php echo lang('maximum_categories');?>" value="<?php if (isset($this->data['data']['title'])) {echo $this->data['data']['title'];
+			                        <input class="form-control" id="title" placeholder="<?php echo lang('maximum_categories');?>" value="<?php if (isset($this->data['data']['name'])) {echo $this->data['data']['name'];
 }
 ?>" name="title" type="text">
 			                    </div>
@@ -71,20 +71,56 @@ if (isset($this->data['flash_success'])) {
 			                    <div class="form-group ">
 			                        <label for="name" class="control-label required">VAT</label>
 			                        <select name="vat" class="form-control" id="">
-			                        	<option value="2">Đã có VAT</option>
-			                        	<option value="1">Chưa có VAT</option>
-			                        	<option value="0">Không hiển thị</option>
+			                        	<option value="0" <?php if ($this->data['data']['status_vat'] == 0) {echo "selected";
+}
+?>>Đã có VAT</option>
+			                        	<option value="1" <?php if ($this->data['data']['status_vat'] == 1) {echo "selected";
+}
+?>>Chưa có VAT</option>
+			                        	<option value="2" <?php if ($this->data['data']['status_vat'] == 2) {echo "selected";
+}
+?>>Không hiển thị</option>
 			                        </select>
 			                    </div>
 			                    <div class="form-group ">
 			                        <label for="name" class="control-label required"><?php echo lang('status');?></label>
 									<div class="checkbox-list form-control height-auto">
-										<label><div class="checker"><span><input type="checkbox" name="state" value="1"></span></div> Nổi bật</label>
-										<label><div class="checker"><span><input type="checkbox" name="state" value="2"></span></div> Hàng sắp về</label>
-										<label><div class="checker"><span><input type="checkbox" name="state" value="3"></span></div> Nhận đặt hàng</label>
-										<label><div class="checker"><span><input type="checkbox" name="state" value="4"></span></div> Hàng cũ</label>
-										<label><div class="checker"><span><input type="checkbox" name="state" value="5"></span></div> Hết hàng</label>
-										<label><div class="checker"><span><input type="checkbox" name="state" value="6"></span></div> Khuyến mại</label>
+										<label><div class="checker"><span class="<?php if ($this->data['data']['state'] == 1) {echo 'after_opacity';
+}
+?>"><input type="checkbox" name="state" value="1" <?php if ($this->data['data']['state'] == 1) {echo "selected";
+}
+
+?>></span></div> Nổi bật</label>
+										<label><div class="checker"><span class="<?php if ($this->data['data']['state'] == 2) {echo 'after_opacity';
+}
+?>"><input type="checkbox" name="state" value="2" <?php if ($this->data['data']['state'] == 2) {echo "selected";
+}
+
+?>></span></div> Hàng sắp về</label>
+										<label><div class="checker"><span class="<?php if ($this->data['data']['state'] == 3) {echo 'after_opacity';
+}
+?>"><input type="checkbox" name="state" value="3" <?php if ($this->data['data']['state'] == 3) {echo "selected";
+}
+
+?>></span></div> Nhận đặt hàng</label>
+										<label><div class="checker"><span class="<?php if ($this->data['data']['state'] == 4) {echo 'after_opacity';
+}
+?>"><input type="checkbox" name="state" value="4" <?php if ($this->data['data']['state'] == 4) {echo "selected";
+}
+
+?>></span></div> Hàng cũ</label>
+										<label><div class="checker"><span class="<?php if ($this->data['data']['state'] == 5) {echo 'after_opacity';
+}
+?>"><input type="checkbox" name="state" value="5" <?php if ($this->data['data']['state'] == 5) {echo "selected";
+}
+
+?>></span></div> Hết hàng</label>
+										<label><div class="checker"><span class="<?php if ($this->data['data']['state'] == 6) {echo 'after_opacity';
+}
+?>"><input type="checkbox" name="state" value="6" <?php if ($this->data['data']['state'] == 6) {echo "selected";
+}
+
+?>></span></div> Khuyến mại</label>
 									</div>
 			                    </div>
 			                    <div class="form-group ">
@@ -98,12 +134,12 @@ if (isset($this->data['data']['id'])) {
 											        			<li>
 													                <div class="checker">
 													                	<span <?php
-			if (preg_match("/,".$value['id'].",/", $this->data['data']['cate_id'], $matches)) {
+			if (preg_match("/,".$value['id'].",/", $this->data['data']['category'], $matches)) {
 				echo "class='after_opacity'";
 			}
 			?>>
 													                		<input type="checkbox" class="styled" name="categories[]" value="<?php echo $value['id'];?>" <?php
-			if (preg_match("/,".$value['id'].",/", $this->data['data']['cate_id'], $matches)) {
+			if (preg_match("/,".$value['id'].",/", $this->data['data']['category'], $matches)) {
 				echo "checked";
 			}
 			?>>
@@ -128,30 +164,53 @@ if (isset($this->data['data']['id'])) {
 	}
 }
 ?>
-								        </ul>
+</ul>
 								    </div>
 			                    <div class="clearfix"></div>
 			                    <div class="form-group">
 								    <label class="control-label required">Thêm thông tin khác</label>
 								    <div class="info_other">
-								    	<div class="element-info">
-								    		<div class="col-md-5">
-										        <input type="text" class="form-control maxlength-handler" name="info_title[]" maxlength="60" placeholder="Nhập tiêu đề...">
-										    </div>
-										    <div class="col-md-5" style="padding-left:0px">
-										        <input type="text" class="form-control maxlength-handler" name="info_content[]" maxlength="120" placeholder="Nhập nội dung...">
-										    </div>
-										    <div class="col-md-2" style="padding:0px">
-										        <a href="javascript:void(0)" class="btn green add_info" style="border-radius:3px !important"><i class="fa fa-plus"></i></a>
-										    </div>
-										    <div class="clearfix" style="margin:8px 0px;"></div>
-								    	</div>
+<?php
+if (!empty($this->data['data_other_info'])) {
+	foreach ($this->data['data_other_info'] as $key => $value) {?>
+										    			<div class="element-info">
+												    		<div class="col-md-5">
+														        <input type="text" class="form-control maxlength-handler" name="info_title[]" maxlength="60" placeholder="Nhập tiêu đề..." value="<?php echo $value->title;?>">
+														    </div>
+														    <div class="col-md-5" style="padding-left:0px">
+														        <input type="text" class="form-control maxlength-handler" name="info_content[]" maxlength="120" placeholder="Nhập nội dung..." value="<?php echo $value->content;?>">
+														    </div>
+														    <div class="col-md-2" style="padding:0px">
+														        <a href="javascript:void(0)" class="btn green add_info" style="border-radius:3px !important"><i class="fa fa-plus"></i></a>
+														    </div>
+														    <div class="clearfix" style="margin:8px 0px;"></div>
+												    	</div>
+		<?php
+	}
+} else {?>
+	<div class="element-info">
+										    		<div class="col-md-5">
+												        <input type="text" class="form-control maxlength-handler" name="info_title[]" maxlength="60" placeholder="Nhập tiêu đề...">
+												    </div>
+												    <div class="col-md-5" style="padding-left:0px">
+												        <input type="text" class="form-control maxlength-handler" name="info_content[]" maxlength="120" placeholder="Nhập nội dung...">
+												    </div>
+												    <div class="col-md-2" style="padding:0px">
+												        <a href="javascript:void(0)" class="btn green add_info" style="border-radius:3px !important"><i class="fa fa-plus"></i></a>
+												    </div>
+												    <div class="clearfix" style="margin:8px 0px;"></div>
+										    	</div>
+	<?php
+}
+?>
+
+
 
 								    </div>
 								</div>
 			                    <div class="form-group ">
 								    <label for="description" class="control-label required"><?php echo lang('description');?></label>
-								    <textarea class="form-control" rows="4" id="description" placeholder="<?php echo lang('description_required');?>" data-counter="300" name="description" cols="50"><?php if (isset($this->data['data']['description'])) {echo $this->data['data']['description'];
+								    <textarea class="form-control" rows="4" id="description" placeholder="<?php echo lang('description_required');?>" data-counter="300" name="description" cols="50"><?php if (isset($this->data['data']['short_info'])) {echo $this->data['data']['short_info'];
 }
 
 ?></textarea>
@@ -159,7 +218,7 @@ if (isset($this->data['data']['id'])) {
 								<div class="form-group ">
 			                        <label class="control-label required"><?php echo lang('content');?></label>
 			                        <textarea class="form-control" id="content" name="content" cols="50" rows="10" style="visibility: hidden; display: none;">
-<?php if (isset($this->data['data']['content'])) {echo $this->data['data']['content'];
+<?php if (isset($this->data['data_detail']['full_info'])) {echo $this->data['data_detail']['full_info'];
 }
 ?>
 			                        </textarea>
@@ -192,13 +251,28 @@ if (isset($this->data['data']['id'])) {
 										            <div class="scrollbar">
 										                <ul class="list-unstyled" id="list_brand">
 										                    <li>
-										                        <label><div class="checker"><span><input class="checkboxes" type="checkbox" name="brand" value="0"></span></div> Toyota</label>
+										                        <label><div class="checker"><span class="<?php if ($this->data['data']['brand'] == 0) {echo 'after_opacity';
+}
+?>"><input class="checkboxes" type="checkbox" name="brand" value="0" <?php if ($this->data['data']['brand'] == 0) {echo "selected";
+}
+
+?>></span></div> Toyota</label>
 										                    </li>
 										                    <li>
-										                        <label><div class="checker"><span><input class="checkboxes" type="checkbox" name="brand" value="1"></span></div> Yamaha</label>
+										                        <label><div class="checker"><span class="<?php if ($this->data['data']['brand'] == 1) {echo 'after_opacity';
+}
+?>"><input class="checkboxes" type="checkbox" name="brand" value="1" <?php if ($this->data['data']['brand'] == 1) {echo "selected";
+}
+
+?>></span></div> Yamaha</label>
 										                    </li>
 										                    <li>
-										                        <label><div class="checker"><span><input class="checkboxes" type="checkbox" name="brand" value="2"></span></div> Honda</label>
+										                        <label><div class="checker"><span class="<?php if ($this->data['data']['brand'] == 2) {echo 'after_opacity';
+}
+?>"><input class="checkboxes" type="checkbox" name="brand" value="2" <?php if ($this->data['data']['brand'] == 2) {echo "selected";
+}
+
+?>></span></div> Honda</label>
 										                    </li>
 										                </ul>
 										            </div>
@@ -227,9 +301,36 @@ if (isset($this->data['data']['id'])) {
 								        <a href="javascript:void(0)" class="btn green" id="select_file" data-toggle="modal" data-target="#myModalPages"><i class="fa fa-plus"></i> Chọn file ảnh</a>
 								        <a href="javascript:void(0)" class="btn blue hidden" id="copy_info_image"><i class="fa fa-copy"></i> Sao chép tất cả ảnh vào mô tả</a>
 								        <a href="javascript:void(0)" class="btn red hidden" id="save_info_image" data-lang="vi" data-message="Bạn chưa chọn ảnh đại diện sản phẩm" data-success="Thông tin hình ảnh sản phẩm đã được lưu lại thành công" data-title="Thông báo" data-close="Đóng"><i class="fa fa-save"></i> Lưu thông tin hình ảnh</a>
-								        <input type="hidden" name="avatar" id="avatar" data-error="Bạn chưa chọn ảnh đại diện" value="">
+								        <input type="hidden" name="avatar" id="avatar" data-error="Bạn chưa chọn ảnh đại diện" value="<?php if (isset($this->data['data_images']['avatar'])) {echo $this->data['data_images']['avatar'];
+}
+?>">
 								        <input type="hidden" name="image" id="image" value="">
 								        <ul class="list-image ui-sortable" id="sortable">
+<?php
+if (!empty($this->data['data_images']['image'])) {
+	foreach ($this->data['data_images']['image'] as $key => $value) {
+		$url = base_url().'tmp/cdn/'.$value->name;
+		if ($value->name == $this->data['data_images']['avatar']) {
+			$checked_avatar = "checked_avatar";
+			$html           = '<i class="fa fa-chevron-down" aria-hidden="true"></i> '.lang('selected');
+		} else {
+			$checked_avatar = "select_avatar";
+			$html           = lang('choose_avatar');
+		}
+		echo '<li>
+																<div class="imgs">
+																	<img src="'.$url.'" class="handle">
+																	<a href="javascript:void(0)" class="btn btn-xs green '.$checked_avatar.'" data-img="'.$value->name.'" data-choose-avatar="'.lang('choose_avatar').'" data-message="'.lang('selected').'">'.$html.'</a>
+											                        <a href="javascript:void(0)" class="btn btn-xs red delete_image" data-title="'.lang('notification').'" data-message="'.lang('mess_remove_image').'" data-agree="'.lang('agree').'" data-cancel="'.lang('cancel').'" data-lang="vi">'.lang('delete_image').'</a>
+																</div>
+															    <input type="hidden" name="images_js[]" value="'.$value->name.'" />
+															    <input type="text" name="att_title[]" class="form-control" maxlength="100" placeholder="'.lang('title_image').'" value="'.$value->att_title.'">
+															    <textarea name="att_alt[]" class="form-control" maxlength="150" placeholder="'.lang('descript_image').'">
+															    '.$value->att_alt.'</textarea>
+														  </li>';
+	}
+}
+?>
 								        </ul>
 								        <div class="clearfix"></div>
 								    </div>

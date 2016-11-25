@@ -46,6 +46,16 @@ class Product{
 		$result  = $this->product->getOne();
 		return $result;
 	}
+	public function getDataDetailById($id){
+		$this->productDetail->where('id_product',$id);
+		$result  = $this->productDetail->getOne();
+		return $result;
+	}
+	public function getDataImageById($id){
+		$this->productImage->where('id_product',$id);
+		$result  = $this->productImage->getOne();
+		return $result;
+	}
 	public function checkId($id){
 		$this->product->where('id',$id);
 		$result  = $this->product->num_rows();
