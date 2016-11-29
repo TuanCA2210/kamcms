@@ -28,7 +28,7 @@ Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalc
         	<form action="<?php echo base_url().'product/product/save'?>" method="post">
         	<input type="hidden" name="id_product" value="<?php if (isset($this->data['data']['id'])) {echo $this->data['data']['id'];
 }
-?>">
+?>" id="id_product">
 			<div class="col-md-12" style="min-height:750px;">
 			    <div class="tabbable-custom ">
 <?php
@@ -67,6 +67,36 @@ if (isset($this->data['flash_success'])) {
 			                        <input class="form-control" id="price" placeholder="<?php echo lang('product_placeholder');?>" value="<?php if (isset($this->data['data']['price'])) {echo $this->data['data']['price'];
 }
 ?>" name="price" type="text" />
+			                    </div>
+			                    <div class="form-group ">
+			                        <div class="col-md-6 noPadding">
+			                        	<label for="name" class="control-label required"><?php echo lang('sale_off');?></label>
+			                        	<input class="form-control" id="price" placeholder="<?php echo lang('sale_off');?>" value="<?php if (isset($this->data['data']['saleoff'])) {echo $this->data['data']['saleoff'];
+}
+?>" name="saleoff" type="text" />
+			                        </div>
+			                        <div class="col-md-3">
+			                        	<label for="name" class="control-label required"><?php echo lang('timestart_sale_off');?></label>
+						                <div class="input-group date">
+						                  <div class="input-group-addon">
+						                    <i class="fa fa-calendar"></i>
+						                  </div>
+						                  <input type="text" class="form-control pull-right datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" name="time_start" id="datepicker1" value="<?php if (isset($this->data['data']['time_start'])) {echo $this->data['data']['time_start'];
+}
+?>">
+						                </div>
+			                        </div>
+									<div class="col-md-3">
+			                        	<label for="name" class="control-label required"><?php echo lang('timeend_sale_off');?></label>
+						                <div class="input-group date">
+						                  <div class="input-group-addon">
+						                    <i class="fa fa-calendar"></i>
+						                  </div>
+						                  <input type="text" class="form-control pull-right datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" name="time_end" id="datepicker2" value="<?php if (isset($this->data['data']['time_end'])) {echo $this->data['data']['time_end'];
+}
+?>">
+						                </div>
+			                        </div>
 			                    </div>
 			                    <div class="form-group ">
 			                        <label for="name" class="control-label required">VAT</label>
@@ -174,10 +204,10 @@ if (isset($this->data['data']['id'])) {
 if (!empty($this->data['data_other_info'])) {
 	foreach ($this->data['data_other_info'] as $key => $value) {?>
 										    			<div class="element-info">
-												    		<div class="col-md-5">
+												    		<div class="col-md-5 noPadding">
 														        <input type="text" class="form-control maxlength-handler" name="info_title[]" maxlength="60" placeholder="Nhập tiêu đề..." value="<?php echo $value->title;?>">
 														    </div>
-														    <div class="col-md-5" style="padding-left:0px">
+														    <div class="col-md-5">
 														        <input type="text" class="form-control maxlength-handler" name="info_content[]" maxlength="120" placeholder="Nhập nội dung..." value="<?php echo $value->content;?>">
 														    </div>
 														    <div class="col-md-2" style="padding:0px">
@@ -189,10 +219,10 @@ if (!empty($this->data['data_other_info'])) {
 	}
 } else {?>
 	<div class="element-info">
-										    		<div class="col-md-5">
+										    		<div class="col-md-5 noPadding">
 												        <input type="text" class="form-control maxlength-handler" name="info_title[]" maxlength="60" placeholder="Nhập tiêu đề...">
 												    </div>
-												    <div class="col-md-5" style="padding-left:0px">
+												    <div class="col-md-5">
 												        <input type="text" class="form-control maxlength-handler" name="info_content[]" maxlength="120" placeholder="Nhập nội dung...">
 												    </div>
 												    <div class="col-md-2" style="padding:0px">
@@ -331,7 +361,7 @@ if (!empty($this->data['data_images']['image'])) {
 	}
 }
 ?>
-								        </ul>
+</ul>
 								        <div class="clearfix"></div>
 								    </div>
 								</div>
@@ -584,7 +614,28 @@ if (!empty($this->data['data_images']['image'])) {
 								                        <a class="btn green btn_search" id="button-search-product" data-lang="vi"><i class="fa fa-search"></i> Tìm</a>
 								                    </div>
 								                    <div class="scrollbar" id="left-product">
-								                        <center>Không có sản phẩm nào</center>
+<?php
+if (!empty($this->data['data_product_related'])) {
+	echo "<ul>";
+	foreach ($this->data['data_product_related'] as $key => $value) {?>
+										                    	<li class="select-product" data-id="<?php echo $value['id'];?>">
+											                    	<div class="imgs">
+											                    		<img src="<?php echo base_url().'tmp/cdn/'.$value['image'];?>" alt="<?php echo $value['name'];?>"/>
+											                    	</div>
+											                    	<a><?php echo $value['name'];?></a>
+										                    	</li>
+		<?php
+	}
+	echo "</ul>";
+	if (isset($this->data['more_product_related']) && $this->data['more_product_related']['flag'] == true) {?>
+																	<span class="btn btn-xs grey-cascade load-more" id="load-more-product" data-start="<?php echo $this->data['more_product_related']['start'];?>"><i class="glyphicon glyphicon-refresh fa-spin"></i> Tải thêm dữ liệu</span>
+		<?php
+	}
+} else {
+	echo "<center>Không có sản phẩm nào</center>";
+}
+?>
+
 								                    </div>
 								                </div>
 								                <div class="col-center"></div>
@@ -594,8 +645,12 @@ if (!empty($this->data['data_images']['image'])) {
 								                        <center>Không có sản phẩm nào</center>
 								                    </div>
 								                </div>
-								                <input type="hidden" name="product_related" id="product-related" value="">
-								                <input type="hidden" name="product_current" id="product-current" value="">
+								                <input type="hidden" name="product_related" id="product-related" value="<?php if (isset($this->data['data']['related_product']['select']['id_related'])) {echo $this->data['data']['related_product']['select']['id_related'];
+}
+?>">
+								                <input type="hidden" name="product_current" id="product-current" value="<?php if (isset($this->data['data']['id'])) {echo $this->data['data']['id'];
+}
+?>">
 								            </div>
 								        </div>
 								    </div>

@@ -80,4 +80,55 @@ class Product {
 		$sql  = "DELETE FROM ".$this->lang."_product_basic WHERE id IN (".$name.")";
 		$this->product->rawQuery($sql);
 	}
+	public function list_product($start, $limit, $id = null, $where_search = null) {
+		$select = 'id,category, name, alias, code, price, saleoff, time_start, time_end, sort, status_vat, status, state, image';
+		if ($id != null) {
+			// case product selected
+			if (!is_array($id)) {
+				$this->product->where("id", $id, '!=');
+			} else {
+				$this->product->where("id", $id, 'not in');
+			}
+		}
+		if ($where_search != null) {
+			$this->model_basic->where('name', '%'.$where_search.'%', 'like');
+		}
+		$this->product->orderBy('create_time', 'DESC');
+		$data = $this->product->get(null, array($start, $limit), $select);
+		return $data;
+	}
+	public function check_load_more_product($number = null, $ajax = false, $id = null) {
+		if ($id != null) {
+			// case product selected
+			if (!is_array($id)) {
+				$this->product->where('id', $id, '!=');
+			} else {
+				$this->product->where('id', $id, 'not in');
+			}
+		}
+		$total = $this->product->num_rows();
+		if ($number != null && $total > $number) {
+			$data['flag'] = true;
+		} else {
+			$data['flag'] = false;
+		}
+		$data['start'] = $number;
+		$data['ajax']  = $ajax;
+		return $data;
+	}
+	public function search_product($name = null, $id = null) {
+		$select = 'id, name, image';
+		if ($id != null) {
+			// case product selected
+			if (!is_array($id)) {
+				$this->product->where('id', $id, '!=');
+			} else {
+				$this->product->where('id', $id, 'not in');
+			}
+		}
+		$this->product->where('name', '%'.$name.'%', 'like');
+		$this->product->orderBy('create_time', 'DESC');
+		$data = $this->product->get(null, null, $select);
+		return $data;
+	}
 }

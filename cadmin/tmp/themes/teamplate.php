@@ -16,11 +16,12 @@
   <script src="<?php echo base_url()."tmp/public/";?>plugins/ckfinder/ckfinder.js" type="text/javascript"></script>
 
   <!-- Theme style -->
+
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>/css/cmscuongle.css">
-  
-  <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/timepicker/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/datepicker/css/datepicker3.css">
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/tagsinput/jquery.tagsinput.css">
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/toastr/toastr.min.css">
+
 
   <?php echo ($this->_appendCss!='') ? $this->_appendCss : '';?>
 
@@ -67,8 +68,12 @@
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/tagsinput/jquery.tagsinput.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/input-mask/jquery.inputmask.js"></script>
+<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/cmscustom.js"></script>
-<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/timepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url()."tmp/public/";?>plugins/datepicker/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/dashboard.js"></script> -->

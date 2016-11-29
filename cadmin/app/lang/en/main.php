@@ -286,6 +286,9 @@ $_L['meta_description_required']= 'Meta description (Maximum 400 characters)';
 
 
 $_L['product_code']				= 'Code';
+$_L['sale_off']					= 'Saleoff';
+$_L['timestart_sale_off']		= 'Start time deals';
+$_L['timeend_sale_off']			= 'End time deals';
 $_L['product_price']			= 'Price';
 $_L['product_placeholder']		= 'The default is ‘Contact’';
 $_L['product_unit']				= 'Unit';

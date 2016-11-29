@@ -281,6 +281,9 @@ $_L['meta_description_required']= 'Meta mô tả (Tối đa 400 ký tự)';
 
 
 $_L['product_code']				= 'Mã sản phẩm';
+$_L['sale_off']					= 'Giá khuyến mãi';
+$_L['timestart_sale_off']		= 'Thời gian bắt đầu khuyến mãi';
+$_L['timeend_sale_off']			= 'Thời gian kết thúc khuyến mãi';
 $_L['product_price']			= 'Giá bán sản phẩm';
 $_L['product_placeholder']		= 'Mặc định là ‘Liên hệ’';
 $_L['product_unit']				= 'Đơn vị tính';

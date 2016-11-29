@@ -110,3 +110,78 @@ ul.list-image li .radio-inline {
 	font-size: 13px;
     color: #555;
 }
+
+
+
+
+
+.col-left ul, .col-left ul li,
+.col-right ul, .col-right ul li {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.col-left ul li span,
+.col-right ul li span {
+	background: #eee;
+	line-height: 30px;
+	text-indent: 5px;
+	display: block;
+	font-weight: 600;
+}
+.col-left ul li li,
+.col-right ul li li {
+	border-bottom: 1px dotted #eee;
+	line-height: 30px;
+	text-indent: 15px;
+	cursor: pointer;
+} 
+.col-left ul li li:last-child,
+.col-right ul li li:last-child {
+	border-bottom: none;
+}
+.row-related {
+	margin: auto 0px !important;
+}
+.row-related .col-md-1,
+.row-related .col-md-2 {
+	margin-right: 20px;
+}
+.col-left ul li .imgs,
+.col-right ul li .imgs {
+	border: 1px solid #eee;
+	display: block;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	float: left;
+	margin-right: 5px;
+} 
+.col-left ul li .imgs img,
+.col-right ul li .imgs img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
+	max-width: 48px;
+	max-height: 48px;
+}
+.col-left ul li.select-product,
+.col-right ul li.select-product {
+	width: 100%;
+	float: left;
+	border-bottom: 1px dotted #eee;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+.col-left ul li a:hover,
+.col-right ul li a:hover {
+	text-decoration: none;
+}
+.col-left .load-more {
+	display: table;
+	margin: auto;
+}
