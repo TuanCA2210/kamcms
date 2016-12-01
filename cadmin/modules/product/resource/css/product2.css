@@ -185,3 +185,18 @@ ul.list-image li .radio-inline {
 	display: table;
 	margin: auto;
 }
+
+
+#element-list-brand li{
+	height: 35px;
+    line-height: 35px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    width: 445px;
+}
+
+#element-list-brand li span{
+    float: right;
+    margin-right: 31px;
+}

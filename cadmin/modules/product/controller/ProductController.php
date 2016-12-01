@@ -2,10 +2,12 @@
 class ProductController extends Controller{
 	public $modelProduct;
 	public $modelCategory;
+	public $modelBrand;
 	public function __construct(){
 		parent::__construct();
 		$this->modelCategory = $this->loadModel('Category');
 		$this->modelProduct = $this->loadModel('Product');
+		$this->modelBrand = $this->loadModel('Brand');
 	}
 	public function index(){
 		global $_web;
@@ -34,6 +36,7 @@ class ProductController extends Controller{
 	public function add(){
 		global $_web;
 		$this->view->data['data_category']   = $this->modelCategory->getCategories();
+		$this->view->data['data_brand']   = $this->modelBrand->getBrand();
 		$this->view->data['data_product_related']   = $this->modelProduct->list_product(0, 20,$id = null,$where_search = null);
 		$this->view->data['more_product_related']   = $this->modelProduct->check_load_more_product(20);
 
@@ -44,7 +47,7 @@ class ProductController extends Controller{
 	public function save(){
 		if (isset($_POST['submit'])) {
 			
-			$title = htmlentities($this->input->post('title'),ENT_QUOTES);
+			$title = trim(addslashes($this->input->post('title')));
 			$code = htmlentities($this->input->post('code'),ENT_QUOTES);
 			$description = htmlentities($this->input->post('description'),ENT_QUOTES);
 			$price = htmlentities($this->input->post('price'),ENT_QUOTES);
@@ -87,6 +90,54 @@ class ProductController extends Controller{
 
 			$timestamp_start = $time_start ? \DateTime::createFromFormat('d/m/Y', $time_start)->getTimestamp() : '';
 			$timestamp_end = $time_end ? \DateTime::createFromFormat('d/m/Y', $time_end)->getTimestamp() : '';
+
+
+			// product related
+			$related = array(
+				'category' => array(
+					'status'   => trim(addslashes($_POST['status_related_category'])),
+					'sort'     => trim(addslashes($_POST['sort_related_category'])),
+					'display'  => trim(addslashes($_POST['display_related_category'])),
+					'order_by' => trim(addslashes($_POST['order_by_related_category'])),
+					'number'   => trim(addslashes($_POST['number_related_category'])),
+				),
+				'brand'    => array(
+					'status'   => trim(addslashes($_POST['status_related_brand'])),
+					'sort'     => trim(addslashes($_POST['sort_related_brand'])),
+					'display'  => trim(addslashes($_POST['display_related_brand'])),
+					'order_by' => trim(addslashes($_POST['order_by_related_brand'])),
+					'number'   => trim(addslashes($_POST['number_related_brand'])),
+				),
+				'price'    => array(
+					'status'   => trim(addslashes($_POST['status_related_price'])),
+					'sort'     => trim(addslashes($_POST['sort_related_price'])),
+					'display'  => trim(addslashes($_POST['display_related_price'])),
+					'order_by' => trim(addslashes($_POST['order_by_related_price'])),
+					'number'   => trim(addslashes($_POST['number_related_price'])),
+					'range'    => str_replace('.', '', $_POST['range_related_price']),
+				),
+				'select'   => array(
+					'status'     => trim(addslashes($_POST['status_related_select'])),
+					'sort'       => trim(addslashes($_POST['sort_related_select'])),
+					'display'    => trim(addslashes($_POST['display_related_select'])),
+					'order_by'   => trim(addslashes($_POST['order_by_related_select'])),
+					'id_related' => str_replace(',', '|', $_POST['product_related']),
+				),
+			);
+
+			// brand
+			if (!empty($_POST['brand'])) {
+				$brand = '|' . implode('|', $_POST['brand']) . '|';
+			} else {
+				$brand = '';
+			}
+			// state
+			if (!empty($_POST['state'])) {
+				$state = '|' . implode('|', array_filter($_POST['state'])) . '|';
+			} else {
+				$state = 0;
+			}
+
 			$data_basic = array(
 				'name'	=> $title,
 				'alias'	=> alias($title),
@@ -128,6 +179,7 @@ class ProductController extends Controller{
 					'meta_title'	=> $title,
 					'meta_keyword'	=> $meta_keyword,
 					'meta_description'	=> $meta_description,
+					'related_product'	=> json_encode($related)
 				);
 				$this->modelProduct->insertDataDetail($data_detail);
 
@@ -155,12 +207,13 @@ class ProductController extends Controller{
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			if ($this->modelProduct->checkId($_GET['id']) == FALSE) {
 				$this->view->data['data']=$this->modelProduct->getDataById($_GET['id']);
+				$this->view->data['data_brand']   = $this->modelBrand->getBrand();
 				foreach ($this->view->data['data'] as $key => $value) {
 					if ($key=='time_start') {
-						$this->view->data['data'][$key] = date('d/m/Y',$value);
+						$this->view->data['data'][$key] = ($this->view->data['data'][$key]!=0) ? date('d/m/Y',$value) : "";
 					}
 					if ($key=='time_end') {
-						$this->view->data['data'][$key] = date('d/m/Y',$value);
+						$this->view->data['data'][$key] = ($this->view->data['data'][$key]!=0) ? date('d/m/Y',$value) : "";
 					}
 				}
 				$this->view->data['data_detail']=$this->modelProduct->getDataDetailById($_GET['id']);
@@ -252,7 +305,7 @@ class ProductController extends Controller{
 	}
 	public function ajaxSearchProductRelated(){
 		$status = false;
-		$text                          = htmlentities($_POST['data']['text'],ENT_QUOTES);
+		$text                          = trim(addslashes($_POST['data']['text']));
 		$arrid                         = ($_POST['data']['id_related']!="") ? explode(',', $_POST['data']['id_related']) : null;
 		$list_product_related 			= $this->modelProduct->search_product($text, $arrid);
 		$html = '';
@@ -272,6 +325,36 @@ class ProductController extends Controller{
 			'html'		=> $html
 		);
 		echo json_encode($data);
+	}
+	public function ajaxAddBrand(){
+		if (isset($_POST['title'])) {
+			$title = trim(addslashes($this->input->post("title")));
+			$alias = alias($title);
+			$data_insert = array(
+				'name'	=> $title,
+				'alias'	=> $alias,
+				'create_time'	=> time(),
+				'create_author'	=> Session::get('id')
+			);
+			$id = $this->modelBrand->insertData($data_insert);
+			$data = array(
+				'status'	=> true,
+				'id'		=> $id,
+				'title'		=> $title
+			);
+			echo json_encode($data);
+		}
+	}
+	public function ajaxDeleteBrand(){
+		if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+			$id = $_POST['id'];
+			$this->modelBrand->delete($id);
+			$data = array(
+				'status'	=> true,
+				'id'		=> $id
+			);
+			echo json_encode($data);
+		}
 	}
 	
 }

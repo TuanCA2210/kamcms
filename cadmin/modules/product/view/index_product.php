@@ -131,7 +131,7 @@
                                                             <td>
                                                                 <img src="<?php echo (isset($value['image']) && $value['image']!='') ? base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['image'].'&h=100&w=150&zc=2' : base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/public/images/img.png&h=100&w=150&zc=2'; ?>" width="150" height="100" class="img-thumbnail"/>
                                                             </td>
-                                                            <td class="sorting_1"><?php echo $value['title'];?></td>
+                                                            <td class="sorting_1"><?php echo $value['name'];?></td>
                                                             <td><?php echo $value['username']; ?></td>
                                                             <td>
 

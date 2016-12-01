@@ -245,3 +245,97 @@ $('#left-product').on('click', '.select-product', function() {
     product_id.push(id);
     $('#product-related').val(product_id);
 });
+
+// unselect product related
+$('#right-product').on('click', '.select-product', function() {
+    var html = $(this).clone();
+    var id = $(this).attr('data-id');
+    if($('#left-product').find('ul').length == 0){
+        $('#left-product').html('<ul></ul>');
+        $('#left-product ul').prepend(html);
+    }else{
+        $('#left-product ul').prepend(html);
+    }
+    // remove product select
+    $(this).remove();
+    // remove id product select
+    var i = product_id.indexOf(id);
+    if (i != -1) {
+        product_id.splice(i, 1);
+    }
+    $('#product-related').val(product_id);
+});
+
+
+
+
+// Add Brand
+$('body').on('click', '.add_brand', function() {
+    var brand_title = $('#brand_title').val();
+    if (brand_title!="") {
+        $.ajax({
+            url: baseUrl+'product/product/ajaxAddBrand',
+            type: 'POST',
+            dataType: 'json',
+            data: {title: brand_title},
+        })
+        .done(function(data) {
+            if (data.status==true) {
+                var html = '<li class="brand_'+data.id+'"><label><div class="checker"><span><input class="checkboxes" type="checkbox" name="brand" value="'+data.id+'"></span>'+
+                            '</div> '+data.title+'</label></li>';
+                $('#brand_title').val('');
+                $('#list_brand').append(html);
+                $('#element-list-brand').append('<li>'+data.title+
+                    '<span class="input-group-btn del_brand" data-id="'+data.id+'">'+
+                        '<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>'+
+                    '</span></li>');
+            }
+        });
+        
+    }
+});
+
+// Delete Brand 
+
+$('body').on('click', '.del_brand', function(event) {
+    event.preventDefault();
+    var brand = $(this).parents('li');
+    var id_brand = $(this).attr('data-id');
+    $.ajax({
+        url: baseUrl+'product/product/ajaxDeleteBrand',
+        type: 'POST',
+        dataType: 'json',
+        data: {id: id_brand},
+    })
+    .done(function(data) {
+        if (data.status==true) {
+            brand.fadeOut("slow",function(){
+                $(this).remove();
+            });
+            $('#list_brand .brand_'+data.id).fadeOut("slow",function(){
+                $(this).remove();
+            });
+        }
+    });
+    
+});
+
+
+// price number format
+$("input[name='price'],input[name='saleoff'],#range_related_price").keyup(function() {
+     var price = $(this).val().replace(/[^0-9]/g, '');
+     console.log(price);
+     $(this).val(numberFormat(price));
+});
+
+function numberFormat(nStr){
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + '.' + '$2');
+    }
+    return x1 + x2;
+}
