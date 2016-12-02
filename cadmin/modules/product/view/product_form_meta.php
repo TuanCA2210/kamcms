@@ -15,11 +15,11 @@
         </div>
         <div class="form-group ">
 		    <label for="description" class="control-label required"><?php echo lang('meta_keyword');?> (<?php echo lang('meta_keyword_required');?>)</label>
-		    <input class="form-control" id="meta_keyword" name="meta_keyword" value="<?php if(isset($this->data['data']['meta_keyword'])) echo $this->data['data']['meta_keyword']; ?>" />
+		    <input class="form-control" id="meta_keyword" name="meta_keyword" value="<?php if(isset($this->data['data_detail']['meta_keyword'])) echo $this->data['data_detail']['meta_keyword']; ?>" />
 		</div>
 		<div class="form-group ">
 		    <label for="description" class="control-label required"><?php echo lang('meta_description');?></label>
-		    <textarea class="form-control" rows="4" id="meta_description" placeholder="<?php echo lang('meta_description_required');?>" data-counter="300" name="meta_description" cols="50"><?php if(isset($this->data['data']['meta_description'])) echo $this->data['data']['meta_description']; ?></textarea>
+		    <textarea class="form-control" rows="4" id="meta_description" placeholder="<?php echo lang('meta_description_required');?>" data-counter="300" name="meta_description" cols="50"><?php if(isset($this->data['data_detail']['meta_description'])) echo $this->data['data_detail']['meta_description']; ?></textarea>
 		</div>
         <div class="clearfix"></div>
     </div>

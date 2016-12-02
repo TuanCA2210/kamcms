@@ -74,16 +74,7 @@
 								<?php include DIR_MODULES . 'product/view/product_form_meta.php'; ?>
 
 
-								<div class="sidebar-box text-right">
-							        <div class="form-group">
-							            <div class="form-actions">
-							                <div class="btn-set">
-							                    <button type="submit" name="submit" value="save" class="btn btn-info"><i class="fa fa-save"></i> <?php echo lang('save_one');?></button>
-							                    <button type="submit" name="submit" value="apply" class="btn btn-success"><i class="fa fa-check-circle"></i> <?php echo lang('save_one');?> &amp; <?php echo lang('add_one');?></button>
-							                </div>
-							            </div>
-							        </div>
-							    </div>
+								
 
 
 
@@ -102,6 +93,16 @@
 			                </div>
 			                <div class="clearfix"></div>
 			            </div>
+			            <div class="sidebar-box text-right">
+					        <div class="form-group">
+					            <div class="form-actions">
+					                <div class="btn-set">
+					                    <button type="submit" name="submit" value="save" class="btn btn-info"><i class="fa fa-save"></i> <?php echo lang('save_one');?></button>
+					                    <button type="submit" name="submit" value="apply" class="btn btn-success"><i class="fa fa-check-circle"></i> <?php echo lang('save_one');?> &amp; <?php echo lang('add_one');?></button>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
 			        </div>
 			    </div>
 			</div>

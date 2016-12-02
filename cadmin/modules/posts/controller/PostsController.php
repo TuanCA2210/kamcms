@@ -58,27 +58,27 @@ class PostsController extends Controller{
 	public function save(){
 		if (isset($_POST['submit'])) {
 			
-			$title = htmlentities($this->input->post('title'),ENT_QUOTES);
-			$description = htmlentities($this->input->post('description'),ENT_QUOTES);
-			$content = htmlentities($this->input->post('content'),ENT_QUOTES);
-			$note = htmlentities($this->input->post('note'),ENT_QUOTES);
-			$tags = htmlentities($this->input->post('tags'),ENT_QUOTES);
-			$thumbnail = trim(addslashes($this->input->post('hidden_thumb_pages')));
-			$categories = $this->input->post('categories');
+			$title 			= trim(addslashes($this->input->post('title')));
+			$description 	= trim(addslashes($this->input->post('description')));
+			$content 		= htmlentities($this->input->post('content'),ENT_QUOTES);
+			$note 			= trim(addslashes($this->input->post('note')));
+			$tags 			= trim(addslashes($this->input->post('tags')));
+			$thumbnail 		= trim(addslashes($this->input->post('hidden_thumb_pages')));
+			$categories 	= $this->input->post('categories');
 			if (is_array($categories)) {
 				$cate = ",".implode(",",$categories).",";
 			}
 			
 
 			$data = array(
-				'title'	=> $title,
-				'alias'	=> alias($title),
+				'title'			=> $title,
+				'alias'			=> alias($title),
 				'description'	=> $description,
-				'content'	=> $content,
-				'cate_id'	=> $cate,
-				'thumbnail'	=> $thumbnail,
-				'note'		=> $note,
-				'tags'		=> $tags,
+				'content'		=> $content,
+				'cate_id'		=> $cate,
+				'thumbnail'		=> $thumbnail,
+				'note'			=> $note,
+				'tags'			=> $tags,
 				'status'		=> 1,
 			);
 			if (isset($_POST['id_posts']) && is_numeric($_POST['id_posts'])) { // như thế này là đang update
@@ -148,7 +148,7 @@ class PostsController extends Controller{
                 Session::create($mess);
 				$data_mess = array(
 					'status'	=> true,
-					'redirect'		=> base_url().'/posts/posts/index'
+					'redirect'		=> base_url().'posts/posts/index'
 				);
 				echo json_encode($data_mess);
             }

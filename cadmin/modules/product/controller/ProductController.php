@@ -24,8 +24,8 @@ class ProductController extends Controller{
 		$curpage = ($start/$limit)+1;
 
 		// Xuất dữ liệu với truy vấn
-		$this->view->data['data'] = $this->modelProduct->getPagiProduct($start,$limit);
-		$this->view->data['curpage'] = $curpage;
+		$this->view->data['data'] 		= $this->modelProduct->getPagiProduct($start,$limit);
+		$this->view->data['curpage'] 	= $curpage;
 		$this->view->data['count_page'] = $count_page;
 		
 		$this->view->data['pagination'] = $paging->pagesList($curpage);  
@@ -33,10 +33,42 @@ class ProductController extends Controller{
 
 		$this->view->render('index_product');
 	}
+	public function del(){
+		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+			$id = $_GET['id'];
+			$this->modelProduct->delete($id);
+			$this->modelProduct->deleteDetail($id);
+			$this->modelProduct->deleteImage($id);
+			$mess = array(
+				'flash_success' => lang('delete_success'),
+			);
+			Session::create($mess);
+			redirect(base_url().'product/product/index');
+		}
+	}
+	public function dellAll(){
+		if (isset($_POST['all'])) {
+			if (!empty($_POST['all']) &&  is_array($_POST['all'])) {
+                $names_id = $_POST['all'];
+                $this->modelProduct->dellWhereInArray($names_id);
+                $this->modelProduct->dellWhereInArrayDetail($names_id);
+                $this->modelProduct->dellWhereInArrayImage($names_id);
+                $mess = array(
+					'flash_success' => lang('delete_all_success'),
+				);
+                Session::create($mess);
+				$data_mess = array(
+					'status'	=> true,
+					'redirect'		=> base_url().'product/product/index'
+				);
+				echo json_encode($data_mess);
+            }
+		}
+	}
 	public function add(){
 		global $_web;
-		$this->view->data['data_category']   = $this->modelCategory->getCategories();
-		$this->view->data['data_brand']   = $this->modelBrand->getBrand();
+		$this->view->data['data_category']   		= $this->modelCategory->getCategories();
+		$this->view->data['data_brand']   			= $this->modelBrand->getBrand();
 		$this->view->data['data_product_related']   = $this->modelProduct->list_product(0, 20,$id = null,$where_search = null);
 		$this->view->data['more_product_related']   = $this->modelProduct->check_load_more_product(20);
 
@@ -47,31 +79,31 @@ class ProductController extends Controller{
 	public function save(){
 		if (isset($_POST['submit'])) {
 			
-			$title = trim(addslashes($this->input->post('title')));
-			$code = htmlentities($this->input->post('code'),ENT_QUOTES);
-			$description = htmlentities($this->input->post('description'),ENT_QUOTES);
-			$price = htmlentities($this->input->post('price'),ENT_QUOTES);
-			$saleoff = htmlentities($this->input->post('saleoff'),ENT_QUOTES);
-			$vat = htmlentities($this->input->post('vat'),ENT_QUOTES);
-			$time_start = htmlentities($this->input->post('time_start'),ENT_QUOTES);
-			$time_end = htmlentities($this->input->post('time_end'),ENT_QUOTES);
-			$content = htmlentities($this->input->post('content'),ENT_QUOTES);
-			$note = htmlentities($this->input->post('note'),ENT_QUOTES);
-			$meta_keyword = htmlentities($this->input->post('meta_keyword'),ENT_QUOTES);
-			$meta_description = htmlentities($this->input->post('meta_description'),ENT_QUOTES);
-			$state = htmlentities($this->input->post('state'),ENT_QUOTES);
-			$brand = htmlentities($this->input->post('brand'),ENT_QUOTES);
-			$avatar = trim(addslashes($this->input->post('avatar')));
-			$categories = $this->input->post('categories');
+			$title 				= trim(addslashes($this->input->post('title')));
+			$code 				= trim(addslashes($this->input->post('code')));
+			$description 		= trim(addslashes($this->input->post('description')));
+			$price 				= trim(addslashes($this->input->post('price')));
+			$saleoff 			= trim(addslashes($this->input->post('saleoff')));
+			$vat 				= trim(addslashes($this->input->post('vat')));
+			$time_start 		= trim(addslashes($this->input->post('time_start')));
+			$time_end 			= trim(addslashes($this->input->post('time_end')));
+			$content 			= htmlentities($this->input->post('content'),ENT_QUOTES);
+			$note 				= trim(addslashes($this->input->post('note')));
+			$meta_keyword 		= trim(addslashes($this->input->post('meta_keyword')));
+			$meta_description 	= trim(addslashes($this->input->post('meta_description')));
+			$state 				= trim(addslashes($this->input->post('state')));
+			$brand 				= trim(addslashes($this->input->post('brand')));
+			$avatar 			= trim(addslashes($this->input->post('avatar')));
+			$categories 		= $this->input->post('categories');
 			if (is_array($categories)) {
 				$cate = ",".implode(",",$categories).",";
 			}
 			$image_arr = array();
 			for ($i=0; $i < count($_POST['images_js']); $i++) { 
 				$image_arr[] = array(
-						'name' => $_POST['images_js'][$i],
+						'name' 		=> $_POST['images_js'][$i],
 						'att_title' => $_POST['att_title'][$i],
-						'att_alt' => $_POST['att_alt'][$i],
+						'att_alt' 	=> $_POST['att_alt'][$i],
 
 					);
 			}
@@ -81,15 +113,14 @@ class ProductController extends Controller{
 			$info_arr = array();
 			for ($i=0; $i < count($_POST['info_title']); $i++) { 
 				$info_arr[] = array(
-						'title' => $_POST['info_title'][$i],
-						'content' => $_POST['info_content'][$i],
+						'title' 	=> $_POST['info_title'][$i],
+						'content' 	=> $_POST['info_content'][$i],
 
-					);
+				);
 			}
-			$other_info = json_encode($info_arr);
-
-			$timestamp_start = $time_start ? \DateTime::createFromFormat('d/m/Y', $time_start)->getTimestamp() : '';
-			$timestamp_end = $time_end ? \DateTime::createFromFormat('d/m/Y', $time_end)->getTimestamp() : '';
+			$other_info 		= json_encode($info_arr);
+			$timestamp_start 	= $time_start ? \DateTime::createFromFormat('d/m/Y', $time_start)->getTimestamp() : '';
+			$timestamp_end 		= $time_end ? \DateTime::createFromFormat('d/m/Y', $time_end)->getTimestamp() : '';
 
 
 			// product related
@@ -139,26 +170,45 @@ class ProductController extends Controller{
 			}
 
 			$data_basic = array(
-				'name'	=> $title,
-				'alias'	=> alias($title),
-				'category'	=> $cate,
-				'code'	=> $code,
-				'price'	=> $price,
-				'saleoff'	=> $saleoff,
-				'time_start'	=> $timestamp_start,
-				'time_end'	=> $timestamp_end,
-				'status_vat'	=> $vat,
-				'state'			=> $state,
-				'other_info'	=> $other_info,
-				'short_info'	=> $description,
-				'image'			=> $avatar,
-				'status'		=> 1,
-				'brand'		=> $brand,
+					'name'			=> $title,
+					'alias'			=> alias($title),
+					'category'		=> $cate,
+					'code'			=> $code,
+					'price'			=> $price,
+					'saleoff'		=> $saleoff,
+					'time_start'	=> $timestamp_start,
+					'time_end'		=> $timestamp_end,
+					'status_vat'	=> $vat,
+					'state'			=> $state,
+					'other_info'	=> $other_info,
+					'short_info'	=> $description,
+					'image'			=> $avatar,
+					'status'		=> 1,
+					'brand'			=> $brand,
+					'note'			=> $note,
 			);
 			if (isset($_POST['id_product']) && is_numeric($_POST['id_product'])) { // như thế này là đang update
+				$id_product = $_POST['id_product'];
 				$data_basic['update_author'] 	= Session::get('id');
-				$data_basic['update_time'] 	= time();
-				$this->modelProduct->update($data_basic,$_POST['id_product']);
+				$data_basic['update_time'] 		= time();
+				$this->modelProduct->update($data_basic,$id_product);
+
+				$data_images = array(
+					'avatar'	=> $avatar,
+					'image'	=> $images
+				);
+				$this->modelProduct->updateDataImage($data_images,$id_product);
+
+				$data_detail = array(
+					'full_info'			=> $content,
+					'tags'				=> $meta_keyword,
+					'meta_title'		=> $title,
+					'meta_keyword'		=> $meta_keyword,
+					'meta_description'	=> $meta_description,
+					'related_product'	=> json_encode($related)
+				);
+				$this->modelProduct->updateDataDetail($data_detail,$id_product);
+
 				$mess = array(
 					'flash_success' => lang('update_page_success'),
 				);
@@ -174,10 +224,11 @@ class ProductController extends Controller{
 				$this->modelProduct->insertDataImage($data_images);
 
 				$data_detail = array(
-					'id_product'	=> $id,
-					'full_info'	=> $content,
-					'meta_title'	=> $title,
-					'meta_keyword'	=> $meta_keyword,
+					'id_product'		=> $id,
+					'full_info'			=> $content,
+					'tags'				=> $meta_keyword,
+					'meta_title'		=> $title,
+					'meta_keyword'		=> $meta_keyword,
 					'meta_description'	=> $meta_description,
 					'related_product'	=> json_encode($related)
 				);
@@ -205,9 +256,27 @@ class ProductController extends Controller{
 	}
 	public function edit(){
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-			if ($this->modelProduct->checkId($_GET['id']) == FALSE) {
-				$this->view->data['data']=$this->modelProduct->getDataById($_GET['id']);
-				$this->view->data['data_brand']   = $this->modelBrand->getBrand();
+			$id = $this->input->get('id');
+			if ($this->modelProduct->checkId($id) == FALSE) {
+				$this->view->data['data']			=	$this->modelProduct->getDataById($id);
+				$this->view->data['data_detail']	=	$this->modelProduct->getDataDetailById($id);
+				$this->view->data['data_images']	=	$this->modelProduct->getDataImageById($id);
+				$this->view->data['data_brand']   	= 	$this->modelBrand->getBrand();
+				$this->view->data['data_detail']['related_product'] = json_decode($this->view->data['data_detail']['related_product'],true);
+				// get list product related
+				if (!empty($this->view->data['data_detail'])) {
+					$arrid = explode('|', $this->view->data['data_detail']['related_product']['select']['id_related']);
+					$arr_list_selected = array();
+					foreach ($arrid as $value) {
+						$arr_list_selected[] = $this->modelProduct->list_product_selected($value);
+					}
+					$this->view->data['arr_list_selected'] = $arr_list_selected;
+					$this->view->data['data_product_related_active'] = implode(",",$arrid);
+					array_push($arrid,$id);
+					$this->view->data['data_product_related']   = $this->modelProduct->list_product(0, 20,$arrid,$where_search = null);
+
+				}
+				
 				foreach ($this->view->data['data'] as $key => $value) {
 					if ($key=='time_start') {
 						$this->view->data['data'][$key] = ($this->view->data['data'][$key]!=0) ? date('d/m/Y',$value) : "";
@@ -216,8 +285,7 @@ class ProductController extends Controller{
 						$this->view->data['data'][$key] = ($this->view->data['data'][$key]!=0) ? date('d/m/Y',$value) : "";
 					}
 				}
-				$this->view->data['data_detail']=$this->modelProduct->getDataDetailById($_GET['id']);
-				$this->view->data['data_images']=$this->modelProduct->getDataImageById($_GET['id']);
+				
 				$this->view->data['data_category']   = $this->modelCategory->getCategories();
 				if (isset($this->view->data['data']['other_info'])) {
 					$this->view->data['data_other_info'] = json_decode($this->view->data['data']['other_info']);

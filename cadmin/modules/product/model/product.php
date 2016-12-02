@@ -32,6 +32,14 @@ class Product{
 		$this->product->where('id',$id);
 		$this->product->delete();
 	}
+	public function deleteDetail($id){
+		$this->productDetail->where('id_product',$id);
+		$this->productDetail->delete();
+	}
+	public function deleteImage($id){
+		$this->productImage->where('id_product',$id);
+		$this->productImage->delete();
+	}
 	public function insertData($data_insert){
 		return $this->product->insert($data_insert);
 	}
@@ -40,6 +48,14 @@ class Product{
 	}
 	public function insertDataDetail($data_insert){
 		$this->productDetail->insert($data_insert);
+	}
+	public function updateDataImage($data,$id){
+		$this->productImage->where('id_product',$id);
+		$this->productImage->update($data);
+	}
+	public function updateDataDetail($data,$id){
+		$this->productDetail->where('id_product',$id);
+		$this->productDetail->update($data);
 	}
 	public function getDataById($id){
 		$this->product->where('id',$id);
@@ -76,6 +92,22 @@ class Product{
 		$name = implode(",",$name_id);
 		$sql = "DELETE FROM ".$this->lang."_product_basic WHERE id IN (".$name.")";
 		$this->product->rawQuery($sql);
+	}
+	public function dellWhereInArrayDetail($name_id){
+		$name = implode(",",$name_id);
+		$sql = "DELETE FROM ".$this->lang."_product_detail WHERE id_product IN (".$name.")";
+		$this->productDetail->rawQuery($sql);
+	}
+	public function dellWhereInArrayImage($name_id){
+		$name = implode(",",$name_id);
+		$sql = "DELETE FROM ".$this->lang."_product_image WHERE id_product IN (".$name.")";
+		$this->productImage->rawQuery($sql);
+	}
+	public function list_product_selected($id){
+		$select = 'id,category, name,image';
+		$this->product->where('id',$id);
+		$result  = $this->product->getOne();
+		return $result;
 	}
 	public function list_product($start, $limit,$id = null,$where_search = null) {
 		$select = 'id,category, name, alias, code, price, saleoff, time_start, time_end, sort, status_vat, status, state, image';

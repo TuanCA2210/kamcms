@@ -1,3 +1,15 @@
+<?php
+$option_status = array('Không hiển thị','Hiển thị');  // key 0 - 1
+$option_display    = array(
+            'list'      => 'Danh sách',
+            'slide'     => 'Slide'
+);
+$option_orderBy    = array(
+            'new'       => 'Mới nhất',
+            'old'       => 'Cũ nhất',
+            'random'    => 'Ngẫu nhiên'
+);
+?>
 <div class="portlet light bordered" id="block-related">
     <div class="portlet-title">
         <div class="caption">
@@ -19,8 +31,12 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status_related_category">
-                        <option value="0">Không hiển thị</option>
-						<option value="1">Hiển thị</option>
+                        <?php 
+                        foreach ($option_status as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['category']['status'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -28,10 +44,12 @@
                 <div class="form-group">
                     <label>Sắp xếp</label>
                     <select class="form-control" name="sort_related_category" aria-invalid="false">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
+                        <?php 
+                        for ($i=1; $i < 5 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['category']['sort'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -39,8 +57,12 @@
                 <div class="form-group">
                     <label>Kiểu hiển thị</label>
                     <select class="form-control" name="display_related_category">
-						<option value="list">Danh sách</option>
-						<option value="slide">Slide</option>
+                        <?php 
+                        foreach ($option_display as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['category']['display'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -48,9 +70,12 @@
                 <div class="form-group">
                     <label>Sắp xếp sản phẩm</label>
                     <select class="form-control" name="order_by_related_category">
-						<option value="new">Mới nhất</option>
-						<option value="view">Xem nhiều</option>
-						<option value="random">Ngẫu nhiên</option>
+						<?php 
+                        foreach ($option_orderBy as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['category']['order_by'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -58,16 +83,12 @@
                 <div class="form-group">
                     <label>Số lượng</label>
                     <select class="form-control" name="number_related_category">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
+                        <?php 
+                        for ($i=1; $i < 11 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['category']['number'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -78,8 +99,12 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status_related_brand" aria-invalid="false">
-                        <option value="0">Không hiển thị</option>
-						<option value="1">Hiển thị</option>
+                        <?php 
+                        foreach ($option_status as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['brand']['status'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 						
 					</select>
                 </div>
@@ -88,10 +113,12 @@
                 <div class="form-group">
                     <label>Sắp xếp</label>
                     <select class="form-control" name="sort_related_brand">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
+						<?php 
+                        for ($i=1; $i < 5 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['brand']['sort'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -99,8 +126,12 @@
                 <div class="form-group">
                     <label>Kiểu hiển thị</label>
                     <select class="form-control" name="display_related_brand">
-						<option value="list">Danh sách</option>
-						<option value="slide">Slide</option>
+						<?php 
+                        foreach ($option_display as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['brand']['display'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -108,9 +139,12 @@
                 <div class="form-group">
                     <label>Sắp xếp sản phẩm</label>
                     <select class="form-control" name="order_by_related_brand">
-						<option value="new">Mới nhất</option>
-						<option value="view">Xem nhiều</option>
-						<option value="random">Ngẫu nhiên</option>
+                        <?php 
+                        foreach ($option_orderBy as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['brand']['order_by'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -118,16 +152,12 @@
                 <div class="form-group">
                     <label>Số lượng</label>
                     <select class="form-control" name="number_related_brand">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
+						<?php 
+                        for ($i=1; $i < 11 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['brand']['number'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -138,8 +168,12 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status_related_price">
-                        <option value="0">Không hiển thị</option>
-						<option value="1">Hiển thị</option>
+                        <?php 
+                        foreach ($option_status as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['price']['status'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -147,10 +181,12 @@
                 <div class="form-group">
                     <label>Sắp xếp</label>
                     <select class="form-control" name="sort_related_price">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
+						<?php 
+                        for ($i=1; $i < 5 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['price']['sort'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -158,8 +194,12 @@
                 <div class="form-group">
                     <label>Kiểu hiển thị</label>
                     <select class="form-control" name="display_related_price">
-						<option value="list">Danh sách</option>
-						<option value="slide">Slide</option>
+						<?php 
+                        foreach ($option_display as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['price']['display'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -167,9 +207,12 @@
                 <div class="form-group">
                     <label>Sắp xếp sản phẩm</label>
                     <select class="form-control" name="order_by_related_price" aria-invalid="false">
-						<option value="new">Mới nhất</option>
-						<option value="view">Xem nhiều</option>
-						<option value="random">Ngẫu nhiên</option>
+						<?php 
+                        foreach ($option_orderBy as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['price']['order_by'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -177,23 +220,19 @@
                 <div class="form-group">
                     <label>Số lượng</label>
                     <select class="form-control" name="number_related_price">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
+						<?php 
+                        for ($i=1; $i < 11 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['price']['number'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Chênh lệch giá</label>
-                    <input type="text" class="form-control" name="range_related_price" id="range_related_price" value="">
+                    <input type="text" class="form-control" name="range_related_price" id="range_related_price" value="<?php if($this->data['data_detail']['related_product']['price']['range']!="") echo number_format($this->data['data_detail']['related_product']['price']['range'],2,",",".");?>">
                 </div>
             </div>
         </div>
@@ -203,8 +242,12 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" name="status_related_select">
-                        <option value="0">Không hiển thị</option>
-						<option value="1">Hiển thị</option>
+                        <?php 
+                        foreach ($option_status as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['select']['status'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -212,10 +255,12 @@
                 <div class="form-group">
                     <label>Sắp xếp</label>
                     <select class="form-control" name="sort_related_select">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
+						<?php 
+                        for ($i=1; $i < 5 ; $i++) { 
+                            $selected = $this->data['data_detail']['related_product']['select']['sort'] == $i ? ' selected' : '';
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -223,8 +268,12 @@
                 <div class="form-group">
                     <label>Kiểu hiển thị</label>
                     <select class="form-control" name="display_related_select">
-						<option value="list">Danh sách</option>
-						<option value="slide">Slide</option>
+						<?php 
+                        foreach ($option_display as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['select']['display'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -232,9 +281,12 @@
                 <div class="form-group">
                     <label>Sắp xếp sản phẩm</label>
                     <select class="form-control" name="order_by_related_select">
-						<option value="new">Mới nhất</option>
-						<option value="view">Xem nhiều</option>
-						<option value="random">Ngẫu nhiên</option>
+						<?php 
+                        foreach ($option_orderBy as $key => $value) {
+                            $selected = $this->data['data_detail']['related_product']['select']['order_by'] == $key ? ' selected' : '';
+                            echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+                        }
+                        ?>
 					</select>
                 </div>
             </div>
@@ -276,10 +328,30 @@
                 <div class="col-right">
                     <div class="col-title"><span>Sản phẩm liên quan được chọn</span></div>
                     <div class="scrollbar" id="right-product">
-                        <center>Không có sản phẩm nào</center>
+                        <?php 
+                        if (!empty($this->data['arr_list_selected'])) {
+                            echo "<ul>";
+                            foreach ($this->data['arr_list_selected'] as $key => $value) { ?>
+                            <li class="select-product" data-id="<?php echo $value['id'];?>">
+                                <div class="imgs">
+                                    <img src="<?php echo base_url().'tmp/cdn/'.$value['image']; ?>" alt="<?php echo $value['name'];?>"/>
+                                </div>
+                                <a><?php echo $value['name'];?></a>
+                            </li>
+                        <?php 
+                            }
+                            echo "</ul>";
+                            if(isset($this->data['more_product_related']) && $this->data['more_product_related']['flag'] == true){ ?>
+                                <span class="btn btn-xs grey-cascade load-more" id="load-more-product" data-start="<?php echo $this->data['more_product_related']['start'];?>"><i class="glyphicon glyphicon-refresh fa-spin"></i> Tải thêm dữ liệu</span>
+                        <?php 
+                            }
+                        }else{
+                            echo "<center>Không có sản phẩm nào</center>";
+                        }
+                         ?>
                     </div>
                 </div>
-                <input type="hidden" name="product_related" id="product-related" value="<?php if(isset($this->data['data']['related_product']['select']['id_related'])) echo $this->data['data']['related_product']['select']['id_related'];?>">
+                <input type="hidden" name="product_related" id="product-related" value="<?php if(isset($this->data['data_product_related_active'])) echo $this->data['data_product_related_active'];?>">
                 <input type="hidden" name="product_current" id="product-current" value="<?php if(isset($this->data['data']['id'])) echo $this->data['data']['id'];?>">
             </div>
         </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 27, 2016 at 04:56 AM
+-- Generation Time: Dec 04, 2016 at 05:16 AM
 -- Server version: 5.5.50-MariaDB
 -- PHP Version: 5.6.14
 
@@ -52,6 +52,31 @@ INSERT INTO `en_banner_images` (`id`, `title`, `alias`, `description`, `link`, `
 (28, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																												Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																																					', '#', '', NULL, '1463641185', NULL, 23, NULL, 7, 1),
 (29, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																	Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																										', '#', '', NULL, '1463642269', NULL, 23, NULL, 0, 1),
 (30, 'Offline Facebook: Lột trần bí mật quảng cáo Facebook', NULL, '																																	Offline SEO 2016: Lột trần vũ khí bí mật SEO 2016 																																										', '#', '', NULL, '1465958007', NULL, 23, NULL, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_brand`
+--
+
+CREATE TABLE `en_brand` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `background` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `info` text,
+  `sort` smallint(5) UNSIGNED DEFAULT NULL,
+  `status` tinyint(1) UNSIGNED DEFAULT '1',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `create_time` int(11) UNSIGNED DEFAULT NULL,
+  `create_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `update_time` int(11) UNSIGNED DEFAULT NULL,
+  `update_author` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -292,7 +317,8 @@ CREATE TABLE `en_product_basic` (
   `link_` varchar(255) DEFAULT NULL,
   `sale_time_start` int(10) DEFAULT NULL,
   `sale_time_end` int(10) DEFAULT NULL,
-  `youtube_link` varchar(255) DEFAULT NULL
+  `youtube_link` varchar(255) DEFAULT NULL,
+  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -481,6 +507,42 @@ INSERT INTO `vi_banner_images` (`id`, `title`, `alias`, `description`, `link`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vi_brand`
+--
+
+CREATE TABLE `vi_brand` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `background` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `info` text,
+  `sort` smallint(5) UNSIGNED DEFAULT NULL,
+  `status` tinyint(1) UNSIGNED DEFAULT '1',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `meta_description` text,
+  `create_time` int(11) UNSIGNED DEFAULT NULL,
+  `create_author` bigint(20) UNSIGNED DEFAULT NULL,
+  `update_time` int(11) UNSIGNED DEFAULT NULL,
+  `update_author` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vi_brand`
+--
+
+INSERT INTO `vi_brand` (`id`, `name`, `alias`, `background`, `icon`, `avatar`, `info`, `sort`, `status`, `meta_title`, `meta_keyword`, `meta_description`, `create_time`, `create_author`, `update_time`, `update_author`) VALUES
+(1, 'Zalora', 'zalora', NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 23, NULL, NULL),
+(2, 'FOREVER 21', 'forevar21', NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 23, NULL, NULL),
+(3, 'Durango', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1480630679, 23, NULL, NULL),
+(4, 'NEM', 'nem', NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1480631195, 23, NULL, NULL),
+(5, 'Faction', 'faction', NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1480631242, 23, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vi_categories_posts`
 --
 
@@ -589,7 +651,8 @@ CREATE TABLE `vi_comments_posts` (
 
 INSERT INTO `vi_comments_posts` (`id`, `username`, `email`, `content`, `post_id`, `create_time`, `status`) VALUES
 (15, 'cuongle.dev', 'cuongle.dev@gmail.com', 'Hay lắm.', 1, '1477389955', 1),
-(16, 'Lê Ngọc Cường', 'cuongleon630@gmail.com', 'Bài viết hay không chê vào đâu được.', 1, '1477390076', 1);
+(16, 'Lê Ngọc Cường', 'cuongleon630@gmail.com', 'Bài viết hay không chê vào đâu được.', 1, '1477390076', 1),
+(17, 'RocioXRuma', 'rocioxruma@mail.ru', 'Hi! Where I can download the XRumer 12? This URL is not working - http://freecheapxrumer.com/ :(', 1, '1480724688', 0);
 
 -- --------------------------------------------------------
 
@@ -763,20 +826,19 @@ CREATE TABLE `vi_product_basic` (
   `link_` varchar(255) DEFAULT NULL,
   `sale_time_start` int(10) DEFAULT NULL,
   `sale_time_end` int(10) DEFAULT NULL,
-  `youtube_link` varchar(255) DEFAULT NULL
+  `youtube_link` varchar(255) DEFAULT NULL,
+  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vi_product_basic`
 --
 
-INSERT INTO `vi_product_basic` (`id`, `category`, `name`, `alias`, `code`, `unit`, `price`, `price_market`, `saleoff`, `time_start`, `time_end`, `number_repeat`, `status_size`, `status_vat`, `status`, `state`, `quantity`, `quantity_shop`, `other_info`, `short_info`, `number_payment`, `view`, `type`, `sort`, `create_time`, `create_author`, `update_time`, `update_author`, `image`, `color`, `id_group_color`, `properties`, `brand`, `supplier`, `time_post`, `number_refresh`, `file_download`, `time_interval_refesh`, `time_refresh`, `length_class`, `weigh_class`, `link_`, `sale_time_start`, `sale_time_end`, `youtube_link`) VALUES
-(1, ',81,83,94,95,', 'HANG DOC NU', 'hang-doc-nu', '987', NULL, '9000000', '0', NULL, NULL, NULL, 0, 0, 2, 1, '', 0, NULL, '[{"title":"tttt","content":"ttttt"},{"title":"rrrr","content":"rrrr"}]', '', 0, 0, '', NULL, 1480174344, 23, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, ',82,', 'eeee', 'eeee', '9hg', NULL, '8000000', '0', NULL, NULL, NULL, 0, 0, 2, 1, '', 0, NULL, '[{"title":"4435","content":"543543"}]', 'dfgdfg', 0, 0, '', NULL, 1480174583, 23, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, ',81,83,95,', 'hehehehehe', 'hehehehehe', '88888', NULL, '7500000', '0', NULL, NULL, NULL, 0, 0, 1, 1, '', 0, NULL, '[{"title":"ggggg","content":"gggg"}]', 'fdffd', 0, 0, '', NULL, 1480189019, 23, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, ',81,', '5555555', '5555555', '345345', NULL, '5990000', '0', NULL, NULL, NULL, 0, 0, 2, 1, '3', 0, NULL, '[{"title":"fffff","content":"ffff"}]', 'sdfsdf', 0, 0, '', NULL, 1480189233, 23, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, ',81,83,94,', 'tyutyut', 'tyutyut', '465', NULL, '5990000', '0', NULL, NULL, NULL, 0, 0, 0, 1, '2', 0, NULL, '[{"title":"dd\\u0111","content":"dd\\u0111"},{"title":"fffff","content":"fff"},{"title":"eee","content":"eeee"}]', 'sdfsdf', 0, 0, '', NULL, 1480194035, 23, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, ',81,82,', 'eeeeeeeeeefff', 'eeeeeeeeeefff', '545', NULL, '7500000', '0', NULL, NULL, NULL, 0, 0, 1, 1, '2', 0, NULL, '[{"title":"r\\u00eatrt","content":"\\u1ec3trt"},{"title":"fghfgh","content":"fghfgh"},{"title":"Hfghfgh","content":"hhhh"}]', 'hhhhhhhhhhhhh', 0, 0, '', NULL, 1480194639, 23, NULL, NULL, NULL, NULL, 0, NULL, '1', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `vi_product_basic` (`id`, `category`, `name`, `alias`, `code`, `unit`, `price`, `price_market`, `saleoff`, `time_start`, `time_end`, `number_repeat`, `status_size`, `status_vat`, `status`, `state`, `quantity`, `quantity_shop`, `other_info`, `short_info`, `number_payment`, `view`, `type`, `sort`, `create_time`, `create_author`, `update_time`, `update_author`, `image`, `color`, `id_group_color`, `properties`, `brand`, `supplier`, `time_post`, `number_refresh`, `file_download`, `time_interval_refesh`, `time_refresh`, `length_class`, `weigh_class`, `link_`, `sale_time_start`, `sale_time_end`, `youtube_link`, `note`) VALUES
+(15, ',81,97,', 'Quần xẻ', 'quan-xe', '433', NULL, '88000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', 'ffffsd', 0, 0, '', NULL, 1480608052, 23, NULL, NULL, 'category-product/0BwXOE_simg_b5529c_250x250_maxb.jpg', NULL, 0, NULL, '|2|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(16, ',81,83,98,', 'Giày cao guốc thời thượng', 'giay-cao-guoc-thoi-thuong', '456', NULL, '750000', '0', 0, 0, 0, 0, 0, 0, 1, '|2|', 0, NULL, '[{"title":"","content":""}]', '', 0, 0, '', NULL, 1480608112, 23, NULL, NULL, 'category-product/b50p7u_simg_b5529c_250x250_maxb.jpg', NULL, 0, NULL, '|3|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(17, ',81,99,100,', 'Vòng cổ', 'vong-co', '675', NULL, '9000000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', 'fghfgh', 0, 0, '', NULL, 1480608230, 23, NULL, NULL, 'category-product/krrTyN_simg_b5529c_250x250_maxb.jpg', NULL, 0, NULL, '|2|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(19, ',81,94,95,96,', 'Hàng deep korea', 'hang-deep-korea', 'MD123', NULL, '800.000', '0', 700, 1480629011, 1481320211, 0, 0, 0, 1, '|1|3|', 0, NULL, '[{"title":"fffffffffff","content":"fffffffffffffff"},{"title":"sssssssssssssssss","content":"sssssssssssssssssss"}]', 'sdfsdfddddddđ', 0, 0, '', NULL, 1480707566, 23, 1480801811, 23, 'category-product/tLp6la_simg_739c92_762-762-0-0_cropf_simg_70aaf2_700x700_maxb.jpg', NULL, 0, NULL, '|1|4|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -803,8 +865,10 @@ CREATE TABLE `vi_product_detail` (
 --
 
 INSERT INTO `vi_product_detail` (`id`, `id_product`, `full_info`, `tags`, `id_field`, `form_field`, `form_default`, `meta_title`, `meta_keyword`, `meta_description`, `related_product`) VALUES
-(1, 0, '&lt;p&gt;dfsdfsfd&lt;/p&gt;\r\n\r\n&lt;p&gt;sdfsdf&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'HANG DOC NU', 'hang nu,nu hang', 'ghfghfgh', NULL),
-(2, 6, '&lt;p&gt;gggggggggggg&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'eeeeeeeeeefff', 'dfgdfg,ứerw', 'sdfsdf', NULL);
+(11, 15, '&lt;p&gt;sdfffff&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'Quần xẻ', 'sdf', 'fsdfsd', NULL),
+(12, 16, '&lt;p&gt;fghfgh&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'Giày cao guốc thời thượng', '', '', NULL),
+(13, 17, '&lt;p&gt;fhgh&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'Vòng cổ', '', '', NULL),
+(14, 19, '&lt;p&gt;sdfsdfdddddddddddddddddddddđ&lt;/p&gt;\r\n', 'sdfsdf,sdfsdfsdf,ok', 0, NULL, 1, 'Hàng deep korea', 'sdfsdf,sdfsdfsdf,ok', 'sdfsdfsdf', '{"category":{"status":"1","sort":"1","display":"slide","order_by":"random","number":"1"},"brand":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"price":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1","range":""},"select":{"status":"1","sort":"1","display":"slide","order_by":"random","id_related":"17|15|14"}}');
 
 -- --------------------------------------------------------
 
@@ -824,8 +888,10 @@ CREATE TABLE `vi_product_image` (
 --
 
 INSERT INTO `vi_product_image` (`id`, `id_product`, `avatar`, `image`) VALUES
-(1, 0, 'category-product/1IriDP_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/LJteNC_simg_ed2c00_809-809-0-0_cropf_simg_ed2c00_809-809-0-0_cropf_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/01_copy3.jpg","att_title":"","att_alt":""},{"name":"category-product\\/0BwXOE_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/1IriDP_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""}]'),
-(2, 6, 'category-product/1IriDP_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/01_copy3.jpg","att_title":"","att_alt":""},{"name":"category-product\\/0BwXOE_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/1IriDP_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""}]');
+(11, 15, 'category-product/0BwXOE_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/0BwXOE_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/iJxeG8_simg_70aaf2_700x700_maxb.jpg","att_title":"","att_alt":""}]'),
+(12, 16, 'category-product/b50p7u_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/NqQ9eJ_simg_63a662_340x340_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/b50p7u_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""}]'),
+(13, 17, 'category-product/krrTyN_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/01_copy3.jpg","att_title":"","att_alt":""},{"name":"category-product\\/krrTyN_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""}]'),
+(15, 19, 'category-product/tLp6la_simg_739c92_762-762-0-0_cropf_simg_70aaf2_700x700_maxb.jpg', '[{"name":"category-product\\/01_copy3.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/0BwXOE_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/1IriDP_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/71c60f_simg_81f506_180x180_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/LJteNC_simg_ed2c00_809-809-0-0_cropf_simg_ed2c00_809-809-0-0_cropf_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/NqQ9eJ_simg_63a662_340x340_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/b50p7u_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/dREVtI_simg_70aaf2_700x700_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/iJxeG8_simg_70aaf2_700x700_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/krrTyN_simg_b5529c_250x250_maxb.jpg","att_title":"hehe","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\thehe 2\\t\\t\\t\\t    "},{"name":"category-product\\/tLp6la_simg_739c92_762-762-0-0_cropf_simg_70aaf2_700x700_maxb.jpg","att_title":"\\u1ea3nh \\u0111\\u1eb9p","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\tok\\t\\t\\t    "}]');
 
 -- --------------------------------------------------------
 
@@ -930,6 +996,12 @@ ALTER TABLE `en_banner_images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `en_brand`
+--
+ALTER TABLE `en_brand`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `en_categories_posts`
 --
 ALTER TABLE `en_categories_posts`
@@ -1022,6 +1094,12 @@ ALTER TABLE `vi_banner_images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vi_brand`
+--
+ALTER TABLE `vi_brand`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vi_categories_posts`
 --
 ALTER TABLE `vi_categories_posts`
@@ -1111,6 +1189,11 @@ ALTER TABLE `web_settings`
 ALTER TABLE `en_banner_images`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
+-- AUTO_INCREMENT for table `en_brand`
+--
+ALTER TABLE `en_brand`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `en_categories_posts`
 --
 ALTER TABLE `en_categories_posts`
@@ -1186,6 +1269,11 @@ ALTER TABLE `user`
 ALTER TABLE `vi_banner_images`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
+-- AUTO_INCREMENT for table `vi_brand`
+--
+ALTER TABLE `vi_brand`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT for table `vi_categories_posts`
 --
 ALTER TABLE `vi_categories_posts`
@@ -1199,7 +1287,7 @@ ALTER TABLE `vi_category`
 -- AUTO_INCREMENT for table `vi_comments_posts`
 --
 ALTER TABLE `vi_comments_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `vi_menu`
 --
@@ -1224,17 +1312,17 @@ ALTER TABLE `vi_posts`
 -- AUTO_INCREMENT for table `vi_product_basic`
 --
 ALTER TABLE `vi_product_basic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `vi_product_detail`
 --
 ALTER TABLE `vi_product_detail`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `vi_product_image`
 --
 ALTER TABLE `vi_product_image`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `web_contacts`
 --

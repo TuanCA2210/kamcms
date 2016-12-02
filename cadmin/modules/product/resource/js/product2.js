@@ -96,9 +96,14 @@ $('body').on('click', '.choose_img_list', function(event) {
         .done(function(data) {
             if (data.status==true) {
                 //toastr["success"](data.mess);
-                $('#sortable').fadeOut(100, function(){
-                    $('#sortable').html(data.html).fadeIn();
-                });
+                if ($('#id_product').val()==null) {
+                    $('#sortable').fadeOut(100, function(){
+                        $('#sortable').html(data.html).fadeIn();
+                    });
+                }else{
+                    $('#sortable').append(data.html).fadeIn();
+                }
+                
             }
             offLoading();
         });
