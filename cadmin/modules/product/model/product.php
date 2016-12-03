@@ -83,7 +83,7 @@ class Product{
 	}
 	public function findSearch($search){
 		$select = $this->lang."_product_basic.*, user.id as id_user, user.username";
-		$this->product->where($this->lang.'_product_basic.title', '%'.$search.'%', 'like');
+		$this->product->where($this->lang.'_product_basic.name', '%'.$search.'%', 'like');
 		$this->product->join('user', 'user.id = '.$this->lang.'_product_basic.create_author', 'LEFT');
 		$result  = $this->product->get(null,null,$select);
 		return $result;

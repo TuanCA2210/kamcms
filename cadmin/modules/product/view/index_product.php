@@ -44,9 +44,9 @@
                                         <div class="row">
                                           <div class="col-lg-4">
                                             <div class="input-group">
-                                              <input type="text" class="form-control search_users" placeholder="Search for..." value="<?php if(isset($this->data['s'])) echo $this->data['s'];?>">
+                                              <input type="text" class="form-control search_product" placeholder="Search for..." value="<?php if(isset($this->data['s'])) echo $this->data['s'];?>">
                                               <span class="input-group-btn">
-                                                <button class="btn btn-primary search_button_users" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                <button class="btn btn-primary search_button_product" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                                               </span>
                                             </div><!-- /input-group -->
                                           </div><!-- /.col-lg-6 -->
@@ -60,9 +60,9 @@
                                                 <?php echo lang('action');?> <span class="caret"></span>
                                               </button>
                                               <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0)" id="del_list_user"><i class="fa fa-trash-o" aria-hidden="true"></i> &nbsp;<?php echo lang('delete');?></a></li>
-                                                <li><a href="javascript:void(0)" id="unlock_user"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;<?php echo lang('private');?></a></li>
-                                                <li><a href="javascript:void(0)" id="lock_user"><i class="fa fa-unlock" aria-hidden="true"></i>&nbsp;<?php echo lang('public');?></a></li>
+                                                <li><a href="javascript:void(0)" id="del_list_product"><i class="fa fa-trash-o" aria-hidden="true"></i> &nbsp;<?php echo lang('delete');?></a></li>
+                                                <li><a href="javascript:void(0)" id="unlock_product"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;<?php echo lang('private');?></a></li>
+                                                <li><a href="javascript:void(0)" id="lock_product"><i class="fa fa-unlock" aria-hidden="true"></i>&nbsp;<?php echo lang('public');?></a></li>
                                               </ul>
                                             </div>
 
@@ -213,7 +213,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo lang('cancel');?></button>
-                                    <a href="" id="agree_del_all" class="btn btn-success"><?php echo lang('agree');?></a>
+                                    <a href="" id="agree_del_all_product" class="btn btn-success"><?php echo lang('agree');?></a>
                                   </div>
                                 </div>
 

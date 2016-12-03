@@ -344,3 +344,115 @@ function numberFormat(nStr){
     }
     return x1 + x2;
 }
+
+
+
+
+$('body').on('click', '#del_list_product', function(event) {
+        event.preventDefault();
+        var allVals = [];
+        $(".checkboxes:checked").each(function(){
+           allVals.push($(this).val());
+        });
+        if (allVals.length >= 1) {
+            $('#modelDeleteAll').modal('show'); 
+        }else{
+            toastr["error"]("Cảnh báo! Bạn chưa chọn mục nào.");
+        }
+    });
+
+
+    $('body').on('click', '#modelDeleteAll #agree_del_all_product', function(event) {
+        event.preventDefault();
+        var allVals = [];
+        $(".checkboxes:checked").each(function(){
+           allVals.push($(this).val());
+        });
+        if (allVals.length >= 1) {
+            $.ajax({
+                url: baseUrl+'product/product/dellAll',
+                type: 'POST',
+                dataType: 'json',
+                data: {all: allVals},
+            })
+            .done(function(data) {
+                if (data.status==true) {
+                    $('#modelDeleteAll').modal('show'); 
+                    window.location.assign(data.redirect);
+                }else{
+                    toastr["error"]("Cảnh báo! Đã xảy ra lỗi gì đó.Vui lòng thử lại.");
+                }
+            });
+        }else{
+            toastr["error"]("Cảnh báo! Bạn chưa chọn mục nào.");
+        }
+        
+        
+    });
+
+
+
+
+    $('body').on('click', '#lock_product', function(event) {
+        event.preventDefault();
+        var allVals = [];
+        $(".checkboxes:checked").each(function(){
+           allVals.push($(this).val());
+        });
+        if (allVals.length >= 1) {
+            var status = 'public';
+            $.ajax({
+                url: baseUrl+'product/product/status',
+                type: 'POST',
+                dataType: 'json',
+                data: {status: status,all:allVals},
+            })
+            .done(function(data) {
+                if (data.status==true) {
+                    window.location.assign(data.redirect);
+                }else{
+                    toastr["error"]("Cảnh báo! Đã xảy ra lỗi gì đó.Vui lòng thử lại.");
+                }
+            });
+        }else{
+            toastr["error"]("Cảnh báo! Bạn chưa chọn mục nào.");
+        }
+    });
+
+    $('body').on('click', '#unlock_product', function(event) {
+        event.preventDefault();
+        var allVals = [];
+        $(".checkboxes:checked").each(function(){
+           allVals.push($(this).val());
+        });
+        if (allVals.length >= 1) {
+            var status = 'private';
+            $.ajax({
+                url: baseUrl+'product/product/status',
+                type: 'POST',
+                dataType: 'json',
+                data: {status: status,all:allVals},
+            })
+            .done(function(data) {
+                if (data.status==true) {
+                    window.location.assign(data.redirect);
+                }else{
+                    toastr["error"]("Cảnh báo! Đã xảy ra lỗi gì đó.Vui lòng thử lại.");
+                }
+            });
+        }else{
+            toastr["error"]("Cảnh báo! Bạn chưa chọn mục nào.");
+        }
+    });
+
+
+$('body').on('click', '.search_button_product', function(event) {
+    event.preventDefault();
+    var search = $('.search_product').val();
+    if (search=="") {
+        window.location.assign(baseUrl+'product/product/index');
+    }else{
+        window.location.assign(baseUrl+'product/product/index&s='+search);
+    }
+    
+});

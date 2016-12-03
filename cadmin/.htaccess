@@ -31,7 +31,7 @@ RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9]+)$ index.
 
 
 #mod / controller / action / id ?s= search
-RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)&s=([0-9a-zA-Z\_]+)$ index.php?mod=$1&controller=$2&action=$3&s=$4 [L,QSA]
+RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)&s=([^\s&]+)$ index.php?mod=$1&controller=$2&action=$3&s=$4 [NC]
 
 
 #mod / login / login / index
