@@ -1,37 +1,168 @@
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo base_url();?>">Start Bootstrap
-            	<!--<img src="<?php echo $_web['base_url_cdn'].$_web['settings']['logo'];?>" alt="" class="img-responsive">-->
-            </a>
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span><?php echo isset($_web['settings']['hotline']) ? $_web['settings']['hotline'] : '';?></span></li>
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="javascript:void(0);" class="current">
+                        <?php 
+                        switch ($_web['lang']) {
+                            case 'en':
+                                echo "English";
+                                break;
+                            
+                            default:
+                                echo "Vietnames";
+                                break;
+                        }
+                        ?></a>
+                        <div class="langs-block-others-wrapper"><div class="langs-block-others">
+                          <a href="javascript:void(0);" title="Tiếng Việt" class="lang" data-lang="vi">Vietnames</a>
+                          <a href="javascript:void(0);" title="English" class="lang" data-lang="en">English</a>
+                        </div></div>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="shop-account.html">My Account</a></li>
+                    <li><a href="shop-wishlist.html">My Wishlist</a></li>
+                    <li><a href="shop-checkout.html">Checkout</a></li>
+                    <li><a href="page-login.html">Log In</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <?php
-			$newArrayMenu = array();
-			foreach ($_web['menu'] as $value) {
-				$parent = $value['parent_id'];
-				$newArrayMenu[$parent][] = $value;
-			}
-			recursiveMenu($newArrayMenu);
-			?>
+    </div>        
+</div>
+<!-- END TOP BAR -->
 
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<?php echo base_url().'dang-nhap.htm';?>" title="<?php echo lang('login');?>"><i class="fa fa-sign-in"></i> <?php echo lang('login');?></a> </li>
-				<li><a href="<?php echo base_url().'dang-nhap.htm';?>" title="<?php echo lang('regis');?>"><?php echo lang('regis');?></a></li>
-				<li><a href="javascript:void(0)" title="Tiếng Việt" class="lang" data-lang="vi"><img src="<?php echo base_url()."tmp/public/";?>images/vi.png" alt="" class="img-responsive"> </a></li>
-				<li><a href="javascript:void(0)" title="English" class="lang" data-lang="en"><img src="<?php echo base_url()."tmp/public/";?>images/us.png" alt="" class="img-responsive"> </a></li>
-			</ul>
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <a class="site-logo" href="<?php echo base_url();?>"><img src="<?php echo $_web['base_url_cdn'].$_web['settings']['logo'];?>" alt="Metronic Shop UI"></a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN CART -->
+    <div class="top-cart-block">
+      <div class="top-cart-info">
+        <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
+        <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
+      </div>
+      <i class="fa fa-shopping-cart"></i>
+                    
+      <div class="top-cart-content-wrapper">
+        <div class="top-cart-content">
+          <ul class="scroller" style="height: 250px;">
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+          </ul>
+          <div class="text-right">
+            <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
+            <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+          </div>
         </div>
-        <!-- /.navbar-collapse -->
+      </div>            
     </div>
-    <!-- /.container -->
-</nav>
+    <!--END CART -->
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation">
+      <?php
+        $newArrayMenu = array();
+        foreach ($_web['menu'] as $value) {
+            $parent = $value['parent_id'];
+            $newArrayMenu[$parent][] = $value;
+        }
+        recursiveMenu($newArrayMenu);
+        ?>
+      
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

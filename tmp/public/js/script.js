@@ -1,8 +1,5 @@
 jQuery(document).ready(function($) {
 
-	$(window).load(function() {
-		$('#loader').fadeOut('slow');
-	});
 
 	/*var slider = $('#mainSlider');
 
@@ -22,6 +19,26 @@ jQuery(document).ready(function($) {
 	$('#sliderPrevBtn').click(function() {
     	slider.trigger('prev.owl.carousel', [300]);
 	})*/
+	html = "<!-- BEGIN TOP SEARCH -->" +
+		        "<li class='menu-search'>" +
+		          "<span class='sep'></span>" +
+		          "<i class='fa fa-search search-btn'></i>" +
+		          "<div class='search-box'>" +
+		            "<form action='#'>" +
+		              "<div class='input-group'>" +
+		                "<input type='text' placeholder='Search' class='form-control'>" +
+		                "<span class='input-group-btn'>" +
+		                  "<button class='btn btn-primary' type='submit'>Search</button>" +
+		                "</span>" +
+		              "</div>" +
+		            "</form>" +
+		          "</div> " +
+		        "</li>" +
+		        "<!-- END TOP SEARCH -->";
+	$(".header-navigation > ul").append(html);
+
+	Layout.initOWL();
+	LayersliderInit.initLayerSlider();
 
 	$('body').on('click', '.lang', function(event) {
 		event.preventDefault();

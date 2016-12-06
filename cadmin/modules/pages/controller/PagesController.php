@@ -290,6 +290,7 @@ class PagesController extends Controller{
 
 
 			$new_root = str_replace("\cadmin\\", "\\", DIR_ROOT);
+			$new_root = str_replace("/cadmin/", "/", $new_root);
 			$htaccess = file($new_root.".htaccess");
 			$savestring ="";
 			foreach ($htaccess as $key => $value) {
