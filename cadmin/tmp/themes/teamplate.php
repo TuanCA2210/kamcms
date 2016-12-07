@@ -21,9 +21,10 @@
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/datepicker/css/datepicker3.css">
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/tagsinput/jquery.tagsinput.css">
   <link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>plugins/toastr/toastr.min.css">
-
+  <?php echo ($this->appendCss!='') ? $this->appendCss : '';?>
 
   <?php echo ($this->_appendCss!='') ? $this->_appendCss : '';?>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -79,6 +80,7 @@
 <!-- <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/dashboard.js"></script> -->
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/app.js"></script>
 <script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/demo.js"></script>
+<?php echo ($this->appendJs!='') ? $this->appendJs : '';?>
 
 <?php echo ($this->_appendJs!='') ? $this->_appendJs : '';?>
 

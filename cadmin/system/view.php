@@ -2,13 +2,17 @@
 class View{
 	public $_fileView;
 	public $_appendCss;
+	public $appendCss;
 	public $_appendJs;
+	public $appendJs;
 	public function render($file,$fullFile = true){
 		global $_web;
 		
 		$path = DIR_MODULES . $_web['uri']['mod']."/view/".$file.".php";
 		if ($fullFile == true) {
 			$this->_fileView = $file;
+
+			
 
 			// append file js in folder Modules/resource/js
 			$pathJs = DIR_MODULES . $_web['uri']['mod'] .'/resource/js';

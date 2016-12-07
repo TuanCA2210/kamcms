@@ -8,6 +8,8 @@ class OptionsController extends Controller{
 	}
 	public function index(){
 		global $_web;
+		$this->view->appendCss = '<link rel="stylesheet" href="'.base_url().'tmp/public/plugins/bootstrap-switch/css/bootstrap-switch.min.css'.'">';
+		$this->view->appendJs = '<script type="text/javascript" src="'.base_url().'tmp/public/plugins/bootstrap-switch/js/bootstrap-switch.min.js'.'"></script>';
 		if (isset($_SESSION['flash_success'])) {
 			$this->view->data['flash_success'] = Session::get('flash_success');
 			unset($_SESSION['flash_success']);
@@ -31,7 +33,10 @@ class OptionsController extends Controller{
 
 		$this->view->data['options']  = $this->options->getInfo();
 
+
 		$this->view->render('index');
+
+
 	}
 	
 }

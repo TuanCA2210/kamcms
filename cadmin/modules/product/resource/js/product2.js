@@ -456,3 +456,9 @@ $('body').on('click', '.search_button_product', function(event) {
     }
     
 });
+
+
+$('body').on('click', '#feature_product', function(event) {
+    event.preventDefault();
+
+});

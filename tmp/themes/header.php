@@ -142,6 +142,7 @@
     <!-- END NAVIGATION -->
   </div>
 </div>
+</div>
 <!-- Header END -->
 
 

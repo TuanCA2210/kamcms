@@ -1,0 +1,25 @@
+#list-feature-home {
+	list-style: none;
+}
+
+#list-feature-home li {
+	display: block;
+	padding: 20px 10px; margin-bottom: 3px;
+	background-color: #efefef;
+}
+
+#list-feature-home li img.handle {
+	margin-right: 20px;
+	cursor: move;
+}
+#list-feature-home strong {
+	font-size: 16px;
+}
+#list-feature-home .title{
+	width: 80%;
+	display: initial;
+}
+
+
+
+

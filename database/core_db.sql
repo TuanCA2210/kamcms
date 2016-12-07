@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Dec 04, 2016 at 05:16 AM
+-- Generation Time: Dec 09, 2016 at 05:43 AM
 -- Server version: 5.5.50-MariaDB
 -- PHP Version: 5.6.14
 
@@ -154,6 +154,25 @@ CREATE TABLE `en_comments_posts` (
   `post_id` int(11) DEFAULT NULL,
   `create_time` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` tinyint(4) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `en_manager_view_home`
+--
+
+CREATE TABLE `en_manager_view_home` (
+  `id` int(10) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8,
+  `type` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `position` int(11) DEFAULT '0',
+  `status` tinyint(4) DEFAULT '0',
+  `create_author` int(11) DEFAULT NULL,
+  `create_time` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `update_author` int(11) DEFAULT NULL,
+  `update_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -318,7 +337,8 @@ CREATE TABLE `en_product_basic` (
   `sale_time_start` int(10) DEFAULT NULL,
   `sale_time_end` int(10) DEFAULT NULL,
   `youtube_link` varchar(255) DEFAULT NULL,
-  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status_feature` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Check status này để xuất hiện ngoài trang chủ(Sản phẩm nổi bật)	'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -657,6 +677,35 @@ INSERT INTO `vi_comments_posts` (`id`, `username`, `email`, `content`, `post_id`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vi_manager_view_home`
+--
+
+CREATE TABLE `vi_manager_view_home` (
+  `id` int(10) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8,
+  `type` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `position` int(11) DEFAULT '0',
+  `status` tinyint(4) DEFAULT '0',
+  `create_author` int(11) DEFAULT NULL,
+  `create_time` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `update_author` int(11) DEFAULT NULL,
+  `update_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `vi_manager_view_home`
+--
+
+INSERT INTO `vi_manager_view_home` (`id`, `title`, `content`, `type`, `position`, `status`, `create_author`, `create_time`, `update_author`, `update_time`) VALUES
+(5, 'Feature', NULL, NULL, 0, 1, 23, '1481232758', 23, '1481233701'),
+(6, 'New', NULL, NULL, 1, 1, 23, '1481232771', NULL, NULL),
+(7, 'Combo', NULL, NULL, 2, 1, 23, '1481232852', NULL, NULL),
+(8, 'Statics', NULL, NULL, 3, 1, 23, '1481232872', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vi_menu`
 --
 
@@ -685,7 +734,8 @@ INSERT INTO `vi_menu` (`id`, `title`, `alias`, `link`, `parent_id`, `css_class`,
 (335, 'Trang Chủ', '', 'http://localhost/fwtome/', 0, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 1),
 (349, 'Mô Hình', NULL, '#', 0, '', NULL, 1, NULL, '2', 'Trang', 1),
 (350, 'Mô hình 2', 'mo-hinh-2', '', 349, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 1),
-(351, 'Mô hình 3', 'mo-hinh-3', '', 349, '', NULL, 1, NULL, '1', 'Tùy chỉnh liên kết', 1);
+(351, 'Mô hình 3', 'mo-hinh-3', '', 349, '', NULL, 1, NULL, '1', 'Tùy chỉnh liên kết', 1),
+(356, 'áddsad', 'addsad', '', 350, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 1);
 
 -- --------------------------------------------------------
 
@@ -716,7 +766,7 @@ CREATE TABLE `vi_pages` (
 
 INSERT INTO `vi_pages` (`id`, `title`, `alias`, `description`, `content`, `note`, `contact_form`, `old_url`, `thumbnail`, `author_create`, `author_update`, `status`, `create_time`, `update_time`) VALUES
 (9, 'Liên hệ', 'lien-he', NULL, '<p><iframe frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7969415409234!2d105.79845781536055!3d20.960668186035303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad215b3d1e2d%3A0xbd6f8ae8d8605262!2zQ1Q2QSBYYSBMYSwgQ-G6p3UgQsawxqF1LCBLaeG6v24gSMawbmcsIFRoYW5oIFRyw6wsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1476087173806" style="border:0" width="100%"></iframe></p>\r\n', '', '<form action="" method="POST" role="form">\r\n				    <div class="row">\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Họ và tên</label>\r\n				            <div class="form-group">\r\n				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">\r\n				            </div>\r\n\r\n				            <label for="">Số điện thoại</label>\r\n				            <div class="form-group">\r\n				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">\r\n				            </div>\r\n\r\n				            <label for="">Email</label>\r\n				            <div class="form-group">\r\n				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">\r\n				            </div>\r\n				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>\r\n				        </div>\r\n\r\n				        <div class="col-xs-12 col-md-6">\r\n				            <label for="">Ghi chú</label>\r\n				            <div class="form-group">\r\n				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>\r\n				            </div>\r\n				        </div>\r\n				    </div>\r\n				</form>', 'lien-he', '', 23, 23, 1, '1476087226', '1476696871'),
-(11, 'Giới thiệu', 'gioi-thieu', NULL, '&lt;h1&gt;Giới thiệu chung về 4G&lt;/h1&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;MobiFone thử nghiệm th&amp;agrave;nh c&amp;ocirc;ng c&amp;ocirc;ng nghệ 4G&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Từ th&amp;aacute;ng 12/2015 tới nay, MobiFone đ&amp;atilde; thử nghiệm th&amp;agrave;nh c&amp;ocirc;ng c&amp;ocirc;ng nghệ 4G/LTE-A về kỹ thuật nội bộ với 200 thu&amp;ecirc; bao nội bộ. Mạng 4G của MobiFone đạt tốc độ dowload/upload tối đa 225Mbps/75Mbps.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Trong qu&amp;aacute; tr&amp;igrave;nh thử nghiệm nội bộ, MobiFone đ&amp;atilde; n&amp;acirc;ng cấp hệ thống cơ sở vật chất, mạng lưới tạo nền m&amp;oacute;ng vững chắc để đưa c&amp;ocirc;ng nghệ mới đến với kh&amp;aacute;ch h&amp;agrave;ng. B&amp;ecirc;n cạnh đ&amp;oacute;, MobiFone cũng ho&amp;agrave;n th&amp;agrave;nh việc đ&amp;aacute;nh gi&amp;aacute; trải nghiệm c&amp;aacute;c dịch vụ mới của 4G/LTE-A với kết quả khả quan.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;C&amp;ocirc;ng nghệ 4G/LTE-A cung cấp băng th&amp;ocirc;ng rộng hơn, truyền tải dữ liệu nhanh hơn, dung lượng lớn hơn, được đ&amp;aacute;nh gi&amp;aacute; l&amp;agrave; điều kiện l&amp;yacute; tưởng để triển khai c&amp;aacute;c dịch vụ gi&amp;aacute; trị gia tăng hấp dẫn. Ch&amp;iacute;nh v&amp;igrave; vậy, khi triển khai cung cấp c&amp;ocirc;ng nghệ 4G, kh&amp;aacute;c với c&amp;aacute;c nh&amp;agrave; mạng đối thủ, MobiFone sẽ đem lại c&amp;aacute;c dịch vụ nội dung hấp dẫn tr&amp;ecirc;n nền c&amp;ocirc;ng nghệ 4G cho kh&amp;aacute;ch h&amp;agrave;ng như: Trải nghiệm xem c&amp;aacute;c k&amp;ecirc;nh truyền h&amp;igrave;nh AVG, dịch vụ data, SMS, dịch vụ truyền h&amp;igrave;nh Broadcast tr&amp;ecirc;n nền tảng eMBMS, dịch vụ truyền h&amp;igrave;nh Unicast, dịch vụ Video 4K...&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;Cuộc đua&amp;quot; 4G hiện đang bước v&amp;agrave;o giai đoạn nước r&amp;uacute;t, đ&amp;ograve;i hỏi c&amp;aacute;c nh&amp;agrave; mạng khẩn trương ho&amp;agrave;n tất thử nghiệm nhằm r&amp;uacute;t ngắn khoảng c&amp;aacute;ch giữa thực tế v&amp;agrave; l&amp;yacute; thuyết. Kết quả thử nghiệm của MobiFone đ&amp;atilde; vượt qua cột mốc tốc độ đề ra (200Mbps) cho giai đoạn ban đầu chứng tỏ Tổng c&amp;ocirc;ng ty đ&amp;atilde; c&amp;oacute; những bước tiến vững chắc về chất lượng v&amp;agrave; nội dung sản phẩm, dịch vụ tr&amp;ecirc;n nền c&amp;ocirc;ng nghệ mới.&lt;/p&gt;\r\n\r\n&lt;p&gt;Thời gian tới, để sớm mang c&amp;ocirc;ng nghệ mới ra thị trường, MobiFone đ&amp;atilde; ho&amp;agrave;n th&amp;agrave;nh c&amp;aacute;c kịch bản kinh doanh với nhiều chương tr&amp;igrave;nh hấp dẫn d&amp;agrave;nh cho kh&amp;aacute;ch h&amp;agrave;ng. Sau khi tối ưu ho&amp;aacute; chất lượng mạng lưới để đảm bảo trải nghiệm người d&amp;ugrave;ng, Tổng c&amp;ocirc;ng ty Viễn th&amp;ocirc;ng MobiFone sẽ đưa dịch vụ 4G/LTE-A cung cấp thử nghiệm trong th&amp;aacute;ng 6 năm 2016 tại H&amp;agrave; Nội, Đ&amp;agrave; Nẵng v&amp;agrave; Tp. Hồ Ch&amp;iacute; Minh.&lt;/p&gt;\r\n', '			                        				                        ', '', 'gioi-thieu', 'products/vhoang-1478844929553.jpg', 23, 23, 1, '1476697000', '1479049680');
+(11, 'Giới thiệu', 'gioi-thieu', NULL, '&lt;h1&gt;Giới thiệu chung về 4G&lt;/h1&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;MobiFone thử nghiệm th&amp;agrave;nh c&amp;ocirc;ng c&amp;ocirc;ng nghệ 4G&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Từ th&amp;aacute;ng 12/2015 tới nay, MobiFone đ&amp;atilde; thử nghiệm th&amp;agrave;nh c&amp;ocirc;ng c&amp;ocirc;ng nghệ 4G/LTE-A về kỹ thuật nội bộ với 200 thu&amp;ecirc; bao nội bộ. Mạng 4G của MobiFone đạt tốc độ dowload/upload tối đa 225Mbps/75Mbps.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Trong qu&amp;aacute; tr&amp;igrave;nh thử nghiệm nội bộ, MobiFone đ&amp;atilde; n&amp;acirc;ng cấp hệ thống cơ sở vật chất, mạng lưới tạo nền m&amp;oacute;ng vững chắc để đưa c&amp;ocirc;ng nghệ mới đến với kh&amp;aacute;ch h&amp;agrave;ng. B&amp;ecirc;n cạnh đ&amp;oacute;, MobiFone cũng ho&amp;agrave;n th&amp;agrave;nh việc đ&amp;aacute;nh gi&amp;aacute; trải nghiệm c&amp;aacute;c dịch vụ mới của 4G/LTE-A với kết quả khả quan.&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;C&amp;ocirc;ng nghệ 4G/LTE-A cung cấp băng th&amp;ocirc;ng rộng hơn, truyền tải dữ liệu nhanh hơn, dung lượng lớn hơn, được đ&amp;aacute;nh gi&amp;aacute; l&amp;agrave; điều kiện l&amp;yacute; tưởng để triển khai c&amp;aacute;c dịch vụ gi&amp;aacute; trị gia tăng hấp dẫn. Ch&amp;iacute;nh v&amp;igrave; vậy, khi triển khai cung cấp c&amp;ocirc;ng nghệ 4G, kh&amp;aacute;c với c&amp;aacute;c nh&amp;agrave; mạng đối thủ, MobiFone sẽ đem lại c&amp;aacute;c dịch vụ nội dung hấp dẫn tr&amp;ecirc;n nền c&amp;ocirc;ng nghệ 4G cho kh&amp;aacute;ch h&amp;agrave;ng như: Trải nghiệm xem c&amp;aacute;c k&amp;ecirc;nh truyền h&amp;igrave;nh AVG, dịch vụ data, SMS, dịch vụ truyền h&amp;igrave;nh Broadcast tr&amp;ecirc;n nền tảng eMBMS, dịch vụ truyền h&amp;igrave;nh Unicast, dịch vụ Video 4K...&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;quot;Cuộc đua&amp;quot; 4G hiện đang bước v&amp;agrave;o giai đoạn nước r&amp;uacute;t, đ&amp;ograve;i hỏi c&amp;aacute;c nh&amp;agrave; mạng khẩn trương ho&amp;agrave;n tất thử nghiệm nhằm r&amp;uacute;t ngắn khoảng c&amp;aacute;ch giữa thực tế v&amp;agrave; l&amp;yacute; thuyết. Kết quả thử nghiệm của MobiFone đ&amp;atilde; vượt qua cột mốc tốc độ đề ra (200Mbps) cho giai đoạn ban đầu chứng tỏ Tổng c&amp;ocirc;ng ty đ&amp;atilde; c&amp;oacute; những bước tiến vững chắc về chất lượng v&amp;agrave; nội dung sản phẩm, dịch vụ tr&amp;ecirc;n nền c&amp;ocirc;ng nghệ mới.&lt;/p&gt;\r\n\r\n&lt;p&gt;Thời gian tới, để sớm mang c&amp;ocirc;ng nghệ mới ra thị trường, MobiFone đ&amp;atilde; ho&amp;agrave;n th&amp;agrave;nh c&amp;aacute;c kịch bản kinh doanh với nhiều chương tr&amp;igrave;nh hấp dẫn d&amp;agrave;nh cho kh&amp;aacute;ch h&amp;agrave;ng. Sau khi tối ưu ho&amp;aacute; chất lượng mạng lưới để đảm bảo trải nghiệm người d&amp;ugrave;ng, Tổng c&amp;ocirc;ng ty Viễn th&amp;ocirc;ng MobiFone sẽ đưa dịch vụ 4G/LTE-A cung cấp thử nghiệm trong th&amp;aacute;ng 6 năm 2016 tại H&amp;agrave; Nội, Đ&amp;agrave; Nẵng v&amp;agrave; Tp. Hồ Ch&amp;iacute; Minh.&lt;/p&gt;\r\n', '			                        				                        				                        				                        				                        			                        			                        			                        ', '', 'gioi-thieu', 'products/vhoang-1478844929553.jpg', 23, 23, 1, '1476697000', '1481041088');
 
 -- --------------------------------------------------------
 
@@ -827,18 +877,19 @@ CREATE TABLE `vi_product_basic` (
   `sale_time_start` int(10) DEFAULT NULL,
   `sale_time_end` int(10) DEFAULT NULL,
   `youtube_link` varchar(255) DEFAULT NULL,
-  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status_feature` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Check status này để xuất hiện ngoài trang chủ(Sản phẩm nổi bật)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vi_product_basic`
 --
 
-INSERT INTO `vi_product_basic` (`id`, `category`, `name`, `alias`, `code`, `unit`, `price`, `price_market`, `saleoff`, `time_start`, `time_end`, `number_repeat`, `status_size`, `status_vat`, `status`, `state`, `quantity`, `quantity_shop`, `other_info`, `short_info`, `number_payment`, `view`, `type`, `sort`, `create_time`, `create_author`, `update_time`, `update_author`, `image`, `color`, `id_group_color`, `properties`, `brand`, `supplier`, `time_post`, `number_refresh`, `file_download`, `time_interval_refesh`, `time_refresh`, `length_class`, `weigh_class`, `link_`, `sale_time_start`, `sale_time_end`, `youtube_link`, `note`) VALUES
-(15, ',81,97,', 'Quần xẻ', 'quan-xe', '433', NULL, '88000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', 'ffffsd', 0, 0, '', NULL, 1480608052, 23, NULL, NULL, 'category-product/0BwXOE_simg_b5529c_250x250_maxb.jpg', NULL, 0, NULL, '|2|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(16, ',81,83,98,', 'Giày cao guốc thời thượng', 'giay-cao-guoc-thoi-thuong', '456', NULL, '750000', '0', 0, 0, 0, 0, 0, 0, 1, '|2|', 0, NULL, '[{"title":"","content":""}]', '', 0, 0, '', NULL, 1480608112, 23, NULL, NULL, 'category-product/b50p7u_simg_b5529c_250x250_maxb.jpg', NULL, 0, NULL, '|3|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(17, ',81,99,100,', 'Vòng cổ', 'vong-co', '675', NULL, '9000000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', 'fghfgh', 0, 0, '', NULL, 1480608230, 23, NULL, NULL, 'category-product/krrTyN_simg_b5529c_250x250_maxb.jpg', NULL, 0, NULL, '|2|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(19, ',81,94,95,96,', 'Hàng deep korea', 'hang-deep-korea', 'MD123', NULL, '800.000', '0', 700, 1480629011, 1481320211, 0, 0, 0, 1, '|1|3|', 0, NULL, '[{"title":"fffffffffff","content":"fffffffffffffff"},{"title":"sssssssssssssssss","content":"sssssssssssssssssss"}]', 'sdfsdfddddddđ', 0, 0, '', NULL, 1480707566, 23, 1480801811, 23, 'category-product/tLp6la_simg_739c92_762-762-0-0_cropf_simg_70aaf2_700x700_maxb.jpg', NULL, 0, NULL, '|1|4|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '');
+INSERT INTO `vi_product_basic` (`id`, `category`, `name`, `alias`, `code`, `unit`, `price`, `price_market`, `saleoff`, `time_start`, `time_end`, `number_repeat`, `status_size`, `status_vat`, `status`, `state`, `quantity`, `quantity_shop`, `other_info`, `short_info`, `number_payment`, `view`, `type`, `sort`, `create_time`, `create_author`, `update_time`, `update_author`, `image`, `color`, `id_group_color`, `properties`, `brand`, `supplier`, `time_post`, `number_refresh`, `file_download`, `time_interval_refesh`, `time_refresh`, `length_class`, `weigh_class`, `link_`, `sale_time_start`, `sale_time_end`, `youtube_link`, `note`, `status_feature`) VALUES
+(20, ',81,95,', 'Đầm xếp ly phối ren hồng dịu ngọt', 'dam-xep-ly-phoi-ren-hong-diu-ngot', 'DXN00982', NULL, '390.000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', '', 0, 0, '', NULL, 1480866553, 23, NULL, NULL, 'products/model7.jpg', NULL, 0, NULL, '|1|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(21, ',81,95,', 'ĐẦM REN ĐUÔI CÁ', 'dam-ren-duoi-ca', 'DRC123', NULL, '580.000', '0', 0, 0, 0, 0, 0, 0, 1, '|3|', 0, NULL, '[{"title":"","content":""}]', '', 0, 0, '', NULL, 1480866843, 23, NULL, NULL, 'products/p3.jpg', NULL, 0, NULL, '|1|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(22, ',81,94,', 'Áo khoác bomber', 'ao-khoac-bomber', 'FrancisB', NULL, '436.000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', 'Áo khoác bomber FrancisB chần chỉ WM JACKET 021 được may từ chất liệu vải bền đẹp, thiết kế dáng bomber thời thượng mang đến cho phái đẹp nét trẻ trung, cá tính.\r\nChất liệu vải Polyester cao cấp\r\nThiết kế 2 lớp nhẹ và ấm\r\nDáng bomber, cạp chun bo gấu\r\nXuất xứ: Việt Nam\r\nSize người mẫu mặc: Freesize. Số đo người mẫu: 81 - 60 - 90 - 171 (cm)', 0, 0, '', NULL, 1480867148, 23, NULL, NULL, 'products/k4.jpg', NULL, 0, NULL, '|1|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(23, ',81,94,', 'Áo khoác kiểu nữ Zenic', 'ao-khoac-kieu-nu-zenic', 'Zenic63575', NULL, '710.000', '0', 0, 0, 0, 0, 0, 0, 1, '|1|', 0, NULL, '[{"title":"","content":""}]', 'Áo khoác kiểu nữ Zenic 63575 được may từ chất liệu vải cao cấp và mềm mại đem đến cảm giác thoải mái khi mặc. Áo có thiết kế trẻ trung, dáng suông cho bạn vẻ ngoài cá tính, phong cách và tràn đầy sức sống.\r\nChất liệu Polyester pha cao cấp, mềm mại\r\nÁo cổ tròn xẻ phối dáng dài trẻ trung\r\nKhóa kéo chắc chắn\r\nTúi mổ 2 bên\r\nXuất xứ: Việt Nam\r\nSize người mẫu mặc: 34. Số đo người mẫu: 80 - 65 - 94 - 170 (cm)', 0, 0, '', NULL, 1480867387, 23, NULL, NULL, 'products/1480585523573_1253704.jpg', NULL, 0, NULL, '|1|', NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0);
 
 -- --------------------------------------------------------
 
@@ -865,10 +916,10 @@ CREATE TABLE `vi_product_detail` (
 --
 
 INSERT INTO `vi_product_detail` (`id`, `id_product`, `full_info`, `tags`, `id_field`, `form_field`, `form_default`, `meta_title`, `meta_keyword`, `meta_description`, `related_product`) VALUES
-(11, 15, '&lt;p&gt;sdfffff&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'Quần xẻ', 'sdf', 'fsdfsd', NULL),
-(12, 16, '&lt;p&gt;fghfgh&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'Giày cao guốc thời thượng', '', '', NULL),
-(13, 17, '&lt;p&gt;fhgh&lt;/p&gt;\r\n', NULL, 0, NULL, 1, 'Vòng cổ', '', '', NULL),
-(14, 19, '&lt;p&gt;sdfsdfdddddddddddddddddddddđ&lt;/p&gt;\r\n', 'sdfsdf,sdfsdfsdf,ok', 0, NULL, 1, 'Hàng deep korea', 'sdfsdf,sdfsdfsdf,ok', 'sdfsdfsdf', '{"category":{"status":"1","sort":"1","display":"slide","order_by":"random","number":"1"},"brand":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"price":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1","range":""},"select":{"status":"1","sort":"1","display":"slide","order_by":"random","id_related":"17|15|14"}}');
+(15, 20, '&lt;p&gt;ĐẦM X&amp;Ograve;E 2 LỚP T&amp;Ugrave;NG DẬP LI&lt;/p&gt;\r\n\r\n&lt;p&gt;Kiểu d&amp;aacute;ng: đầm x&amp;ograve;e, cổ tr&amp;ograve;n, s&amp;aacute;t n&amp;aacute;ch, th&amp;acirc;n tr&amp;ecirc;n 2 lớp, t&amp;ugrave;ng v&amp;aacute;y dập li lơn, d&amp;acirc;y k&amp;eacute;o b&amp;ecirc;n h&amp;ocirc;ng&lt;/p&gt;\r\n\r\n&lt;p&gt;M&amp;agrave;u sắc: hồng nhạt, trắng&lt;/p&gt;\r\n\r\n&lt;p&gt;Chất liệu: chiffon, co gi&amp;atilde;n nhẹ&lt;/p&gt;\r\n\r\n&lt;p&gt;K&amp;iacute;ch thước: một size (44~50kg ngực 86 eo 66 d&amp;agrave;i 88)&lt;/p&gt;\r\n', 'Đầm xòe,Váy xòe,Thời trang nữ', 0, NULL, 1, 'Đầm xếp ly phối ren hồng dịu ngọt', 'Đầm xòe,Váy xòe,Thời trang nữ', '', '{"category":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"brand":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"price":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1","range":""},"select":{"status":"0","sort":"1","display":"list","order_by":"new","id_related":""}}'),
+(16, 21, '&lt;p&gt;Đầm ren đu&amp;ocirc;i c&amp;aacute;&lt;/p&gt;\r\n\r\n&lt;p&gt;Gi&amp;aacute; 580k&lt;/p&gt;\r\n\r\n&lt;p&gt;Size: S M L XL&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n', 'Đầm đuôi ren cá,Đầm', 0, NULL, 1, 'ĐẦM REN ĐUÔI CÁ', 'Đầm đuôi ren cá,Đầm', '', '{"category":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"brand":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"price":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1","range":""},"select":{"status":"0","sort":"1","display":"list","order_by":"new","id_related":""}}'),
+(17, 22, '&lt;h2&gt;Th&amp;ocirc;ng tin sản phẩm&lt;/h2&gt;\r\n\r\n&lt;h3&gt;&amp;Aacute;o kho&amp;aacute;c bomber FrancisB chần chỉ WM JACKET 021&lt;/h3&gt;\r\n\r\n&lt;p&gt;M&amp;ugrave;a đ&amp;ocirc;ng l&amp;agrave; một m&amp;ugrave;a đầy hấp dẫn, quyến rũ đối với những c&amp;ocirc; n&amp;agrave;ng m&amp;ecirc; thời trang. Trong tiết trời lạnh gi&amp;aacute;, những chiếc &amp;aacute;o&amp;nbsp;kho&amp;aacute;c&amp;nbsp;trở th&amp;agrave;nh một phần kh&amp;ocirc;ng thể thiếu trong tủ đồ của ph&amp;aacute;i đẹp.&amp;nbsp;&lt;strong&gt;&amp;Aacute;o kho&amp;aacute;c bomber FrancisB chần chỉ WM JACKET 021​​​&amp;nbsp;&lt;/strong&gt;được may từ chất liệu vải Polyester&amp;nbsp;cao cấp với nhiều ưu điểm như nhẹ, kh&amp;oacute; b&amp;aacute;m bẩn, nhanh kh&amp;ocirc;. Sản phẩm c&amp;oacute; chỉ may tỉ mỉ, đường cắt tinh tế&amp;nbsp;đem&amp;nbsp;đến cho ph&amp;aacute;i đẹp vẻ ngo&amp;agrave;i trẻ trung&amp;nbsp;m&amp;agrave; vẫn v&amp;ocirc; c&amp;ugrave;ng s&amp;agrave;nh điệu v&amp;agrave; hợp thời trang.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img alt=&quot;&Aacute;o kho&aacute;c bomber FrancisB chần chỉ WM JACKET 021 đen&quot; src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/1480581011873_1886873.jpg&quot; title=&quot;&Aacute;o kho&aacute;c bomber FrancisB chần chỉ WM JACKET 021 đen&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/1480582777327_7321459.jpg&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/1480582785259_8648913.jpg&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/1480582796253_4387518.jpg&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Hướng dẫn bảo quản&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Giặt tay ở nhiệt độ kh&amp;ocirc;ng qu&amp;aacute; 30 độ C&lt;/li&gt;\r\n	&lt;li&gt;Kh&amp;ocirc;ng sử dụng thuốc tẩy hoặc h&amp;oacute;a chất&lt;/li&gt;\r\n	&lt;li&gt;Tr&amp;aacute;nh phơi dưới &amp;aacute;nh nắng trực tiếp&lt;/li&gt;\r\n	&lt;li&gt;Kh&amp;ocirc;ng ủi (l&amp;agrave;) dưới nhiệt độ cao&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Th&amp;ocirc;ng tin thương hiệu&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;FrancisB l&amp;agrave; thương hiệu chuy&amp;ecirc;n cung cấp c&amp;aacute;c sản phẩm thời trang nam nữ. Với những mẫu thiết kế trẻ trung, chất lượng tốt c&amp;ugrave;ng gi&amp;aacute; th&amp;agrave;nh hợp l&amp;yacute;, sản phẩm mang thương hiệu FrancisB đang ng&amp;agrave;y c&amp;agrave;ng được giới trẻ ưa chuộng. FrancisB cam kết kh&amp;ocirc;ng ngừng thay đổi v&amp;agrave; cải tiến, đ&amp;aacute;p ứng nhu cầu thị trường v&amp;agrave; l&amp;agrave;m h&amp;agrave;i l&amp;ograve;ng kh&amp;aacute;ch h&amp;agrave;ng.&lt;/p&gt;\r\n', 'Áo khoác', 0, NULL, 1, 'Áo khoác bomber', 'Áo khoác', '', '{"category":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"brand":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"price":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1","range":""},"select":{"status":"0","sort":"1","display":"list","order_by":"new","id_related":""}}'),
+(18, 23, '&lt;h3&gt;&amp;Aacute;o kho&amp;aacute;c kiểu nữ Zenic 63575&lt;/h3&gt;\r\n\r\n&lt;p&gt;&amp;Aacute;o kho&amp;aacute;c kiểu nữ Zenic 63575 được may từ chất liệu vải cao cấp v&amp;agrave; mềm mại đem đến cảm gi&amp;aacute;c thoải m&amp;aacute;i khi mặc. &amp;Aacute;o c&amp;oacute; kiểu d&amp;aacute;ng trẻ trung, cổ tr&amp;ograve;n&amp;nbsp;cho bạn vẻ ngo&amp;agrave;i c&amp;aacute; t&amp;iacute;nh, phong c&amp;aacute;ch v&amp;agrave; tr&amp;agrave;n đầy sức sống.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/1480584265513_4402728.jpg&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/1480585207377_1105804.jpg&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img alt=&quot;&Aacute;o kho&aacute;c kiểu nữ Zenic 63575&quot; src=&quot;https://cdn02.static-adayroi.com/0/2016/12/01/148058521954_2542798.jpg&quot; title=&quot;&Aacute;o kho&aacute;c kiểu nữ Zenic 63575&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Hướng dẫn bảo quản&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Kh&amp;ocirc;ng n&amp;ecirc;n giặt với nước n&amp;oacute;ng&lt;/li&gt;\r\n	&lt;li&gt;Kh&amp;ocirc;ng sử dụng chất tẩy&lt;/li&gt;\r\n	&lt;li&gt;Kh&amp;ocirc;ng ng&amp;acirc;m x&amp;agrave; ph&amp;ograve;ng qu&amp;aacute; l&amp;acirc;u&lt;/li&gt;\r\n	&lt;li&gt;Phơi mặt tr&amp;aacute;i, tr&amp;aacute;nh &amp;aacute;nh nắng mặt trời trực tiếp&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;&lt;strong&gt;Th&amp;ocirc;ng tin thương hiệu&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Zenic l&amp;agrave; một trong những thương hiệu thời trang nổi tiếng được biết đến ở Việt Nam trong thời gian gần đ&amp;acirc;y. Những sản phẩm của Zenic c&amp;oacute; thiết kế thời thượng, thoải m&amp;aacute;i, tiện dụng nhưng vẫn giữ nguy&amp;ecirc;n được n&amp;eacute;t thanh lịch, nữ t&amp;iacute;nh vốn c&amp;oacute; của ph&amp;aacute;i nữ. Tuy c&amp;aacute;c sản phẩm được Zenic đặt h&amp;agrave;ng tại Việt Nam nhưng tất cả sản phẩm đều phải đạt ti&amp;ecirc;u chuẩn quy định của ch&amp;acirc;u &amp;Acirc;u về chất lượng v&amp;agrave; độ an to&amp;agrave;n cho sức khỏe người d&amp;ugrave;ng. Nhờ vậy, Zenic đ&amp;atilde; v&amp;agrave; đang tạo được sự tin tưởng của kh&amp;aacute;ch h&amp;agrave;ng tr&amp;ecirc;n khắp thế giới.&lt;/p&gt;\r\n', 'Áo dạ', 0, NULL, 1, 'Áo khoác kiểu nữ Zenic', 'Áo dạ', '', '{"category":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"brand":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1"},"price":{"status":"0","sort":"1","display":"list","order_by":"new","number":"1","range":""},"select":{"status":"0","sort":"1","display":"list","order_by":"new","id_related":""}}');
 
 -- --------------------------------------------------------
 
@@ -888,10 +939,10 @@ CREATE TABLE `vi_product_image` (
 --
 
 INSERT INTO `vi_product_image` (`id`, `id_product`, `avatar`, `image`) VALUES
-(11, 15, 'category-product/0BwXOE_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/0BwXOE_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/iJxeG8_simg_70aaf2_700x700_maxb.jpg","att_title":"","att_alt":""}]'),
-(12, 16, 'category-product/b50p7u_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/NqQ9eJ_simg_63a662_340x340_maxb.jpg","att_title":"","att_alt":""},{"name":"category-product\\/b50p7u_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""}]'),
-(13, 17, 'category-product/krrTyN_simg_b5529c_250x250_maxb.jpg', '[{"name":"category-product\\/01_copy3.jpg","att_title":"","att_alt":""},{"name":"category-product\\/krrTyN_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":""}]'),
-(15, 19, 'category-product/tLp6la_simg_739c92_762-762-0-0_cropf_simg_70aaf2_700x700_maxb.jpg', '[{"name":"category-product\\/01_copy3.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/0BwXOE_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/1IriDP_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/71c60f_simg_81f506_180x180_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/LJteNC_simg_ed2c00_809-809-0-0_cropf_simg_ed2c00_809-809-0-0_cropf_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/NqQ9eJ_simg_63a662_340x340_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/b50p7u_simg_b5529c_250x250_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/dREVtI_simg_70aaf2_700x700_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/iJxeG8_simg_70aaf2_700x700_maxb.jpg","att_title":"","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    "},{"name":"category-product\\/krrTyN_simg_b5529c_250x250_maxb.jpg","att_title":"hehe","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\thehe 2\\t\\t\\t\\t    "},{"name":"category-product\\/tLp6la_simg_739c92_762-762-0-0_cropf_simg_70aaf2_700x700_maxb.jpg","att_title":"\\u1ea3nh \\u0111\\u1eb9p","att_alt":"\\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\t\\t\\t\\t    \\t\\t\\t\\tok\\t\\t\\t    "}]');
+(16, 20, 'products/model7.jpg', '[{"name":"products\\/model7.jpg","att_title":"","att_alt":""},{"name":"products\\/model4.jpg","att_title":"","att_alt":""},{"name":"products\\/p1.jpg","att_title":"","att_alt":""}]'),
+(17, 21, 'products/p3.jpg', '[{"name":"products\\/p3.jpg","att_title":"","att_alt":""},{"name":"products\\/model7.jpg","att_title":"","att_alt":""},{"name":"products\\/p1.jpg","att_title":"","att_alt":""}]'),
+(18, 22, 'products/k4.jpg', '[{"name":"products\\/k4.jpg","att_title":"","att_alt":""},{"name":"products\\/model2.jpg","att_title":"","att_alt":""},{"name":"products\\/p5.jpg","att_title":"","att_alt":""}]'),
+(19, 23, 'products/1480585523573_1253704.jpg', '[{"name":"products\\/1480585523573_1253704.jpg","att_title":"","att_alt":""},{"name":"products\\/1480585524106_6262311.jpg","att_title":"","att_alt":""}]');
 
 -- --------------------------------------------------------
 
@@ -983,7 +1034,7 @@ CREATE TABLE `web_settings` (
 --
 
 INSERT INTO `web_settings` (`id`, `name`, `logo`, `slogan`, `icon`, `phone`, `hotline`, `email`, `email_support`, `address`, `districtid`, `provinceid`, `link_facebook`, `link_google`, `link_youtube`, `link_tt`, `seo_title`, `seo_description`, `seo_keywords`, `google_analytics`, `google_site_verification`, `google_file_json`, `bank_user`, `bank_code`, `bank_name`, `bank_chinhanh`, `bank_tp`, `link_google_map`, `title_sidebar`, `content_sidebar`, `contact_thumbnail`) VALUES
-(2, 'Cuongle', 'logo-bottom.png', 'dfgd', '', '+84 941 068 949', '+84 941 068 949', 'cuongle.dev@gmail.com', 'cuongle.dev@gmail.com', 'CT6A Xa La, Kiến Hưng, Hanoi, Vietnam', '', '', 'https://fb.com.vn', 'https://google.com.vn', 'https://youtube.com', 'https://twitter.com', 'PHP platform base on Cuongle Framework', 'Cuongle Platform - PHP platform base on Cuongle Framework', 'Cuongle, Cuongle team, Cuongle platform, php platform, php framework, web development', 'UA-86525361-1', '132550957', 'client_secret_916949212857-l1racku3pi9585qptafu9b03vv0feman.apps.googleusercontent.com.json', NULL, NULL, NULL, NULL, NULL, 'https://maps.google.com', NULL, NULL, NULL);
+(2, 'Cuongle', 'logo/logo-shop-red.png', 'dfgd', 'favicon.ico', '+84 941 068 949', '+84 941 068 949', 'cuongle.dev@gmail.com', 'cuongle.dev@gmail.com', 'CT6A Xa La, Kiến Hưng, Hanoi, Vietnam', '', '', 'https://fb.com.vn', 'https://google.com.vn', 'https://youtube.com', 'https://twitter.com', 'PHP platform base on Cuongle Framework', 'Cuongle Platform - PHP platform base on Cuongle Framework', 'Cuongle, Cuongle team, Cuongle platform, php platform, php framework, web development', 'UA-86525361-1', '132550957', 'client_secret_916949212857-l1racku3pi9585qptafu9b03vv0feman.apps.googleusercontent.com.json', NULL, NULL, NULL, NULL, NULL, 'https://maps.google.com', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1017,6 +1068,12 @@ ALTER TABLE `en_category`
 -- Indexes for table `en_comments_posts`
 --
 ALTER TABLE `en_comments_posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `en_manager_view_home`
+--
+ALTER TABLE `en_manager_view_home`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1118,6 +1175,12 @@ ALTER TABLE `vi_comments_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vi_manager_view_home`
+--
+ALTER TABLE `vi_manager_view_home`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vi_menu`
 --
 ALTER TABLE `vi_menu`
@@ -1209,6 +1272,11 @@ ALTER TABLE `en_category`
 ALTER TABLE `en_comments_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `en_manager_view_home`
+--
+ALTER TABLE `en_manager_view_home`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `en_menu`
 --
 ALTER TABLE `en_menu`
@@ -1289,10 +1357,15 @@ ALTER TABLE `vi_category`
 ALTER TABLE `vi_comments_posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
+-- AUTO_INCREMENT for table `vi_manager_view_home`
+--
+ALTER TABLE `vi_manager_view_home`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
 -- AUTO_INCREMENT for table `vi_menu`
 --
 ALTER TABLE `vi_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=356;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=357;
 --
 -- AUTO_INCREMENT for table `vi_pages`
 --
@@ -1312,17 +1385,17 @@ ALTER TABLE `vi_posts`
 -- AUTO_INCREMENT for table `vi_product_basic`
 --
 ALTER TABLE `vi_product_basic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `vi_product_detail`
 --
 ALTER TABLE `vi_product_detail`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `vi_product_image`
 --
 ALTER TABLE `vi_product_image`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `web_contacts`
 --

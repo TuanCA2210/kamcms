@@ -40,6 +40,9 @@ jQuery(document).ready(function($) {
 	Layout.initOWL();
 	LayersliderInit.initLayerSlider();
 
+	Layout.initFixHeaderWithPreHeader();
+    Layout.initNavScrolling();
+
 	$('body').on('click', '.lang', function(event) {
 		event.preventDefault();
 		var lang = $(this).attr('data-lang');

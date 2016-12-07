@@ -26,7 +26,7 @@
   	<!-- Page level plugin styles END -->
 
 
-
+	<?php echo ($this->appendCss!='') ? $this->appendCss : '';?>
 	<?php echo ($this->_appendPluginsModCss!='') ? $this->_appendPluginsModCss : '';?>
 
 	<!-- Theme styles START -->
@@ -104,6 +104,7 @@
     <!-- END LayerSlider -->
 
     <script src="<?php echo base_url()."tmp/public/";?>js/layout/scripts/layout.js" type="text/javascript"></script>
+    <?php echo ($this->appendJs!='') ? $this->appendJs : '';?>
 	<?php echo ($this->_appendPluginsModJs!='') ? $this->_appendPluginsModJs : '';?>
 	<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/script.js"></script>
 	<?php echo ($this->_appendJs!='') ? $this->_appendJs : '';?>

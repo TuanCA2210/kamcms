@@ -7,7 +7,9 @@ class View{
 	public $_author;
 	public $_thumbnail;
 	public $_appendCss;
+	public $appendCss;
 	public $_appendJs;
+	public $appendJs;
 	public $_appendPluginsModCss;
 	public $_appendPluginsModJs;
 	public function render($file,$fullFile = true){
