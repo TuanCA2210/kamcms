@@ -222,6 +222,25 @@ if (!function_exists('slowerDateAnalytics')) {
 	}
 }
 
+if (!function_exists('remove_duplicate_values_array')) {
+	function remove_duplicate_values_array($arr_merge) {
+		$count_array = count($arr_merge);
+		for ($i = 0; $i < $count_array; $i++) {
+			if (isset($arr_merge[$i])) {
+				for ($j = $i+1; $j < $count_array; $j++) {
+					if (isset($arr_merge[$j])) {
+						//this is where you do your comparison for dupes
+						if ($arr_merge[$i]['id'] == $arr_merge[$j]['id']) {
+							unset($arr_merge[$j]);
+						}
+					}
+				}
+			}
+		}
+		return $arr_merge;
+	}
+}
+
 /*function __autoload($class){
 $paths = explode(PATH_SEPARATOR, get_include_path());
 $class = str_replace("_","/",$class);

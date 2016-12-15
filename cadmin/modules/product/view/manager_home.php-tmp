@@ -65,14 +65,8 @@ if (isset($this->data['flash_success'])) {
 <?php echo lang('action');?><span class="caret"></span>
                                               </button>
                                               <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0)" id="del_list_product"><i class="fa fa-trash-o" aria-hidden="true"></i> &nbsp;
+                                                <li><a href="javascript:void(0)" id="del_list_manager"><i class="fa fa-trash-o" aria-hidden="true"></i> &nbsp;
 <?php echo lang('delete');
-?></a></li>
-                                                <li><a href="javascript:void(0)" id="unlock_product"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;
-<?php echo lang('private');
-?></a></li>
-                                                <li><a href="javascript:void(0)" id="lock_product"><i class="fa fa-unlock" aria-hidden="true"></i>&nbsp;
-<?php echo lang('public');
 ?></a></li>
                                               </ul>
                                             </div>
@@ -157,7 +151,7 @@ if (isset($this->data['flash_success'])) {
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo lang('cancel');?></button>
-                                    <a href="" id="agree_del_all_product" class="btn btn-success"><?php echo lang('agree');?></a>
+                                    <a href="" id="agree_del_all_manager" class="btn btn-success"><?php echo lang('agree');?></a>
                                   </div>
                                 </div>
 
@@ -170,14 +164,85 @@ if (isset($this->data['flash_success'])) {
                             <br>
                             <div class="clearfix"></div>
 
-                            <div class="col-xs-6"></div>
-                            <div class="col-xs-6">
-                            	<ul id="list-feature-home" class="ui-sortable-home">
+                            <div class="col-xs-5">
+                            	<div class="flip_title">
+                            		<select name="" id="cate_product_left" class="form-control">
+<?php
+$i = 0;
+if (!empty($this->data['cate'])) {
+	foreach ($this->data['cate'] as $key => $value) {
+		if ($i == 0) {
+			$selected = "selected";
+		} else {
+			$selected = "";
+		}
+		echo "<option value='".$value['id']."' ".$selected.">".$value['title']."</option>";
+		$i++;
+	}
+}
+?>
+</select>
+                            	</div>
+			                    <div class="list-all-product-manager" id="list-all-product-manager">
+			                        <div class="row">
+<?php
+echo "<h6 class='text-center'>".lang('loading')."</h6>";
+?>
+
+									</div>
+			                    </div>
+			                    <div class="flip"><span class="btn btn-xs grey-cascade load-more-all-data" data-flag="true" id="load-more-all-data-product" data-start="2"><i class="glyphicon glyphicon-refresh fa-spin"></i> <?php echo lang('loading_data');?></span></div>
+			                    <input type="hidden" id="hidden_not_id" value="" />
+                            </div>
+                            <div class="col-xs-2">
+                            	<div class="form-group">
+	                            	<select name="" id="choose_cate_home" class="form-control">
+	                            		<option value="0"><?php echo lang('select_cate');?></option>
 <?php
 if (!empty($this->data['view_home'])) {
+	foreach ($this->data['view_home'] as $key => $value) {
+		echo '<option value="'.$value['id'].'">'.$value['title'].'</option>';
+	}
+}
+?>
+	                            	</select>
+	                            </div>
+	                            <div class="col-md-12 col-manager-center"></div>
+								<div class="form-group text-center">
+									<button class="btn btn-success" id="add_product_home">Thêm sản phẩm</button>
+								</div>
+
+                            </div>
+                            <div class="col-xs-5">
+                            	<ul id="list-feature-home" class="ui-sortable-home" data-title-warning="<?php echo lang('title_warning_dbl');?>">
+<?php
+if (!empty($this->data['view_home'])) {
+	//dd($this->data['view_home']);
 	foreach ($this->data['view_home'] as $key => $value) {?>
-		                            				<li id="listItem_<?php echo $value['id'];?>" class="item" data-id="<?php echo $value['id'];?>"><img src="<?php echo base_url();?>modules/product/resource/images/arrow.png" alt="move" width="16" class="handle"><input type="hidden" class="form-control title title_<?php echo $value['id'];?>" value="<?php echo $value['title'];?>" /><strong><?php echo $value['title'];
-		?></strong></li>
+		                            				<li id="listItem_<?php echo $value['id'];?>" class="item" data-id="<?php echo $value['id'];?>"><img src="<?php echo base_url();?>modules/product/resource/images/arrow.png" alt="move" width="16" class="handle"><input type="hidden" class="form-control title title_<?php echo $value['id'];?>" value="<?php echo $value['title'];?>" /><strong data-toggle="tooltip" data-placement="top" title="<?php echo lang('title_warning_dbl');?>"><?php echo $value['title'];
+		?> </strong>
+		                            				<div class="checker del_manager_home"><span>
+		                                            <input type="checkbox" name="name_id[]" class="checkboxes" value="<?php echo $value['id'];?>">
+		                                            </span></div>
+		                                            <div class="list_item_product" id="list_item_product_<?php echo $value['id'];?>" data-id="<?php echo $value['id'];?>">
+															<div class="row">
+		<?php
+		if (!empty($value['content'])) {
+			foreach ($value['content'] as $k => $v) {?>
+																				<div class="col-md-3">
+																					<div class="imgs">
+															                    		<img src="<?php echo base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$v['image'].'&h=220&w=170&zc=2';?>" alt="<?php echo $v['name'];?>" class="img-thumbnail">
+															                    		<h5 class="text-center"><?php echo $v['name'];?></h5>
+															                    	</div>
+																				</div>
+				<?php
+			}
+		}
+		?>
+		</div>
+													</div>
+		                            				</li>
+
 		<?php
 	}
 }

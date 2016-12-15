@@ -306,3 +306,10 @@ $_L['state_order']				= 'Order';
 $_L['state_old']				= 'Old';
 $_L['state_no_sold']			= 'No sold';
 $_L['state_sale']				= 'Sale';
+
+$_L['title_warning_dbl']		= 'Double-click on to edit the title!';
+$_L['select_cate']				= 'Select the category display';
+$_L['loading']					= 'Loading...';
+$_L['empty_data']				= 'There are no items in this category.';
+$_L['empty_list_product']		= 'The time has expired products in this category.';
+$_L['loading_data']				= 'Loading data...';

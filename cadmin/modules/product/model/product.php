@@ -120,7 +120,7 @@ class Product{
 			}
 		}
 		if ($where_search != null) {
-			$this->model_basic->where('name', '%' . $where_search . '%', 'like');
+			$this->product->where('name', '%' . $where_search . '%', 'like');
 		}
 		$this->product->orderBy('create_time', 'DESC');
 		$data = $this->product->get(null, array($start, $limit), $select);
@@ -158,6 +158,50 @@ class Product{
 		$this->product->where('name', '%' . $name . '%', 'like');
 		$this->product->orderBy('create_time', 'DESC');
 		$data = $this->product->get(null, null, $select);
+		return $data;
+	}
+	public function getProductByCateModel($start, $limit,$cat_id = null,$id_arr = null,$where_search = null) {
+		$select = 'id,category, name, alias, code, price, saleoff, time_start, time_end, sort, status_vat, status, state, image';
+		if ($cat_id != null) {
+				$this->product->where("category", "%,".$cat_id.",%", "like");
+		}
+		
+		/*if ($id_arr != null) {
+			// case product selected
+			if (!is_array($id_arr)) {
+				$this->product->where('id', $id_arr, '!=');
+			} else {
+				$this->product->where('id', $id_arr, 'not in');
+			}
+		}*/
+		if ($where_search != null) {
+			$this->product->where('name', '%' . $where_search . '%', 'like');
+		}
+		$this->product->orderBy('create_time', 'DESC');
+		$data = $this->product->get(null, array($start, $limit), $select);
+		return $data;
+
+	}
+	public function check_load_more_productByCate($number = null, $ajax = false, $id = null,$id_arr = null) {
+		if ($id != null) {
+				$this->product->where("category", "%,".$id.",%", "LIKE");
+		}
+		/*if ($id_arr != null) {
+			// case product selected
+			if (!is_array($id_arr)) {
+				$this->product->where('id', $id_arr, '!=');
+			} else {
+				$this->product->where('id', $id_arr, 'not in');
+			}
+		}*/
+		$total = $this->product->num_rows();
+		if ($number != null && $total > $number) {
+			$data['flag'] = true;
+		} else {
+			$data['flag'] = false;
+		}
+		$data['start'] = $number;
+		$data['ajax']  = $ajax;
 		return $data;
 	}
 }

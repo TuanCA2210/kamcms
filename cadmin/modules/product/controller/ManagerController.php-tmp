@@ -16,7 +16,11 @@ class ManagerController extends Controller {
 	}
 	public function index() {
 		global $_web;
+		$this->view->data['cate']      = $this->modelCategory->getCategories();
 		$this->view->data['view_home'] = $this->modelManager->getManagerView();
+		foreach ($this->view->data['view_home'] as $key => $value) {
+			$this->view->data['view_home'][$key]['content'] = ($value['content'] != "")?json_decode($value['content'], true):'';
+		}
 		$this->view->render('manager_home');
 	}
 	public function add() {
@@ -63,6 +67,176 @@ class ManagerController extends Controller {
 				'mess'   => $mess
 			);
 			echo json_encode($data_mess);
+
+		}
+	}
+	public function sortable() {
+		if (isset($_GET['listItem'])) {
+			foreach ($_GET['listItem'] as $position => $item) {
+				$data = array(
+					'position' => $position
+				);
+				$this->modelManager->update($data, $item);
+			}
+			$data_mess = array(
+				'status' => true,
+				'mess'   => lang('update_page_success')
+			);
+			echo json_encode($data_mess);
+		}
+	}
+
+	public function dellAll() {
+		if (isset($_POST['all'])) {
+			if (!empty($_POST['all']) && is_array($_POST['all'])) {
+				$names_id = $_POST['all'];
+				$this->modelManager->dellWhereInArray($names_id);
+				$mess = array(
+					'flash_success' => lang('delete_all_success'),
+				);
+				Session::create($mess);
+				$data_mess = array(
+					'status'   => true,
+					'redirect' => base_url().'product/manager/index'
+				);
+				echo json_encode($data_mess);
+			}
+		}
+	}
+	public function status() {
+		if (isset($_POST['status'])) {
+			if (!empty($_POST['all']) && is_array($_POST['all'])) {
+				$names_id = $_POST['all'];
+				if ($_POST['status'] == 'public') {
+					$data = array(
+						'status' => 1
+					);
+				} else {
+					$data = array(
+						'status' => 0
+					);
+				}
+				foreach ($names_id as $value) {
+					$this->modelManager->update($data, $value);
+				}
+				$mess = array(
+					'flash_success' => lang('status_pages_success'),
+				);
+				Session::create($mess);
+				$data_mess = array(
+					'status'   => true,
+					'redirect' => base_url().'product/manager/index'
+				);
+				echo json_encode($data_mess);
+			}
+		}
+	}
+	public function getOption() {
+		if (isset($_POST['param']) && $_POST['param'] == 1) {
+			$data = $this->modelManager->getManagerView();
+			$html = '<option value="0">'.lang('select_cate').'</option>';
+			foreach ($data as $key => $value) {
+				$html .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
+			}
+			echo $html;
+		}
+	}
+	public function getProductByCate() {
+		if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+			$id        = $_POST['id'];
+			$data      = $this->modelProduct->getProductByCateModel(0, 20, $id, null, $where_search = null);
+			$data_mess = $this->modelProduct->check_load_more_productByCate($number = 20, $ajax = false, $id, null);
+			$html      = '';
+			if (!empty($data)) {
+				foreach ($data as $key => $value) {
+					$html .= '<div class="col-md-3" data-id="'.$value['id'].'">
+								<div class="imgs">
+		                    		<img src="'.base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['image'].'&h=220&w=170&zc=2" alt="'.$value['name'].'" class="img-thumbnail">
+		                    		<h5 class="text-center">'.$value['name'].'</h5>
+		                    	</div>
+							</div>';
+				}
+			} else {
+				$html = "<h6 class='text-center'>".lang('empty_data')."</h6>";
+			}
+			$result = array(
+				'status' => true,
+				'flag'   => $data_mess['flag'],
+				'start'  => $data_mess['start'],
+				'html'   => $html
+			);
+			echo json_encode($result);
+		}
+	}
+	public function ajaxLoadMore() {
+		if (!empty($_POST['data'])) {
+			$start   = $_POST['data']['start'];
+			$cate_id = $_POST['data']['cate_id'];
+			$arrid   = ($_POST['data']['not_id'] != "")?explode(',', $_POST['data']['not_id']):null;
+			$data    = $this->modelProduct->getProductByCateModel($start, 20, $cate_id, $arrid, null);
+
+			$data_mess = $this->modelProduct->check_load_more_productByCate($start+20, $ajax = false, $cate_id, $arrid);
+			$html      = '';
+			if (!empty($data)) {
+				foreach ($data as $key => $value) {
+					$html .= '<div class="col-md-3" data-id="'.$value['id'].'">
+								<div class="imgs">
+		                    		<img src="'.base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['image'].'&h=220&w=170&zc=2" alt="'.$value['name'].'" class="img-thumbnail">
+		                    		<h5 class="text-center">'.$value['name'].'</h5>
+		                    	</div>
+							</div>';
+				}
+			} else {
+				$html = "<div class='clearfix'></div><h6 class='text-center notProduct'>".lang('empty_list_product')."</h6>";
+			}
+			$result = array(
+				'status' => true,
+				'flag'   => $data_mess['flag'],
+				'start'  => $data_mess['start'],
+				'html'   => $html
+			);
+			echo json_encode($result);
+		}
+	}
+	public function ajaxAddProductHome() {
+		if (!empty($_POST['data']) && isset($_POST['id_cate'])) {
+			$result = array();
+			$id     = $_POST['id_cate'];
+			foreach ($_POST['data'] as $value) {
+				$result[] = $this->modelProduct->getDataById($value);
+			}
+			$data_succ         = $this->modelManager->getDataById($id);
+			$remove_values_arr = '';
+			if ($data_succ['content'] == "null" || $data_succ['content'] == null || $data_succ['content'] == "") {
+				$remove_values_arr = $result;
+			} else {
+				$data_succ['content'] = json_decode($data_succ['content'], true);
+				$arr_merge            = array_merge_recursive($data_succ['content'], $result);
+				$remove_values_arr    = remove_duplicate_values_array($arr_merge);
+			}
+
+			if ($remove_values_arr != '') {
+				$data = array(
+					'content' => json_encode($remove_values_arr)
+				);
+				$this->modelManager->update($data, $id);
+				$html = '';
+				foreach ($remove_values_arr as $key => $value) {
+					$html .= '<div class="col-md-3" data-id="'.$value['id'].'">
+									<div class="imgs">
+			                    		<img src="'.base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['image'].'&h=220&w=170&zc=2" alt="'.$value['name'].'" class="img-thumbnail">
+			                    		<h5 class="text-center">'.$value['name'].'</h5>
+			                    	</div>
+								</div>';
+				}
+				$data_mess = array(
+					'status'  => true,
+					'id_cate' => $id,
+					'html'    => $html,
+					'mess'    => lang('status_pages_success')
+				);
+				echo json_encode($data_mess);
+			}
 
 		}
 	}

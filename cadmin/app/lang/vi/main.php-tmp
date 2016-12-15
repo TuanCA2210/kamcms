@@ -232,3 +232,10 @@ $_L['state_order']         = 'Nhận đặt hàng';
 $_L['state_old']           = 'Hàng cũ';
 $_L['state_no_sold']       = 'Hết hàng';
 $_L['state_sale']          = 'Khuyến mại';
+
+$_L['title_warning_dbl']  = 'Nháy đúp chuột vào để sửa đổi tiêu đề!';
+$_L['select_cate']        = 'Chọn danh mục hiển thị';
+$_L['loading']            = 'Đang tải dữ liệu...';
+$_L['empty_data']         = 'Hiện chưa có sản phẩm nào trong danh mục này.';
+$_L['empty_list_product'] = 'Hiện đã hết sản phẩm nào trong danh mục này.';
+$_L['loading_data']       = 'Tải thêm dữ liệu...';

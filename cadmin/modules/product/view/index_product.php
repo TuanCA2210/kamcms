@@ -53,7 +53,7 @@
                                           <div class="col-lg-4"></div>
                                           <div class="col-lg-4" style="text-align: right;">
                                             <a class="btn btn-success" href="<?php echo base_url().'product/product/add';?>"><i class="fa fa-plus-circle"></i> <?php echo lang('add_product');?></a>
-                                            <a class="btn btn-primary" href="<?php echo base_url().'product/manager/index';?>"><i class="fa fa-paper-plane" aria-hidden="true"></i> Quản trị hiển thị trang chủ</a>
+                                            <a class="btn btn-info" href="<?php echo base_url().'product/manager/index';?>"><i class="fa fa-paper-plane" aria-hidden="true"></i> Quản trị hiển thị trang chủ</a>
                                             <!-- Single button -->
                                             <div class="btn-group">
                                               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
