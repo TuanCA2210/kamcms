@@ -39,7 +39,6 @@ jQuery(document).ready(function($) {
 
 	Layout.initOWL();
 	LayersliderInit.initLayerSlider();
-
 	Layout.initFixHeaderWithPreHeader();
     Layout.initNavScrolling();
 

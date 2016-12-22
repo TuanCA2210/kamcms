@@ -95,8 +95,8 @@ class ProductController extends Controller{
 			$title 				= trim(addslashes($this->input->post('title')));
 			$code 				= trim(addslashes($this->input->post('code')));
 			$description 		= trim(addslashes($this->input->post('description')));
-			$price 				= trim(addslashes($this->input->post('price')));
-			$saleoff 			= trim(addslashes($this->input->post('saleoff')));
+			$price 				= trim(addslashes(str_replace(".","",$this->input->post('price'))));
+			$saleoff 			= trim(addslashes(str_replace(".","",$this->input->post('saleoff'))));
 			$vat 				= trim(addslashes($this->input->post('vat')));
 			$time_start 		= trim(addslashes($this->input->post('time_start')));
 			$time_end 			= trim(addslashes($this->input->post('time_end')));

@@ -513,7 +513,8 @@ var Layout = function () {
         },
 
         initImageZoom: function () {
-            $('.product-main-image').zoom({url: $('.product-main-image img').attr('data-BigImgSrc')});
+            var src = $('.product-main-image img').attr('data-BigImgSrc');
+            $('.product-main-image').zoom({url: src});
         },
 
         initSliderRange: function () {

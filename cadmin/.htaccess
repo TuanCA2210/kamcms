@@ -16,7 +16,7 @@
 
 RewriteEngine on 
 Options +FollowSymlinks 
-RewriteBase /fwtome/cadmin
+RewriteBase /cadmin
 
 ErrorDocument 404 /404.htm
 ErrorDocument 401 /404.htm
@@ -50,4 +50,7 @@ RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)&pos=([0-9]+)$ in
 
 #mod / controller / action / id / position &pos=$position
 RewriteRule ^([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9a-zA-Z\_]+)/([0-9]+)&pos=([0-9]+)$ index.php?mod=$1&controller=$2&action=$3&id=$4&pos=$5 [L,QSA]
+
+
+
 

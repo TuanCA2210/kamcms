@@ -25,3 +25,19 @@ $_L['success_regis']     = 'Congratulations on your successful registration acco
 $_L['success']         	 =  'Success.';
 $_L['warning']         	 =  'Warning.';
 $_L['no_email_no_pass']  =  'Wrong email or password';
+
+
+
+$_L['availability']  			=  'Availability';
+$_L['state_hot']				= 'Hot';
+$_L['state_arrival']			= 'Arrival';
+$_L['state_new']				= 'New';
+$_L['state_old']				= 'Old';
+$_L['state_no_sold']			= 'No sold';
+$_L['state_sale']				= 'Sale';
+
+
+$_L['add_to_cart']				= 'Add to cart';
+$_L['more_details']				= 'More details';
+$_L['size']						= 'Size';
+$_L['color']					= 'Color';

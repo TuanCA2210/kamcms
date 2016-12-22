@@ -166,6 +166,7 @@ $_L['logo_update_success']    = 'Notification! You change the image successfully
 $_L['logo_update_errors']     = 'Warning! An error occurred. Please reload the page and try again.';
 $_L['insert_page_success']    = 'Notification! You add data successfully.';
 $_L['update_page_success']    = 'Notification! You update data successfully.';
+$_L['del_page_success']       = 'Notification! You delete data successfully.';
 $_L['update_link_success']    = 'Notification! You just changed the link success.';
 
 $_L['mess_copy_rename']       = 'Notification! Copy and Rename success.';
@@ -228,7 +229,7 @@ $_L['delete_image']        = 'Delete this photo';
 $_L['add_brand']           = 'Add brand';
 $_L['state_hot']           = 'Hot';
 $_L['state_arrival']       = 'Arrival';
-$_L['state_order']         = 'Order';
+$_L['state_new']           = 'New';
 $_L['state_old']           = 'Old';
 $_L['state_no_sold']       = 'No sold';
 $_L['state_sale']          = 'Sale';

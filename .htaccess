@@ -16,7 +16,7 @@
 
 RewriteEngine on 
 Options +FollowSymlinks 
-RewriteBase /fwtome
+RewriteBase /
 
 #ErrorDocument 404 /404.htm
 #ErrorDocument 401 /404.htm
@@ -36,6 +36,8 @@ RewriteRule ^news\.htm$ index.php?mod=posts&controller=posts&action=index [L,QSA
 RewriteRule ^news\.htm&p([0-9]+)$ index.php?mod=posts&controller=posts&action=index&page=$1 [L,QSA]
 RewriteRule ^news\.htm&p([0-9]+)&t([0-9]+)$ index.php?mod=posts&controller=posts&action=index&page=$1&total=$2 [L,QSA]
 
+# Product
+RewriteRule ^product/([0-9a-zA-Z\_\-]+)-([0-9\_]+)\.htm$ index.php?mod=product&controller=product&action=detail&id=$2&alias=$1 [L,QSA]
 
 # Custom pages 
 

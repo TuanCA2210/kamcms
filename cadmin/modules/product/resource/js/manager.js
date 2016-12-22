@@ -326,11 +326,45 @@ $('body').on('click', '#del_list_manager', function(event) {
 			})
 			.done(function(data) {
 				if(data.status==true){
+					$('#list_item_product_'+data.id_cate).removeClass('margin_top_none');
+					$('#list_item_product_'+data.id_cate+' .row').removeClass('height_none');
 					$('#list_item_product_'+data.id_cate+' .row').html(data.html);
 					toastr["success"](data.mess);
+
+					$('.list-all-product-manager .col-md-3 .imgs').removeClass('active');
 				}
 			});
 			
 		}
+		
+	});
+
+	$('body').on('dblclick', '.list_item_product .row .col-md-3', function(event) {
+		event.preventDefault();
+		var this_click = $(this);
+		var key = $(this).attr('data-key');
+		var id_product = $(this).attr('data-id');
+		var id_home = $(this).parents('.list_item_product').attr('data-id');
+		var data = {
+			key: key,
+			id_home: id_home,
+			id_product: id_product
+		}
+		$.ajax({
+			url: baseUrl+'product/manager/ajaxRemoveProduct',
+			type: 'POST',
+			dataType: 'json',
+			data: {data},
+		})
+		.done(function(data) {
+			if(data.status==true){
+				toastr["success"](data.mess);
+				this_click.fadeOut('slow', function() {
+					this_click.remove();
+				});
+			}
+		});
+		
+		
 		
 	});

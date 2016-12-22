@@ -94,3 +94,10 @@
 	height: 46px;
     overflow-y: hidden;
 }
+
+.margin_top_none{
+	margin-top:0px!important;
+}
+.height_none{
+	height:0px!important;
+}

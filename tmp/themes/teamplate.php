@@ -23,6 +23,7 @@
   	<link href="<?php echo base_url()."tmp/public/";?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
   	<link href="<?php echo base_url()."tmp/public/";?>plugins/carousel-owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
   	<link href="<?php echo base_url()."tmp/public/";?>plugins/slider-layer-slider/css/layerslider.css" rel="stylesheet">
+  	<link href="<?php echo base_url()."tmp/public/";?>css/animation.css" rel="stylesheet">
   	<!-- Page level plugin styles END -->
 
 
@@ -30,13 +31,14 @@
 	<?php echo ($this->_appendPluginsModCss!='') ? $this->_appendPluginsModCss : '';?>
 
 	<!-- Theme styles START -->
+	
 	<link href="<?php echo base_url()."tmp/public/";?>css/global/components.css" rel="stylesheet">
 	<link href="<?php echo base_url()."tmp/public/";?>css/layout/style.css" rel="stylesheet">
 	<link href="<?php echo base_url()."tmp/public/";?>css/pages/style-shop.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url()."tmp/public/";?>css/pages/style-layer-slider.css" rel="stylesheet">
 	<link href="<?php echo base_url()."tmp/public/";?>css/layout/style-responsive.css" rel="stylesheet">
 	<link href="<?php echo base_url()."tmp/public/";?>css/layout/themes/red.css" rel="stylesheet" id="style-color">
-	<link href="<?php echo base_url()."tmp/public/";?>css/layout/custom.css" rel="stylesheet">
+	<link href="<?php echo base_url()."tmp/public/";?>css/custom.css" rel="stylesheet">
 	<!-- Theme styles END -->
 	<!--<link rel="stylesheet" href="<?php echo base_url()."tmp/public/";?>css/style.min.css">-->
 
@@ -84,6 +86,7 @@
     <!-- /.container -->
     <?php require_once "footer.php"; ?>
 	<script type="text/javascript" src="<?php echo base_url()."tmp/public/root/";?>js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url()."tmp/public/root/";?>js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url()."tmp/public/root/";?>js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url()."tmp/public/";?>js/layout/scripts/back-to-top.js" type="text/javascript"></script>
 	<script src="<?php echo base_url()."tmp/public/";?>plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -104,11 +107,17 @@
     <!-- END LayerSlider -->
 
     <script src="<?php echo base_url()."tmp/public/";?>js/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="<?php echo base_url()."tmp/public/";?>js/product.js" type="text/javascript"></script>
     <?php echo ($this->appendJs!='') ? $this->appendJs : '';?>
 	<?php echo ($this->_appendPluginsModJs!='') ? $this->_appendPluginsModJs : '';?>
 	<script type="text/javascript" src="<?php echo base_url()."tmp/public/";?>js/script.js"></script>
 	<?php echo ($this->_appendJs!='') ? $this->_appendJs : '';?>
-	
+	<script>
+	$(function(){
+		Layout.init();    
+		Product.init();    
+	});
+	</script>
 
 </body>
 </html>

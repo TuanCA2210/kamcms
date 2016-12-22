@@ -223,7 +223,7 @@ class ManagerController extends Controller{
 				$this->modelManager->update($data,$id);
 				$html='';
 				foreach ($remove_values_arr as $key => $value) {
-					$html .= '<div class="col-md-3" data-id="'.$value['id'].'">
+					$html .= '<div class="col-md-3" data-id="'.$value['id'].'" data-key="'.$key.'">
 									<div class="imgs">
 			                    		<img src="'.base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$value['image'].'&h=220&w=170&zc=2" alt="'.$value['name'].'" class="img-thumbnail">
 			                    		<h5 class="text-center">'.$value['name'].'</h5>
@@ -239,6 +239,33 @@ class ManagerController extends Controller{
 				echo json_encode($data_mess);
 			}
 			
+		}
+	}
+	public function ajaxRemoveProduct(){
+		if (!empty($_POST['data'])) {
+			$key = $_POST['data']['key'];
+			$id_home = $_POST['data']['id_home'];
+			$id_product = $_POST['data']['id_product'];
+			if (isset($id_home)) {
+				$data = $this->modelManager->getDataById($id_home);
+				if ($data['content']!="null" || $data['content']!=null || $data['content']!="") {
+					$data['content'] = json_decode($data['content'],true);
+					if ($data['content'][$key]['id']==$id_product) {
+						unset($data['content'][$key]);
+						$content = $data['content'];
+						$data_update = array(
+							'content'	=> json_encode($content),
+						);
+						$this->modelManager->update($data_update,$id_home);
+						$data_mess = array(
+							'status'	=> true,
+							'mess'		=> lang('del_page_success')
+						);
+						echo json_encode($data_mess);
+					}
+				}
+				
+			}
 		}
 	}
 	

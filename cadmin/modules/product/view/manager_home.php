@@ -215,12 +215,12 @@
                             				<div class="checker del_manager_home"><span>
                                             <input type="checkbox" name="name_id[]" class="checkboxes" value="<?php echo $value['id'];?>">
                                             </span></div>
-                                            <div class="list_item_product" id="list_item_product_<?php echo $value['id'];?>" data-id="<?php echo $value['id'];?>">
-													<div class="row">
+                                            <div class="list_item_product <?php if(empty($value['content'])) echo 'margin_top_none';?>" id="list_item_product_<?php echo $value['id'];?>" data-id="<?php echo $value['id'];?>">
+													<div class="row <?php if(empty($value['content'])) echo 'height_none';?>">
 														<?php 
 														if(!empty($value['content'])){
 															foreach ($value['content'] as $k => $v) { ?>
-																<div class="col-md-3">
+																<div class="col-md-3" data-id="<?php echo $v['id'];?>" data-key="<?php echo $k;?>">
 																	<div class="imgs">
 											                    		<img src="<?php echo base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$v['image'].'&h=220&w=170&zc=2';?>" alt="<?php echo $v['name'];?>" class="img-thumbnail">
 											                    		<h5 class="text-center"><?php echo $v['name'];?></h5>

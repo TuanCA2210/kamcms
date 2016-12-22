@@ -4,7 +4,7 @@ class Home{
 	public function __construct(){
 		global $_web;
 		$this->lang        = $_web['lang'];
-		$this->posts     = new system\Model($this->lang.'_posts');
+        $this->posts     = new system\Model($this->lang.'_posts');
 	}
 	public function getAllNews($start=null,$limit=null){
     	$select = $this->lang."_posts.id,".$this->lang."_posts.title,".$this->lang."_posts.alias,".$this->lang."_posts.description,".$this->lang."_posts.thumbnail,".$this->lang."_posts.create_time, user.id as id_user, user.username";

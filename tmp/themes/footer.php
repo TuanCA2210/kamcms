@@ -158,3 +158,15 @@
   </div>
 </div>
 <!-- END FOOTER -->
+
+
+
+<!-- BEGIN fast view of a product -->
+<div id="product-pop-up" style="display: none; width: 700px;">
+        <div class="product-page product-pop-up">
+          <div class="row">
+            
+          </div>
+        </div>
+</div>
+<!-- END fast view of a product -->

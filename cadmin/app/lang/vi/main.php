@@ -213,6 +213,7 @@ $_L['logo_update_success']   	=  'Thông báo! Bạn cập nhập hình ảnh th
 $_L['logo_update_errors']   	=  'Cảnh báo! Đã xảy ra lỗi. Bạn vui lòng tải lại trang và thử lại.';
 $_L['insert_page_success']   	=  'Thông báo! Bạn vừa thêm dữ liệu thành công.';
 $_L['update_page_success']   	=  'Thông báo! Bạn vừa cập nhật dữ liệu thành công.';
+$_L['del_page_success']   		=  'Thông báo! Bạn vừa xoá dữ liệu thành công.';
 $_L['update_link_success']   	=  'Thông báo! Bạn vừa thay đổi đường link thành công.';
 
 
@@ -297,7 +298,7 @@ $_L['delete_image']				= 'Xoá ảnh này';
 $_L['add_brand']				= 'Thêm thương hiệu';
 $_L['state_hot']				= 'Nổi bật';
 $_L['state_arrival']			= 'Hàng sắp về';
-$_L['state_order']				= 'Nhận đặt hàng';
+$_L['state_new']				= 'Hàng mới';
 $_L['state_old']				= 'Hàng cũ';
 $_L['state_no_sold']			= 'Hết hàng';
 $_L['state_sale']				= 'Khuyến mại';

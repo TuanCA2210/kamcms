@@ -25,3 +25,19 @@ $_L['success_regis']     = 'Chúc mừng bạn đã đăng ký tài khoản thà
 $_L['success']         	=  'Thành công.';
 $_L['warning']         	=  'Cảnh báo.';
 $_L['no_email_no_pass']  =  'Email hoặc mật khẩu của bạn chưa chính xác.';
+
+
+
+$_L['availability']  			=  'Tình trạng';
+$_L['state_hot']				= 'Nổi bật';
+$_L['state_arrival']			= 'Hàng sắp về';
+$_L['state_new']				= 'Hàng mới';
+$_L['state_old']				= 'Hàng cũ';
+$_L['state_no_sold']			= 'Hết hàng';
+$_L['state_sale']				= 'Khuyến mại';
+
+
+$_L['add_to_cart']				= 'Thêm vào giỏ hàng';
+$_L['more_details']				= 'Xem chi tiết';
+$_L['size']						= 'Kích thước';
+$_L['color']					= 'Màu sắc';
