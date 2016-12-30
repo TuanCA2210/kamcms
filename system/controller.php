@@ -1,6 +1,9 @@
 <?php 
+use voku\Cart\Cart;
+use voku\Cart\Storage\Session;
+use voku\Cart\Identifier\Cookie;
 class Controller{
-	public $view,$input,$mod,$controller,$action,$id,$loadPages,$modelGlobals,$menu;
+	public $view,$input,$mod,$controller,$action,$id,$loadPages,$modelGlobals,$menu,$cart;
 	
 	public function __construct(){
 		global $_web;
@@ -16,6 +19,13 @@ class Controller{
 		$_web['menu'] = $this->getMenuGlobals();
 		$_web['settings'] = $this->getSettingsGlobals();
 		$_web['options'] = $this->getOptionsGlobals();
+
+
+		$this->cart 			= new Cart(new Session, new Cookie);
+		$_web['cart'] 			= $this->cart->contents(true);
+		$_web['total_cart'] 	= $this->cart->total();
+		$_web['total_item'] 	= $this->cart->totalItems();
+		$_web['total_unique'] 	= $this->cart->totalUniqueItems();
 		
 	}
 	public function loadModel($file, $mod = null) {

@@ -162,7 +162,7 @@
 
 
 <!-- BEGIN fast view of a product -->
-<div id="product-pop-up" style="display: none; width: 700px;">
+<div id="product-pop-up" style="display: none; width: 700px;min-height:390px;">
         <div class="product-page product-pop-up">
           <div class="row">
             

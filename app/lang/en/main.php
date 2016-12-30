@@ -25,6 +25,9 @@ $_L['success_regis']     = 'Congratulations on your successful registration acco
 $_L['success']         	 =  'Success.';
 $_L['warning']         	 =  'Warning.';
 $_L['no_email_no_pass']  =  'Wrong email or password';
+$_L['review_require']  	=  'You do not have to empty the review!';
+$_L['name_require']  	=  'You do not have to empty the name!';
+$_L['success_review']  	=  'Thank you for your review on this product.';
 
 
 
@@ -38,6 +41,11 @@ $_L['state_sale']				= 'Sale';
 
 
 $_L['add_to_cart']				= 'Add to cart';
+$_L['add_item_to_cart']			= 'You just added a product to the shopping cart.';
+$_L['remove_item_to_cart']		= 'You\'ve just deleted a product in your shopping cart.';
+$_L['buy_now']					= 'Buy now';
 $_L['more_details']				= 'More details';
 $_L['size']						= 'Size';
 $_L['color']					= 'Color';
+$_L['error_size']				= 'You do not choose the size of the product.';
+$_L['error_color']			    = 'You do not choose the color for the product.';

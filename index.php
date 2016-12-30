@@ -1,4 +1,5 @@
 <?php 
+ini_set('session.cookie_lifetime', 60 * 60 * 24 * 100);
 session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 require_once "system/debug.php";

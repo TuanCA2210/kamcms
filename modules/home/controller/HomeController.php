@@ -4,8 +4,11 @@ class HomeController extends Controller{
 	public $modelHome;
 	public $modelProduct;
 	//public $loadPages;
+	public $cart;
 	public function __construct(){
 		parent::__construct();
+		
+		
 		$this->modelHome = $this->loadModel('Home');
 		$this->modelProduct = $this->loadModel('Product');
 	}
@@ -14,8 +17,6 @@ class HomeController extends Controller{
 		$this->view->description = "Bài học này sẽ giúp các bạn biết cách sử dụng thẻ meta Description sao cho hiệu quả và đúng quy tắc của Google.";
 		$this->view->keywords = "PHP, Laravel, ZendFramework, Phalcon";
 		$this->view->author = "Lê Ngọc Cường";*/
-
-
 
 		$link = base_url().'home.htm';
 		$this->view->data['data_home'] = $this->modelProduct->getProductHome();
@@ -63,11 +64,16 @@ class HomeController extends Controller{
 
                 // xử lý giá khuyến mại
                 $price='';
+                $price_hidden='';
                 if ($sale==true) {
                 	$price = '<strong><span>$</span>'.$data['price'].'</strong>
 							 <em>$<span>'.$data['saleoff'].'</span></em>';
+
+					$price_hidden = $data['saleoff'];
+                    
                 }else{
                 	$price = '<strong><span>$</span>'.$data['price'].'</strong>';
+                	$price_hidden = $data['price'];
                 }
 
                 // xử lý ảnh
@@ -105,26 +111,30 @@ class HomeController extends Controller{
 				              <div class="product-page-options">
 				                <div class="pull-left">
 				                  <label class="control-label">'.lang('size').':</label>
-				                  <select class="form-control input-sm">
-				                    <option>L</option>
-				                    <option>M</option>
-				                    <option>XL</option>
+				                  <select class="form-control input-sm size_popup" data-error="'.lang('error_size').'">
+				                    <option value="">Chọn</option>
+				                    <option value="L">L</option>
+				                    <option value="M">M</option>
+				                    <option value="XL">XL</option>
 				                  </select>
 				                </div>
 				                <div class="pull-left">
 				                  <label class="control-label">'.lang('color').':</label>
-				                  <select class="form-control input-sm">
-				                    <option>Red</option>
-				                    <option>Blue</option>
-				                    <option>Black</option>
+				                  <select class="form-control input-sm color_popup" data-error="'.lang('error_color').'">
+				                  	<option value="">Chọn</option>
+				                    <option value="Red">Red</option>
+				                    <option value="Blue">Blue</option>
+				                    <option value="Black">Black</option>
 				                  </select>
 				                </div>
 				              </div>
 				              <div class="product-page-cart">
 				                <div class="product-quantity">
-				                    <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
+				                    <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm product_quantity">
 				                </div>
-				                <button class="btn btn-primary add2cart_popup" type="button">'.lang('add_to_cart').'</button>
+				                <button class="btn btn-primary add2cart_popup" type="button" data-id="'.$data['id'].'">'.lang('add_to_cart').'</button>
+				                <input type="hidden" class="hidden_product" value="'.$data['name'].'" />
+                                <input type="hidden" class="hidden_price" value="'.$price_hidden.'">
 				                <a href="'.base_url().'product/'.alias($data['name']).'-'.$data['id'].'.htm'.'" class="btn btn-default">'.lang('more_details').'</a>
 				              </div>
 				            </div>'.$sticker_sale.$sticker_new;

@@ -23,6 +23,8 @@
   	<link href="<?php echo base_url()."tmp/public/";?>plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
   	<link href="<?php echo base_url()."tmp/public/";?>plugins/carousel-owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
   	<link href="<?php echo base_url()."tmp/public/";?>plugins/slider-layer-slider/css/layerslider.css" rel="stylesheet">
+  	<link href="<?php echo base_url()."tmp/public/";?>plugins/rateit/src/rateit.css" rel="stylesheet">
+  	<link href="<?php echo base_url()."tmp/public/";?>plugins/toastr/toastr.min.css" rel="stylesheet">
   	<link href="<?php echo base_url()."tmp/public/";?>css/animation.css" rel="stylesheet">
   	<!-- Page level plugin styles END -->
 
@@ -91,6 +93,7 @@
 	<script src="<?php echo base_url()."tmp/public/";?>js/layout/scripts/back-to-top.js" type="text/javascript"></script>
 	<script src="<?php echo base_url()."tmp/public/";?>plugins/jquery-migrate.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url()."tmp/public/";?>plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url()."tmp/public/";?>plugins/toastr/toastr.min.js"></script>
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
@@ -103,6 +106,8 @@
     <script src="<?php echo base_url()."tmp/public/";?>plugins/slider-layer-slider/js/greensock.js" type="text/javascript"></script><!-- External libraries: GreenSock -->
     <script src="<?php echo base_url()."tmp/public/";?>plugins/slider-layer-slider/js/layerslider.transitions.js" type="text/javascript"></script><!-- LayerSlider script files -->
     <script src="<?php echo base_url()."tmp/public/";?>plugins/slider-layer-slider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script><!-- LayerSlider script files -->
+    <script src="<?php echo base_url()."tmp/public/";?>plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- LayerSlider script files -->
+    <script src="<?php echo base_url()."tmp/public/";?>plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script><!-- LayerSlider script files -->
     <script src="<?php echo base_url()."tmp/public/";?>js/pages/scripts/layerslider-init.js" type="text/javascript"></script>
     <!-- END LayerSlider -->
 
@@ -115,7 +120,9 @@
 	<script>
 	$(function(){
 		Layout.init();    
+		Layout.initTouchspin();
 		Product.init();    
+
 	});
 	</script>
 

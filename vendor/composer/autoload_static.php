@@ -14,6 +14,10 @@ class ComposerStaticInita4be3f9bffad0b39cb490463c96fe18f
     );
 
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'voku\\' => 5,
+        ),
         'p' => 
         array (
             'phpseclib\\' => 10,
@@ -42,6 +46,10 @@ class ComposerStaticInita4be3f9bffad0b39cb490463c96fe18f
     );
 
     public static $prefixDirsPsr4 = array (
+        'voku\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/cart/src/voku',
+        ),
         'phpseclib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',

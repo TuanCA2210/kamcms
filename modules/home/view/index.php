@@ -33,7 +33,14 @@ if (!empty($this->data['data_home'])) {
                                       </div>
                                       <h3><a href="<?php echo base_url().'product/'.alias($v['name']).'-'.$v['id'].'.htm';?>"><?php echo $v['name'];?></a></h3>
                                       <div class="pi-price">$<?php echo ($sale==true) ? number_format($v['saleoff'],0,'','.') : number_format($v['price'],0,'','.');?></div>
-                                      <a href="javascript:void(0);" class="btn btn-default add2cart"> Add To Cart</a>
+                                      <a href="javascript:void(0);" class="btn btn-default add2cart" data-id="<?php echo $v['id'];?>"> Add To Cart</a>
+                                      <input type="hidden" class="hidden_product" value="<?php echo $v['name'];?>" />
+                                      <input type="hidden" class="hidden_price" value="<?php if ($sale==true) { 
+                                                                                        echo $v['saleoff'];
+                                                                                    }else{
+                                                                                        echo $v['price'];
+                                                                                    }?>">
+
                                       <?php echo ($sale==true) ? '<div class="sticker sticker-sale"></div>' : '';?>
                                       <?php 
                                       if ($v['state']!="") {
@@ -151,7 +158,13 @@ if (!empty($this->data['data_home'])) {
                                   </div>
                                   <h3><a href="<?php echo base_url().'product/'.alias($v['name']).'-'.$v['id'].'.htm';?>"><?php echo $v['name'];?></a></h3>
                                   <div class="pi-price">$<?php echo ($sale==true) ? number_format($v['saleoff'],0,'','.') : number_format($v['price'],0,'','.');?></div>
-                                  <a href="javascript:void(0);" class="btn btn-default add2cart">Add To Cart</a>
+                                  <a href="javascript:void(0);" class="btn btn-default add2cart" data-id="<?php echo $v['id'];?>"> Add To Cart</a>
+                                      <input type="hidden" class="hidden_product" value="<?php echo $v['name'];?>" />
+                                      <input type="hidden" class="hidden_price" value="<?php if ($sale==true) { 
+                                                                                        echo $v['saleoff'];
+                                                                                    }else{
+                                                                                        echo $v['price'];
+                                                                                    }?>">
                                   <?php echo ($sale==true) ? '<div class="sticker sticker-sale"></div>' : '';?>
                                   <?php 
                                   if ($v['state']!="") {
@@ -221,7 +234,13 @@ if (!empty($this->data['data_home'])) {
                                   </div>
                                   <h3><a href="<?php echo base_url().'product/'.alias($v['name']).'-'.$v['id'].'.htm';?>"><?php echo $v['name'];?></a></h3>
                                   <div class="pi-price">$<?php echo ($sale==true) ? number_format($v['saleoff'],0,'','.') : number_format($v['price'],0,'','.');?></div>
-                                  <a href="javascript:void(0);" class="btn btn-default add2cart">Add To Cart</a>
+                                  <a href="javascript:void(0);" class="btn btn-default add2cart" data-id="<?php echo $v['id'];?>"> Add To Cart</a>
+                                      <input type="hidden" class="hidden_product" value="<?php echo $v['name'];?>" />
+                                      <input type="hidden" class="hidden_price" value="<?php if ($sale==true) { 
+                                                                                        echo $v['saleoff'];
+                                                                                    }else{
+                                                                                        echo $v['price'];
+                                                                                    }?>">
                                   <?php echo ($sale==true) ? '<div class="sticker sticker-sale"></div>' : '';?>
                                   <?php 
                                   if ($v['state']!="") {

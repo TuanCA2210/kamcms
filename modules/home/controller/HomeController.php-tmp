@@ -7,8 +7,10 @@ class HomeController extends Controller {
 	public $modelHome;
 	public $modelProduct;
 	//public $loadPages;
+	public $cart;
 	public function __construct() {
 		parent::__construct();
+
 		$this->modelHome    = $this->loadModel('Home');
 		$this->modelProduct = $this->loadModel('Product');
 	}

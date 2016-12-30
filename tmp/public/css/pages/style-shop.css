@@ -903,7 +903,7 @@ Header and header elements
 }
 .product-page-options select.input-sm {
 	float: left;
-	width: auto;
+	width: 70px;
 	height: 26px;
 }
 

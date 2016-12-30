@@ -396,6 +396,7 @@ var Layout = function () {
 
         initTouchspin: function () {
             $(".product-quantity .form-control").TouchSpin({
+                min: 1,
                 buttondown_class: "btn quantity-down",
                 buttonup_class: "btn quantity-up"
             });

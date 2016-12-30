@@ -86,7 +86,7 @@
       <div class="row">
         <section class="col-lg-12">
         <h4><?php echo lang('access_analytics');?></h4>
-          <p>Chưa được xác thực oauth2callback của Google Api(Thiếu File xác thực .json của Google hoặc đường link sai...)</p>
+        <p>Chưa được xác thực oauth2callback của Google Api(Thiếu File xác thực .json của Google hoặc đường link sai...)</p>
         </section>
         
 

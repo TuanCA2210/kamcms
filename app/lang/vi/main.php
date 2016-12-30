@@ -25,6 +25,9 @@ $_L['success_regis']     = 'Chúc mừng bạn đã đăng ký tài khoản thà
 $_L['success']         	=  'Thành công.';
 $_L['warning']         	=  'Cảnh báo.';
 $_L['no_email_no_pass']  =  'Email hoặc mật khẩu của bạn chưa chính xác.';
+$_L['review_require']  	=  'Bạn không được để trống phần đánh giá!';
+$_L['name_require']  	=  'Bạn không được để trống tên!';
+$_L['success_review']  	=  'Cảm ơn bạn đã đánh giá cho sản phẩm này.';
 
 
 
@@ -38,6 +41,11 @@ $_L['state_sale']				= 'Khuyến mại';
 
 
 $_L['add_to_cart']				= 'Thêm vào giỏ hàng';
+$_L['add_item_to_cart']			= 'Bạn vừa thêm một sản phẩm vào giỏ hàng.';
+$_L['remove_item_to_cart']		= 'Bạn vừa xóa một sản phẩm trong giỏ hàng.';
+$_L['buy_now']					= 'Mua ngay';
 $_L['more_details']				= 'Xem chi tiết';
 $_L['size']						= 'Kích thước';
 $_L['color']					= 'Màu sắc';
+$_L['error_size']				= 'Bạn chưa chọn kích thước cho sản phẩm.';
+$_L['error_color']			    = 'Bạn chưa chọn màu sắc cho sản phẩm.';

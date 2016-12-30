@@ -4,13 +4,15 @@ class Product{
     private $productDetail;
     private $productImage;
     private $cate;
+    private $productRate;
 	public function __construct(){
 		global $_web;
 		$this->lang                   = $_web['lang'];
         $this->cate                   = new system\Model($this->lang.'_category');
 		$this->product                = new system\Model($this->lang.'_product_basic');
         $this->productDetail          = new system\Model($this->lang.'_product_detail');
-		$this->productImage           = new system\Model($this->lang.'_product_image');
+        $this->productImage           = new system\Model($this->lang.'_product_image');
+		$this->productRate            = new system\Model($this->lang.'_product_rate');
 	}
 	public function getBreadcrumbsCategory($idCate, $data = array()) {
         $this->cate->where("id",$idCate);
@@ -49,5 +51,23 @@ class Product{
         $this->product->join($this->lang.'_product_detail', $this->lang.'_product_detail.id_product = '.$this->lang.'_product_basic.id', 'LEFT');
         $result = $this->product->getOne(null,$select);
         return $result;
+    }
+    public function insertRate($data){
+        $this->productRate->insert($data);
+    }
+    public function getRateProductById($id){
+        $this->productRate->where("status",1);
+        $this->productRate->where("id_product",$id);
+        return $this->productRate->get(null,null,"*");
+    }
+    public function getCountMediumRateById($id){
+        $this->productRate->where("status",1);
+        $this->productRate->where("id_product",$id);
+        return $this->productRate->get(null,null,"*");
+    }
+    public function getThumbnailAddCart($id){
+        $select = $this->lang."_product_basic.id,".$this->lang."_product_basic.image";
+        $this->product->where($this->lang."_product_basic.id",$id);
+        return $this->product->getOne(null,$select);
     }
 }

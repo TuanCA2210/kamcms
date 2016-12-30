@@ -8,11 +8,11 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	config.skin = 'office2013';
-	config.filebrowserBrowseUrl = 'http://localhost/fwtome/cadmin/tmp/public/plugins/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = 'http://localhost/fwtome/cadmin/tmp/public/plugins/ckfinder/ckfinder.html?type=Images';
-	config.filebrowserFlashBrowseUrl = 'http://localhost/fwtome/cadmin/tmp/public/plugins/ckfinder/ckfinder.html?type=Flash';
-	config.filebrowserUploadUrl = 'http://localhost/fwtome/cadmin/tmp/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
-	config.filebrowserImageUploadUrl = 'http://localhost/fwtome/cadmin/tmp/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
-	config.filebrowserFlashUploadUrl = 'http://localhost/fwtome/cadmin/tmp/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+	config.filebrowserBrowseUrl = baseUrl+'tmp/public/plugins/ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl = baseUrl+'tmp/public/plugins/ckfinder/ckfinder.html?type=Images';
+	config.filebrowserFlashBrowseUrl = baseUrl+'tmp/public/plugins/ckfinder/ckfinder.html?type=Flash';
+	config.filebrowserUploadUrl = baseUrl+'tmp/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl = baseUrl+'tmp/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl = baseUrl+'tmp/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 
 };

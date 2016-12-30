@@ -28,6 +28,9 @@ $_L['success_regis']    = 'Chúc mừng bạn đã đăng ký tài khoản thàn
 $_L['success']          = 'Thành công.';
 $_L['warning']          = 'Cảnh báo.';
 $_L['no_email_no_pass'] = 'Email hoặc mật khẩu của bạn chưa chính xác.';
+$_L['review_require']   = 'Bạn không được để trống phần đánh giá!';
+$_L['name_require']     = 'Bạn không được để trống tên!';
+$_L['success_review']   = 'Cảm ơn bạn đã đánh giá cho sản phẩm này.';
 
 $_L['availability']  = 'Tình trạng';
 $_L['state_hot']     = 'Nổi bật';
@@ -38,6 +41,7 @@ $_L['state_no_sold'] = 'Hết hàng';
 $_L['state_sale']    = 'Khuyến mại';
 
 $_L['add_to_cart']  = 'Thêm vào giỏ hàng';
+$_L['buy_now']      = 'Mua ngay';
 $_L['more_details'] = 'Xem chi tiết';
 $_L['size']         = 'Kích thước';
 $_L['color']        = 'Màu sắc';
