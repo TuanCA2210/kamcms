@@ -375,8 +375,8 @@ var Product = function(){
 					current.parents('li').fadeOut('slow', function() {
 						current.parents('li').remove();
 					});
-					$('.top-cart-block a.top-cart-info-count').text(data.total_unique);
-					$('.top-cart-block a.top-cart-info-value').text(data.total_cart);
+					$('.top-cart-block a.top-cart-info-count').text(data.total_unique+' item');
+					$('.top-cart-block a.top-cart-info-value').text('$ '+data.total_cart);
 					toastr["success"](data.mess);
 				}
 			});

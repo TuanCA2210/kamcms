@@ -191,9 +191,9 @@ class ProductController extends Controller{
 					$data_mess = array(
 						'status'		=>$status,
 						'mess'			=>$mess,
-						'total_cart'	=> '$ '.number_format($total_cart,0,'','.'),
+						'total_cart'	=> number_format($total_cart,0,'','.'),
 						'total_item'	=> $total_item,
-						'total_unique'	=> $total_unique.' item'
+						'total_unique'	=> $total_unique
 					);
 					echo json_encode($data_mess);
 				}
@@ -213,6 +213,12 @@ class ProductController extends Controller{
 		$this->view->data['total_unique'] 	= $this->cart->totalUniqueItems();
 
 		$this->view->render('cart_view');
+	}
+
+	public function checkout(){
+		global $_web;
+
+
 	}
 	
 }

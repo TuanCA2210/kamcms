@@ -34,7 +34,7 @@
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="shop-account.html">My Account</a></li>
                     <li><a href="shop-wishlist.html">My Wishlist</a></li>
-                    <li><a href="shop-checkout.html">Checkout</a></li>
+                    <li><a href="<?php echo base_url();?>checkout">Checkout</a></li>
                     <li><a href="page-login.html">Log In</a></li>
                 </ul>
             </div>
@@ -66,9 +66,9 @@
             if (!empty($_web['cart'])) {
               foreach ($_web['cart'] as $key => $value) {
                   echo '<li>
-                          <a href="shop-item.html"><img src="'.$_web['base_url_cdn'].$value['options']['image'].'" width="37" height="34"></a>
+                          <a href="'.base_url().'product/'.alias($value['name']).'-'.$value['id'].'.htm"><img src="'.$_web['base_url_cdn'].$value['options']['image'].'" width="37" height="34"></a>
                           <span class="cart-content-count">x '.$value['quantity'].'</span>
-                          <strong><a href="shop-item.html">'.$value['name'].'</a></strong>
+                          <strong><a href="'.base_url().'product/'.alias($value['name']).'-'.$value['id'].'.htm">'.$value['name'].'</a></strong>
                           <em>$'.number_format($value['price'],0,'','.').'</em>
                           <a href="javascript:void(0);" class="del-goods del-cart-top" data-id="'.$value['id'].'">&nbsp;</a>
                         </li>';
@@ -79,8 +79,8 @@
              ?>
           </ul>
           <div class="text-right">
-            <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-            <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+            <a href="<?php echo base_url();?>cart" class="btn btn-default">View Cart</a>
+            <a href="<?php echo base_url();?>checkout" class="btn btn-primary">Checkout</a>
           </div>
         </div>
       </div>            

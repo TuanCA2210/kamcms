@@ -39,6 +39,12 @@ RewriteRule ^news\.htm&p([0-9]+)&t([0-9]+)$ index.php?mod=posts&controller=posts
 # Product
 RewriteRule ^product/([0-9a-zA-Z\_\-]+)-([0-9\_]+)\.htm$ index.php?mod=product&controller=product&action=detail&id=$2&alias=$1 [L,QSA]
 
+#cart
+RewriteRule ^cart$ index.php?mod=product&controller=product&action=cart [L,QSA]
+
+#checkout
+RewriteRule ^checkout$ index.php?mod=product&controller=product&action=checkout [L,QSA]
+
 # Custom pages 
 
 RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id=9 [L,QSA]
