@@ -1,3 +1,6 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
+ in Unknown on line 0
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -81,6 +84,23 @@
               </ul>
         </li>
         <li class="treeview <?php if ($_web['uri']['mod'] == 'product') {echo 'active';
+}
+?>">
+          <a href="#">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <span><?php echo lang('product');
+?> &nbsp;
+&nbsp;
+<i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+          </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo base_url().'product/product/index';?>"><?php echo lang('product');
+?></a></li>
+                <li><a href="<?php echo base_url().'product/category/index';?>"><?php echo lang('category');
+?></a></li>
+              </ul>
+        </li>
+        <li class="treeview <?php if ($_web['uri']['mod'] == 'order') {echo 'active';
 }
 ?>">
           <a href="#">

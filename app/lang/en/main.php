@@ -41,6 +41,7 @@ $_L['state_sale']				= 'Sale';
 
 
 $_L['add_to_cart']				= 'Add to cart';
+$_L['update_cart']				= 'Update product';
 $_L['add_item_to_cart']			= 'You just added a product to the shopping cart.';
 $_L['remove_item_to_cart']		= 'You\'ve just deleted a product in your shopping cart.';
 $_L['buy_now']					= 'Buy now';
@@ -49,3 +50,58 @@ $_L['size']						= 'Size';
 $_L['color']					= 'Color';
 $_L['error_size']				= 'You do not choose the size of the product.';
 $_L['error_color']			    = 'You do not choose the color for the product.';
+$_L['updated_size']				= 'You just updated size in shoping cart.';
+$_L['updated_color']			= 'You just updated color in shoping cart.';
+$_L['updated_quantity']			= 'You just updated quantity in shoping cart.';
+
+
+
+
+$_L['step_one']					= 'Step 1: Checkout Options.';
+$_L['step_two']					= 'Step 2: Delivery Details.';
+$_L['step_three']				= 'Step 3: Payment Method.';
+$_L['step_four']				= 'Step 4: Confirm Order.';
+$_L['step_one_fix']				= 'Bước 1: Order Information.';
+$_L['step_two_fix']				= 'Step 2: Payment Method.';
+$_L['step_three_fix']			= 'Step 3: Confirm Order.';
+
+$_L['continue']					= 'Continue';
+$_L['skip']						= 'Skip';
+$_L['account_old_checkout']		= 'I already have an account.';
+$_L['account_new_checkout']		= 'I am a new customer.';
+
+
+$_L['fullname_checkout']		= 'Please enter your fullname';
+$_L['email_checkout']			= 'Please enter your email';
+$_L['phone_checkout']			= 'Please enter your phone number';
+$_L['valid_email_checkout']		= 'Email address can not empty!';
+$_L['valid_phone_checkout']		= 'Phone number can not empty!';
+$_L['email']					= 'Email';
+$_L['phone']					= 'Phone';
+$_L['invalid_phone']			= 'Phone number is wrong format!';
+$_L['password_me']				= 'My password';
+$_L['fullname']					= 'Fullname';
+$_L['province_checkout']		= 'Please choose the province';
+$_L['district_checkout']		= 'Please choose the district';
+$_L['address_checkout']			= 'Please enter the correct address';
+
+
+
+$_L['buyer_information']		= 'Buyer Information';
+$_L['recipient_information']	= 'Recipient Information';
+$_L['same_info_buyer']			= 'Same Info Buyer.';
+
+$_L['province']					= 'Province';
+$_L['district']					= 'District';
+$_L['address']					= 'Address';
+$_L['please_select']			= 'Please Select';
+$_L['house_number']				= 'House number, street, building, town or village, ...';
+
+
+
+
+
+$_L['sub_total']				= 'Sub Total';
+$_L['total']					= 'Total';
+$_L['ship_fee']					= 'Ship fee';
+$_L['confirm_order']			= 'Confirm Order';

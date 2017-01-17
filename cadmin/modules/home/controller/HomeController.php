@@ -15,7 +15,7 @@ class HomeController extends Controller{
 	}
 	public function index(){
 		global $_web;
-		$this->view->data  = $this->modelNews->getUserById(1);
+		//$this->view->data  = $this->modelNews->getUserById(1);
 
 		
 		try{
@@ -88,6 +88,11 @@ class HomeController extends Controller{
 						}
 
 						$this->view->data['session_month'] = $this->printResults($results_pages);
+
+
+						$this->view->data['total_order'] = $this->modelNews->getTotalOrder();
+						$this->view->data['new_order'] = $this->modelNews->getNewOrder();
+
 						$this->view->render('index');
 
 			// xử lý ngoại lệ khi google analytic chưa cấp quyền
@@ -96,7 +101,7 @@ class HomeController extends Controller{
 			  	//redirect(base_url().'settings/settings/index');
 			}
 		  
-
+		
 
 		} else {
 		  $redirect_uri = $this->callback;

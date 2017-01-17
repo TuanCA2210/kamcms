@@ -140,6 +140,8 @@
             </div>
             <button class="btn btn-primary add2cart_detail" type="button" data-id="<?php  echo $this->data['data_product']['id'];?>"><?php echo lang('add_to_cart');?></button>
             <a href="javascript:void(0)"> <button class="btn btn-success buy_now" data-id="<?php  echo $this->data['data_product']['id'];?>"><?php echo lang('buy_now');?></button> </a>
+            <input type="hidden" id="update_cart" value="" />
+            
           </div>
           <div class="review">
             <input type="range" value="<?php echo (isset($this->data['medium_star'])) ? $this->data['medium_star'] : 0; ?>" step="0.25" id="backing4">

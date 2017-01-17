@@ -22,7 +22,7 @@ class Controller{
 
 
 		$this->cart 			= new Cart(new Session, new Cookie);
-		$_web['cart'] 			= $this->cart->contents(true);
+		$_web['cart'] 			= $this->cart->contents();
 		$_web['total_cart'] 	= $this->cart->total();
 		$_web['total_item'] 	= $this->cart->totalItems();
 		$_web['total_unique'] 	= $this->cart->totalUniqueItems();

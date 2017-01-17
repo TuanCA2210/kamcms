@@ -10,6 +10,7 @@ $_L['widgets']                 	=  'Danh mục tùy chọn';
 $_L['pages']                 	=  'Trang';
 $_L['post']                 	=  'Bài viết';
 $_L['product']                 	=  'Sản phẩm';
+$_L['order']                 	=  'Đơn hàng';
 $_L['category']                 =  'Danh mục sản phẩm';
 $_L['media']                 	=  'Thư viện số';
 $_L['contact']                 	=  'Liên hệ';
@@ -81,6 +82,8 @@ $_L['seo_key']             		=  'Từ khóa SEO';
 $_L['google_web_tool']          =  'Công cụ quản trị trang web của Google';
 $_L['google_verify']          	=  'Xác minh trang web của Google';
 $_L['delete']          			=  'Xoá';
+$_L['invoice']          		=  'Mã đơn hàng';
+$_L['total_order']          	=  'Tổng tiền đơn hàng';
 
 
 $_L['success_settings']         =  'Bạn đã lưu thay đổi của cài đặt.';

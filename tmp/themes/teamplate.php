@@ -112,6 +112,8 @@
     <!-- END LayerSlider -->
 
     <script src="<?php echo base_url()."tmp/public/";?>js/layout/scripts/layout.js" type="text/javascript"></script>
+
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <script src="<?php echo base_url()."tmp/public/";?>js/product.js" type="text/javascript"></script>
     <?php echo ($this->appendJs!='') ? $this->appendJs : '';?>
 	<?php echo ($this->_appendPluginsModJs!='') ? $this->_appendPluginsModJs : '';?>

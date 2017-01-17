@@ -436,7 +436,7 @@ Header and header elements
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 99999;
+	z-index: 9999;
 }
 body.page-header-fixed {
 	padding-top: 88px !important; /* height of the header */

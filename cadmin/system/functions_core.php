@@ -54,6 +54,14 @@ if (!function_exists('replaceAdmin')){
         }
 }
 
+if (!function_exists('covertMoney')){
+        function covertMoney($number){
+            if ($number!=null) {
+                return number_format($number,0,'','.');
+            }
+        }
+}
+
 
 
 

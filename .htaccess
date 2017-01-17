@@ -45,6 +45,9 @@ RewriteRule ^cart$ index.php?mod=product&controller=product&action=cart [L,QSA]
 #checkout
 RewriteRule ^checkout$ index.php?mod=product&controller=product&action=checkout [L,QSA]
 
+#done
+RewriteRule ^done$ index.php?mod=product&controller=product&action=done [L,QSA]
+
 # Custom pages 
 
 RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id=9 [L,QSA]

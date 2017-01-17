@@ -222,6 +222,21 @@ class Item
       }
 
       //
+      // update the "options" edit by Le Ngoc Cuong
+      //
+
+      if ($key == 'options' && is_array($value)) {
+
+        // if option and $value is array , remove the item and "return" here
+          foreach ($value as $k => $v) {
+            $this->data[$key][$k] = $v;
+            //$this->data['options']['color'] = 'Red';
+          }
+          
+          return;
+      }
+
+      //
       // update the "tax"
       //
 

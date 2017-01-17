@@ -10,6 +10,7 @@ $_L['widgets']                 	=  'Widgets';
 $_L['pages']                 	=  'Pages';
 $_L['post']                 	=  'Post';
 $_L['product']                 	=  'Product';
+$_L['order']                 	=  'Order';
 $_L['category']                 =  'Category';
 $_L['media']                 	=  'Media';
 $_L['contact']                 	=  'Contact';
@@ -80,6 +81,8 @@ $_L['seo_key']             		=  'SEO Keywords';
 $_L['google_web_tool']          =  'Google Webmaster Tools';
 $_L['google_verify']          	=  'Google site verification';
 $_L['delete']          			=  'Delete';
+$_L['invoice']          		=  'Invoice';
+$_L['total_order']          	=  'Total order';
 
 
 $_L['success_settings']         =  'You have to change the settings stored.';

@@ -473,7 +473,7 @@ Header and header elements
 .checkout-price strong,
 .checkout-total strong {
 	color: #e84d1c;
-	font-size: 21px;
+	font-size: 18px;
 	font-weight: normal;
 }
 .goods-page-price strong span,
@@ -551,7 +551,7 @@ Header and header elements
 }
 .shopping-total em,
 .checkout-total-block em {
-	font: 18px 'PT Sans Narrow', sans-serif;
+	font: 16px 'PT Sans Narrow', sans-serif;
 	float: left;
 	text-transform: uppercase;
 	position: relative;
@@ -560,7 +560,7 @@ Header and header elements
 .shopping-total strong,
 .checkout-total-block strong {
 	color: #e84d1c;
-	font: 21px 'PT Sans Narrow', sans-serif;
+	font: 18px 'PT Sans Narrow', sans-serif;
 	font-weight: normal;
 	float: right;
 }
@@ -1140,4 +1140,63 @@ Shop Stype Buttons
 ***/
 .btn {
 	text-transform: uppercase;
+}
+
+
+
+.validation-summary-errors {
+    color: red;
+    margin-bottom: 16px;
+}
+
+#shipping-address-content .top span.icon {
+    height: 21px;
+    width: 21px;
+    line-height: 21px;
+    border: 1px solid #434248;
+    border-radius: 50%!important;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin-right: 7px;
+}
+#shipping-address-content .top{
+    line-height: 25px;
+    color: #7d3b01;
+    font-size: 16px;
+}
+#shipping-address-content .top .same-payment{
+    font-size: 14px;
+    color: #3e4d5c;
+}
+
+
+
+
+
+
+
+.animate-loading-center{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  z-index: 999999;
+  font-size: 16px;
+}
+.display-none{
+  display: none;
+}
+.icon-loading{
+    z-index: 9999;
+    text-align: center;
+}
+.icon-loading i{
+  color: #fff;
+}
+
+
+.error{
+	color: #F44336;
 }

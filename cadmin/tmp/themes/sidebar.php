@@ -70,6 +70,11 @@
                 <li><a href="<?php echo base_url().'product/category/index';?>"><?php echo lang('category');?></a></li>
               </ul>
         </li>
+        <li class="treeview <?php if($_web['uri']['mod']=='order') echo 'active';?>">
+          <a href="<?php echo base_url().'order/order/index'; ?>">
+            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span><?php echo lang('order'); ?></span>
+          </a>
+        </li>
         <li class="treeview <?php if($_web['uri']['mod']=='media') echo 'active';?>">
           <a href="<?php echo base_url().'media/media/index'; ?>">
             <i class="fa fa-file-image-o" aria-hidden="true"></i> <span><?php echo lang('media'); ?></span>

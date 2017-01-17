@@ -24,7 +24,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo isset($this->data['new_order']) ? $this->data['new_order'] : 0; ?></h3>
 
               <p><?php echo lang('neworders'); ?></p>
             </div>
@@ -39,9 +39,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo isset($this->data['total_order']) ? $this->data['total_order'] : 0; ?></h3>
 
-              <p><?php echo lang('neworders'); ?></p>
+              <p><?php echo lang('countorders'); ?></p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>

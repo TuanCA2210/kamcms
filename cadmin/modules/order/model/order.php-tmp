@@ -1,0 +1,17 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
+ in Unknown on line 0
+<?php
+class Order {
+	public function __construct() {
+		global $_web;
+		$this->lang  = $_web['lang'];
+		$this->order = new system\Model($this->lang.'_product_cart');
+	}
+
+	public function getNewOrder() {
+		$this->user->where('status', 0);
+		$result = $this->order->num_rows();
+		return $result;
+	}
+}

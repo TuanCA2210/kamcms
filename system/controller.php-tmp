@@ -24,8 +24,11 @@ class Controller {
 		$_web['settings']   = $this->getSettingsGlobals();
 		$_web['options']    = $this->getOptionsGlobals();
 
-		$this->cart   = new Cart(new Session, new Cookie);
-		$_web['cart'] = $this->cart->contents(true);
+		$this->cart           = new Cart(new Session, new Cookie);
+		$_web['cart']         = $this->cart->contents();
+		$_web['total_cart']   = $this->cart->total();
+		$_web['total_item']   = $this->cart->totalItems();
+		$_web['total_unique'] = $this->cart->totalUniqueItems();
 
 	}
 	public function loadModel($file, $mod = null) {

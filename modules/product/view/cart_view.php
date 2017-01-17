@@ -1,3 +1,7 @@
+<?php 
+$arr_color = array('Red','Blue','Black');
+$arr_size = array('L','M','XL');
+?>
 <!-- BEGIN SIDEBAR & CONTENT -->
 <div class="row margin-bottom-40">
   <!-- BEGIN CONTENT -->
@@ -8,7 +12,7 @@
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
-                <table summary="Shopping cart">
+                <table summary="Shopping cart" id="data_shopping_cart">
                   <tr>
                     <th class="goods-page-image">Image</th>
                     <th class="goods-page-description">Description</th>
@@ -18,28 +22,50 @@
                   </tr>
                   <?php 
                   foreach ($this->data['cart'] as $key => $value) { ?>
-                          <tr>
+                          <tr data-identifier="<?php echo $value->identifier;?>" data-id="<?php echo $value->id;?>">
                             <td class="goods-page-image">
-                              <a href="<?php echo base_url().'product/'.alias($value['name']).'-'.$value['id'].'.htm';?>"><img src="<?php echo $_web['base_url_cdn'].$value['options']['image']; ?>" alt="<?php echo $value['name']; ?>"></a>
+                              <a href="<?php echo base_url().'product/'.alias($value->name).'-'.$value->id.'.htm';?>"><img src="<?php echo $_web['base_url_cdn'].$value->options['image']; ?>" alt="<?php echo $value->name; ?>"></a>
                             </td>
                             <td class="goods-page-description">
-                              <h3><a href="<?php echo base_url().'product/'.alias($value['name']).'-'.$value['id'].'.htm';?>"><?php echo $value['name']; ?></a></h3>
-                              <p>Color: Green; Size: S</p>
-                              <em>More info is here</em>
+                              <h3><a href="<?php echo base_url().'product/'.alias($value->name).'-'.$value->id.'.htm';?>"><?php echo $value->name; ?></a></h3>
+                              <p>
+                              
+                                
+                              
+                              <?php 
+                              echo '<select id="choose_color">';
+                              echo '<option value="">Chọn</option>';
+                              foreach ($arr_color as $v) {
+                                  $selected = ($v==$value->options['color']) ? ' selected' : '';
+                                  echo '<option value="'.$v.'" '.$selected.'>'.$v.'</option>';
+                              }
+                              echo '</select>';
+                              ?>
+                              <?php 
+                              echo '<select id="choose_size">';
+                              echo '<option value="">Chọn</option>';
+                              foreach ($arr_size as $v) {
+                                  $selected = ($v==$value->options['size']) ? ' selected' : '';
+                                  echo '<option value="'.$v.'" '.$selected.'>'.$v.'</option>';
+                              }
+                              echo '</select>';
+                              ?>
+                              </p>
+                              <em>More info is <a href="<?php echo base_url().'product/'.alias($value->name).'-'.$value->id.'.htm';?>">here</a></em>
                             </td>
                             <td class="goods-page-quantity">
                               <div class="product-quantity">
-                                  <input id="product-quantity" type="number" min="1" value="<?php echo $value['quantity'];?>" readonly class="form-control input-sm">
+                                  <input id="product-quantity" type="number" min="1" value="<?php echo $value->quantity;?>" readonly class="form-control input-sm">
                               </div>
                             </td>
                             <td class="goods-page-price">
-                              <strong><span>$</span> <?php echo number_format($value['price'],0,'','.'); ?></strong>
+                              <strong><span>$</span> <?php echo number_format($value->price,0,'','.'); ?></strong>
                             </td>
                             <td class="goods-page-total">
-                              <strong><span>$</span> <?php echo number_format($value['total'],0,'','.'); ?></strong>
+                              <strong><span>$</span> <?php echo number_format($value->total,0,'','.'); ?></strong>
                             </td>
                             <td class="del-goods-col">
-                              <a class="del-goods del-cart-checkout" data-id="<?php echo $value['id'];?>" href="#">&nbsp;</a>
+                              <a class="del-goods del-cart-checkout" data-id="<?php echo $value->id;?>" data-identifier="<?php echo $value->identifier;?>" href="#">&nbsp;</a>
                             </td>
                           </tr>
                   <?php 
@@ -66,7 +92,7 @@
                 </div>
               </div>
               <button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button>
-              <button class="btn btn-primary" type="submit">Checkout <i class="fa fa-check"></i></button>
+              <a href="<?php echo base_url().'checkout';?>" class="btn btn-primary" type="submit">Checkout <i class="fa fa-check"></i></a>
             </div>
     <?php               
     }else{
