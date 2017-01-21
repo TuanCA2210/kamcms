@@ -11,3 +11,4 @@ $_L['countorders']       = 'Total orders';
 $_L['userregistrations'] = 'User Registrations';
 $_L['uniquevisitors']    = 'Unique Visitors';
 $_L['moreinfo']          = 'More info';
+$_L['order_detail']      = 'Order Detail';

@@ -8,3 +8,4 @@ $_L['countorders']                		=  'Tổng đơn hàng';
 $_L['userregistrations']                =  'Thành viên mới';
 $_L['uniquevisitors']                	=  'Tổng truy cập';
 $_L['moreinfo']                			=  'Xem thông tin';
+$_L['order_detail']                		=  'Chi tiết đơn hàng';

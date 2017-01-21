@@ -23,7 +23,7 @@ class Home{
 		return $result;
 	}
 	public function getNewOrder(){
-		$this->user->where('status',0);
+		$this->user->where('status',1);
 		$result  = $this->order->num_rows();
 		return $result;
 	}
