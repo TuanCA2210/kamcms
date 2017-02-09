@@ -62,6 +62,12 @@ if (!function_exists('covertMoney')){
         }
 }
 
+if (!function_exists('Image')){
+        function Image($url_root,$url,$width,$height,$action){
+            return $url_root.'tmp/public/plugins/image_tools/timthumb.php?src='.$url.'&h='.$height.'&w='.$width.'&zc='.$action;
+        }
+}
+
 
 
 

@@ -38,9 +38,6 @@
                   <li class="active">
                       <a href="#tab_detail" data-toggle="tab" aria-expanded="true"><?php echo lang('detail');?></a>
                   </li>
-                  <li class="">
-                      <a href="#tab_note" data-toggle="tab" aria-expanded="false"><?php echo lang('record_note');?></a>
-                  </li>
               </ul>
               <div class="tab-content">
                   <div class="tab-pane active" id="tab_detail">
@@ -212,7 +209,7 @@
                                       <label class="col-sm-2 control-label text-right"><?php echo lang('note_content');?></label>
                                       <div class="col-sm-10">
                                           <textarea class="form-control" id="note" name="note" cols="50" rows="5">
-                                            <?php if(isset($this->data['data_info_order']['note'])) echo $this->data['data_info_order']['note']; ?>
+                                            <?php if(isset($this->data['data_info_order']['note'])) echo trim($this->data['data_info_order']['note']); ?>
                                           </textarea>
 
                                       </div>

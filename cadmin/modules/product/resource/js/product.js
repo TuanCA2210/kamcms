@@ -1,7 +1,7 @@
 $('body').on('dblclick', '#myModalPages .media-col img.img-folder-media', function(event) {
 	event.preventDefault();
 	var check_folder = $(this).parent('.media-col').attr('data-folder');
-	var directory = $('#directory').val();
+	var directory = $(this).parents('#myModalPages').find('#directory').val();
 	$.ajax({
 		url: baseUrl+'settings/settings/openDirectory',
 		type: 'POST',
@@ -22,10 +22,10 @@ $('body').on('dblclick', '#myModalPages .media-col img.img-folder-media', functi
 
 
 
-$('body').on('dblclick', '#back_folder', function(event) {
+$('body').on('dblclick', '#myModalPages #back_folder', function(event) {
 	event.preventDefault();
 	var current_folder = $(this).parent('.modal-body');
-	var directory = $('#directory').val();
+	var directory = $(this).parents('#myModalPages').find('#directory').val();
 	$.ajax({
 		url: baseUrl+'settings/settings/backDirectory',
 		type: 'POST',
@@ -152,7 +152,7 @@ $('body').on('click', '.choose_img', function(event) {
 $('body').on('dblclick', '#myModalCover .media-col img.img-folder-media', function(event) {
 	event.preventDefault();
 	var check_folder = $(this).parent('.media-col').attr('data-folder');
-	var directory = $('#directory').val();
+	var directory = $(this).parents('#myModalCover').find('#directory').val();
 	$.ajax({
 		url: baseUrl+'settings/settings/openDirectory',
 		type: 'POST',
@@ -173,10 +173,10 @@ $('body').on('dblclick', '#myModalCover .media-col img.img-folder-media', functi
 
 
 
-$('body').on('dblclick', '#back_folder', function(event) {
+$('body').on('dblclick', '#myModalCover #back_folder', function(event) {
 	event.preventDefault();
 	var current_folder = $(this).parent('.modal-body');
-	var directory = $('#directory').val();
+	var directory = $(this).parents('#myModalCover').find('#directory').val();
 	$.ajax({
 		url: baseUrl+'settings/settings/backDirectory',
 		type: 'POST',

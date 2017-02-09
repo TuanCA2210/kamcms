@@ -68,6 +68,7 @@
             <ul class="treeview-menu">
                 <li><a href="<?php echo base_url().'product/product/index';?>"><?php echo lang('product');?></a></li>
                 <li><a href="<?php echo base_url().'product/category/index';?>"><?php echo lang('category');?></a></li>
+                <li><a href="<?php echo base_url().'product/manager/index';?>"><?php echo lang('manager_show_index');?></a></li>
               </ul>
         </li>
         <li class="treeview <?php if($_web['uri']['mod']=='order') echo 'active';?>">

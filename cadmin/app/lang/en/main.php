@@ -40,6 +40,8 @@ $_L['create_menu_link']         =  'Create a menu structure link';
 $_L['edit_menu_link']         	=  'Edit a menu structure link';
 $_L['time_send']         		=  'Time post';
 $_L['time']         			=  'Time';
+$_L['vietnames']         		=  'Vietnames';
+$_L['english']         			=  'English';
 
 
 
@@ -285,6 +287,7 @@ $_L['meta_keyword']				= 'Meta keyword';
 $_L['meta_description']			= 'Meta description';
 $_L['meta_keyword_required']	= 'The keywords separated by a Tab key';
 $_L['meta_description_required']= 'Meta description (Maximum 400 characters)';
+$_L['manager_show_index']		= 'Administration show home';
 
 
 

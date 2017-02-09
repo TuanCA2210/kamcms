@@ -5,6 +5,7 @@ class Pages{
 		global $_web;
 		$this->lang        = $_web['lang'];
 		$this->pages     = new system\Model($this->lang.'_pages');
+		$this->pages_en     = new system\Model('en_pages');
 	}
 	public function getPages(){
 		$result  = $this->pages->get();
@@ -44,6 +45,11 @@ class Pages{
 	public function getUserById($id){
 		$this->pages->where('id',$id);
 		$result  = $this->pages->getOne();
+		return $result;
+	}
+	public function getUserByIdEng($id){
+		$this->pages_en->where('id_lang',$id);
+		$result  = $this->pages_en->getOne();
 		return $result;
 	}
 	

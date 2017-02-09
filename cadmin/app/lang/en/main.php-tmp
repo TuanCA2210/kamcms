@@ -13,6 +13,7 @@ $_L['widgets']            = 'Widgets';
 $_L['pages']              = 'Pages';
 $_L['post']               = 'Post';
 $_L['product']            = 'Product';
+$_L['order']              = 'Order';
 $_L['category']           = 'Category';
 $_L['media']              = 'Media';
 $_L['contact']            = 'Contact';
@@ -42,6 +43,8 @@ $_L['create_menu_link']   = 'Create a menu structure link';
 $_L['edit_menu_link']     = 'Edit a menu structure link';
 $_L['time_send']          = 'Time post';
 $_L['time']               = 'Time';
+$_L['vietnames']          = 'Vietnames';
+$_L['english']            = 'English';
 
 $_L['options_frontend']  = 'Options Frontend';
 $_L['options_pagi_post'] = 'Number of posts on a page';
@@ -78,6 +81,8 @@ $_L['seo_key']              = 'SEO Keywords';
 $_L['google_web_tool']      = 'Google Webmaster Tools';
 $_L['google_verify']        = 'Google site verification';
 $_L['delete']               = 'Delete';
+$_L['invoice']              = 'Invoice';
+$_L['total_order']          = 'Total order';
 
 $_L['success_settings']   = 'You have to change the settings stored.';
 $_L['user_manager']       = 'User Managerment';
@@ -211,6 +216,7 @@ $_L['meta_keyword']              = 'Meta keyword';
 $_L['meta_description']          = 'Meta description';
 $_L['meta_keyword_required']     = 'The keywords separated by a Tab key';
 $_L['meta_description_required'] = 'Meta description (Maximum 400 characters)';
+$_L['manager_show_index']        = 'Administration show home';
 
 $_L['product_code']        = 'Code';
 $_L['sale_off']            = 'Saleoff';

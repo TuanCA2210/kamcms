@@ -22,7 +22,9 @@ class View{
 
 			// append file js in folder Modules/resource/js
 			$pathJs = DIR_MODULES . $_web['uri']['mod'] .'/resource/js';
-			$filesJs = array_diff(scandir($pathJs), array('.', '..'));
+			if (file_exists($pathJs)) {
+				$filesJs = array_diff(scandir($pathJs), array('.', '..'));
+			}
 
 			if (!empty($filesJs)) {
 				$htmlJs = '<!--START LOAD JS MODULES '.strtoupper($_web['uri']['mod']).'-->';
@@ -38,7 +40,9 @@ class View{
 
 			// append file css in folder Modules/resource/css
 			$pathCss = DIR_MODULES . $_web['uri']['mod'] .'/resource/css';
-			$filesCss = array_diff(scandir($pathCss), array('.', '..'));
+			if (file_exists($pathCss)) {
+				$filesCss = array_diff(scandir($pathCss), array('.', '..'));
+			}
 			if (!empty($filesCss)) {
 				$htmlCss = '<!--START LOAD CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
 				foreach ($filesCss as $value) {
@@ -56,42 +60,50 @@ class View{
 
 
 			$pathPlugins = DIR_MODULES . $_web['uri']['mod'] .'/resource/plugins/';
-			$folderPlugins = array_diff(scandir($pathPlugins), array('.', '..'));
+			if (file_exists($pathPlugins)) {
+				$folderPlugins = array_diff(scandir($pathPlugins), array('.', '..'));
+			}
 
 			// Append Plugins all css in folder Modules/resource/NAME_PLUGINS/css
 			
-			foreach ($folderPlugins as $item) {
-				$pathPluginsCss = DIR_MODULES . $_web['uri']['mod'] .'/resource/plugins/'.$item.'/css/';
-				$filesPluginsCss = array_diff(scandir($pathPluginsCss), array('.', '..'));
-				if (!empty($filesPluginsCss)) {
-					$htmlCssPlugins = '<!--START LOAD PLUGINS CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
-					foreach ($filesPluginsCss as $value) {
-						$info = pathinfo($value);
-						if ($info["extension"] == "css") { 
-							$htmlCssPlugins .= '<link rel="stylesheet" href="'.base_url().'modules/'.$_web['uri']['mod'] .'/resource/plugins/'.$item.'/css/'.$value.'">';
-						}
+			if (!empty($folderPlugins)) {
+				foreach ($folderPlugins as $item) {
+					$pathPluginsCss = DIR_MODULES . $_web['uri']['mod'] .'/resource/plugins/'.$item.'/css/';
+					if (file_exists($pathPluginsCss)) {
+						$filesPluginsCss = array_diff(scandir($pathPluginsCss), array('.', '..'));
 					}
-					$htmlCssPlugins .= '<!--END LOAD PLUGINS CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
-					$this->_appendPluginsModCss = $htmlCssPlugins;
-				}
-
-
-				// Append Plugins all js in folder Modules/resource/NAME_PLUGINS/js
-				$pathPluginsJs = DIR_MODULES . $_web['uri']['mod'] .'/resource/plugins/'.$item.'/js/';
-				$filesPluginsJs = array_diff(scandir($pathPluginsJs), array('.', '..'));
-				if (!empty($filesPluginsJs)) {
-					$htmlJsPlugins = '<!--START LOAD PLUGINS JS MODULES '.strtoupper($_web['uri']['mod']).'-->';
-					foreach ($filesPluginsJs as $value) {
-						$info = pathinfo($value);
-						if ($info["extension"] == "js") { 
-							$htmlJsPlugins .= '<script type="text/javascript" src="'.base_url().'modules/'.$_web['uri']['mod'] .'/resource/plugins/'.$item.'/js/'.$value.'"></script>';
+					if (!empty($filesPluginsCss)) {
+						$htmlCssPlugins = '<!--START LOAD PLUGINS CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
+						foreach ($filesPluginsCss as $value) {
+							$info = pathinfo($value);
+							if ($info["extension"] == "css") { 
+								$htmlCssPlugins .= '<link rel="stylesheet" href="'.base_url().'modules/'.$_web['uri']['mod'] .'/resource/plugins/'.$item.'/css/'.$value.'">';
+							}
 						}
+						$htmlCssPlugins .= '<!--END LOAD PLUGINS CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
+						$this->_appendPluginsModCss = $htmlCssPlugins;
 					}
-					$htmlJsPlugins .= '<!--END LOAD PLUGINS CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
-					$this->_appendPluginsModJs = $htmlJsPlugins;
+
+
+					// Append Plugins all js in folder Modules/resource/NAME_PLUGINS/js
+					$pathPluginsJs = DIR_MODULES . $_web['uri']['mod'] .'/resource/plugins/'.$item.'/js/';
+					if (file_exists($pathPluginsJs)) {
+						$filesPluginsJs = array_diff(scandir($pathPluginsJs), array('.', '..'));
+					}
+					if (!empty($filesPluginsJs)) {
+						$htmlJsPlugins = '<!--START LOAD PLUGINS JS MODULES '.strtoupper($_web['uri']['mod']).'-->';
+						foreach ($filesPluginsJs as $value) {
+							$info = pathinfo($value);
+							if ($info["extension"] == "js") { 
+								$htmlJsPlugins .= '<script type="text/javascript" src="'.base_url().'modules/'.$_web['uri']['mod'] .'/resource/plugins/'.$item.'/js/'.$value.'"></script>';
+							}
+						}
+						$htmlJsPlugins .= '<!--END LOAD PLUGINS CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
+						$this->_appendPluginsModJs = $htmlJsPlugins;
+					}
+
+
 				}
-
-
 			}
 
 

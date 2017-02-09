@@ -334,7 +334,13 @@ $option_orderBy    = array(
                             foreach ($this->data['arr_list_selected'] as $key => $value) { ?>
                             <li class="select-product" data-id="<?php echo $value['id'];?>">
                                 <div class="imgs">
-                                    <img src="<?php echo base_url().'tmp/cdn/'.$value['image']; ?>" alt="<?php echo $value['name'];?>"/>
+                                    <?php 
+                                    if ($value['image']!=null) { ?>
+                                        <img src="<?php echo base_url().'tmp/cdn/'.$value['image']; ?>" alt="<?php echo $value['name'];?>"/>
+                                    <?php 
+                                    }
+                                     ?>
+                                    
                                 </div>
                                 <a><?php echo $value['name'];?></a>
                             </li>

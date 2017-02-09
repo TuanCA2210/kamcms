@@ -57,8 +57,7 @@ if (isset($this->data['flash_success'])) {
                                           </div><!-- /.col-lg-6 -->
                                           <div class="col-lg-4"></div>
                                           <div class="col-lg-4" style="text-align: right;">
-                                            <a class="btn btn-success" data-toggle="modal" data-target="#modelAdd" data-href="<?php echo base_url().'product/manager/add';?>"><i class="fa fa-plus-circle"></i> <?php echo lang('add_product');
-?></a>
+                                            <a class="btn btn-success" data-toggle="modal" data-target="#modelAdd" data-href="<?php echo base_url().'product/manager/add';?>"><i class="fa fa-plus-circle"></i> Thêm danh mục hiển thị</a>
                                             <!-- Single button -->
                                             <div class="btn-group">
                                               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

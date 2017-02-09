@@ -16,7 +16,9 @@ class View{
 
 			// append file js in folder Modules/resource/js
 			$pathJs = DIR_MODULES . $_web['uri']['mod'] .'/resource/js';
-			$filesJs = array_diff(scandir($pathJs), array('.', '..'));
+			if (file_exists($pathJs)) {
+				$filesJs = array_diff(scandir($pathJs), array('.', '..'));
+			}
 			if (!empty($filesJs)) {
 				$htmlJs = '<!--START LOAD JS MODULES '.strtoupper($_web['uri']['mod']).'-->';
 				foreach ($filesJs as $value) {
@@ -31,7 +33,9 @@ class View{
 
 			// append file css in folder Modules/resource/css
 			$pathCss = DIR_MODULES . $_web['uri']['mod'] .'/resource/css';
-			$filesCss = array_diff(scandir($pathCss), array('.', '..'));
+			if (file_exists($pathCss)) {
+				$filesCss = array_diff(scandir($pathCss), array('.', '..'));
+			}
 			if (!empty($filesCss)) {
 				$htmlCss = '<!--START LOAD CSS MODULES '.strtoupper($_web['uri']['mod']).'-->';
 				foreach ($filesCss as $value) {

@@ -71,6 +71,10 @@ $(".ui-sortable").sortable({
 
 
 
+
+
+
+
 $('body').on('click', '.choose_img_list', function(event) {
     event.preventDefault();
     var body_img = $(this).parents('.modal-image-choose').find('.modal-body');
@@ -299,6 +303,104 @@ $('body').on('click', '.add_brand', function() {
         
     }
 });
+
+
+// load image brand
+
+$('body').on('dblclick', '#myModalBrandImg .media-col img.img-folder-media', function(event) {
+    event.preventDefault();
+    var check_folder = $(this).parent('.media-col').attr('data-folder');
+    var directory = $(this).parents('#myModalBrandImg').find('#directory').val();
+    $.ajax({
+        url: baseUrl+'settings/settings/openDirectory',
+        type: 'POST',
+        dataType: 'json',
+        data: {check_folder: check_folder,directory:directory},
+    })
+    .done(function(data) {
+        //console.log(current_folder);
+        if (data.status==true) {
+            $('#myModalBrandImg').find('.modal-body').fadeOut(100, function(){
+                $('#myModalBrandImg').find('.modal-body').html(data.html).fadeIn();
+            });
+        }
+    });
+    
+    
+});
+
+$('body').on('dblclick', '#myModalBrandImg #back_folder', function(event) {
+    event.preventDefault();
+    var current_folder = $(this).parent('.modal-body');
+    var directory = $(this).parents('#myModalBrandImg').find('#directory').val();
+    $.ajax({
+        url: baseUrl+'settings/settings/backDirectory',
+        type: 'POST',
+        dataType: 'json',
+        data: {back: 'true',directory:directory},
+    })
+    .done(function(data) {
+        if (data.status==true) {
+            current_folder.fadeOut(100, function(){
+                current_folder.html(data.html).fadeIn();
+                //$('#loadMedia').html(data.html).fadeIn().delay(600);
+            });
+        }
+
+    });
+    
+});
+
+// get id brand 
+$('body').on('click', '.getIdBrand', function(event) {
+    event.preventDefault();
+    $('.choose_img_list_brand').attr('data-id',$(this).parents('li').find('.del_brand').attr('data-id'));
+});
+
+// add brand Avatar
+$('body').on('click', '.choose_img_list_brand', function(event) {
+    event.preventDefault();
+    var brand_id = $(this).attr('data-id');
+    var body_img = $(this).parents('.modal-image-choose-brand').find('.modal-body');
+    var list = new Array();
+    body_img.find('.img-active').each(function(){
+        list.push($(this).attr('data-src'));
+    });
+    //console.log(list);
+    if (list.length == 0) {
+        toastr["error"](body_img.attr('data-mess-one'));
+    }else if(list.length > 1){
+        toastr["error"](body_img.attr('data-mess-two'));
+    }else{
+        onLoading();
+        body_img.find('.img-load-folder').each(function(){
+            $(this).removeClass('img-active');
+        });
+        $(this).parents('.modal-image-choose').find('.modal').modal('hide');
+        $.ajax({
+            url: baseUrl+'product/product/addImagesBrand',
+            type: 'POST',
+            dataType: 'json',
+            data: {brand_id:brand_id,list: list},
+        })
+        .done(function(data) {
+            if (data.status==true) {
+                toastr["success"](data.mess);   
+                $('.avatar_brand').each(function(index, el) {
+                    if($(this).attr('data-id')==brand_id){
+                        $(this).html('<img src="'+data.avatar+'" alt="">');
+                    }
+                });
+                
+            }
+            $('#myModalBrandImg').modal('hide');
+            offLoading();
+        });
+    }
+});
+
+
+
 
 // Delete Brand 
 

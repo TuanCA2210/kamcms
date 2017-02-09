@@ -66,9 +66,22 @@
 			                		foreach ($this->data['data_brand'] as $key => $value) {?>
 			                			<li>
 					                        <?php echo $value['name'];?>
+					                        
 					                        <span class="input-group-btn del_brand" data-id="<?php echo $value['id'];?>">
 												<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
 											</span>
+											<span class="">
+					                        	<a href="javascript:void(0)" class="getIdBrand" data-toggle="modal" data-target="#myModalBrandImg"><i class="fa fa-cloud-upload" aria-hidden="true"></i></a>
+					                        </span>
+					                        <span class="avatar_brand" data-id="<?php echo $value['id'];?>">
+					                        <?php 
+					                        if ($value['avatar']!=null) { ?>
+						                        <img src="<?php echo Image(base_url(),base_url().'tmp/cdn/'.$value['avatar'],25,25,0);?>" alt="">
+					                        <?php 
+					                        }
+					                         ?>
+					                        </span>
+					                        
 					                    </li>
 			                	<?php
 			                		}
@@ -87,4 +100,46 @@
                 </div>
               </div>
     </div><!--END MODAL Choose Images List-->
+<style>
+	@media (min-width: 768px){
+		.modal-image-choose-brand .modal-dialog {
+		    width: 670px;
+		    margin: 30px auto;
+		}
+	}
+	.modal-image-choose-brand .modal-body {
+	    height: 450px;
+	    overflow-y: scroll;
+	}
+</style>
+    <div class="modal-image-choose-brand">
+	    <!-- Modal Choose Images List -->
+	    <div class="modal fade" id="myModalBrandImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	              <div class="modal-dialog" role="document">
+	                <div class="modal-content">
+	                  <div class="modal-header">
+	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                    <h4 class="modal-title" id="label-model-folder-img">
+	                       <?php echo lang('choose_logo'); ?>
+	                    </h4>
+	                  </div>
+	                  <div class="modal-body" data-mess-one="<?php echo lang('warning_choose_img');?>" data-mess-two="<?php echo lang('warning_choose_img_one');?>" data-title="list-images-product">
+	                   <?php
+	                    $dir          = DIR_TMP.'cdn/';
+	                      $html = listAllFolderChooseImage($dir);
+	                      echo $html;
+
+	                    ?>
+	                  </div>
+	                  <div class="modal-footer">
+	                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close');?></button>
+	                    <button type="button" class="btn btn-primary choose_img_list_brand"><?php echo lang('choose');?></button>
+	                  </div>
+	                </div>
+	              </div>
+	    </div><!--END MODAL Choose Images List-->
+	</div>
+
+
+
 </div>

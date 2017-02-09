@@ -40,6 +40,8 @@ $_L['create_menu_link']         =  'Tạo mới một kết cấu liên kết';
 $_L['edit_menu_link']         	=  'Chỉnh sửa một kết cấu liên kết';
 $_L['time_send']         		=  'Thời gian gửi';
 $_L['time']         			=  'Thời gian';
+$_L['vietnames']         		=  'Tiếng việt';
+$_L['english']         			=  'Tiếng anh';
 
 
 
@@ -280,6 +282,7 @@ $_L['meta_keyword']				= 'Meta từ khóa';
 $_L['meta_description']			= 'Meta mô tả';
 $_L['meta_keyword_required']	= 'Các từ khóa cách nhau bằng phím Tab';
 $_L['meta_description_required']= 'Meta mô tả (Tối đa 400 ký tự)';
+$_L['manager_show_index']		= 'Quản trị hiển thị trang chủ';
 
 
 

@@ -356,6 +356,22 @@ class ProductController extends Controller{
 		}
 
 	}
+	public function addImagesBrand(){
+		if (isset($_POST['brand_id']) && is_numeric($_POST['brand_id'])) {
+			$id = $_POST['brand_id'];
+			$img = $_POST['list'][0];
+			$data = array(
+				'avatar'	=> $img
+			);
+			$this->modelBrand->update($data,$id);
+			$data_mess = array(
+				'status'	=> true,
+				'mess'		=> lang('logo_update_success'),
+				'avatar'		=> Image(base_url(),base_url().'tmp/cdn/'.$img,25,25,0)
+			);
+			echo json_encode($data_mess);
+		}
+	}
 	public function ajaxLoadMore(){
 		//$data = array();
 		$status = false;

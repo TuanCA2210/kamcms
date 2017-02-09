@@ -52,7 +52,6 @@
                                           </div><!-- /.col-lg-6 -->
                                           <div class="col-lg-4"></div>
                                           <div class="col-lg-4" style="text-align: right;">
-                                            <a class="btn btn-success" href="<?php echo base_url().'posts/posts/add';?>"><i class="fa fa-plus-circle"></i> <?php echo lang('add_pages');?></a>
 
                                             <!-- Single button -->
                                             <div class="btn-group">

@@ -57,7 +57,7 @@ class PagesController extends Controller{
 	public function save(){
 		if (isset($_POST['submit'])) {
 			$title = htmlentities($this->input->post('title'),ENT_QUOTES);
-			$content = htmlentities($this->input->post('content'),ENT_QUOTES);
+			$content = $this->input->post('content');
 			$note = htmlentities($this->input->post('note'),ENT_QUOTES);
 			$thumbnail = trim(addslashes($this->input->post('hidden_thumb_pages')));
 			if (isset($_POST['show_contact_form'])) {
@@ -112,27 +112,27 @@ class PagesController extends Controller{
 		$html = '<form action="" method="POST" role="form">
 				    <div class="row">
 				        <div class="col-xs-12 col-md-6">
-				            <label for="">Họ và tên</label>
+				            <label for="">'.lang('fullname').'</label>
 				            <div class="form-group">
-				                <input type="text" placeholder="Họ tên" class="form-control" id="" name="name" required="">
+				                <input type="text" placeholder="'.lang('fullname').'" class="form-control" id="" name="name" required="">
 				            </div>
 
-				            <label for="">Số điện thoại</label>
+				            <label for="">'.lang('phone').'</label>
 				            <div class="form-group">
-				                <input name="phone" placeholder="Số điện thoại" class="form-control" type="text" required="">
+				                <input name="phone" placeholder="'.lang('phone').'" class="form-control" type="text" required="">
 				            </div>
 
-				            <label for="">Email</label>
+				            <label for="">'.lang('email').'</label>
 				            <div class="form-group">
-				                <input name="email" placeholder="E-Mail" class="form-control" type="email" required="">
+				                <input name="email" placeholder="'.lang('email').'" class="form-control" type="email" required="">
 				            </div>
 				            <button type="submit" class="btn btn-primary checkout-info-submit-button" name="send_mess">GỬI TIN</button>
 				        </div>
 
 				        <div class="col-xs-12 col-md-6">
-				            <label for="">Ghi chú</label>
+				            <label for="">'.lang('content').'</label>
 				            <div class="form-group">
-				                <textarea class="form-control" name="mess" placeholder="Nội dung" required=""></textarea>
+				                <textarea class="form-control" name="mess" placeholder="'.lang('content').'" required=""></textarea>
 				            </div>
 				        </div>
 				    </div>
@@ -145,6 +145,7 @@ class PagesController extends Controller{
 		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			if ($this->modelPages->checkId($_GET['id']) == FALSE) {
 				$this->view->data['data']=$this->modelPages->getUserById($_GET['id']);
+				//$this->view->data['data_en']=$this->modelPages->getUserByIdEng($_GET['id']);
 				$this->view->render('pages_edit');
 			}
 		}
