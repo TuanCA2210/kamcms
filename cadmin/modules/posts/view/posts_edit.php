@@ -64,9 +64,9 @@
 
 			                    </div>
 			                    <div class="form-group ">
-			                        <label for="name" class="control-label required"><?php echo lang('tags');?></label>
+			                        <label for="name" class="control-label required"><?php echo lang('tags');?> (<?php echo lang('meta_keyword_required');?>)</label>
 			                        <input class="form-control" id="tags" placeholder="<?php echo lang('tags'); ?>" value="<?php if(isset($this->data['data']['tags'])) echo $this->data['data']['tags']; ?>" name="tags" type="text">
-			                        <span><?php echo lang('note_chuy');?></span>
+			                        <span>/span>
 			                    </div>
 
 

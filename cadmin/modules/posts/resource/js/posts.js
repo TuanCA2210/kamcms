@@ -1,3 +1,12 @@
+$('input[name="tags"]').tagsInput({
+    width: 'auto',
+    height: '100px',
+    'onAddTag': function () {
+        //alert(1);
+    },
+});
+
+
 $('body').on('dblclick', '#myModalPages .media-col img.img-folder-media', function(event) {
 	event.preventDefault();
 	var check_folder = $(this).parent('.media-col').attr('data-folder');

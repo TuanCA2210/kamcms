@@ -48,6 +48,11 @@ RewriteRule ^checkout$ index.php?mod=product&controller=product&action=checkout 
 #done
 RewriteRule ^done$ index.php?mod=product&controller=product&action=done [L,QSA]
 
+# Default pages 
+
+RewriteRule ^pages/pages/detail/([0-9]+)$ index.php?mod=pages&controller=pages&action=detail&id=$1 [L,QSA]
+
+
 # Custom pages 
 
 RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id=9 [L,QSA]
@@ -57,3 +62,5 @@ RewriteRule ^lien-he\.htm$ index.php?mod=pages&controller=pages&action=detail&id
 
 RewriteRule ^tieng-anh\.htm$ index.php?mod=pages&controller=pages&action=detail&id=10 [L,QSA]
 RewriteRule ^gioi-thieu\.htm$ index.php?mod=pages&controller=pages&action=detail&id=11 [L,QSA]
+RewriteRule ^hayhaylam\.htm$ index.php?mod=pages&controller=pages&action=detail&id=12 [L,QSA]
+RewriteRule ^contact\.htm$ index.php?mod=pages&controller=pages&action=detail&id=12 [L,QSA]

@@ -1,0 +1,18 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalcon.dll' - %1 is not a valid Win32 application.
+ in Unknown on line 0
+<?php
+class WidgetsController extends Controller {
+	public $modelWidgets;
+	public function __construct() {
+		parent::__construct();
+		$this->modelWidgets = $this->loadModel('Widgets');
+
+	}
+	public function index() {
+		global $_web;
+
+		$this->view->render('widgets_index');
+	}
+
+}

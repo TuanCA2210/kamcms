@@ -279,6 +279,7 @@ class PagesController extends Controller {
 			$new_root   = str_replace("/cadmin/", "/", $new_root);
 			$htaccess   = file($new_root.".htaccess");
 			$savestring = "";
+			//dd($htaccess);
 			foreach ($htaccess as $key => $value) {
 				if (preg_match("/".$old_url."/", $value, $matches)) {// Tìm kiếm đường link cũ đã lưu trong CSDL có trùng với dòng trong file .htaccess ko? nếu mà có trùng thì thay thế dòng đó bằng đường dẫn mới
 					$value       = str_replace("RewriteRule ^".$old_url."\.htm$ index.php?mod=pages&controller=pages&action=detail&id=".$id." [L,QSA]", "RewriteRule ^".$new_url."\.htm$ index.php?mod=pages&controller=pages&action=detail&id=".$id." [L,QSA]", $value);
