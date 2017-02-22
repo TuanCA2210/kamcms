@@ -28,15 +28,15 @@
             <i class="fa fa-cogs" aria-hidden="true"></i> <span><?php echo lang('options'); ?></span>
           </a>
         </li>
-        <li class="treeview <?php if($_web['uri']['mod']=='menu') echo 'active';?>">
-          <a href="<?php echo base_url().'menu/position/index';?>">
-            <i class="fa fa-bars" aria-hidden="true"></i> <span><?php echo lang('menu'); ?></span>
+        <li class="treeview <?php if($_web['uri']['mod']=='menu' || $_web['uri']['mod']=='widgets') echo 'active';?>">
+          <a href="#">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span><?php echo lang('appearance'); ?> &nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></span>
           </a>
-        </li>
-        <li  class="treeview <?php if($_web['uri']['mod']=='widgets') echo 'active';?>">
-          <a href="<?php echo base_url().'widgets/widgets/index';?>">
-            <i class="fa fa-th"></i> <span><?php echo lang('widgets'); ?></span>
-          </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo base_url().'menu/position/index';?>"><?php echo lang('menu');?></a></li>
+                <li><a href="<?php echo base_url().'widgets/widgets/index';?>"><?php echo lang('widgets');?></a></li>
+              </ul>
         </li>
         <li class="treeview <?php if($_web['uri']['mod']=='banners') echo 'active';?>">
           <a href="<?php echo base_url().'banners/banners/index';?>">

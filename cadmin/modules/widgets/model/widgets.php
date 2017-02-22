@@ -1,69 +1,42 @@
 <?php 
 class Widgets{
-	private $pages;
+	private $widgets;
 	public function __construct(){
 		global $_web;
 		$this->lang        = $_web['lang'];
-		$this->pages     = new system\Model($this->lang.'_pages');
-		$this->pages_en     = new system\Model('en_pages');
+		$this->widgets     = new system\Model($this->lang.'_widgets');
 	}
-	public function getPages(){
-		$result  = $this->pages->get();
-		return $result;
-	}
-	public function getPagiPages($start,$limit){
-		$select = $this->lang."_pages.*, user.id as id_user, user.username";
-		$this->pages->join('user', 'user.id = '.$this->lang.'_pages.author_create', 'LEFT');
-		$result  = $this->pages->get(null, array($start,$limit),$select);
-		//$result  = $this->pages->rawQuery($sql);
+	public function getWidgets(){
+		$this->widgets->orderBy('sort','ASC');
+		$result  = $this->widgets->get();
 		return $result;
 	}
 	public function update($data,$id){
-		$this->pages->where('id',$id);
-		$this->pages->update($data);
+		$this->widgets->where('id',$id);
+		$this->widgets->update($data);
 	}
 	public function delete($id){
-		$this->pages->where('id',$id);
-		$this->pages->delete();
+		$this->widgets->where('id',$id);
+		$this->widgets->delete();
 	}
 	public function insertData($data_insert){
-		$this->pages->insert($data_insert);
+		$id = $this->widgets->insert($data_insert);
+		return $id;
 	}
-
+	public function count(){
+		$result  = $this->widgets->num_rows();
+		return $result;
+	}
 
 
 	public function checkId($id){
-		$this->pages->where('id',$id);
-		$result  = $this->pages->num_rows();
+		$this->widgets->where('id',$id);
+		$result  = $this->widgets->num_rows();
 		if ($result>0) {
 			return FALSE;
 		}else{
 			return TRUE;
 		}
-	}
-	
-	public function getUserById($id){
-		$this->pages->where('id',$id);
-		$result  = $this->pages->getOne();
-		return $result;
-	}
-	public function getUserByIdEng($id){
-		$this->pages_en->where('id_lang',$id);
-		$result  = $this->pages_en->getOne();
-		return $result;
-	}
-	
-	public function findSearch($search){
-		$select = $this->lang."_pages.*, user.id as id_user, user.username";
-		$this->pages->where($this->lang.'_pages.title', '%'.$search.'%', 'like');
-		$this->pages->join('user', 'user.id = '.$this->lang.'_pages.author_create', 'LEFT');
-		$result  = $this->pages->get(null,null,$select);
-		return $result;
-	}
-	public function dellWhereInArray($name_id){
-		$name = implode(",",$name_id);
-		$sql = "DELETE FROM ".$this->lang."_pages WHERE id IN (".$name.")";
-		$this->pages->rawQuery($sql);
 	}
 
 }

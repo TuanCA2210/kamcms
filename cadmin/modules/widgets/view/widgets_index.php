@@ -33,27 +33,6 @@
                                                     </div>';
                                         }
                                         ?>
-                                        <div class="widget">
-                                            <div class="widget-title">
-                                                <h4>
-                                                    <i class="fa fa-question-circle"></i>
-                                                    <span><?php echo lang('edit_menu_link');?></span>
-                                                </h4>
-                                            </div>
-                                            <div class="widget-body">
-                                                <div class="form-group">
-                                                    <label><?php echo lang('name_menu')?></label>
-                                                    <input type="text" name="title_menu" id="title_menu" class="form-control" value="<?php if(isset($this->data['position_data']['title'])) echo $this->data['position_data']['title'];?>" autocomplete="off">
-                                                    <input type="hidden" name="position" id="position" class="form-control" value="<?php if(isset($this->data['position'])) echo $this->data['position'];?>" autocomplete="off">
-                                                </div>
-
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-transparent btn-success btn-circle btn-sm" id="submit_update_name" type="button">
-                                                                    <i class="fa fa-check"></i> <?php echo lang('save');?>
-                                                                </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="col-md-4">
 
@@ -62,30 +41,84 @@
                                             <div class="widget-title closed">
                                                 <h4>
                                                     <i class="fa fa-link" aria-hidden="true"></i>
-                                                    <span><?php echo lang('add_link');?></span>
+                                                    <span><?php echo lang('social');?></span>
                                                 </h4>
                                                 <div class="tools">
                                                     <a href="#" class="expand"></a>
                                                 </div>
                                             </div>
                                             <div class="widget-body" style="display: none;">
-                                                <div class="box-links-for-menu" data-type="<?php echo lang('custom_link');?>">
+                                                <div class="box-links-for-widget" data-type="1">
 
                                                             <div class="form-group">
-                                                                <label for="node-title"><?php echo lang('title');?></label>
-                                                                <input type="text" class="form-control" id="node-title" autocomplete="false">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="node-url">Url</label>
-                                                                <input type="text" class="form-control" id="node-url" placeholder="http://" autocomplete="false">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="node-css">CSS class</label>
-                                                                <input type="text" class="form-control" id="node-css" autocomplete="false">
+                                                                <label for="node-url">Name</label>
+                                                                <select name="social_fb" id="social_fb"  class="form-control">
+                                                                    <option value="facebook">Facebook</option>
+                                                                </select>
                                                             </div>
                                                             <div class="text-right">
                                                                 <div class="btn-group btn-group-devided">
-                                                                    <a href="#" class="btn-add-to-menu-custom-link btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_menu');?></span></a>
+                                                                    <a href="#" class="btn-add-widget btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_sidebar');?></span></a>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="widget">
+                                            <div class="widget-title closed">
+                                                <h4>
+                                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                                    <span><?php echo lang('recent_posts');?></span>
+                                                </h4>
+                                                <div class="tools">
+                                                    <a href="#" class="expand"></a>
+                                                </div>
+                                            </div>
+                                            <div class="widget-body" style="display: none;">
+                                                <div class="box-links-for-widget" data-type="2">
+                                                            <div class="form-group">
+                                                                <label for="node-url">Posts</label>
+                                                                <select name="recent" id="recent"  class="form-control">
+                                                                    <option value="new">New Top Recent post</option>
+                                                                    <option value="old">Old Top Recent post</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="node-url">Number post</label>
+                                                                <select name="number" id="number" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="15">15</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <div class="btn-group btn-group-devided">
+                                                                    <a href="#" class="btn-add-widget btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_sidebar');?></span></a>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                        <div class="widget">
+                                            <div class="widget-title closed">
+                                                <h4>
+                                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                                    <span><?php echo lang('search');?></span>
+                                                </h4>
+                                                <div class="tools">
+                                                    <a href="#" class="expand"></a>
+                                                </div>
+                                            </div>
+                                            <div class="widget-body" style="display: none;">
+                                                <div class="box-links-for-widget" data-type="3">
+                                                            <div class="text-right">
+                                                                <div class="btn-group btn-group-devided">
+                                                                    <a href="#" class="btn-add-widget btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_sidebar');?></span></a>
                                                                 </div>
                                                             </div>
                                                 </div>
@@ -104,55 +137,18 @@
                                                 </div>
                                             </div>
                                             <div class="widget-body" style="display: none;">
-                                                <div class="box-links-for-menu">
+                                                <div class="box-links-for-widget" data-type="4">
                                                             
-                                                            <?php 
-
-                                                            listCategories($this->data['categories']);
-
-                                                            ?>
-                                                            <div class="text-right">
-                                                                <div class="btn-group btn-group-devided">
-                                                                    <a href="#" class="btn-add-to-menu-cate btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_menu');?></span></a>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <label for="node-url">Name</label>
+                                                                <select name="" id=""  class="form-control">
+                                                                    <option value="cate_post">Categories posts</option>
+                                                                    <option value="cate_product">Categories product</option>
+                                                                </select>
                                                             </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="widget">
-                                            <div class="widget-title closed">
-                                                <h4>
-                                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                                    <span><?php echo lang('pages');?></span>
-                                                </h4>
-                                                <div class="tools">
-                                                    <a href="#" class="expand"></a>
-                                                </div>
-                                            </div>
-                                            <div class="widget-body" style="display: none;">
-                                                <div class="box-links-for-menu">
-
-                                                            
-                                                            <?php 
-                                                            echo '<ul class="list-item" data-type="'.lang('pages').'">'; 
-                                                            if (!empty($this->data['pages'])) {
-                                                                foreach ($this->data['pages'] as $value) {
-                                                                    if (isset($value['old_url']) && $value['old_url']) {
-                                                                       $old_link = replaceAdmin(base_url()).$value['old_url'].'.htm';
-                                                                    }else{
-                                                                        $old_link = replaceAdmin(base_url()).'pages/pages/detail/'.$value['id'];
-                                                                    }
-                                                                    echo "<li><a data-title='".$value['title']."' data-id='".$value['id']."' data-link='".$old_link."' href='#'>".$value['title']."</a></li>";
-                                                                }
-                                                            }
-                                                            echo '</ul>';
-
-                                                            ?>
                                                             <div class="text-right">
                                                                 <div class="btn-group btn-group-devided">
-                                                                    <a href="#" class="btn-add-to-menu btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_menu');?></span></a>
+                                                                    <a href="#" class="btn-add-widget btn btn-success btn-sm btn-circle btn-transparent active"><span class="text"><i class="fa fa-plus"></i> <?php echo lang('add_to_sidebar');?></span></a>
                                                                 </div>
                                                             </div>
                                                 </div>
@@ -164,23 +160,58 @@
 
 
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         
                                         <div class="widget">
                                             <div class="widget-title opened">
                                                 <h4>
                                                     <i class="fa fa-bars font-dark"></i>
-                                                    <span><?php echo lang('menu_structure');?></span>
+                                                    <span> Primary sidebar</span>
                                                 </h4>
                                             </div>
                                             <div class="widget-body" style="display: block;min-height: 280px;height: auto;">
                                                 <div class="nestable-menu" id="nestable">
-                                                    <ol class="dd-list">
-
+                                                    <ol class="dd-list dd-list-widgets">
                                                         <?php 
-                                                        dequy($this->data['menu'],$parent=0,$text=0);
+                                                        if (!empty($this->data['data'])) {
+                                                            foreach ($this->data['data'] as $key => $value) { ?>
+                                                                    <li style="margin-left:20px;" class="dd-item post-item closed" id="listId_<?php echo $value['id'];?>" data-id="<?php echo $value['id'];?>">
+                                                                        <div class="dd-handle">xxxx</div>
+                                                                        <div class="dd-content">
+                                                                            <span class="text pull-left">&nbsp;<?php echo $value['title'];?></span>
+                                                                            <span class="text pull-right">Primary sidebar</span>
+                                                                            <a href="#" title="" class="show-item-details"><i class="fa fa-angle-down"></i></a>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <div class="item-details">
+
+                                                                                    <label class="pad-bot-5">
+                                                                                        <span class="text pad-top-5 dis-inline-block"><?php echo lang('title');?></span>
+                                                                                        <input type="text" id="title" name="title" value="<?php echo $value['title'];?>" data-old="<?php echo $value['title'];?>" class="form-control"/>
+                                                                                    </label>
+                                                                                    <div class="text-right button_update_widgets">
+                                                                                        <a href="#" class="btn btn-info btn-sm btn-update-widget">
+                                                                                            <i class="fa fa-retweet" aria-hidden="true"></i>&nbsp;
+                                                                                            <?php echo lang('update');?></a>
+
+                                                                                        <a href="#" class="btn btn-danger btn-sm btn-remove-widget">
+                                                                                            <i class="fa fa-times" aria-hidden="true"></i>&nbsp;
+                                                                                            <?php echo lang('remove_widget');?></a>
+
+                                                                                        <a href="#" class="btn btn-success btn-sm btn-cancel-widget"><?php echo lang('cancel');?></a>
+                                                                                    </div>
+
+                                                                        </div>
+                                                                    </li>
+                                                        <?php 
+                                                            }
+                                                        }
                                                         ?>
                                                         
+
+                                                        
+
+
                                                     </ol>
 
                                                 </div>
@@ -193,7 +224,7 @@
 
 
                                 <!-- Modal Confirm Menu -->
-                                <div id="myModalConfirmMenu" class="modal fade" role="dialog">
+                                <div id="myModalConfirmWidgets" class="modal fade" role="dialog">
                                   <div class="modal-dialog">
 
                                     <!-- Modal content-->
@@ -207,7 +238,7 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo lang('cancel');?></button>
-                                        <a href="javascript:void(0)" class="btn btn-success accept_del_menu"><?php echo lang('agree');?></a>
+                                        <a href="javascript:void(0)" class="btn btn-success accept_del_widgets" data-id=""><?php echo lang('agree');?></a>
                                         
                                       </div>
                                     </div>

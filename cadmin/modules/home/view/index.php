@@ -85,13 +85,13 @@
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
-        <section class="col-lg-12 connectedSortable">
+        <section class="col-lg-6 connectedSortable">
           <!-- Custom tabs (Charts with tabs)-->
           <div class="nav-tabs-custom">
             <!-- Tabs within a box -->
             <div class="tab-content no-padding">
               <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px;">
+              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 400px;">
                 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                 <script type="text/javascript">
                   google.load("visualization", "1", {packages:["corechart"]});
@@ -114,7 +114,7 @@
                     chart.draw(data, options);
                   }
                 </script>
-                <div id="chart_div" style="width: 100%; height: 500px;"></div>
+                <div id="chart_div" style="width: 100%; height: 400px;"></div>
               </div>
             </div>
           </div>
@@ -127,15 +127,15 @@
         </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-12 connectedSortable">
+        <section class="col-lg-6 connectedSortable">
 
 
           <!-- solid sales graph -->
-          <div class="box box-solid bg-teal-gradient">
+          <div class="box box-solid bg-teal-gradient" style="height: 400px;overflow-y: scroll;">
              <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
                 <div class="tab-content no-padding">
-                  <div class="chart tab-pane active" id="revenue-chart-table">
+                  <div class="chart tab-pane active" id="revenue-chart-table"  >
                     <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -159,7 +159,7 @@
                                 <td><?php echo $i;?></td>
                                 <td><?php echo $value[0];?></td>
                                 <td><?php echo $value[2];?></td>
-                                <td><a href="<?php echo replaceAdmin(base_url()).str_replace("/", "",$value[1]);?>" target="_blank"><?php echo $value[1];?></a></td>
+                                <td><a href="<?php echo replaceAdmin(base_url()).$value[1];?>" target="_blank"><?php echo $value[1];?></a></td>
                                 <td><?php echo $value[4];?></td>
                                 <td><?php echo $value[5];?></td>
                                 <td><?php echo $value[6];?></td>

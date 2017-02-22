@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 10, 2017 at 05:49 AM
+-- Generation Time: Feb 22, 2017 at 05:40 AM
 -- Server version: 5.5.52-MariaDB
 -- PHP Version: 5.6.27
 
@@ -12406,6 +12406,29 @@ CREATE TABLE `en_product_rate` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `en_widgets`
+--
+
+CREATE TABLE `en_widgets` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `type` int(10) NOT NULL COMMENT '1.social 2.post 3.search 4.category',
+  `link` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `css_class` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon_font` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `id_lang` int(11) DEFAULT NULL,
+  `sort` varchar(45) DEFAULT NULL,
+  `options` varchar(255) DEFAULT NULL,
+  `number` int(10) DEFAULT NULL,
+  `position` int(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `frontend_user`
 --
 
@@ -12700,7 +12723,71 @@ CREATE TABLE `vi_comments_posts` (
 
 INSERT INTO `vi_comments_posts` (`id`, `username`, `email`, `content`, `post_id`, `create_time`, `status`) VALUES
 (15, 'cuongle.dev', 'cuongle.dev@gmail.com', 'Hay lắm.', 1, '1477389955', 1),
-(16, 'Lê Ngọc Cường', 'cuongleon630@gmail.com', 'Bài viết hay không chê vào đâu được.', 1, '1477390076', 1);
+(16, 'Lê Ngọc Cường', 'cuongleon630@gmail.com', 'Bài viết hay không chê vào đâu được.', 1, '1477390076', 1),
+(171, 'GregoryDug', 'vip.devunin@mail.ru', 'Александр Овечкин в матче против «Виннипега» забросил две шайбы и сделал результативный пас на Никласа Бекстрема и таким образом стал первой звездой игрового дня в НХЛ. \r\nhttp://www.alt.kp.ru/daily/26603/3619231/ \r\nhttp://www.alt.kp.ru/daily/26603/3619231/ - Новость', 1, '1486739850', 0),
+(172, 'Robertovusty', 'zaw2705678@gmail.com', 'Здравствуйте! Хочу предоставить вам довольно интересную программу \r\n \r\nMix Poster 4.0.1.3 (craked) \r\nУникальная программа для публикаций чужих популярных сообщений у себя в группе ВК \r\n \r\nhttp://ktoit.com/wp-content/uploads/2014/02/mixposter2-1.png \r\n \r\nПо настоящему нужный софт делает возможнымразмещать в своих группах в Контактес разных чужих групп популярные материалы, которые имеют самыеклассные оценки пользователей. \r\nТем самым выприведете целевую аудиторию к своему профилю. \r\nВы сможете в короткий срок получитьбольшое количество подписчиков. \r\nВсе что вам нужно, это подобрать под свою тематику популярный материал среди групп, а затем скопировать публикацию в программу и дальше утилита все сделает в автоматическом режиме (самостоятельно опубликует материал в вашу группу в Контакте) \r\nОсобенности программы Mix Poster \r\n- Распознавание капчи \r\n- Автоматическая публикация на стену (репост) \r\n- Планировка постинга, по заданному в настройках времени и дате \r\n- Одновременнограбит в нескольких группах \r\n- В программу встроен браузер \r\n- Встроены фильтры \r\n \r\nOdnoklassniki Inviter поможет вам раскрутить свою группу или аккаунт в самые кратчайшие сроки \r\nИмеет понятные и простые настройки. Для предотвращения бана в одноклассниках задержки уже выставлены, причем в настройках программы паузы между отправкой сообщений тестировались методом подбора.  Таким образом вас не заблокируют за открытый спам.  Пароль для активации любой (например 123) \r\n \r\nДостоинство и  преимущество приложение  заключается в том, что она может рассылать сообщение круглосуточно. Поэтому ваша группа или аккаунт очень быстро раскрутится и приобретет популярность. \r\n \r\n \r\nhttp://dirrip.com/ - android 2.3 софт скачать', 1, '1486765803', 0),
+(173, 'ThomasSTAIC', 'ttrylft@alrais.ceramiccoffecups.com', '<a href=\\\"http://3d2biz.ru/%D1%88%D0%BA%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%84%D0%BE%D1%80%D0%BC%D0%B0-%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%BD%D0%B0-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9-%D0%B7%D0%B2%D0%BE%D0%BD%D0%BE%D0%BA\\\"&gt;школьная форма онлайн на последний звонок</a>\r\n<a href=\\\"http://1-stupino-okna.ru/%D0%B1%D0%B0%D0%BA-%D0%B4%D0%BB%D1%8F-%D0%B4%D1%83%D1%88%D0%B0-%D1%8D%D0%BD%D0%B3%D0%B5%D0%BB%D1%8C%D1%81\\\"&gt;бак для душа энгельс</a>\r\n<a href=\\\"http://alium-pharma.ru/%D0%B2%D0%BE%D0%B4%D0%BE%D0%BD%D0%B0%D0%B3%D1%80%D0%B5%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D0%BD%D0%B0%D0%BA%D0%BE%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-timberk-swh-fs5-100-v-%D0%BF%D0%BE-%D0%BD%D0%B8%D0%B7%D0%BA%D0%BE%D0%B9-%D1%86%D0%B5%D0%BD%D0%B5\\\"&gt;водонагреватель накопительный timberk swh fs5 100 v по низкой цене</a>\r\n<a href=\\\"http://2-seo.ru/%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD-%D0%B0%D0%BA%D0%B2%D0%B0%D1%80%D0%B5%D0%BB%D1%8C-%D1%82%D0%BC-sofino-%D0%BA%D0%B8%D0%B5%D0%B2\\\"&gt;диван акварель тм sofino киев</a>\r\n<a href=\\\"http://9437173.ru/iphone-5s-16-gb-%D0%B2-%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B5\\\"&gt;iphone 5s 16 gb в новосибирске</a>\r\n<a href=\\\"http://ack55.ru/%D0%B2-%D1%80%D1%8F%D0%B7%D0%B0%D0%BD%D0%B8-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-200%D0%BB%D0%B8%D1%82%D1%80%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%B8%D1%89%D0%B5%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%BC%D0%B0%D1%81%D1%81%D0%BE%D0%B2%D1%8B%D0%B5-%D0%B1%D0%BE%D1%87%D0%BA%D0%B8\\\"&gt;в рязани можно 200литровые пищевые пластмассовые бочки</a>\r\n<a href=\\\"http://9elephants.ru/%D0%B4%D0%B5%D0%B3%D1%82%D1%8F%D1%80%D0%BD%D1%8B%D0%B9-%D1%88%D0%B0%D0%BC%D0%BF%D1%83%D0%BD%D1%8C-%D1%84%D0%BE%D0%BA%D1%81%D1%82%D0%B5%D0%BB-%D0%B2-%D0%BC%D1%83%D1%80%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B5\\\"&gt;дегтярный шампунь фокстел в мурманске</a>\r\n<a href=\\\"http://adept-gk.ru/%D0%B2%D0%BE%D0%B4%D1%8F%D0%BD%D0%B0%D1%8F-%D0%BF%D0%BE%D0%BC%D0%BF%D0%B0-%D1%81%D1%81%D0%B0%D0%BD%D0%B3%D0%B9%D0%BE%D0%BD%D0%B3-%D0%BC%D1%83%D1%81%D1%81%D0%BE\\\"&gt;водяная помпа ссангйонг муссо</a>\r\n<a href=\\\"http://2-seo.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B-%D0%BF%D0%BF%D1%83-%D0%B2-%D0%B2%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4%D0%B5\\\"&gt;компоненты ппу в волгограде</a>\r\n<a href=\\\"http://adept-gk.ru/%D0%B0%D0%B2%D1%82%D0%BE%D0%BD%D0%BE%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D1%82%D0%BE%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C-%D0%B2-%D0%BD%D0%B8%D0%B6%D0%BD%D0%B5%D0%BC-%D0%BD%D0%BE%D0%B2%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B5\\\"&gt;автономный отопитель в нижнем новгороде</a>\r\n \r\nhttp://3kopark.ru\r\nhttp://air-of-life.ru\r\nhttp://4golovi.ru\r\nhttp://3d2biz.ru\r\nhttp://alaninvest.ru\r\nhttp://akpp-ac.ru\r\nhttp://alex-pro-jur.ru\r\nhttp://2show-djs.ru\r\nhttp://5074416.ru\r\nhttp://101grafin.ru', 1, '1486785610', 0),
+(174, 'rutham69', 'jondo60@diamond.astrid.istanbul-imap.top', 'Late-model devise\r\n naked camera application avatar android game apps for android for free stupid zombies apk 1mobile app free download \r\nhttp://sexgames.android.tobuy.in/?gain.margaret \r\n htc one reviews 3gp videos xxx free download live wallpaper for android download free android app store install racing android game', 1, '1486794574', 0),
+(175, 'Davidfab', 'ankalinina1990@rambler.ru', 'КАРТИНЫ НА СТЕКЛЕ! На заказ! \r\n \r\nУЗНАТЬ ПОДРОБНЕЕ/ЗАКАЗАТЬ - http://tinyurl.com/kartinu-na-stekle \r\n \r\nКартины, панно и модульные картины выполненны на стекле по  технике УФ-печати. \r\nМатериал – закаленное стекло 5 мм с нанесением противоосколочной  пленки, с обработкой по периметру и удобной системой креплений. \r\nВыполним заказы на картины и панно по Вашим фотографиям и изображениям, репродукции картин известных художников. \r\nМаксимальный размер 1500мм. по  одной стороне. \r\nОбеспечим доставку в любой регион  через транспортные компании. \r\nНанесение изображения  на стекло, оргстекло, пенокартон, монолитный поликарбонат, ЛДСП, ЛМДФ, мебельные фасады, металл по технологии УФ печать. \r\n \r\nУЗНАТЬ ПОДРОБНЕЕ/ЗАКАЗАТЬ - http://tinyurl.com/kartinu-na-stekle \r\n \r\nнастенные обогреватели +в виде картин купить, купить картину абстракция, картины сатарова купить, купить картину +в улан удэ, купить картину маслом +в минске, картина купить ярмарка, купить картину маслом холсте молодых художников, купить картину влюбленные, полтава картины купить, модульные картины +в твери купить дешево, янтарные картины купить, хочу купить картину, купить картину +в калуге, 3d картины +на стену купить, стразы алмазной картине купить отдельно', 1, '1486831060', 0),
+(176, 'KethPag', 'chrna@etiuzma.com', 'v <a href=\\\" http://levitra24h.review/#8996 \\\">buy vardenafil online</a> order levitra without rx', 1, '1486844196', 0),
+(177, 'AnnHasimimB', 'anniehaslow1@gmail.com', 'Hi! My name is Annie Haslow. I\\\'m SEO in Indian pharm company \\\"PanjabPharm\\\". \r\nWe produce many items of quality drugs but due to Big Pharma patents we are unable to supply you with it. \r\nOur engeneers have more than 20 years expirience in complex med researches. So my only way to let you know about us is to send this message. \r\nWelcome to our site!  http://ow.ly/zuWZ308N9At', 1, '1486887373', 0),
+(178, 'rowenahw2', 'dt6@marlene.bianca.tokyo-mail1.top', 'Hardcore Gay photo blogging ritual \r\nhttp://boy.fuck.gay.adultnet.in/?post-latrell', 1, '1486891473', 0),
+(179, 'RobertBep', 'forum.megasto.com.ua@gmail.com', 'Продам : \r\nлента ярославль\r\nкаталог рти\r\nтехпластина\r\nрти москва\r\nпищевая лента\r\n \r\n \r\nЗвоните, о цене договоримся. \r\n \r\nКонстантин Маринич, \r\n \r\nтел: (067) 50-44-185 \r\n \r\nООО «МегаСТО» \r\n09113, Украина, г. Белая Церковь, ул. Турчанинова, 23 \r\nТелефон: (044) 383-14-05, (04563) 4-69-89 \r\nWeb: http://megasto.com.ua \r\n \r\nnJ9p9pwq6C', 1, '1486927273', 0),
+(180, 'AlifonovMr', 'ewfd63@rus-sale.pro', 'Please rate my video on YouTube http://0gogo.ru/it', 1, '1486941400', 0),
+(181, 'Aleximadloft', 'maksimsmjxg@mail.ru', 'New York Toledo Sacramento St. Louis Riverside Wichita San Diego Tampa Omaha Oklahoma City Oakland Seattle  \r\n \r\n \r\n \r\nTo Hiram family, I am very sorry for your loss... To  Lamar,Johnie, my thoughts and prayers have been with you everyday... He loved and cherished the three of you! \r\n \r\nJanuary 22, 2017 \r\nToledo\r\nRiverside\r\n \r\nhttps://www.youtube.com/watch?v=ZY-r-A58Er4 - Morton,Ellis,Phil,Jean,Cyril,Erick, \r\nYour friends  Son,Santiago,Winfred,Guillermo,Refugio,Diego,Gregg,Marquis,Nicolas,Bart,Drew,Adolph,Benny,Grady,Shelton,Drew,Edmond,Darnell,Kurtis,Gerardo,Gerard,Bret,Terrell,Heriberto,Esteban,Harrison,Brendan,Jeremiah,Gil,Morton,Rory,Colin,Elliott,Carlton,Kim,Rudy,Adolfo,Vaughn,Marcel,Darius,Lorenzo,Roosevelt,Hubert,Garth,Alfonso,Devon,Ernesto,Dion,.', 1, '1486947715', 0),
+(182, 'CurtisKa', 'auof10162@rng.marvsz.com', 'llesusl \r\n \r\nhttp://www.lanarkunitedfc.co.uk/866-nike-air-max-90-yeezy-2\r\nhttp://www.bencookartist.co.uk/nike-air-force-1-high-black-suede-017.html\r\nhttp://www.giantfang.co.uk/air-max-90-ultra-moire-922\r\nhttp://www.backpackersholidays.co.uk/642-nike-air-huarache-ultra-red.html\r\nhttp://www.ukfinanceguide.co.uk/465-air-max-one-the-6.html\r\n \r\n<a href=http://www.directoryoffinance.co.uk/278-asics-kayano-20-black.html>Asics Kayano 20 Black</a>\r\n<a href=http://www.decorator-norwich.co.uk/683-nike-free-1.0-cross-bionic-review>Nike Free 1.0 Cross Bionic Review</a>\r\n<a href=http://www.poloshirtsonlineshop.co.uk/fred-perry-women-trainers-538>Fred Perry Women Trainers</a>\r\n<a href=http://www.giantfang.co.uk/nike-thea-mens-white-160>Nike Thea Mens White</a>\r\n<a href=http://www.accomlink.co.uk/adidas-shoes-high-tops-blue-220>Adidas Shoes High Tops Blue</a>', 1, '1486966371', 0),
+(183, 'kioxgusi', 'hamg66hd@mail.ru', 'tere  <a href=\\\"http://onlinebeschwerdenca1zo.xyz\\\">kvgvsr</a> liner  <a href=http://krankheitimblickklidq.xyz>vrnzrt</a> unforgivable bps  http://symptomhilfezocpx.xyz preacher gathers tompkins slant zapata', 1, '1486972224', 0),
+(184, 'EugeneNert', 'kolo25116@rng.marvsz.com', 'qnpbwhm \r\n \r\nhttp://www.lanarkunitedfc.co.uk/514-nike-air-max-90-womens-on-feet\r\nhttp://www.offerzone.co.uk/505-converse-infant-shoes-sale.htm\r\nhttp://www.wandsworth-plumbing.co.uk/ray-ban-erika-824.htm\r\nhttp://www.offerzone.co.uk/269-converse-chuck-taylor-all-star-ballet-lace.htm\r\nhttp://www.waterfallrainbows.co.uk/nike-air-presto-uni-red-324.php\r\n \r\n<a href=http://www.mandala2012.co.uk/809-adidas-shoes-for-girls-floral.html>Adidas Shoes For Girls Floral</a>\r\n<a href=http://www.poloshirtsonlineshop.co.uk/lacoste-bags-for-women-998>Lacoste Bags For Women</a>\r\n<a href=http://www.mmua.co.uk/089-nike-cortez-white-blue.html>Nike Cortez White Blue</a>\r\n<a href=http://www.cyberville.co.uk/577-new-balance-womens-402.htm>New Balance Womens 402</a>\r\n<a href=http://www.cars-wrapping.co.uk/013-nike-free-flyknit-5.0-men.html>Nike Free Flyknit 5.0 Men</a>', 1, '1486980197', 0),
+(185, 'AndroidSDrirl', 'androidsergeaw@mail.ru', 'Вот-вот наступит Новый год – самый долгожданный для многих праздник. Мы любим его за предпраздничные хлопоты, неповторимую атмосферу, встречи с близкими людьми, застолье и, конечно же, подарки. Мы, в свою очередь, подготовили подборку приложений, которые помогут вам во всей этой новогодней суете. \r\n<a href=http://androids-games-apps.blogspot.ru/><img>http://novymgodom.ru/_ph/23/2/541511314.jpg</img></a> \r\nКакой же Новый год без праздничного стола? В этом вас также выручит смартфон или планшет с установленным кулинарным приложением для Android. Таких программ на самом деле огромное количество, но мы рекомендуем «Рецепты от Поваренок.ру». Это приложение содержит порядка 100 тысяч проверенных рецептов на все случаи жизни, которые публикуются самими пользователями сайта на протяжении вот уже многих лет. Здесь вы найдете разнообразные горячие блюда и закуски, десерты, напитки и, конечно же, салаты. \r\n<a href=http://androids-games-apps.blogspot.ru/>Лучшие Android-приложения к Новому году Лучшие Android-приложения к Новому году Лучшие Android-приложения к Новому году</a> \r\nГлавная особенность приложения «Поваренок.ру» заключается в подаче рецепта. Процесс приготовления каждого блюда расписан до мелочей и сопровождается фотографиями и отзывами других участников кулинарного сообщества. Таким образом формируется рейтинг популярных и самых лучших рецептов. Весь контент ресурса «Поваренок.ру» для удобства разбит на несколько разделов. Новогодние блюда расположены в категории «На праздничный стол», где вы найдете как всеми любимые салаты «Селедка под шубой», «Оливье», так и более экзотические угощения, чем наверняка удивите своих гостей. \r\nВ одном из последних обновлений в приложении «Поваренок.ру» появилась долгожданная функция – «Кулинарная книга». Она позволяет формировать собственную базу избранных рецептов, которые остаются доступными без подключения к интернету. \r\n \r\n<a href=http://androids-games-apps.blogspot.ru/><img>http://www.techgleam.com/wp-content/uploads/2015/05/top-android-apps.jpg</img></a> \r\nВот такой получился у нас набор приложений к Новому году. А какие программы пригодятся к празднику по вашему мнению? \r\n<a href=http://androids-games-apps.blogspot.ru/>Все Android-приложения</a>', 1, '1486985833', 0),
+(186, 'LstrNork', 'lestrp@mail.ru', 'Honestly, not bad news    \r\n \r\n<a href=http://yaoi-heaven.com/showthread.php?51397-kamagra-4-u&p=62510#post62510>  dynamic and all this is very positive \r\n</a> \r\n \r\nhttp://xtjtfwxh.org/bbs/forum.php?mod=viewthread&tid=1337182&extra= djhf784yh3oh873', 1, '1486994574', 0),
+(187, 'Cabes76', 'ywdnpe844@gmail.com', 'where can i buy tizanidine online no prescription buy tizanidine medicine online  http://tizanidinemsb.over-blog.com\r\nhttp://gravatar.com/ordertizanidineonlinept\r\nhttp://gravatar.com/cltizanidine', 1, '1487004724', 0),
+(188, 'Henryjah', 'bammbukisergio@gmail.com', 'и консультации   <a href=http://nalogovuu.ru>Show more>>></a>', 1, '1487011091', 0),
+(189, 'cathyzo11', 'cx4@yesseniaava.newyorkmetro5.top', 'My new blog sites \r\nhttp://hotties.pictures.erolove.in/?post.alma \r\n sex next door full movies in german amateur diera rapidshare guy porno pure masterbating live porn how did apartheid in south africa affect the whites', 1, '1487017967', 0),
+(190, 'TracyNalar', 'uopritrunmen@yandex.com', 'h http://buy-viagra-online.review viagra', 1, '1487031414', 0),
+(191, 'jeannettejn16', 'bq7@jaylene.ashton.london-mail.top', 'Daily gay photos assistance\r\nhttp://gay-pics.porngalleries.top/?entry-jaydon', 1, '1487048313', 0),
+(192, 'lesterhb11', 'martinalv2@margaritaannabella.tokyo-mail1.top', 'My new number \r\nhttp://sissyblog.twiclub.in/?leaf.jaylin \r\n video pirno gratis top erotic films sexy hot erotic stories best erotic thrillers erotic reviews', 1, '1487056281', 0),
+(193, 'Donaldabosy', 'kishiryaeva1982@rambler.ru', 'suitable site <a href=http://iqxnxx.com>http://iqxnxx.com</a>', 1, '1487132106', 0),
+(194, 'JohnnieJag', 'johnnie53@mail.ru', 'Choose payment method: Bank wire, WesternUnion, MoneyGram, Google Wallet, Webmoney. \r\n72TB File Storage 0day 1990-2017. \r\nIP restrictions: 3 IP addresses per user at the same time. \r\nOveral server\\\'s speed: 500 Mbps. \r\nEasy to use: Most of genres are sorted by days. \r\nServer’s capacity: 72 TB for all FTP. \r\nMore Seven years Of Archives. \r\nNo Waiting Time, No captcha,No Speed Limit, No Ads. \r\nNever Deleted Original Albums, Labels, Save Time And Money. \r\nUpdated On Daily: 20GB-50GB, 300-500 Albums 0-day WEB, Promo, CD, CDA, CDM, CDR, CDS, EP, LP, Vinyl... \r\nUp Time: 99% \r\nAll Genre: House, Club, Techno, Trance, Dance, Italo-Dance, Eurodance, Drum and Bass, Psychedelic, Goa, PsyTrance, Progressive House, Electro, Euro-House, Club-House, Hardtechno, Tech-House, Dutch House, Minimal, Deep-House, Nu-Disco, Hardstyle, Hardcore, Jumpstyle, Electronic, Alternative, Alternative Rock, Ambient, Avantgarde, Ballad, Bass, Beat, Black Metal,Blues, Classical, Chanson, Country, Dance Hall, Death Metal, Disco, Ethnic, Folk, Folk-Rock, Funk, Gangsta Rap, Gothic Rock,Hard Rock, Heavy Metal, Hip-Hop, Indie, Industrial, Instrumental, Jazz, Jungle, Pop, Rock, Metal, Latin, Lo-Fi, New Age, Noise, Oldies, Pop-Folk, Progressive Rock, Psychedelic Rock, Punk Rock, Rap, Reggae, R&B, Rock & Roll, Soul, Soundtrack, Speech, Synthpop, Thrash Metal, Top 40, Vocal etc. \r\nAccount delivery time: 1 to 48 hours. \r\n \r\nhttp://0daymusic.org/premium.php', 1, '1487158526', 0),
+(195, 'maryellenrc18', 'justinemh6@deannanicole.delhipop3.top', 'Adult blog with daily updates \r\n   cheap crete holidays thick plastic pants vibrating penis  \r\nhttp://sissyblog.twiclub.in/?view.adeline \r\n  celebs gallery chastity femdom pics english english to hidni dictionary adult diapers baby gays old man makeover games barbie vibrators for sale pictures of gay teens', 1, '1487164239', 0),
+(196, 'TracyNalar', 'uopritrunmen@yandex.com', 'z <a href=\\\" http://viagra-rx.accountant/#viagra-wiki \\\">viagra for sale</a>', 1, '1487171591', 0),
+(197, 'ddimmmasss', 'dddimasssrrrsrt@mail.ru', 'Привет вроде вы просили? \r\nДоход от 5000руб. в день! \r\nЯ зарабатываю вот тут http://2017.11-9-90.ru/ \r\nПосле очень легкой регистрации обязательно пишите мне в скайп spora80 \r\nВсе покажу подробно! (сами не разберетесь) \r\n----------------------------------------------------- \r\nHi like you asked for? \r\nIncome from 100 $. in a day! \r\nI earn here http://2017.11-9-90.ru/ \r\nAfter a very easy registration is required to write to me on Skype spora80 \r\nAll show details! (Themselves not be dismantled)', 1, '1487203160', 0),
+(198, 'JustinmaymN', 'svstepanova1978@rambler.ru', 'useful web site <a href=http://hq-sex.me>http://hq-sex.me</a>', 1, '1487214966', 0),
+(199, 'Clintonevera', 'kikrylova1975@rambler.ru', 'positive website <a href=http://beegvideoz.com>http://beegvideoz.com</a>', 1, '1487214967', 0),
+(200, 'JohnHyday', 'craggiewigg695457@aol.com', 'se puede comprar viagra en la farmacia\r\nbest prices genuine viagra\r\ndoes viagra has generic\r\nidentify viagra pill\r\ngeneric viagra express shipping\r\ndove acquistare viagra generico online\r\n \r\n<a href=%http://mensmedstoresildenafil.org/#\\\">Viagra Generic</a> \r\nbuy cheap viagra and cialisno prescription generic viagraonline generic cialisavis levitra 20mgbest site get cialisfarmaco generico equivalente viagrafuncionan los genericos de viagraorder viagra onlineque es sildenafil 50 mgwhat does a real viagra pill look likenext day generic viagra deliverybuy cialis cheap onlineviagra 100mg sildenafilbuy online viagra in pakistanpfizer india viagra pricesafe to buy generic viagraviagra venta online argentinaeasy get viagracialis tadalafil 20 mg lillywhere to buy viagra over the counter in canadasildenafil 100mg beipackzettel', 1, '1487245803', 0),
+(201, 'qnyvnkia', 'gngsts743@mail.ru', 'champ sforza canteen acrobats wong  <a href=\\\"http://onlinesymptomfmjt4.xyz\\\">ixskrnt</a> celia menopause  <a href=http://krankheitratg0kyw.xyz>hmdrffee</a> jasper spunky problem ices summerhouse  http://mykrankheiteni99hc.xyz gamma azaleas graduation wwil', 1, '1487249936', 0),
+(202, 'bobqp18', 'viviankw1@sydni.aaliyah.washington-pop3.top', 'New devise\r\n free download apk apps android mobile games apps leuke apps download free android themes app for free international calls \r\nhttp://sex.games.market.pornpost.in/?dispatch.malia \r\n 1st market android top free game apps for android best android app to download videos from youtube free music download app for android 2015 free downloading software', 1, '1487273241', 0),
+(203, 'Josephlor', 'lshiryaeva1977@gmail.com', '<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https://www.youtube.com/embed/ox8H0GShSCo\\\" frameborder=\\\"0\\\" allowfullscreen></iframe> \r\nТитан гель для увеличения \r\nhttps://www.youtube.com/watch?v=ox8H0GShSCo \r\nНиколай Андреевич, сексопатолог.  https://www.youtube.com/watch?v=1aNjNEn9zug 35 лет прожил с мыслью, что член нельзя увеличить и у меня навсегда останется размер в 13 см, но к счастью мне друг сказал обычно мы такое не обсуждаем, но я рад, что он со мной поделился , что он уже 3 месяца использует крем Titan Gel и увеличил свой член на 6 см, я сначала не поверил, но решил, что попробовать стоит и не ошибся, реально всего за 1 мес.  https://www.youtube.com/channel/UCW-0X0ufYK685Wa6MqknPaw Как использовать Титан гель в комплексе с упражнениями, освещает подробная инструкция по его применению .  https://www.youtube.com/watch?v=QUzTiXrK8mw \r\nhttps://www.youtube.com/watch?v=XqiNyZ4ypkk \r\nhttps://www.youtube.com/watch?v=gbQMI3ZuZ6E \r\nНе обязательно такой же результат будет у каждого мужчины. Мы подготовили для вас видеоурок и текстовое описание упражнений, которые необходимо выполнять при нанесении Титан геля.  https://www.youtube.com/watch?v=v2C3et6A5L4 Лишайники при местном использовании снимают воспаление, убивают вирусы и бактерии, вызывающие урогенитальные инфекции. реклама которого стала часто появляться в рассылках, рассчитана на наивных простачков, которые верят всему, что им только не скажут. Именно он является составляющей полового члена.', 1, '1487274044', 0),
+(204, 'ViagAxiop', 'vjnsw@ooalfoh.com', 'y http://viagrarx.top viagra women libido http://viagra-online.men viagra pharmacy prices http://viagraon.top natural viagra foods http://viagraonline.party viagra tablet http://sildenafil.party canadian viagra online', 1, '1487286059', 0),
+(205, 'Jefferyrok', 'zomatveeva1982@rambler.ru', 'adequate resource http://xnxx-films.com', 1, '1487292228', 0),
+(206, 'oraiz11', 'mariohz3@briannaelena.london-mail.top', 'Смотрите порно фото и секс фото крупным планом \r\nhttp://blondinka.chernom.porngalleries.top/?blog.aylin', 1, '1487318993', 0),
+(207, 'makwscwj', 'hzjhuu7@mail.ru', 'shakers laughed kingly pardner clancy  <a href=\\\"http://krankheitenrattbqyy.xyz\\\">gorz</a> dispensed midsummer offices  <a href=http://symptomonlinefa5nu.xyz>wspno</a> archies gutierrez unesco bragged  http://krankheitenkoged.xyz bontecou camphor gambled farhad', 1, '1487339419', 0),
+(208, 'Lidsov', 'kapqin@yandex.ru', 'bw3455yup Наш сервис рекомендует вам \r\n \r\nПрогон - Mega s tic ot 1000 \r\n \r\nподробно по этой ссылке \r\n \r\nhttp://goo.gl/pGgUOx#269', 1, '1487358303', 0),
+(209, 'lubluodPap', 'lubluodejdu.12393@mail.ru', 'Знающие люди, подскажите здесь хорошая шмотка? <a href=http://odejda-dlya-vseh.ru>платье с легким наплечным шарфомплатье трансформер ужасноплатье отстрочка на грудиплатье салимадетское платье jumping beans интернет магазин</a>', 1, '1487389769', 0),
+(210, 'AndyToK', 'andycahp@mail.ru', 'Доношу до Вас что автоматический постер XRumer, имеющий возможности быстро и эффективно привлечь внимание к своему сайту ждет Вас! \r\n \r\n<a href=https://vk.com/pages?oid=-139678140&p=программа_для_постинга_в_блоги>XRumer</a>', 1, '1487416052', 0),
+(211, 'gplhqfuv', 'frkgt6h@mail.ru', 'buttermaker  <a href=\\\"http://gesundheitdircl.xyz\\\">ufba</a> choy gridlock powwow tupperware hard  <a href=http://beschwerdenuebersicht8017v.xyz>jhgppbxm</a> certifiable chantlng cologne chlef jerked  http://beschwerdenuebersicht8017v.xyz breasts possessions', 1, '1487422543', 0),
+(212, 'nelsonhu16', 'clarenceqm11@devin.jazmyn.chicagoimap.top', 'Adult blog with daily updates \r\n   hindi dictionary online free free online translation from english to french bdsm collar and leash  \r\nhttp://sissyabuse.blogporn.in/?post.anya \r\n  paintes tube latin english dictionary online free sexy girl dressed breast implants videos egg sex toy english japanese dictionary low price dvd men with underwear', 1, '1487430630', 0),
+(213, 'Andrewger', 'mipetuhova1979@rambler.ru', 'Есть такая услуга - добровольное медицинское обслуживание . \r\nОна предполагает, что вы платите небольшую сумму за абонемент и посещает врачей в течение года не платя за каждый прием. \r\nОднако опросы показали, что лишь 6% жителей Питера знают о такой программе. \r\nПочему? \r\nДа потому что частным клиникам выгоднее брать плату за каждое посещение. \r\nА если честный врач попытается посоветовать добровольное медицинское обслуживание клиенту - это сулит ему увольнением. \r\nЭта информация уже вызвала много скандалов, сразу после того как информацию об этом распространил один возмущенный врач. \r\nЕго уволили \\\"по собственному желанию\\\", после того, как он предложил ДМО постоянному клиенту. \r\nСамое ужасное, что официальные положения по ДМО находятся в открытом доступе, просто находили на эту информацию единицы. \r\nКак отстоять свои права? \r\nО правилах оказания такой услуги и обязанностях частных клиник можно узнать, сделав запрос в Яндексе: \\\"добровольное медицинское обслуживание\\\". \r\nИ именно обслуживание, а не страхование. \r\n \r\n34j5c6h86', 1, '1487457789', 0),
+(214, 'RaymondShone', 'raymondemami@mail.ru', 'Познавать мир через путешествия, пусть даже виртуальные это очень интересно! \r\n<a href=https://twitter.com/evgeniyubrdr>https://twitter.com/panchishin_volo</a> \r\nСмотрите сами:))', 1, '1487484738', 0),
+(215, 'AshelyHor', 'silvermanjosepht@mail.ru', 'Hi everyone!, maybe I am posting it at a wrong place, I just notice that members have alive discussion here. \r\nI am looking for someone with an experience of MAKING MONEY with \r\nAMAZON AFFILIATE WEBSITE? I made some cash with ITUNES before but not much. My friend has suggested to get a how to design a website ebay at flipper.top (here is URL if you are lazy to type it, http://flipper.top/ - direct link - \\\"INTERNET BUSINESS FOR SALE\\\") - I hope it can work! It looks like they are making good MONEY MAKING SITES. please share your opinion and experience? I was not able to find a good looking \r\nFREE AFFILIATE SOFTWARE and flipper.top sounds good. Thanks!', 1, '1487486199', 0),
+(216, 'bertieun1', 'mx7@zoeyestefani.pop3boston.top', 'Блог с женскими секс-историями \r\nhttp://porno.blondinki.hd.toptorrents.top/?blog.abbey \r\nПорно фото галереи - секс картинки чтобы взрослых', 1, '1487498476', 0),
+(217, 'ViagAxiop', 'xygnd@tdkaxhc.com', 'l http://viagraonline.party real viagra vs generic viagra http://buy-viagra.men generic viagra free shipping http://viaph01.com buying brand viagra http://via03.com discount viagra pills http://buyviagra.pw shop viagra', 1, '1487525063', 0),
+(218, 'WillieVib', 'temptest467102740s@mail.ru', 'Alex Price, Your Real Estate Agent in Toronto. Homes and condos for Sale \r\n<a href=http://aprice.ca/>More info!..</a>', 1, '1487526384', 0),
+(219, 'Osumo83', 'mhknqt984@gmail.com', 'is it safe to buy olanzapine online yahoo answers  http://olanzapine-15mg-buy-online.soup.io\r\nhttp://orderolanzapineforsale.soup.io', 1, '1487530521', 0),
+(220, 'BigBonusBag', 'gxsselwr@goohle.co.ua', 'Get NoW your $1500 Bonus! -> http://breakingnews.goohle.co.ua', 1, '1487534187', 0),
+(221, 'ejrkfybj', 'herbtti7@mail.ru', 'ladylike aires  <a href=\\\"http://mykrankheitendrqmt.xyz\\\">oqfnrdz</a> barricaded  <a href=http://gesundheithilfefurfs.xyz>okfijtoze</a> concerts shrek amateurs langlois  http://krankheitenonlinece6ni.xyz francais dictionary fortinbras', 1, '1487592940', 0),
+(222, 'GeorgeUsaky', 'georgemoido@mail.ru', 'Блог участников ДОМ-2 Остров Любви Ostrovdom2.ru  <a href=http://ostrovdom2.ru/blog>блоги дом 2>>></a>', 1, '1487598960', 0),
+(223, 'Brucethulp', 'alyakovaleva1981@rambler.ru', '<a href=http://mototexdom.ru/kvadrotsikly-detskie>купить детский квадроцикл</a>', 1, '1487610169', 0),
+(224, 'Kennethcot', 'fmfres@world-many.ru', 'Не пользуюсь \r\n \r\nЯ могу проконсультировать Вас по этому вопросу. Вместе мы сможем прийти к правильному ответу. <a href=http://acumenconsulting.com.au/index.php?option=com_k2&view=itemlist&task=user&id=210029>подробное описание</a>\r\n \r\nЛучше поздно, чем никогда. <a href=http://xn--80ahs9av.xn--p1ai/component/k2/itemlist/user/78087>здесь</a>\r\n \r\nСожалею, но ничем не могу помочь. Я знаю, Вы найдёте верное решение. Не отчаивайтесь. <a href=http://www.globalgroupp.ru/index.php?option=com_k2&view=itemlist&task=user&id=17928>подробнее...</a>\r\n \r\nЯ извиняюсь, но, по-моему, Вы допускаете ошибку. Предлагаю это обсудить. Пишите мне в PM. <a href=http://www.upzh.hr/index.php?option=com_k2&view=itemlist&task=user&id=72409>подробности...</a>\r\n \r\nпасибки <a href=http://motivationandevents.com/index.php?option=com_k2&view=itemlist&task=user&id=10098>ссылка</a>', 1, '1487613149', 0),
+(225, 'Morrisnen', 'vablinova1975@rambler.ru', '<a href=http://motaxmoto.ru/>купить детский квадроцикл</a>', 1, '1487645317', 0),
+(226, 'DennisCig', 'owen@hdfhgdfhtyuryrehgf.xyz', 'Zhheherhrh eg egemtr hrggwe wes egemtrghdfbsgd rwtwrqw', 1, '1487653341', 0),
+(227, 'Jeffreyclosy', 'gomax@testosteroneforman.com', 'Здравствуйте! \r\nОтличная база порно фильмов, все новинки порно 2016 2017 в HD по категориям смотреть онлайн бесплатно в качестве HD <a href=http://hellvideos.net/>порно фильмы онлайн</a> : \r\n<b> Порно красивое Дамское женское нижнее белье, чулки, колготки, трусики смотреть онлайн бесплатно</b> <a href=http://hellvideos.net/lingerie/>http://hellvideos.net/lingerie/</a> \r\n<b> Порно дрочево онанизм Мастурбация, Masturbation porno sex в хорошем качестве онлайн</b> <a href=http://hellvideos.net/masturbation/>Порно дрочево онанизм Мастурбация, Masturbation porno sex</a> \r\n<b> Порно Сперма, кончают в рот на лицо на грудь и в пизду, Cumshot porno sex в хорошем качестве онлайн</b> http://hellvideos.net/cumshot/ \r\n<b> Порно Гламурные молодые красивые девушки ебут насилуют в хорошем качестве онлайн</b> <a href=http://hellvideos.net/glamour/>http://hellvideos.net/glamour/</a> \r\n<b> Порно Фетиш, Fetish Porno в хорошем качестве онлайн</b> <a href=http://hellvideos.net/fetish/>http://hellvideos.net/fetish/</a> \r\n<b> Порно Двойное проникновение, doublepenetration porno sex в хорошем качестве онлайн</b> http://hellvideos.net/doublepenetration/ \r\n \r\nhttp://hellvideos.net/raznoe/13402-mom-busty-womans-sweet-pink-snatch-tastes-like-a-ripe-summertime-peach.html \r\nhttp://hellvideos.net/raznoe/11606-nataly-gold-july-sun-gapethatass-cohf-cumonherface-covermyface-.html \r\nhttp://hellvideos.net/raznoe/5069-we-love-melanie-rios.html \r\nhttp://hellvideos.net/raznoe/6162-posle-raboty-i-seks-v-ofise-ne-zapreschaetsya-v-ofise.html', 1, '1487664374', 0),
+(228, 'MaxGabronam', 'maxgabro1979@gmail.com', 'Good employment! Thanx you concerning you job \r\n \r\nhttp://tekstcompleet.com/eindredactie-2\r\nhttp://ceauto.hu/node/68524\r\nhttp://codeposit.com/node/141', 1, '1487667655', 0),
+(229, 'StephenRib', 'mrmax@iphonemsk.com', 'Testoboost pro - Improve male potency, muscle strength and sexual energy with this new natural vitamin complex! \r\nHurry! Final Few Trials of TestoBoost Pro available in Your City! TestoBoost pro America http://usatestoboostpro.com/ : \r\n<b> Buy now and get free trial </b> <a href=\\\"http://usatestoboostpro.com/state/enlarger-of-male-potency-tablets-testoboost-pro-sunnyvale-california.htm\\\">Enlarger of male potency tablets TestoBoost Pro Sunnyvale California</a> \r\n<b> Buy now and get free trial </b> <b> Macon Georgia Enlarge sex power pills TestoBoost Pro </b> http://usatestoboostpro.com/state/macon-georgia-enlarge-sex-power-pills-testoboost-pro.htm \r\n<b> Buy now and get free trial </b> <a href=\\\"http://usatestoboostpro.com/state/kansas-city-missouri-enlarge-penis-size-pills-testoboost-pro.htm\\\">Kansas City Missouri Enlarge penis size pills TestoBoost Pro</a> \r\n<b> Buy now and get free trial </b> <b> New Orleans Louisiana Enhancement low testosterone level capsule TestoBoost Pro </b> http://usatestoboostpro.com/state/new-orleans-louisiana-enhancement-low-testosterone-level-capsule-testoboost-pro.htm \r\n<b> Buy now and get free trial </b> <a href=\\\"http://usatestoboostpro.com/state/modesto-california-enlarge-sex-energy-natural-vitamin-testoboost-pro.htm\\\">Modesto California Enlarge sex energy natural vitamin TestoBoost Pro</a> \r\n<b> Buy now and get free trial </b> <b> Portland Oregon Enlarger of male potency pills TestoBoost Pro </b> http://usatestoboostpro.com/state/portland-oregon-enlarger-of-male-potency-pills-testoboost-pro.htm \r\n<b> Buy now and get free trial </b> http://usatestoboostpro.com/state/columbus-ohio-increase-sex-power-pills-testoboost-pro.htm \r\n<b> Buy now and get free trial </b> <a href=\\\"http://usatestoboostpro.com/state/sunnyvale-california-enlarge-male-cock-natural-vitamin-testoboost-pro.htm\\\">Sunnyvale California Enlarge male cock natural vitamin TestoBoost Pro</a>', 1, '1487689720', 0),
+(230, 'Davidtog', 'li.zg.ftrnnluyb789@gmail.com', 'Сибирки – самый популярный портал в Новосибирске, где всегда актуальная база анкет    <a href=http://nsk.sibirki.com>проститутки новосибирска</a> \r\nдля интим-услуг и при этом она постоянно обновляется и появляются свежие анкеты для опытных Донов <a href=http://sib.nsexy.ru>проститутки новосибирска</a> \r\nС каждым днем сайт наполняется новыми отчетами и отзывами о салонах и <a href=http://www.siblaguna.net>проститутки новосибирска</a> \r\nВся информация на сайте защищена и конфиденциальна.  <a href=https://prostitutkisochi.com>проститутки сочи</a>', 1, '1487718614', 0),
+(231, 'Canadian Pharmacy', 'pwdzo@pgriwsg.com', 'canada pharmacy online no script http://canadianpharmacy.review , http://canadian-pharmacy-online.review , http://canph01.com , http://canadapharmacy.men , http://pharmacycanada.review ,', 1, '1487731736', 0),
+(232, 'xovwvdbu', 'edkau88f@mail.ru', 'dismantled  <a href=\\\"http://meinegesundheit3i1fk.xyz\\\">gtajow</a> dentistry  <a href=http://symptomeimblick3zuh0.xyz>aumm</a> realist cottafavi doubt burner  http://gesundheitratryf2d.xyz jeevan vapors archduchess chomp darin', 1, '1487734407', 0),
+(233, 'Ignacioenliz', 'plasticatm@bank.com', 'Afhdjhfdifj jfbdjw efwjjfwefkwenwj gbfhewifw \r\ngbuewhifjw weifhwef jvsnkqwkf jqwokd n jwegjwfoewjih \r\nfnejnfbvuef fijiwrotpojegi owkemwnjrj rowjrokwk nirjwok wn wjrkwkr \r\nbvncmcieughfijdf hiwjeow jw riwjoe wkkfn iw jrwjfeigeiwkjfehbks \r\nsrhreiutregreshv hur erh weiiewhbahewvhjvetjhwahj vahwtvhwebrbw hbewhr \r\nrwhetiuawhhewahtbehtbwehjbfsdhlfuh hfwebfa', 1, '1487739592', 0),
+(234, 'Williamfoste', 'anyu.verschinina@yandex.com', '<a href=http://meendo.lipoly.ru><IMG>http://meendo.lipoly.ru/51a8b89b439ce.gif</IMG></a>', 1, '1487742731', 0);
 
 -- --------------------------------------------------------
 
@@ -12763,7 +12850,9 @@ INSERT INTO `vi_menu` (`id`, `title`, `alias`, `link`, `parent_id`, `css_class`,
 (350, 'Mô hình 2', 'mo-hinh-2', '', 349, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 1),
 (351, 'Mô hình 3', 'mo-hinh-3', '', 349, '', NULL, 1, NULL, '1', 'Tùy chỉnh liên kết', 1),
 (356, 'áddsad', 'addsad', '', 350, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 1),
-(359, 'Chưa có tên', NULL, 'http://asiatoday.top/pages/pages/detail/13', 0, '', NULL, 1, NULL, '0', 'Trang', 1);
+(361, '', '', '', 0, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 0),
+(362, '', '', '', 0, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 0),
+(360, '', '', '', 0, '', NULL, 1, NULL, '0', 'Tùy chỉnh liên kết', 0);
 
 -- --------------------------------------------------------
 
@@ -13155,6 +13244,39 @@ INSERT INTO `vi_product_rate` (`id`, `id_product`, `uid`, `name`, `email`, `revi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vi_widgets`
+--
+
+CREATE TABLE `vi_widgets` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `type` int(10) NOT NULL COMMENT '1.social 2.post 3.search 4.category',
+  `link` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `css_class` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon_font` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `id_lang` int(11) DEFAULT NULL,
+  `sort` varchar(45) DEFAULT NULL,
+  `options` varchar(255) DEFAULT NULL,
+  `number` int(10) DEFAULT NULL,
+  `position` int(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vi_widgets`
+--
+
+INSERT INTO `vi_widgets` (`id`, `title`, `alias`, `type`, `link`, `parent_id`, `css_class`, `icon_font`, `status`, `id_lang`, `sort`, `options`, `number`, `position`) VALUES
+(11, 'Tìm kiếm', NULL, 3, NULL, NULL, NULL, NULL, 1, NULL, '3', '', 0, NULL),
+(10, 'Bài viết gần đây', NULL, 2, NULL, NULL, NULL, NULL, 1, NULL, '0', 'new', 5, NULL),
+(9, 'Mạng xã hội', NULL, 1, NULL, NULL, NULL, NULL, 1, NULL, '2', '', 0, NULL),
+(17, 'Danh mục bài viết', NULL, 4, NULL, NULL, NULL, NULL, 1, NULL, '1', '', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `web_contacts`
 --
 
@@ -13371,6 +13493,12 @@ ALTER TABLE `en_product_rate`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `en_widgets`
+--
+ALTER TABLE `en_widgets`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `frontend_user`
 --
 ALTER TABLE `frontend_user`
@@ -13503,6 +13631,12 @@ ALTER TABLE `vi_product_rate`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vi_widgets`
+--
+ALTER TABLE `vi_widgets`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_contacts`
 --
 ALTER TABLE `web_contacts`
@@ -13583,7 +13717,7 @@ ALTER TABLE `en_product_basic`
 -- AUTO_INCREMENT for table `en_product_cart`
 --
 ALTER TABLE `en_product_cart`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `en_product_detail`
 --
@@ -13603,6 +13737,11 @@ ALTER TABLE `en_product_order_product`
 -- AUTO_INCREMENT for table `en_product_rate`
 --
 ALTER TABLE `en_product_rate`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `en_widgets`
+--
+ALTER TABLE `en_widgets`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `frontend_user`
@@ -13633,7 +13772,7 @@ ALTER TABLE `vi_banner_images`
 -- AUTO_INCREMENT for table `vi_brand`
 --
 ALTER TABLE `vi_brand`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `vi_categories_posts`
 --
@@ -13648,7 +13787,7 @@ ALTER TABLE `vi_category`
 -- AUTO_INCREMENT for table `vi_comments_posts`
 --
 ALTER TABLE `vi_comments_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 --
 -- AUTO_INCREMENT for table `vi_manager_view_home`
 --
@@ -13658,7 +13797,7 @@ ALTER TABLE `vi_manager_view_home`
 -- AUTO_INCREMENT for table `vi_menu`
 --
 ALTER TABLE `vi_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
 --
 -- AUTO_INCREMENT for table `vi_order_status`
 --
@@ -13678,7 +13817,7 @@ ALTER TABLE `vi_position_menu`
 -- AUTO_INCREMENT for table `vi_posts`
 --
 ALTER TABLE `vi_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `vi_product_basic`
 --
@@ -13709,6 +13848,11 @@ ALTER TABLE `vi_product_order_product`
 --
 ALTER TABLE `vi_product_rate`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `vi_widgets`
+--
+ALTER TABLE `vi_widgets`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `web_contacts`
 --

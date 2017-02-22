@@ -34,7 +34,7 @@
     -o-transition: all .4s;
     -moz-transition: all .4s;
     -webkit-transition: all .4s;
-    height: 280px;
+    min-height: 50px;
 }
 .widget .closed a.expand{
     background-image: url(../images/portlet-expand-icon.png);

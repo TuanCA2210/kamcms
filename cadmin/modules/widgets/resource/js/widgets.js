@@ -42,115 +42,66 @@ $('body').on('click', '.widget .widget-title', function(event) {
 });
 
 
-// menu categories
-$('body').on('click', '.box-links-for-menu .list-item li a', function(event) {
+$('body').on('click', '.btn-add-widget', function(event) {
 	event.preventDefault();
-	if ($(this).parent('li').hasClass('active')) {
-		$(this).parent('li').removeClass('active');
-	}else{
-		$(this).parent('li').addClass('active');
+	var type = parseInt($(this).parents('.box-links-for-widget').attr('data-type'));
+
+	//console.log(type);
+	var data = null;
+	switch(type) {
+	    case 1:
+	    	data = {
+	    		type: type,
+	    		options: null,
+	    		number: 0
+	    	}
+	        break;
+	    case 2:
+	    	var recent = $(this).parents('.box-links-for-widget').find('#recent').val();
+	    	var number = $(this).parents('.box-links-for-widget').find('#number').val();
+	        data = {
+	    		type: type,
+	    		options: recent,
+	    		number: number
+	    	}
+	        break;
+	    case 3:
+	        data = {
+	    		type: type,
+	    		options: null,
+	    		number: 0
+	    	}
+	        break;
+	    case 4:
+	        data = {
+	    		type: type,
+	    		options: null,
+	    		number: 0
+	    	}
+	        break;
 	}
-	
-});
-
-
-// add to menu
-$('body').on('click', '.btn-add-to-menu', function(event) {
-	event.preventDefault();
-	onLoading('Đang tải dữ liệu...');
-
-
-	var position = $('#position').val();
-	var active = $(this).parents('.box-links-for-menu').find('ul.list-item li.active');
-	var type = $(this).parents('.box-links-for-menu').find('ul.list-item').attr('data-type');
-	var i = [];
-	active.each(function(index, el) {
-		i.push($(this).find('a').attr('data-link'));
-	});
-	if (i.length>=1) {
+	if (data!==null) {
+		onLoading();
 		$.ajax({
-			url: baseUrl+'menu/menu/addPagesToMenu',
+			url: baseUrl+'widgets/widgets/saveAjax',
 			type: 'POST',
 			dataType: 'json',
-			data: {link: i,type: type,position:position},
+			data: {data: data},
 		})
 		.done(function(data) {
-			offLoading();
 			if (data.status==true) {
 				toastr["success"](data.mess);
-				reloadMenuStruct(position);
-				
-				
+				$('.dd-list-widgets').append(data.html);
 			}
-			$('.box-links-for-menu ul.list-item li').removeClass('active');
+			offLoading();
 		});
-	}else{
-		offLoading();
-		toastr["error"]("Bạn phải chọn ít nhất mục!");
+		
 	}
-	
-});
+		
+			
+			
+				//toastr["success"](data.mess);
 
-
-// add to menu Categories
-
-$('body').on('click', '.btn-add-to-menu-cate', function(event) {
-	event.preventDefault();
-	onLoading();
-
-	var position = $('#position').val();
-	var active = $(this).parents('.box-links-for-menu').find('ul.list-item li.active');
-	var type = $(this).parents('.box-links-for-menu').find('ul.list-item').attr('data-type');
-	var i = [];
-	active.each(function(index, el) {
-		i.push($(this).find('a').attr('data-link'));
-	});
-	if (i.length>=1) {
-		$.ajax({
-			url: baseUrl+'menu/menu/addCategoriesToMenu',
-			type: 'POST',
-			dataType: 'json',
-			data: {link: i,type: type,position:position},
-		})
-		.done(function(data) {
-			offLoading();
-			if (data.status==true) {
-				toastr["success"](data.mess);
-				reloadMenuStruct(position);
-				
-				
-			}
-			$('.box-links-for-menu ul.list-item li').removeClass('active');
-		});
-	}else{
-		offLoading();
-		toastr["error"]("Bạn phải chọn ít nhất mục!");
-	}
-	
-});
-
-
-$('body').on('click', '.btn-add-to-menu-custom-link', function(event) {
-	event.preventDefault();
-	onLoading();
-	var position = $('#position').val();
-	var type = $(this).parents('.box-links-for-menu').attr('data-type');
-	var title = $(this).parents('.box-links-for-menu').find('#node-title').val();
-	var link = $(this).parents('.box-links-for-menu').find('#node-url').val();
-	var css_class = $(this).parents('.box-links-for-menu').find('#node-css').val();
-	$.ajax({
-			url: baseUrl+'menu/menu/addCustomToMenu',
-			type: 'POST',
-			dataType: 'json',
-			data: {title:title,link: link,type: type,css_class:css_class,position:position},
-		})
-		.done(function(data) {
-			offLoading();
-			if (data.status==true) {
-				toastr["success"](data.mess);
-				reloadMenuStruct(position);
-			}
-		});
 });
 
 
@@ -159,33 +110,6 @@ $('body').on('click', '.btn-add-to-menu-custom-link', function(event) {
 // menu struct 
 $('body').on('click', '.nestable-menu ol.dd-list li a.show-item-details', function(event) {
 	event.preventDefault();
-	var position = $('#position').val();
-	var li_item = $(this).parents('li');
-	var li_parent_id = $(this).parents('li').attr('data-parent');
-	$.ajax({
-		url: baseUrl+'menu/menu/callMenuSelecBox&pos='+position,
-		type: 'GET',
-		dataType: 'html',
-	})
-	.done(function(data) {
-		var status = true;
-		li_item.find('.item-details .pad-bot-5').each(function(index, el) {
-			if ($(this).hasClass('check_sort_menu')) {
-				status = false;
-			}
-		});
-		if (status==true) {
-			li_item.find('.item-details .button_update_menu').before(data);
-		}
-		li_item.find('.item-details .check_sort_menu #parent_menu option').each(function(index, el) {
-			if ($(this).attr('value')==li_parent_id) {
-				$(this).attr('selected','selected');
-			}
-			//console.log($(this).attr('value'));
-		});
-	});
-	//li_parent_id
-	// selected="selected"
 
 	if ($(this).parents('li.dd-item').hasClass('closed')) {
 		$(this).parents('li.dd-item').addClass('opened').removeClass('closed');
@@ -199,65 +123,38 @@ $('body').on('click', '.nestable-menu ol.dd-list li a.show-item-details', functi
 
 
 
-
-// update menu 
-$('body').on('click', '.update_menu', function(event) {
-	event.preventDefault();
-	
-	onLoading();
-	var position = $('#position').val();
-	var li_item = $(this).parents('li.dd-item');
-	var id = li_item.attr('data-id');
-	var title = li_item.find('.item-details #title').val();
-	var link = li_item.find('.item-details #link').val();
-	var sort = li_item.find('.item-details #sort').val();
-	var css_class = li_item.find('.item-details #css_class').val();
-	var parent_menu = li_item.find('.item-details #parent_menu').val();
-	$.ajax({
-		url: baseUrl+'menu/menu/updateMenu',
-		type: 'POST',
-		dataType: 'json',
-		data: { id: id,title:title,link:link,sort:sort,css_class:css_class,parent_menu:parent_menu,position:position},
-	})
-	.done(function(data) {
-		offLoading();
-		if (data.status==true) {
-			toastr["success"](data.mess);
-			reloadMenuStruct(position);
-		}else{
-			toastr["error"](data.mess);
-		}
-	});
-	
-
-
-});
-
-
-
-
 // delete menu
 
-$('body').on('click', '.remove_menu', function(event) {
+$('body').on('click', '.btn-remove-widget', function(event) {
 	event.preventDefault();
-	var position = $('#position').val();
 	var li_item = $(this).parents('li.dd-item');
 	var id = li_item.attr('data-id');
-	$('#myModalConfirmMenu .accept_del_menu').attr('href', baseUrl+'menu/menu/deleteMenu/'+id+'&pos='+position);
-	$('#myModalConfirmMenu').modal('show');
-	/*$.ajax({
-		url: baseUrl+'index.php?mod=menu&controller=menu&action=deleteMenu',
+	$('#myModalConfirmWidgets .accept_del_widgets').attr('data-id', id);
+	$('#myModalConfirmWidgets').modal('show');
+	
+});
+
+$('body').on('click', '#myModalConfirmWidgets .accept_del_widgets', function(event) {
+	event.preventDefault();
+	var id = $(this).attr('data-id');
+	$.ajax({
+		url: baseUrl+'widgets/widgets/deleteAjaxWidgets',
 		type: 'POST',
 		dataType: 'json',
 		data: {id: id},
 	})
-	.done(function() {
-		console.log("success");
-	});*/
-	
+	.done(function(data) {
+		if (data.status==true) {
+			$('#myModalConfirmWidgets').modal('hide');
+			toastr["success"](data.mess);
+			$('#listId_'+id).fadeOut("slow",function(){
+		        $(this).remove();
+		    });
+		}
+	});
 });
 
-$('body').on('click', '.cancel_menu', function(event) {
+$('body').on('click', '.btn-cancel-widget', function(event) {
 	event.preventDefault();
 	$(this).parents('li.dd-item').addClass('closed').removeClass('opened');
 	$(this).parents('.li.dd-item').find('.item-details').slideUp(200);
@@ -274,28 +171,66 @@ $('body').on('click', '.cancel_menu', function(event) {
 
 /// update title menu 
 
-$('body').on('click', '#submit_update_name', function(event) {
+$('body').on('click', '.btn-update-widget', function(event) {
 	event.preventDefault();
 	onLoading();
-	var title_menu = $('#title_menu').val();
-	var position = $('#position').val();
-	if (title_menu!="") {
+	var li_item = $(this).parents('li.dd-item');
+	var id = li_item.attr('data-id');
+	var title = li_item.find('#title').val();
+	if (title!="") {
            $.ajax({
-           	url: baseUrl+'menu/menu/updateTitleMenu',
+           	url: baseUrl+'widgets/widgets/updateWidgets',
            	type: 'POST',
            	dataType: 'json',
-           	data: {title_menu: title_menu,position:position},
+           	data: {title: title,id:id},
            })
            .done(function(data) {
            	offLoading();
            	   if (data.status==true) {
-           	   	window.location.assign(data.href);
+           	   	   li_item.find('.pull-left').html('&nbsp;'+data.title);
+           	   	   toastr["success"](data.mess);
            	   }
            });
            
 	}else{
-         toastr["error"]("Không được để trống tên điều hướng.");
+         toastr["error"]("Không được để trống tiêu đề.");
          offLoading();
 	}
 	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(".dd-list-widgets").sortable({
+  handle : '.dd-handle',
+  update : function () {
+      var sort = $('.dd-list-widgets').sortable('serialize');
+      //console.log(sort);
+     //$("#info").load("process-sortable.php?"+order);
+     	$.ajax({
+	 		url: baseUrl+'widgets/widgets/sortable?'+sort,
+	 		type: 'GET',
+	 		dataType: 'json'
+	 	})
+	 	.done(function(data) {
+	 		if (data.status==true) {
+	 			toastr["success"](data.mess);
+	 		}
+	 	});
+  }
 });

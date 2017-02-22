@@ -176,7 +176,7 @@ class HomeController extends Controller{
 	    throw new Exception('No accounts found for this user.');
 	  }
 	}
-	public function getResults($service, $profileId,$metrics=null,$optParams=null,$startDate = '30daysAgo') {
+	public function getResults($service, $profileId,$metrics=null,$optParams=null,$startDate = '1daysAgo') {
 			if ($metrics==null && $optParams==null) {
 				return false;
 			}else{
