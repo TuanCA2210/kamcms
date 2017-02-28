@@ -1,9 +1,14 @@
 # DOCUMENT
 
-###1. Cấu hình chung:
-	- Tạo database ở host
-	- cấu hình base url  : App/config.php 
-	- Cấu hình Database  : App/database.php 
+###1. Cấu hình cài đặt chung:
+	- Tạo database ở host.
+	- Import database core_db trong thư mục database lên host.
+	- Cấu hình base url  : App/config.php  vs cadmin/app/config.php.
+	- Cấu hình Database  : App/database.php vs cadmin/app/database.php.
+	- Vào phần Cài đặt trong Dashboard để đăng ký Google Analytics lấy id Analytics UA-000000-01, sau đấy vào lưu lại.
+		+ Lấy View Id Analytics đã xác minh trong đường dẫn rồi lưu lại.
+		+ Vào đường dẫn chỗ xác minh Google Api cài đặt sau đó xuất file json đã xác minh của google để tải lên.
+
 ###2. Sử dụng Model:
 	- ->where("row",$args)				: Tương đương câu lệnh where row = $args.
 	- ->where("row",$args,"LIKE")		: Tương đương câu lệnh LIKE (Có thể thay LIKE)
@@ -26,4 +31,3 @@
 	- checkCaptcha($input)	: Kiểm tra mã Captcha có chính xác ko. 
 ###4. Biến toàn cục:
 	- $_web					: Có thể sử dụng được ở bất kỳ đâu trên trang web var_dump($_web) để xem
-	
