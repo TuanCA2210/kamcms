@@ -1,21 +1,21 @@
 <?php 
 session_start();
 class HomeController extends Controller{
-	public $modelNews;
+	public $modelHome;
 	public $fileJson;
 	public $callback;
 	public $data_settings;
 	//public $loadPages;
 	public function __construct(){
 		parent::__construct();
-		$this->modelNews = $this->loadModel('Home');
-		$this->data_settings = $this->modelNews->getSettingsOne();
+		$this->modelHome = $this->loadModel('Home');
+		$this->data_settings = $this->modelHome->getSettingsOne();
 		$this->fileJson = $this->returnFiles($this->data_settings['google_file_json']);
 		$this->callback = base_url().'home/home/oauth2callback';//'http://' . $_SERVER['HTTP_HOST'] . '/cadmin/home/home/oauth2callback';
 	}
 	public function index(){
 		global $_web;
-		//$this->view->data  = $this->modelNews->getUserById(1);
+		//$this->view->data  = $this->modelHome->getUserById(1);
 
 		
 		try{
@@ -54,10 +54,10 @@ class HomeController extends Controller{
 						$optParams = array("dimensions" => "ga:day");
 
 					  	try {
-						  	$results = $this->getResults($analytics, $profile,$metrics,$optParams);
+						  	$results = $this->getResults($analytics, $profile,$metrics,$optParams,'30daysAgo','today');
 						  	
 						  }catch (Exception $exc) {
-								$results = $this->getResults($analytics, $profile,$metrics,$optParams);
+								$results = $this->getResults($analytics, $profile,$metrics,$optParams,'30daysAgo','today');
 						}
 						//$this->view->data['stats'] = $this->printResults($results);
 						//dữ liệu tạo biểu đồ
@@ -77,21 +77,58 @@ class HomeController extends Controller{
 						$this->view->data['stats_pages'] = $this->printResults($results_pages);
 
 
+						// dữ liệu trình duyệt đã truy cập trong tháng
+						$metrics_browser = "ga:sessions";
+					 	$optParams_browser = array("dimensions" => "ga:browser"); // view pages and sort
+						try {
+						  	$results_browser = $this->getResults($analytics, $profile,$metrics_browser,$optParams_browser,'30daysAgo','today');
+						  	
+						  }catch (Exception $exc) {
+							$results_browser = $this->getResults($analytics, $profile,$metrics_pages,$optParams_pages,'30daysAgo','today');
+						}
+						$this->view->data['stats_browser'] = $this->printResults($results_browser);
+
+
 						// tong lươt truy cap trong thang
 						$metrics_count_month = "ga:sessions";
 					 	$optParams_count_month = array("dimensions" => ""); // view pages
 						try {
-						  	$results_pages = $this->getResults($analytics, $profile,$metrics_count_month,$optParams_count_month);
+						  	$results_pages = $this->getResults($analytics, $profile,$metrics_count_month,$optParams_count_month,'30daysAgo','today');
 						  	
 						  }catch (Exception $exc) {
-							$results_pages = $this->getResults($analytics, $profile,$metrics_count_month,$optParams_count_month);
+							$results_pages = $this->getResults($analytics, $profile,$metrics_count_month,$optParams_count_month,'30daysAgo','today');
 						}
 
 						$this->view->data['session_month'] = $this->printResults($results_pages);
 
 
-						$this->view->data['total_order'] = $this->modelNews->getTotalOrder();
-						$this->view->data['new_order'] = $this->modelNews->getNewOrder();
+						$this->view->data['total_order'] = $this->modelHome->getTotalOrder();
+						$this->view->data['new_order'] = $this->modelHome->getNewOrder();
+						$this->view->data['user'] = $this->modelHome->getTotalUser();
+
+						//history user and ip login
+
+						$history = $this->modelHome->getUserOnline();
+						foreach ($history as $key => $value) {
+							//86400 = 1 day
+							$time_current = time() - $value['time'];
+							if ($time_current > 86400) {
+								$day = ceil($time_current/86400);
+								$history[$key]['thoigianhienthi'] = 'đã đăng nhập vào hệ thống. <span class="small italic">Cách đây '.$day.' ngày</span>.';
+							}else{
+								$m = ceil($time_current / 60);
+								if ($m>60) {
+									$h = ceil($time_current / 3600);
+									$history[$key]['thoigianhienthi'] = 'đã đăng nhập vào hệ thống. <span class="small italic">Cách đây '.$h.' giờ</span>.';
+								}else{
+									$history[$key]['thoigianhienthi'] = 'vừa đăng nhập vào hệ thống. <span class="small italic">Cách đây '.$m.' phút</span>.';
+								}
+							}
+						}
+						$this->view->data['history'] = $history;
+
+
+
 
 						$this->view->render('index');
 
@@ -176,7 +213,7 @@ class HomeController extends Controller{
 	    throw new Exception('No accounts found for this user.');
 	  }
 	}
-	public function getResults($service, $profileId,$metrics=null,$optParams=null,$startDate = '1daysAgo') {
+	public function getResults($service, $profileId,$metrics=null,$optParams=null,$startDate = '1daysAgo',$endDate = 'today') {
 			if ($metrics==null && $optParams==null) {
 				return false;
 			}else{
@@ -185,7 +222,7 @@ class HomeController extends Controller{
 		  				return $service->data_ga->get(
 					       'ga:'.$this->data_settings['google_site_verification'],// . $profileId,
 					       $startDate,
-					       'today',
+					       $endDate,
 					       $metrics,
 					       $optParams
 					     );
@@ -213,13 +250,90 @@ class HomeController extends Controller{
 	    print_r("<p>No results found.</p>");
 	  }
 	}
-	public function userOnline(){
+	public function getAjaxAnalytics(){
+		if ($this->input->post('end_time') && $this->input->post('start_time')) {
+			$start = $this->input->post('start_time');
+			$end = $this->input->post('end_time');
+
+			try{
+			// Create the client object and set the authorization configuration
+			// from the client_secretes.json you downloaded from the developer console.
+			$client = new Google_Client();
+			$client->setAuthConfig($this->fileJson);
+			$client->addScope(Google_Service_Analytics::ANALYTICS_READONLY);
+
+			} catch (Exception $e) {
+			  	//redirect(base_url().'settings/settings/index');
+			}
+			if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+				try{
+						  // Set the access token on the client.
+						  $client->setAccessToken($_SESSION['access_token']);
+						  // Create an authorized analytics service object.
+						  $analytics = new Google_Service_Analytics($client);
+						  
+
+						  // Get the first view (profile) id for the authorized user.
+						  $profile = $this->getFirstProfileId($analytics);
+
+						  	// Get the results from the Core Reporting API and print the results.
+
+						  	// dữ liệu truy cập pages
+							$metrics_pages = "ga:sessions,ga:pageviews,ga:avgTimeOnPage";
+						 	$optParams_pages = array("dimensions" => "ga:fullReferrer,ga:pagePath,ga:country,ga:dateHour","sort"=>"-ga:dateHour"); // view pages and sort
+							try {
+							  	$results_pages = $this->getResults($analytics, $profile,$metrics_pages,$optParams_pages,$start,$end);
+							  	
+							  }catch (Exception $exc) {
+								$results_pages = $this->getResults($analytics, $profile,$metrics_pages,$optParams_pages,$start,$end);
+							}
+							$stats_pages = $this->printResults($results_pages);
+							$html='';
+							if (!empty($stats_pages)) {
+	                          $i=1;
+	                          foreach ($stats_pages as $key => $value) { 
+	                              $html.='<tr>
+	                                <td>'.$i.'</td>
+	                                <td>'.$value[0].'</td>
+	                                <td>'.$value[2].'</td>
+	                                <td><a href="'.replaceAdmin(base_url()).$value[1].'" target="_blank">'.$value[1].'</a></td>
+	                                <td>'.$value[4].'</td>
+	                                <td>'.$value[5].'</td>
+	                                <td>'.$value[6].'</td>
+	                                <td>'.slowerDateAnalytics($value[3]).'</td>
+	                              </tr>';
+	                            $i++;
+	                          }
+	                        }else{
+	                        	$html .='<div class="alert alert-danger alert-dismissable fade in">
+										    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+										    <strong>Cảnh báo!</strong> Dữ liệu không có sẵn.
+										  </div>';
+	                        }
+	                        echo json_encode(array('status'=>true,'html'=>$html));
+
+
+
+				// xử lý ngoại lệ khi google analytic chưa cấp quyền
+				}catch (Exception $e) {
+					
+				  	//redirect(base_url().'settings/settings/index');
+				}
+			}
+		}
+	}
+	//public function userOnline(){
 		//$my_ip = getHostByName(php_uname('n'));
-		$my_ip = getIp();
+		/*$my_ip = getIp();
 		$my_url = $_SERVER['PHP_SELF'];
 
-		/*$sql = "SELECT * FROM online WHERE ip = '".$my_ip."'";
+
+
+		$sql = "SELECT * FROM online WHERE ip = '".$my_ip."'";
 		$count = $database->count_query($sql);
+
+		$count =$this->modelHome->getCountUser($my_ip);
+
 		$data = array(
 		  'ip'  => $my_ip,
 		  'url' => $my_url,
@@ -248,7 +362,7 @@ class HomeController extends Controller{
 		  print_r($data_ip);
 		  echo "</pre>";
 		}*/
-	}
+	// }
 	public function setLang(){
 		$lang = $this->input->post('lang');
 		//Session::create(array('lang'=> $lang));

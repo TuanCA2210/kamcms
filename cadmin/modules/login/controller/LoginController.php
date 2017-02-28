@@ -28,6 +28,12 @@ class LoginController extends Controller{
 							'group_id'	=> $user['group_id']
 						);
 						Session::create($data);
+						$data_time = array(
+							'ip'   => getIp(),
+							'time' => time(),
+							'id_user' => $user['id']
+						);
+						$this->modelUser->setTime($data_time);
 						redirect(base_url()."home/home/index");
 					}else{
 						$this->view->errors[] = "Mật khẩu của bạn không chính xác.";

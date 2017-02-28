@@ -58,7 +58,7 @@ Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalc
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $this->data['user'];?></h3>
 
               <p><?php echo lang('userregistrations');?></p>
             </div>
@@ -75,12 +75,12 @@ Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalc
             <div class="inner">
               <h3><?php echo $this->data['session_month'][0][0];?></h3>
 
-              <p><?php echo lang('uniquevisitors').lang('inmonth');?></p>
+              <p><?php echo lang('visits').lang('inmonth');?></p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer"><?php echo lang('moreinfo');?> <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer"><?php echo lang('moreinfo');?><i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -88,6 +88,9 @@ Warning: PHP Startup: Unable to load dynamic library 'E:\xampp\php\ext\php_phalc
       <!-- /.row -->
       <!-- Main row -->
       <div class="row">
+<?php
+//dd($this->data['stats']);
+?>
         <!-- Left col -->
         <section class="col-lg-6 connectedSortable">
           <!-- Custom tabs (Charts with tabs)-->
@@ -178,14 +181,12 @@ if (!empty($this->data['stats_pages'])) {
 }
 
 ?>
-
-                      </tbody>
+</tbody>
                     </table>
 
                     </div>
 
                   </div>
-                  <p class="view_chart_table"><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp; Xem tất cả</p>
                 </div>
               </div>
 
@@ -206,6 +207,143 @@ if (!empty($this->data['stats_pages'])) {
       </div>
       <!-- /.row (main row) -->
 
+
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-6 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <div class="tab-content no-padding">
+              <!-- Morris chart - Sales -->
+              <div class="chart tab-pane active" id="pie-chart" style="position: relative; height: 400px;">
+
+                <ul style="display: none;" id="top_browser">
+<?php
+if (!empty($this->data['stats_browser'])) {
+	foreach ($this->data['stats_browser'] as $key => $value) {
+		echo "<li data-val='".$value[1]."' data-browser='".$value[0]."'></li>";
+	}
+}
+?>
+</ul>
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                  <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChartPie);
+                    var char = [['Task', 'Hours per Day']];// mặc định là phải có
+
+                    var ul = document.getElementById("top_browser");
+                    var items = ul.getElementsByTagName("li");
+                    for (var i = 0; i < items.length; ++i) {
+                       var title = items[i].getAttribute("data-browser");
+                       var val = parseInt(items[i].getAttribute("data-val"));
+                        char.push([title, val]);
+
+                    }
+
+
+
+                    console.log(char);
+                    function drawChartPie() {
+
+                      var data = google.visualization.arrayToDataTable(char);
+
+                      var options = {
+                        title: 'Trình duyệt đã truy cập website trong tháng',
+                        //colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+                      };
+
+                      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                      chart.draw(data, options);
+                    }
+                  </script>
+
+                <div id="piechart" style="width: 100%; height: 400px;"></div>
+              </div>
+
+            </div>
+          </div>
+          <!-- /.nav-tabs-custom -->
+
+
+
+
+
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-6 connectedSortable">
+
+
+
+
+
+          <!-- solid sales graph -->
+          <div class="box box-solid bg-teal-gradient" style="height: 400px;overflow-y: scroll;padding: 15px;background: #fff;">
+             <!-- Custom tabs (Charts with tabs)-->
+               <table class="table table-striped">
+                <tbody>
+<?php
+if (!empty($this->data['history'])) {
+	foreach ($this->data['history'] as $key => $value) {
+		echo '<tr>
+                                <td><span class="log-icon log-icon-info"></span> <a href="#" class="capitalize">'.$value['username'].'</a> '.$value['thoigianhienthi'].'</td>
+                                <td>('.$value['ip'].')</td>
+                              </tr>';
+	}
+}
+?>
+
+                </tbody>
+              </table>
+
+              <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.box -->
+
+        </section>
+        <!-- right col -->
+
+
+
+      </div>
+
+
+
+
     </section>
     <!-- /.content -->
   </div>
+
+
+
+
+
+  <section id="theme-panel" class="panel-open">
+    <a class="panel-btn"><i class="fa fa-gear fa-spin"></i></a>
+
+    <div class="colors-container">
+
+        <p class="" style="line-height:0;">Start date:</p>
+        <input type="text" class="form-control pull-right datepicker" name="time_start" id="datepicker_start" value="1daysAgo">
+    </div>
+    <div class="colors-container">
+
+        <p class="" style="line-height:0;">End date:</p>
+        <input type="text" class="form-control pull-right datepicker" name="time_start" id="datepicker_end" value="today">
+    </div>
+    <div class="colors-container">
+        <a target="_blank" class="btn btn-primary btn_getData" style="padding: 7px 17px !important;border:none">Xem dữ liệu</a>
+    </div>
+
+
+    <div class="colors-container">
+        <p class="" style="color:#999;font-size:11px;">Chọn ngày bắt đầu và kết thúc để lấy thông số dữ liệu anlytics</p>
+    </div>
+</section>
+
+
+<div class="loading"></div>
+<div class="fade_loading"></div>

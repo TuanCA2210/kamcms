@@ -1,10 +1,11 @@
 <?php 
 class Login{
-	private $user,$group;
+	private $user,$group,$online;
 	public function __construct(){
 		global $_web;
 		$this->lang        = $_web['lang'];
 		$this->user     = new system\Model('user');
+		$this->online     = new system\Model('online');
 		$this->group     = new system\Model('group');
 	}
 	public function getAll($id){
@@ -21,4 +22,8 @@ class Login{
 		$this->user->where("password",$pass);
 		return $this->user->getOne();
 	}
+	public function setTime($data){
+		$this->online->insert($data);
+	}
+	
 }
