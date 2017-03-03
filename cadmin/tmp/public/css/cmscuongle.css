@@ -1166,7 +1166,7 @@ a:focus {
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
   z-index: 5;
   color: #fff;
-  color: rgba(255, 255, 255, 0.8);
+      color: #607D8B;
   font-size: 17px;
   margin-top: 10px;
 }

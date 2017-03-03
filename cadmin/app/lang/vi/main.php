@@ -329,3 +329,9 @@ $_L['social']					= 'Mạng xã hội';
 $_L['recent_posts']				= 'Bài viết gần đây';
 $_L['search']					= 'Tìm kiếm';
 $_L['categories_posts']			= 'Danh mục bài viết';
+
+
+
+
+$_L['signout']					= 'Đăng xuất';
+$_L['profile']					= 'Hồ sơ';

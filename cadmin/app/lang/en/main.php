@@ -329,3 +329,10 @@ $_L['social']					= 'Social';
 $_L['recent_posts']				= 'Recent Posts';
 $_L['search']					= 'Search';
 $_L['categories_posts']			= 'Categories Posts';
+
+
+
+
+
+$_L['signout']					= 'Sign out';
+$_L['profile']					= 'Profile';

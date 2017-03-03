@@ -125,6 +125,16 @@ class ManagerController extends Controller{
 			}
 		}
 	}
+	public function view(){
+		$dir          = DIR_TMP.'cdn/';
+		$this->view->data['images'] = getImagesToFolder($dir);
+		if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+			if ($this->modelUsers->checkId($_GET['id']) == FALSE) {
+				$this->view->data['data_user']=$this->modelUsers->getUserById($_GET['id']);
+				$this->view->render('user_view');
+			}
+		}
+	}
 	public function updateAvatar(){
 		if (isset($_POST['src'])) {
 			$data= array(

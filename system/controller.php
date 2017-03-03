@@ -19,6 +19,7 @@ class Controller{
 		$_web['menu'] = $this->getMenuGlobals();
 		$_web['settings'] = $this->getSettingsGlobals();
 		$_web['options'] = $this->getOptionsGlobals();
+		$_web['widgets'] = $this->getWidgetsGlobals();
 
 
 		$this->cart 			= new Cart(new Session, new Cookie);
@@ -85,6 +86,10 @@ class Controller{
 	}
 	public function getOptionsGlobals(){
 		$data = $this->modelGlobals->getOptions();
+		return $data;
+	}
+	public function getWidgetsGlobals(){
+		$data = $this->modelGlobals->getWidgets();
 		return $data;
 	}
 

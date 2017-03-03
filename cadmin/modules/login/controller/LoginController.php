@@ -25,6 +25,9 @@ class LoginController extends Controller{
 							'id' 		=> $user['id'],
 							'email' 	=> $user['email'],
 							'username' 	=> $user['username'],
+							'avatar' 	=> $user['avatar'],
+							'job' 	=> $user['job'],
+							'create_time' 	=> $user['create_time'],
 							'group_id'	=> $user['group_id']
 						);
 						Session::create($data);

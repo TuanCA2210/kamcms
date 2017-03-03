@@ -176,7 +176,7 @@
                                                         if (!empty($this->data['data'])) {
                                                             foreach ($this->data['data'] as $key => $value) { ?>
                                                                     <li style="margin-left:20px;" class="dd-item post-item closed" id="listId_<?php echo $value['id'];?>" data-id="<?php echo $value['id'];?>">
-                                                                        <div class="dd-handle">xxxx</div>
+                                                                        <div class="dd-handle"></div>
                                                                         <div class="dd-content">
                                                                             <span class="text pull-left">&nbsp;<?php echo $value['title'];?></span>
                                                                             <span class="text pull-right">Primary sidebar</span>

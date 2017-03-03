@@ -4,7 +4,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url();?>tmp/public/images/avatar.png" class="img-circle" alt="User Image">
+          <img src="<?php echo (Session::get('avatar') && Session::get('avatar')!='') ? base_url().'tmp/cdn/'.Session::get('avatar') : base_url().'tmp/public/images/avatar.png';?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo Session::get('username'); ?></p>

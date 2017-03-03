@@ -112,7 +112,7 @@
                                                     </th>
                                                     <th class="no-sort no-search sorting_disabled" rowspan="1" colspan="1" aria-label="
                                                                     Operations
-                                                                " style="width: 92px;">
+                                                                " style="width: 130px;">
                                                         <?php echo lang('operations');?>
                                                     </th>
                                                 </tr>
@@ -153,7 +153,9 @@
                                                                 ?>
                                                             </td>
                                                             <td><?php echo date('d-m-Y',$value['create_time']);?></td>
-                                                            <td><a href="<?php echo base_url().'users/manager/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-eye"></i></a>&nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'users/manager/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
+                                                            <td><a href="<?php echo base_url().'users/manager/view/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-eye"></i></a>&nbsp;
+                                                            <a href="<?php echo base_url().'users/manager/edit/'.$value['id'];?>" class="btn btn-icon btn-primary tip" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                            &nbsp;<a data-toggle="modal" data-target="#modelDelete" data-href="<?php echo base_url().'users/manager/del/'.$value['id'];?>" class="btn btn-icon btn-danger deleteDialog tip"><i class="fa fa-trash-o"></i></a></td>
                                                         </tr>
                                                 <?php 
                                                     }
