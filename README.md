@@ -41,5 +41,20 @@
 	- dd($array)            : là hàm dùng để dump mảng.
 	- createCaptcha()   	: Tạo mã Captcha.
 	- checkCaptcha($input)	: Kiểm tra mã Captcha có chính xác ko. 
-###5. Biến toàn cục:
+	- getIp()               : lấy địa chỉ IP client.
+	- base64url_encode($var): mã hóa base 64.
+	- base64url_decode($var): giải mã base 64.
+	- recursiveMenu($data,$parent=0,$count=0)  : Đệ quy menu : 
+	                                                             + trước khi dùng hàm này thì tạo ra một biến mới đặt tên là $data = array();
+	                                                             + loop vòng lặp mảng cũ, đặt parent id = key của $data mới(Tức là gom parent id chung lại)
+	                                                             	foreach ($_web['menu'] as $value) {
+            															$parent = $value['parent_id'];
+            															$data[$parent][] = $value;
+        															}
+        
+        														+ sau cùng mới chạy hàm đệ quy recursiveMenu($data);
+###5. Tích hợp thư viện mới:
+    - Mở file composer.json thêm vào reuired: tên thư viện sau đó chạy lệnh php composer self-update
+
+###6. Biến toàn cục:
 	- $_web					: Có thể sử dụng được ở bất kỳ đâu trên trang web var_dump($_web) để xem
