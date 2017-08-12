@@ -11,6 +11,8 @@ define('DIR_THEME',DIR_TMP.'themes/');
 define('DIR_MODULES',DIR_ROOT.'modules/');
 define('DIR_APP',DIR_ROOT.'app/');
 define('DIR_PUBLIC',DIR_ROOT.'tmp/public/');
+define('DIR_CDN_IMG',DIR_ROOT.'tmp/cdn/');
+define('DIR_CDN_FILES',DIR_ROOT.'tmp/files/');
 
 require_once "system/globals.php";
 

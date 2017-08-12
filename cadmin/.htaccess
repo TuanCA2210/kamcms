@@ -16,7 +16,7 @@
 
 RewriteEngine on 
 Options +FollowSymlinks 
-RewriteBase /cadmin
+RewriteBase /kamcms/cadmin
 
 ErrorDocument 404 /404.htm
 ErrorDocument 401 /404.htm

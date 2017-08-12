@@ -5173,6 +5173,18 @@ table > thead > tr > th:hover{
     margin-bottom: 15px;
     overflow-y: scroll;
 }
+#loadMediaFiles{
+  margin-top: 20px;
+  border: 1px solid #a0a0a0;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 10px;
+  background:#f7f7f7;
+  width: 83%;
+    height: 700px;
+    margin-bottom: 15px;
+    overflow-y: scroll;
+}
 .media-col{
   width: 150px;
   height: 120px;

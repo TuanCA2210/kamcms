@@ -119,73 +119,24 @@
 			                      	<h4 class="text-center"><?php echo lang('avatar');?></h4>
 			                        <div class="modal-image-choose">
 			                            <div class="text-center">
-			                                  <a class="text-center" data-toggle="modal" data-target="#myModalPages">
+			                                  <a class="text-center choose_img">
 			                                  <img src="<?php echo (isset($this->data['data']['avatar']) && $this->data['data']['avatar']!='') ? base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url().'tmp/cdn/'.$this->data['data']['avatar'].'&h=150&w=210&zc=2' : base_url().'tmp/public/images/img.png';?>" class="logo-website pages-website load-img" alt="" />
 			                                  <input type="hidden" class="hidden_thumb_pages" name="hidden_thumb_pages" value="<?php if(isset($this->data['data']['avatar'])) echo $this->data['data']['avatar']; ?>"/>
 			                                  </a>
 			                                  <h5 class="text-center"><a href="" class="del-image-choose-pages" style="color: #FF5722;font-weight:bold;"><i class="fa fa-trash-o" aria-hidden="true"></i> <?php echo lang('delete'); ?> </a></h5>
 			                            </div>
-			                            <!-- Modal -->
-			                            <div class="modal fade" id="myModalPages" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			                              <div class="modal-dialog" role="document">
-			                                <div class="modal-content">
-			                                  <div class="modal-header">
-			                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			                                    <h4 class="modal-title" id="label-model-folder-img">
-			                                       <?php echo lang('choose_logo'); ?>
-			                                    </h4>
-			                                  </div>
-			                                  <div class="modal-body" data-mess-one="<?php echo lang('warning_choose_img');?>" data-mess-two="<?php echo lang('warning_choose_img_one');?>" data-title="thumbnail_pages">
-			                                   <?php
-			                                    $dir          = DIR_TMP.'cdn/';
-			                                      $html = listAllFolderChooseImage($dir);
-			                                      echo $html;
-
-			                                    ?>
-			                                  </div>
-			                                  <div class="modal-footer">
-			                                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close');?></button>
-			                                    <button type="button" class="btn btn-primary choose_img"><?php echo lang('choose');?></button>
-			                                  </div>
-			                                </div>
-			                              </div>
-			                            </div><!--END MODAL-->
 			                        </div>
 	
 									<h4 class="text-center"><?php echo lang('cover_image');?></h4>
 			                        <div class="modal-image-choose">
 			                            <div class="text-center">
-			                                  <a class="text-center" data-toggle="modal" data-target="#myModalCover">
+			                                  <a class="text-center choose_img_cover">
 			                                  <img src="<?php echo (isset($this->data['data']['background']) && $this->data['data']['background']!='') ? base_url().'tmp/cdn/'.$this->data['data']['background'] : base_url().'tmp/public/images/img.png';?>" class="logo-favicon load-img" alt="">
 			                                  <input type="hidden" class="background" name="background" value="<?php if(isset($this->data['data']['background'])) echo $this->data['data']['background']; ?>"/>
 			                                  </a>
 			                                  <h5 class="text-center"><a href="" class="del-image-choose-background" style="color: #FF5722;font-weight:bold;"><i class="fa fa-trash-o" aria-hidden="true"></i> <?php echo lang('delete'); ?> </a></h5>
 			                            </div>
-			                            <!-- Modal -->
-			                              <div class="modal fade" id="myModalCover" tabindex="-1" role="dialog" aria-labelledby="myModalCover">
-			                                <div class="modal-dialog" role="document">
-			                                  <div class="modal-content">
-			                                    <div class="modal-header">
-			                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			                                      <h4 class="modal-title" id="label-model-folder-img">
-			                                         <?php echo lang('choose_background'); ?>
-			                                      </h4>
-			                                    </div>
-			                                    <div class="modal-body" data-mess-one="<?php echo lang('warning_choose_img');?>" data-mess-two="<?php echo lang('warning_choose_img_one');?>" data-title="background">
-			                                     <?php
-			                                      $dir          = DIR_TMP.'cdn/';
-			                                      $html = listAllFolderChooseImage($dir);
-			                                      echo $html;
 
-			                                      ?>
-			                                    </div>
-			                                    <div class="modal-footer">
-			                                      <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close');?></button>
-			                                      <button type="button" class="btn btn-primary choose_img_background"><?php echo lang('choose');?></button>
-			                                    </div>
-			                                  </div>
-			                                </div>
-			                              </div><!--END MODAL-->
 			                        </div>
 			                        
 			                    

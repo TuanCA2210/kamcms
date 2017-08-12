@@ -26,8 +26,7 @@
           <div class="nav-tabs-custom">
             <!-- Tabs within a box -->
             <ul class="nav nav-tabs pull-left">
-              <li class="active"><a href="#revenue-chart" data-toggle="tab"><?php echo lang('image'); ?></a></li>
-              <li><a href="#sales-chart" data-toggle="tab"><?php echo lang('file'); ?></a></li>
+              <li class="active"><a href="#revenue-chart" data-toggle="tab"><?php echo lang('image'); ?> và tệp tin.</a></li>
             </ul>
             <div class="tab-content no-padding">
               <!-- Morris chart - Sales -->

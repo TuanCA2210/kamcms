@@ -107,7 +107,28 @@ if (!function_exists('validateIp')){
 if (!function_exists('getImagesToFolder')){
         function getImagesToFolder($dir){
             $ImagesArray = [];
-            $file_display = [ 'jpg', 'jpeg', 'png', 'gif','ico'];
+            $file_display = [ 'jpg', 'jpeg', 'png', 'gif','ico','json', 'xls', 'doc', 'docx','xml'];
+
+            if (file_exists($dir) == false) {
+                return ["Directory \'', $dir, '\' not found!"];
+            } 
+            else {
+                $dir_contents = scandir($dir);
+                foreach ($dir_contents as $file) {
+                    $file_type = pathinfo($file, PATHINFO_EXTENSION);
+                    if (in_array($file_type, $file_display) == true) {
+                        $ImagesArray[] = $file;
+                    }
+                }
+                return $ImagesArray;
+            }
+        }
+}
+
+if (!function_exists('getFilesToFolder')){
+        function getFilesToFolder($dir){
+            $ImagesArray = [];
+            $file_display = [ 'json', 'xls', 'doc', 'docx','xml'];
 
             if (file_exists($dir) == false) {
                 return ["Directory \'', $dir, '\' not found!"];
@@ -272,7 +293,7 @@ if (!function_exists('checkCaptcha')){
 
 if (!function_exists('listAllFolder')){
         function listAllFolder($dir){
-            $root          = DIR_TMP.'cdn/';
+            $root          = DIR_CDN_IMG;
             $html='';
             $results_folder = scandir($dir);
             $arrDir = array();
@@ -318,11 +339,29 @@ if (!function_exists('listAllFolder')){
 
                             $tmp = explode('.', $value);
                             $ext = end($tmp);
-                            if ($ext=='ico') {
-                                $html .= "<img class='img-folder-media' src='".base_url()."tmp/cdn/".$current.$value."' width='150' height='100'/>";
-                            }else{
-                                $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$current.$value."&h=100&w=150&zc=2' width='150' height='100'/>";
+                            switch ($ext) {
+                                case 'xls':
+                                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/xlsx.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                                    break;
+                                case 'json':
+                                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/json.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                                    break;
+                                case 'doc':
+                                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/ms_word.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                                    break;
+                                case 'docx':
+                                    $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/public/images/word_2013.png&h=100&w=150&zc=2' width='150' height='100'/>";
+                                    break;
+                                
+                                default:
+                                    if ($ext=='ico') {
+                                            $html .= "<img class='img-folder-media' src='".base_url()."tmp/cdn/".$current.$value."' width='150' height='100'/>";
+                                        }else{
+                                            $html .= "<img class='img-folder-media' src='".base_url().'tmp/public/plugins/image_tools/timthumb.php?src='.base_url()."tmp/cdn/".$current.$value."&h=100&w=150&zc=2' width='150' height='100'/>";
+                                    }
+                                    break;
                             }
+                            
 
 
 
@@ -343,7 +382,6 @@ if (!function_exists('listAllFolder')){
         }
 }
 
-//
 
 if (!function_exists('listAllFolderChooseImage')){
         function listAllFolderChooseImage($dir){

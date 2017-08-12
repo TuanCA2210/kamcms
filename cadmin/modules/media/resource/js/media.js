@@ -254,6 +254,17 @@ $('body').on('dblclick', '.media-col img.img-folder-media', function(event) {
 	
 });
 
+$('body').on('click', '.media-col img.img-folder-media', function(event) {
+	event.preventDefault();
+	var check_folder = $(this).parent('.media-col').attr('data-folder');
+	var directory = $('#directory').val();
+	$('.img-folder-media').removeClass('active-box');
+	$(this).addClass('active-box');
+	//alert(123);
+	
+	
+});
+
 $('body').on('dblclick', '#back_folder', function(event) {
 	event.preventDefault();
 	var directory = $('#directory').val();

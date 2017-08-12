@@ -16,7 +16,7 @@ class HomeController extends Controller{
 	public function index(){
 		global $_web;
 		//$this->view->data  = $this->modelHome->getUserById(1);
-
+		redirect(base_url().'settings/settings/index');
 		
 		try{
 		// Create the client object and set the authorization configuration

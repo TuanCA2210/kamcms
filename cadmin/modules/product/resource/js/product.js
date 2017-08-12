@@ -46,43 +46,32 @@ $('body').on('dblclick', '#myModalPages #back_folder', function(event) {
 
 
 $('body').on('click', '.choose_img', function(event) {
-		event.preventDefault();
-		var body_img = $(this).parents('.modal-image-choose').find('.modal-body');
-		var list = new Array();
-		body_img.find('.img-active').each(function(){
-			list.push($(this).attr('data-src'));
-		});
-		//console.log(list);
-		if (list.length == 0) {
-			toastr["error"](body_img.attr('data-mess-one'));
-		}else if(list.length > 1){
-			toastr["error"](body_img.attr('data-mess-two'));
-		}else{
-			var src = list[0];
-			if (body_img.attr('data-title')=='thumbnail_pages') {
-				var title = 'thumbnail_pages';
-			}else{
-				var title = '';
-			}
-			/*$.ajax({
-				url: baseUrl+'index.php?mod=pages&controller=pages&action=updateInfo',
-				type: 'POST',
-				dataType: 'json',
-				data: {src: src,title:title},
-			})
-			.done(function(data) {
-				if (data.status) {
-					toastr["success"](data.mess);
-				}
-			});*/
-			$('.modal-image-choose').find('.hidden_thumb_pages').val(src);
-			$(this).parents('.modal-image-choose').find('.load-img').attr('src', baseUrl+'tmp/public/plugins/image_tools/timthumb.php?src='+baseUrl+'tmp/cdn/'+src+'&h=150&w=210&zc=2');
-			body_img.find('.img-load-folder').each(function(){
-				$(this).removeClass('img-active');
-			});
-			$(this).parents('.modal-image-choose').find('.modal').modal('hide');
-		}
-	});
+	event.preventDefault();
+	var _this = $(this);
+	var finder = new CKFinder();
+    //finder.basePath = '../';    // The path for the installation of CKFinder (default = "/ckfinder/").
+    finder.selectActionFunction = function(fileUrl){
+    	_this.parents('.modal-image-choose').find('img').attr('src',fileUrl);
+    	var src = fileUrl.replace(baseUrl+'tmp/cdn/','');
+    	_this.parents('.modal-image-choose').find('.hidden_thumb_pages').val(src);
+    	
+    };
+    finder.popup();
+});
+
+$('body').on('click', '.choose_img_cover', function(event) {
+	event.preventDefault();
+	var _this = $(this);
+	var finder = new CKFinder();
+    //finder.basePath = '../';    // The path for the installation of CKFinder (default = "/ckfinder/").
+    finder.selectActionFunction = function(fileUrl){
+    	_this.parents('.modal-image-choose').find('img').attr('src',fileUrl);
+    	var src = fileUrl.replace(baseUrl+'tmp/cdn/','');
+    	_this.parents('.modal-image-choose').find('.background').val(src);
+    	
+    };
+    finder.popup();
+});
 
 
 
@@ -92,36 +81,6 @@ $('body').on('click', '.choose_img', function(event) {
 		$(this).parents('.modal-image-choose').find('.pages-website').attr('src',baseUrl+'tmp/public/images/img.png');
 	});
 
-
-	// chọn ảnh bìa
-
-	$('body').on('click', '.choose_img_background', function(event) {
-		event.preventDefault();
-		var body_img = $(this).parents('.modal-image-choose').find('.modal-body');
-		var list = new Array();
-		body_img.find('.img-active').each(function(){
-			list.push($(this).attr('data-src'));
-		});
-		//console.log(list);
-		if (list.length == 0) {
-			toastr["error"](body_img.attr('data-mess-one'));
-		}else if(list.length > 1){
-			toastr["error"](body_img.attr('data-mess-two'));
-		}else{
-			var src = list[0];
-			if (body_img.attr('data-title')=='background') {
-				var title = 'background';
-			}else{
-				var title = '';
-			}
-			$('.modal-image-choose').find('.background').val(src);
-			$(this).parents('.modal-image-choose').find('.load-img').attr('src', baseUrl+'tmp/public/plugins/image_tools/timthumb.php?src='+baseUrl+'tmp/cdn/'+src+'&h=150&w=210&zc=2');
-			body_img.find('.img-load-folder').each(function(){
-				$(this).removeClass('img-active');
-			});
-			$(this).parents('.modal-image-choose').find('.modal').modal('hide');
-		}
-	});
 
 
 

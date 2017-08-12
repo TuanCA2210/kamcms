@@ -2156,8 +2156,12 @@ class upload {
                 $this->image_supported['image/x-ms-bmp'] = 'bmp';
                 $this->image_supported['image/x-windows-bmp'] = 'bmp';
             }
+            $this->image_supported['application/json'] = 'json';
+            $this->image_supported['application/xml'] = 'xml';
+            $this->image_supported['application/vnd.ms-excel'] = 'xls';
+            $this->image_supported['application/msword'] = 'doc';
+            $this->image_supported['application/vnd.openxmlformats-officedocument.wordprocessingml.document'] = 'docx';
         }
-
         // display some system information
         if (empty($this->log)) {
             $this->log .= '<b>system information</b><br />';
@@ -2168,7 +2172,18 @@ class upload {
                 $open_basedir = false;
             }
             $gd           = $this->gdversion() ? $this->gdversion(true) : 'GD not present';
-            $supported    = trim((in_array('png', $this->image_supported) ? 'png' : '') . ' ' . (in_array('jpg', $this->image_supported) ? 'jpg' : '') . ' ' . (in_array('gif', $this->image_supported) ? 'gif' : '') . ' ' . (in_array('bmp', $this->image_supported) ? 'bmp' : ''));
+            $supported    = trim(
+                (in_array('png', $this->image_supported) ? 'png' : '') . ' ' . 
+                (in_array('jpg', $this->image_supported) ? 'jpg' : '') . ' ' . 
+                (in_array('gif', $this->image_supported) ? 'gif' : '') . ' ' . 
+                (in_array('bmp', $this->image_supported) ? 'bmp' : '') . ' ' . 
+                (in_array('json', $this->image_supported) ? 'json' : '') . ' ' . 
+                (in_array('doc', $this->image_supported) ? 'doc' : '') . ' ' . 
+                (in_array('docx', $this->image_supported) ? 'docx' : '') . ' ' . 
+                (in_array('xlm', $this->image_supported) ? 'xlm' : '') . ' ' . 
+                (in_array('xls', $this->image_supported) ? 'xls' : '')
+
+                );
             $this->log .= '-&nbsp;class version           : ' . $this->version . '<br />';
             $this->log .= '-&nbsp;operating system        : ' . PHP_OS . '<br />';
             $this->log .= '-&nbsp;PHP version             : ' . PHP_VERSION . '<br />';
